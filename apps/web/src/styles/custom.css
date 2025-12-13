@@ -116,7 +116,8 @@ a[href*="/edit/"] {
     margin: 48px 0 0 0;
 }
 
-.sl-container{
+/* Only for article pages - align content left */
+body.is-article .sl-container {
     margin-inline: 0;
 }
 

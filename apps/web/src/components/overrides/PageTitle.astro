@@ -28,6 +28,10 @@ const isArticle = author || updatedAt || readingTime;
 ---
 
 {isArticle && (
+  <script>document.body.classList.add('is-article');</script>
+)}
+
+{isArticle && (
   <ArticleSchema
     title={title}
     description={frontmatter.description || ''}
