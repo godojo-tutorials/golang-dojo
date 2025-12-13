@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Учебник Go",
+    "translations": {
+      "en": "Go Tutorial"
+    },
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Основы языка Go",
+        "translations": {
+          "en": "Go Language Fundamentals"
+        },
+        "collapsed": false,
+        "items": [
+          {
+            "label": "Установка Go",
+            "translations": {
+              "en": "Installing Go"
+            },
+            "slug": "installation"
+          }
+        ]
+      }
+    ]
+  }
+]

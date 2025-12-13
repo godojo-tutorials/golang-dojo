@@ -1,0 +1,48 @@
+---
+/**
+ * JSON-LD Schema for Articles
+ * Adds structured data for better SEO
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  author?: string;
+  authorName?: string;
+  updatedAt?: string;
+  url: string;
+  lang: string;
+}
+
+const { title, description, author, authorName, updatedAt, url, lang } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "inLanguage": lang,
+  "url": url,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Godojo",
+    "url": "https://godojo.dev",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://godojo.dev/og-image.png"
+    }
+  },
+  ...(authorName && {
+    "author": {
+      "@type": "Person",
+      "name": authorName
+    }
+  }),
+  ...(updatedAt && {
+    "dateModified": updatedAt,
+    "datePublished": updatedAt
+  })
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

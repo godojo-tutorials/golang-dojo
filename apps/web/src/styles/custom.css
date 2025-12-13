@@ -4,6 +4,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ============================================
+   SIDEBAR OVERRIDES
+   ============================================ */
+
+/* Reset all sidebar text to normal weight */
+nav.sidebar a,
+nav.sidebar summary,
+nav.sidebar span,
+nav.sidebar details summary span {
+  font-weight: 400 !important;
+}
+
+/* Only book title (top-level) is bold */
+nav.sidebar .top-level > li > details > summary > span {
+  font-weight: 600 !important;
+}
+
 :root {
   --sl-color-accent-low: #1e3a5f;
   --sl-color-accent: #3b82f6;

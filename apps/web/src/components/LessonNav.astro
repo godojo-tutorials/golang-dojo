@@ -3,6 +3,8 @@
  * LessonNav - Компонент навигации между уроками (prev/next)
  */
 
+import { t, type Lang } from '@/utils/i18n';
+
 interface Props {
   prev?: {
     slug: string;
@@ -12,16 +14,18 @@ interface Props {
     slug: string;
     title: string;
   };
+  lang?: Lang;
 }
 
-const { prev, next } = Astro.props;
+const { prev, next, lang = 'ru' } = Astro.props;
+const labels = t(lang).nav;
 ---
 
 {(prev || next) && (
   <nav class="lesson-nav">
     {prev ? (
-      <a href={`/ru/${prev.slug}/`} class="lesson-nav-link">
-        <span class="lesson-nav-label">← Предыдущий</span>
+      <a href={`/${lang}/${prev.slug}/`} class="lesson-nav-link">
+        <span class="lesson-nav-label">{labels.previous}</span>
         <span class="lesson-nav-title">{prev.title}</span>
       </a>
     ) : (
@@ -29,8 +33,8 @@ const { prev, next } = Astro.props;
     )}
 
     {next ? (
-      <a href={`/ru/${next.slug}/`} class="lesson-nav-link" style="text-align: right;">
-        <span class="lesson-nav-label">Следующий →</span>
+      <a href={`/${lang}/${next.slug}/`} class="lesson-nav-link" style="text-align: right;">
+        <span class="lesson-nav-label">{labels.next}</span>
         <span class="lesson-nav-title">{next.title}</span>
       </a>
     ) : (

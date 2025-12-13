@@ -277,7 +277,7 @@ const bookTitles = {
   en: 'Go Tutorial',
 };
 
-// Generate sidebar config
+// Generate sidebar config - per language (for reference)
 const sidebars = {};
 
 for (const [lang, data] of Object.entries(allTocData)) {
@@ -336,6 +336,111 @@ for (const [lang, data] of Object.entries(allTocData)) {
 
 writeFileSync(join(dataDir, 'sidebar.json'), JSON.stringify(sidebars, null, 2));
 console.log(`📑 Created sidebar.json`);
+
+// Generate unified sidebar with translations for Starlight
+// This creates a single sidebar that works for all locales
+function generateUnifiedSidebar() {
+  // Build topic map: slug -> { ru: title, en: title }
+  const topicTitles = {};
+  const moduleTitles = {};
+  const blockTitles = {};
+
+  for (const [lang, data] of Object.entries(allTocData)) {
+    if (!data.blocks) continue;
+    for (const block of data.blocks) {
+      if (!blockTitles[block.id]) blockTitles[block.id] = {};
+      blockTitles[block.id][lang] = block.title;
+
+      for (const module of block.modules) {
+        if (!moduleTitles[module.id]) moduleTitles[module.id] = {};
+        moduleTitles[module.id][lang] = module.title;
+
+        for (const topic of module.topics) {
+          if (!topicTitles[topic.slug]) topicTitles[topic.slug] = {};
+          topicTitles[topic.slug][lang] = topic.title;
+        }
+      }
+    }
+  }
+
+  // Use Russian as base structure (primary content)
+  const ruData = allTocData['ru'];
+  if (!ruData || !ruData.blocks || ruData.blocks.length === 0) {
+    return [];
+  }
+
+  const chapters = [];
+
+  for (const block of ruData.blocks) {
+    const translations = {};
+    if (blockTitles[block.id]?.en) {
+      translations.en = blockTitles[block.id].en;
+    }
+
+    const group = {
+      label: block.title,
+      ...(Object.keys(translations).length > 0 && { translations }),
+      collapsed: false,
+      items: [],
+    };
+
+    for (const module of block.modules) {
+      const moduleTranslations = {};
+      if (moduleTitles[module.id]?.en) {
+        moduleTranslations.en = moduleTitles[module.id].en;
+      }
+
+      if (module.topics.length > 1) {
+        const subgroup = {
+          label: module.title,
+          ...(Object.keys(moduleTranslations).length > 0 && { translations: moduleTranslations }),
+          collapsed: true,
+          items: module.topics.map(topic => {
+            const topicTranslations = {};
+            if (topicTitles[topic.slug]?.en) {
+              topicTranslations.en = topicTitles[topic.slug].en;
+            }
+            return {
+              label: topic.title,
+              ...(Object.keys(topicTranslations).length > 0 && { translations: topicTranslations }),
+              slug: topic.slug,
+            };
+          }),
+        };
+        group.items.push(subgroup);
+      } else if (module.topics.length === 1) {
+        const topic = module.topics[0];
+        const topicTranslations = {};
+        if (topicTitles[topic.slug]?.en) {
+          topicTranslations.en = topicTitles[topic.slug].en;
+        }
+        group.items.push({
+          label: topic.title,
+          ...(Object.keys(topicTranslations).length > 0 && { translations: topicTranslations }),
+          slug: topic.slug,
+        });
+      }
+    }
+
+    if (group.items.length > 0) {
+      chapters.push(group);
+    }
+  }
+
+  // Book wrapper with translations
+  return [
+    {
+      label: bookTitles['ru'],
+      translations: { en: bookTitles['en'] },
+      collapsed: false,
+      items: chapters,
+    },
+  ];
+}
+
+const unifiedSidebar = generateUnifiedSidebar();
+writeFileSync(join(dataDir, 'sidebar-unified.json'), JSON.stringify(unifiedSidebar, null, 2));
+console.log(`📑 Created sidebar-unified.json (with translations)`);
 
 // Sync authors from all books - merge by ID
 const mergedAuthors = {};

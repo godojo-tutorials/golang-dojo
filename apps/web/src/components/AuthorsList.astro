@@ -1,8 +1,9 @@
 ---
 import authorsData from '../data/authors.json';
+import { t, type Lang } from '@/utils/i18n';
 
 interface Props {
-  lang: 'ru' | 'en';
+  lang: Lang;
 }
 
 interface Author {
@@ -19,22 +20,12 @@ interface Author {
 
 const { lang } = Astro.props;
 const authors = authorsData as Author[];
-
-const labels = {
-  ru: {
-    noAuthors: 'Авторы пока не добавлены',
-  },
-  en: {
-    noAuthors: 'No authors yet',
-  },
-};
+const labels = t(lang).authors;
 
 const bookLabels = {
   ru: 'RU',
   en: 'EN',
 };
-
-const l = labels[lang];
 ---
 
 <div class="authors-page">
@@ -92,6 +83,6 @@ const l = labels[lang];
   )}
 
   {authors.length === 0 && (
-    <p class="authors-empty">{l.noAuthors}</p>
+    <p class="authors-empty">{labels.noAuthors}</p>
   )}
 </div>

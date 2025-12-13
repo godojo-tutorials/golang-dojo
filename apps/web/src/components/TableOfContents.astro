@@ -7,9 +7,10 @@
  */
 
 import tocData from '@/data/toc.json';
+import { t, type Lang } from '@/utils/i18n';
 
 interface Props {
-  lang?: 'ru' | 'en';
+  lang?: Lang;
 }
 
 interface Topic {
@@ -36,13 +37,13 @@ interface TocData {
 const { lang = 'ru' } = Astro.props;
 const data = (tocData as TocData)[lang] || { blocks: [] };
 const blocks: Block[] = data.blocks || [];
+const labels = t(lang).toc;
 ---
 
 <div class="toc-container">
   {blocks.map((block, blockIndex) => {
     const sectionNumber = blockIndex + 1;
-
-    // Собираем все топики блока в плоский список
+    
     let itemNumber = 0;
     const items: { number: string; title: string; slug: string }[] = [];
 
@@ -77,8 +78,6 @@ const blocks: Block[] = data.blocks || [];
   })}
 
   {blocks.length === 0 && (
-    <p class="toc-empty">
-      {lang === 'ru' ? 'Контент скоро появится...' : 'Content coming soon...'}
-    </p>
+    <p class="toc-empty">{labels.empty}</p>
   )}
 </div>

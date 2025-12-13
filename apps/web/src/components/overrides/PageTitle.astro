@@ -4,9 +4,13 @@
  * Adds article meta (author, reading time, date) below the title with full-width border
  */
 import type { Props } from '@astrojs/starlight/props';
+import { t, type Lang } from '@/utils/i18n';
+import ArticleSchema from '@/components/ArticleSchema.astro';
 
 const { entry, lang } = Astro.props as Props;
 const frontmatter = entry.data;
+const currentUrl = `https://godojo.dev${Astro.url.pathname}`;
+const labels = t(lang as Lang).page;
 
 // Get meta from frontmatter (injected by sync script)
 const author = frontmatter.author;
@@ -16,14 +20,24 @@ const readingTime = frontmatter.readingTime;
 const title = frontmatter.title;
 
 // Labels
-const readingTimeLabel = lang === 'ru'
-  ? `${readingTime} мин чтения`
-  : `${readingTime} min read`;
-const updatedLabel = lang === 'ru' ? 'Обновлено' : 'Updated';
+const readingTimeLabel = `${readingTime} ${labels.minRead}`;
+const updatedLabel = labels.updated;
 
 // Check if this is a content page (not index or authors)
 const isArticle = author || updatedAt || readingTime;
 ---
+
+{isArticle && (
+  <ArticleSchema
+    title={title}
+    description={frontmatter.description || ''}
+    author={author}
+    authorName={authorName}
+    updatedAt={updatedAt}
+    url={currentUrl}
+    lang={lang}
+  />
+)}
 
 <h1 id="_top">{title}</h1>
 

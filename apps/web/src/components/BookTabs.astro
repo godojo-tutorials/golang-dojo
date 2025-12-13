@@ -4,18 +4,21 @@
  * Показывает только активные книги (MVP подход)
  */
 
+import { t, type Lang } from '@/utils/i18n';
+
 interface Props {
-  lang?: 'ru' | 'en';
+  lang?: Lang;
 }
 
 const { lang = 'ru' } = Astro.props;
+const labels = t(lang).books;
 
 // Все книги серии (для будущего roadmap)
 const allBooks = [
   {
     id: 'go-language',
-    title: lang === 'ru' ? 'Go — Язык' : 'Go Language',
-    fullTitle: lang === 'ru' ? 'Go — Язык программирования' : 'Go Programming Language',
+    title: labels.goLanguage,
+    fullTitle: labels.goLanguageFull,
     active: true,
     lessons: 395,
   },
@@ -27,13 +30,13 @@ const allBooks = [
   },
   {
     id: 'architecture',
-    title: lang === 'ru' ? 'Архитектура' : 'Architecture',
+    title: labels.architecture,
     fullTitle: 'Architecture Patterns',
     active: false,
   },
   {
     id: 'distributed',
-    title: lang === 'ru' ? 'Распределённые системы' : 'Distributed',
+    title: labels.distributed,
     fullTitle: 'Distributed Systems',
     active: false,
   },
@@ -48,8 +51,6 @@ const allBooks = [
 // Показываем только активные книги + превью следующей
 const activeBooks = allBooks.filter(b => b.active);
 const nextBook = allBooks.find(b => !b.active);
-
-const comingSoonLabel = lang === 'ru' ? 'Скоро' : 'Soon';
 ---
 
 {activeBooks.length > 0 && (
@@ -69,7 +70,7 @@ const comingSoonLabel = lang === 'ru' ? 'Скоро' : 'Soon';
         title={nextBook.fullTitle}
       >
         <span class="book-tab-title">{nextBook.title}</span>
-        <span class="book-tab-badge">{comingSoonLabel}</span>
+        <span class="book-tab-badge">{labels.comingSoon}</span>
       </button>
     )}
   </div>
