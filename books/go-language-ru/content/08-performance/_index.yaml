@@ -1,0 +1,6 @@
+id: performance
+order: 8
+title: Производительность
+titleEn: Performance & Profiling
+description: Профилирование, оптимизация, нагрузочное тестирование
+modulesCount: 6

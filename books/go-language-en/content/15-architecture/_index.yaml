@@ -1,0 +1,5 @@
+id: architecture
+order: 15
+title: System Architecture
+description: Microservices, gRPC, message queues
+modulesCount: 5

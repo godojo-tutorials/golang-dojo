@@ -1,0 +1,29 @@
+{
+  "name": "godojo",
+  "version": "1.0.0",
+  "description": "Go Learning Platform - Complete course from zero to middle+ level",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "books/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "ru:generate": "npm run generate:structure -w @godojo/go-language-ru",
+    "ru:validate": "npm run validate -w @godojo/go-language-ru",
+    "ru:stats": "npm run stats -w @godojo/go-language-ru",
+    "en:generate": "npm run generate:structure -w @godojo/go-language-en",
+    "en:validate": "npm run validate -w @godojo/go-language-en",
+    "en:stats": "npm run stats -w @godojo/go-language-en",
+    "dev": "npm run dev -w godojo-frontend",
+    "build": "npm run build -w godojo-frontend",
+    "preview": "npm run preview -w godojo-frontend",
+    "sync": "npm run sync -w godojo-frontend",
+    "start": "npm run sync &&  npm run dev"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Godojo Master",
+  "license": "MIT"
+}

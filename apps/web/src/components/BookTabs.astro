@@ -1,0 +1,76 @@
+---
+/**
+ * BookTabs - Компонент табов для переключения между книгами серии
+ * Показывает только активные книги (MVP подход)
+ */
+
+interface Props {
+  lang?: 'ru' | 'en';
+}
+
+const { lang = 'ru' } = Astro.props;
+
+// Все книги серии (для будущего roadmap)
+const allBooks = [
+  {
+    id: 'go-language',
+    title: lang === 'ru' ? 'Go — Язык' : 'Go Language',
+    fullTitle: lang === 'ru' ? 'Go — Язык программирования' : 'Go Programming Language',
+    active: true,
+    lessons: 395,
+  },
+  {
+    id: 'postgresql-go',
+    title: 'PostgreSQL + Go',
+    fullTitle: 'PostgreSQL + Go',
+    active: false,
+  },
+  {
+    id: 'architecture',
+    title: lang === 'ru' ? 'Архитектура' : 'Architecture',
+    fullTitle: 'Architecture Patterns',
+    active: false,
+  },
+  {
+    id: 'distributed',
+    title: lang === 'ru' ? 'Распределённые системы' : 'Distributed',
+    fullTitle: 'Distributed Systems',
+    active: false,
+  },
+  {
+    id: 'devops',
+    title: 'DevOps',
+    fullTitle: 'Infrastructure & DevOps',
+    active: false,
+  },
+];
+
+// Показываем только активные книги + превью следующей
+const activeBooks = allBooks.filter(b => b.active);
+const nextBook = allBooks.find(b => !b.active);
+
+const comingSoonLabel = lang === 'ru' ? 'Скоро' : 'Soon';
+---
+
+{activeBooks.length > 0 && (
+  <div class="book-tabs">
+    {activeBooks.map((book) => (
+      <button
+        class="book-tab active"
+        title={book.fullTitle}
+      >
+        <span class="book-tab-title">{book.title}</span>
+      </button>
+    ))}
+    {nextBook && (
+      <button
+        class="book-tab disabled"
+        disabled
+        title={nextBook.fullTitle}
+      >
+        <span class="book-tab-title">{nextBook.title}</span>
+        <span class="book-tab-badge">{comingSoonLabel}</span>
+      </button>
+    )}
+  </div>
+)}

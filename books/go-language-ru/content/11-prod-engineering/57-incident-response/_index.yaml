@@ -1,0 +1,6 @@
+id: incident-response
+order: 57
+title: Реагирование на инциденты
+titleEn: Incident Response
+block: prod-engineering
+topicsCount: 5

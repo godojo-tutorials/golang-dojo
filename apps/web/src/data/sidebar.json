@@ -1,0 +1,38 @@
+{
+  "ru": [
+    {
+      "label": "Учебник Go",
+      "collapsed": false,
+      "items": [
+        {
+          "label": "Основы языка Go",
+          "collapsed": false,
+          "items": [
+            {
+              "label": "Установка Go",
+              "link": "/ru/installation/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "en": [
+    {
+      "label": "Go Tutorial",
+      "collapsed": false,
+      "items": [
+        {
+          "label": "Go Language Fundamentals",
+          "collapsed": false,
+          "items": [
+            {
+              "label": "Installing Go",
+              "link": "/en/installation/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+---
+title: Go Tutorial
+description: Complete Go Tutorial - from basics to expert
+template: splash
+hero:
+  title: ' '
+  tagline: ' '
+---
+
+import BookTabs from '@/components/BookTabs.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+
+<div class="home-page">
+  <div class="home-header">
+    <h1 class="home-title">Go Tutorial</h1>
+    <p class="home-subtitle">From hello world to microservices</p>
+    <div class="home-stats">
+      <span class="home-stat">395 lessons</span>
+      <span class="home-stat-divider">•</span>
+      <span class="home-stat">17 sections</span>
+      <span class="home-stat-divider">•</span>
+      <span class="home-stat">Free</span>
+    </div>
+    <a href="/en/installation/" class="home-cta">Start learning</a>
+  </div>
+
+  <BookTabs lang="en" />
+
+  <TableOfContents lang="en" />
+</div>

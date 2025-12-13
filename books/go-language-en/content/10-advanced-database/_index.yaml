@@ -1,0 +1,5 @@
+id: advanced-database
+order: 10
+title: Advanced Database & Data
+description: Database performance, NoSQL, alternative ORMs
+modulesCount: 4

@@ -1,0 +1,84 @@
+---
+/**
+ * TableOfContents - Компонент оглавления для главной страницы
+ * Стиль learn.javascript.ru:
+ * - Блоки с заголовками
+ * - Плоский список топиков с нумерацией X.Y
+ */
+
+import tocData from '@/data/toc.json';
+
+interface Props {
+  lang?: 'ru' | 'en';
+}
+
+interface Topic {
+  slug: string;
+  title: string;
+}
+
+interface Module {
+  id: string;
+  title: string;
+  topics: Topic[];
+}
+
+interface Block {
+  id: string;
+  title: string;
+  modules: Module[];
+}
+
+interface TocData {
+  [key: string]: { blocks: Block[] };
+}
+
+const { lang = 'ru' } = Astro.props;
+const data = (tocData as TocData)[lang] || { blocks: [] };
+const blocks: Block[] = data.blocks || [];
+---
+
+<div class="toc-container">
+  {blocks.map((block, blockIndex) => {
+    const sectionNumber = blockIndex + 1;
+
+    // Собираем все топики блока в плоский список
+    let itemNumber = 0;
+    const items: { number: string; title: string; slug: string }[] = [];
+
+    block.modules.forEach((module) => {
+      module.topics.forEach((topic) => {
+        itemNumber++;
+        items.push({
+          number: `${sectionNumber}.${itemNumber}`,
+          title: topic.title,
+          slug: topic.slug,
+        });
+      });
+    });
+
+    return (
+      <section class="toc-section">
+        <div class="toc-section-header">
+          <span class="toc-section-number">{sectionNumber}</span>
+          <h2 class="toc-section-title">{block.title}</h2>
+        </div>
+
+        <div class="toc-items">
+          {items.map((item) => (
+            <a href={`/${lang}/${item.slug}/`} class="toc-item">
+              <span class="toc-item-number">{item.number}</span>
+              <span class="toc-item-title">{item.title}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    );
+  })}
+
+  {blocks.length === 0 && (
+    <p class="toc-empty">
+      {lang === 'ru' ? 'Контент скоро появится...' : 'Content coming soon...'}
+    </p>
+  )}
+</div>

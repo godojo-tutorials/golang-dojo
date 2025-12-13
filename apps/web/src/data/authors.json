@@ -1,0 +1,22 @@
+[
+  {
+    "id": "godojo",
+    "name": "Godojo Master",
+    "books": [
+      "ru",
+      "en"
+    ],
+    "role": {
+      "ru": "Автор проекта",
+      "en": "Project Author"
+    },
+    "bio": {
+      "ru": "Go-разработчик с опытом более 5 лет. Специализируюсь на высоконагруженных системах и микросервисной архитектуре.",
+      "en": "Go developer with 5+ years of experience. Specializing in high-load systems and microservice architecture."
+    },
+    "quote": "Golang is not just a tool",
+    "github": "alex",
+    "telegram": "@montero_alex",
+    "twitter": null
+  }
+]

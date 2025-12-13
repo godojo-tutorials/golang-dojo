@@ -1,0 +1,6 @@
+id: advanced-concurrency
+order: 21
+title: Продвинутая конкурентность
+titleEn: Advanced Concurrency
+block: concurrency
+topicsCount: 5

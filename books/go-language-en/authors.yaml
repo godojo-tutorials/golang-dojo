@@ -1,0 +1,15 @@
+authors:
+  - id: godojo
+    name: "Godojo Master"
+    role: "Project Author"
+    bio: "Go developer with 5+ years of experience. Specializing in high-load systems and microservice architecture."
+    quote: "Golang is not just a tool"
+    github: "alex"
+    telegram: "@montero_alex"
+
+  # Example of additional author:
+  # - id: john
+  #   name: "John Smith"
+  #   role: "Contributor"
+  #   bio: "Backend developer, writing about testing and CI/CD."
+  #   github: "johnsmith"

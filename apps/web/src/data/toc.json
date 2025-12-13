@@ -1,0 +1,42 @@
+{
+  "ru": {
+    "blocks": [
+      {
+        "id": "fundamentals",
+        "title": "Основы языка Go",
+        "modules": [
+          {
+            "id": "environment",
+            "title": "Окружение и установка",
+            "topics": [
+              {
+                "slug": "installation",
+                "title": "Установка Go"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "blocks": [
+      {
+        "id": "fundamentals",
+        "title": "Go Language Fundamentals",
+        "modules": [
+          {
+            "id": "environment",
+            "title": "Environment & Setup",
+            "topics": [
+              {
+                "slug": "installation",
+                "title": "Installing Go"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

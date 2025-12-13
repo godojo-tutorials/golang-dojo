@@ -1,0 +1,5 @@
+id: performance
+order: 8
+title: Performance & Profiling
+description: Profiling, optimization, load testing
+modulesCount: 6

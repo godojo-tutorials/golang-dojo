@@ -1,0 +1,6 @@
+id: security
+order: 12
+title: Безопасность
+titleEn: Go Security Integration
+description: Валидация, аутентификация, криптография
+modulesCount: 3

@@ -1,0 +1,36 @@
+---
+title: "Устойчивость к разделению"
+description: "Handling network partitions"
+slug: partition-tolerance
+published: false
+---
+
+# Устойчивость к разделению
+
+> Handling network partitions
+
+## Введение
+
+TODO: Добавить введение
+
+## Основная часть
+
+TODO: Добавить основной контент
+
+## Примеры кода
+
+```go
+package main
+
+func main() {
+    // TODO: Добавить пример
+}
+```
+
+## Практика
+
+TODO: Добавить упражнения
+
+## Итоги
+
+TODO: Добавить итоги

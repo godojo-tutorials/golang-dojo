@@ -1,0 +1,6 @@
+id: k8s-deployment
+order: 62
+title: Деплой в Kubernetes
+titleEn: Kubernetes Deployment
+block: kubernetes
+topicsCount: 5

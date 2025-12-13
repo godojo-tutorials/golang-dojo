@@ -1,0 +1,19 @@
+{
+  "name": "@godojo/go-language-ru",
+  "version": "2.0.0",
+  "description": "Go Tutorial Content Repository - Russian version for godojo.dev platform",
+  "type": "module",
+  "scripts": {
+    "generate:structure": "node scripts/generate-structure.js",
+    "validate": "node scripts/validate-content.js",
+    "stats": "node scripts/content-stats.js"
+  },
+  "dependencies": {
+    "yaml": "^2.3.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Alex Borovykov",
+  "license": "MIT"
+}

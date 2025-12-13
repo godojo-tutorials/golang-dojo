@@ -1,0 +1,6 @@
+id: advanced-concurrency
+order: 14
+title: Продвинутая конкурентность
+titleEn: Advanced Concurrency
+description: Паттерны, синхронизация, распределённая координация
+modulesCount: 4

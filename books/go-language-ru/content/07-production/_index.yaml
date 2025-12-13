@@ -1,0 +1,6 @@
+id: production
+order: 7
+title: Основы production
+titleEn: Production Basics
+description: Логирование, конфигурация, мониторинг
+modulesCount: 4

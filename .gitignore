@@ -1,0 +1,10 @@
+CLAUDE.md
+node_modules/
+.astro/
+dist/
+.vercel/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example

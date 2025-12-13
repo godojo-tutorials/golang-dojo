@@ -1,0 +1,5 @@
+id: concurrency
+order: 3
+title: Concurrency
+description: Goroutines, channels, and patterns
+modulesCount: 6

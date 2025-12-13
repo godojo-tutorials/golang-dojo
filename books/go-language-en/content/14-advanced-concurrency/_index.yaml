@@ -1,0 +1,5 @@
+id: advanced-concurrency
+order: 14
+title: Advanced Concurrency
+description: Patterns, synchronization, distributed coordination
+modulesCount: 4

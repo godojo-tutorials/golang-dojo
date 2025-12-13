@@ -1,0 +1,6 @@
+id: distributed-coordination
+order: 67
+title: Распределённая координация
+titleEn: Distributed Coordination
+block: advanced-concurrency
+topicsCount: 5

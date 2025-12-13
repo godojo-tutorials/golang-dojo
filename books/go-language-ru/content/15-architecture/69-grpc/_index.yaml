@@ -1,0 +1,6 @@
+id: grpc
+order: 69
+title: gRPC реализация
+titleEn: gRPC Implementation
+block: architecture
+topicsCount: 5

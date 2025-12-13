@@ -1,0 +1,23 @@
+{
+  "name": "godojo-frontend",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "npm run sync && astro dev",
+    "build": "npm run sync && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync": "node scripts/sync-content.js"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.30.0",
+    "@astrojs/vercel": "^9.0.2",
+    "astro": "^5.0.0",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "yaml": "^2.3.4"
+  }
+}

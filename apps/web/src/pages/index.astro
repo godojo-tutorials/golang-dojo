@@ -1,0 +1,32 @@
+---
+// Root page - redirects based on browser language
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting...</title>
+  <script>
+    (function() {
+      const SUPPORTED_LANGS = ['ru', 'en'];
+      const DEFAULT_LANG = 'en';
+
+      // Get browser language
+      const browserLang = navigator.language || navigator.userLanguage || '';
+      const primaryLang = browserLang.split('-')[0].toLowerCase();
+
+      // Check if supported
+      const targetLang = SUPPORTED_LANGS.includes(primaryLang) ? primaryLang : DEFAULT_LANG;
+
+      // Redirect
+      window.location.replace('/' + targetLang + '/');
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=/en/" />
+  </noscript>
+</head>
+<body>
+  <p>Redirecting to <a href="/en/">English</a> / <a href="/ru/">Русский</a>...</p>
+</body>
+</html>

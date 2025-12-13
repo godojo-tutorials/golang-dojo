@@ -1,0 +1,6 @@
+id: go-toolchain
+order: 14
+title: Инструменты Go
+titleEn: Go Toolchain
+block: toolchain
+topicsCount: 5

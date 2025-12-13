@@ -1,0 +1,6 @@
+id: architecture
+order: 15
+title: Системная архитектура
+titleEn: System Architecture
+description: Микросервисы, gRPC, очереди сообщений
+modulesCount: 5

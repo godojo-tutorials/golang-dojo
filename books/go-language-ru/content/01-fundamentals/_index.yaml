@@ -1,0 +1,6 @@
+id: fundamentals
+order: 1
+title: Основы языка Go
+titleEn: Go Language Fundamentals
+description: Базовые концепции языка Go
+modulesCount: 13

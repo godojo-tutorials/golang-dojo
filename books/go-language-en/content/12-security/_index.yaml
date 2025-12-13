@@ -1,0 +1,5 @@
+id: security
+order: 12
+title: Go Security Integration
+description: Validation, authentication, cryptography
+modulesCount: 3

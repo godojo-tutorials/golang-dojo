@@ -1,0 +1,15 @@
+authors:
+  - id: godojo
+    name: "Godojo Master"
+    role: "Автор проекта"
+    bio: "Go-разработчик с опытом более 5 лет. Специализируюсь на высоконагруженных системах и микросервисной архитектуре."
+    quote: "Golang is not just a tool"
+    github: "alex"
+    telegram: "@montero_alex"
+
+  # Пример дополнительного автора:
+  # - id: ivan
+  #   name: "Иван Петров"
+  #   role: "Контрибьютор"
+  #   bio: "Backend-разработчик, пишу о тестировании и CI/CD."
+  #   github: "ivan-petrov"
