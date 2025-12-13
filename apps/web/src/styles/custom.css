@@ -21,18 +21,50 @@ nav.sidebar .top-level > li > details > summary > span {
   font-weight: 600 !important;
 }
 
-:root {
+/* ============================================
+   DARK THEME - inspired by react.email
+   ============================================ */
+:root[data-theme='dark'] {
+  /* Accent - blue */
   --sl-color-accent-low: #1e3a5f;
   --sl-color-accent: #3b82f6;
   --sl-color-accent-high: #93c5fd;
-  --sl-color-white: #ffffff;
-  --sl-color-gray-1: #f8fafc;
-  --sl-color-gray-2: #e2e8f0;
-  --sl-color-gray-3: #cbd5e1;
-  --sl-color-gray-4: #94a3b8;
-  --sl-color-gray-5: #64748b;
-  --sl-color-gray-6: #475569;
-  --sl-color-black: #0f172a;
+
+  /* Grays - react.email inspired */
+  --sl-color-white: #F3F8FA;
+  --sl-color-gray-1: #DFE4E0;
+  --sl-color-gray-2: #CED3D0;
+  --sl-color-gray-3: #9FA3A0;
+  --sl-color-gray-4: #707574;
+  --sl-color-gray-5: #3F4340;
+  --sl-color-gray-6: #262B27;
+  --sl-color-black: #111111;
+
+  /* Backgrounds */
+  --sl-color-bg: #111111;
+  --sl-color-bg-nav: #171B19;
+  --sl-color-bg-sidebar: #171B19;
+
+  /* Hairlines/borders */
+  --sl-color-hairline: #262B27;
+  --sl-color-hairline-light: #3F4340;
+}
+
+/* Dark theme gradient glow */
+[data-theme='dark'] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(6, 182, 212, 0.15),
+    transparent
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ============================================
@@ -119,6 +151,7 @@ a[href*="/edit/"] {
 /* Only for article pages - align content left */
 body.is-article .sl-container {
     margin-inline: 0;
+    max-width: 100%;
 }
 
 .article-meta-header {
