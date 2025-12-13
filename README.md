@@ -1,5 +1,69 @@
 # Godojo
 
+Go tutorial platform. Inspired by [learn.javascript.ru](https://learn.javascript.ru).
+
+**Website:** [godojo.dev](https://godojo.dev)
+
+## Structure
+
+```
+Godojo/
+├── apps/
+│   └── web/                  # Astro + Starlight
+├── books/
+│   ├── go-language-ru/       # Russian course (395 topics)
+│   └── go-language-en/       # English course (395 topics)
+└── package.json
+```
+
+## Quick Start
+
+```bash
+npm install
+
+# Development
+npm run dev
+
+# Generate book structure
+npm run ru:generate
+npm run en:generate
+```
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Dev server |
+| `npm run build` | Production build |
+| `npm run sync` | Sync content |
+| `npm run ru:generate` | Generate structure (RU) |
+| `npm run ru:validate` | Validate content (RU) |
+| `npm run ru:stats` | Statistics (RU) |
+| `npm run en:generate` | Generate structure (EN) |
+| `npm run en:validate` | Validate content (EN) |
+| `npm run en:stats` | Statistics (EN) |
+
+## Course
+
+**17 blocks, 79 modules, 395 topics**
+
+From language basics to production-ready applications.
+
+## Contributing
+
+1. Fork the repository
+2. Edit `article.md` in `books/go-language-{ru,en}/content/`
+3. Set `published: true` when article is ready
+4. Create PR
+
+## License
+
+MIT
+
+---
+
+# Godojo
+
 Учебник по Go. Вдохновлён [learn.javascript.ru](https://learn.javascript.ru).
 
 **Сайт:** [godojo.dev](https://godojo.dev)
@@ -12,7 +76,7 @@ Godojo/
 │   └── web/                  # Astro + Starlight
 ├── books/
 │   ├── go-language-ru/       # Русский курс (395 топиков)
-│   └── go-language-en/       # English course (395 topics)
+│   └── go-language-en/       # Английский курс (395 топиков)
 └── package.json
 ```
 
