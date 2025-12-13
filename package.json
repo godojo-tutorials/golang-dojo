@@ -19,7 +19,7 @@
     "build": "npm run build -w godojo-frontend",
     "preview": "npm run preview -w godojo-frontend",
     "sync": "npm run sync -w godojo-frontend",
-    "start": "npm run sync &&  npm run dev"
+    "start": "npm run sync && npm run dev"
   },
   "engines": {
     "node": ">=18.0.0"
