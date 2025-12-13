@@ -114,17 +114,12 @@ a[href*="/edit/"] {
 .article-meta-header {
     border-bottom: none;
     margin: 48px 0 0 0;
-    position: relative;
 }
-.article-meta-header:before {
-    content: '';
-    background: var(--sl-color-hairline);
-    position: absolute;
-    height: 1px;
-    width: calc(100% + 48px);
-    left: -24px;
-    top:-24px;
+
+.sl-container{
+    margin-inline: 0;
 }
+
 .article-meta-header {
     padding-bottom: 0;
 }
