@@ -1,95 +1,95 @@
 ---
-title: "Установка Go"
-description: "Go установка, версии, обновление"
+title: "Installing Go"
+description: "Go installation, versions, updating"
 slug: installation
 published: true
 author: godojo
-updatedAt: "2025-12-13"
+updatedAt: "2025-12-15"
 readingTime: 3
 ---
 
-# Установка Go
+# Installing Go
 
-> Пошаговое руководство по установке Go на различные операционные системы
+> Step-by-step guide to installing Go on various operating systems
 
-## Введение
+## Introduction
 
-Go (или Golang) — это современный язык программирования, разработанный в Google. Перед началом работы с Go необходимо установить компилятор и настроить окружение. В этом уроке мы рассмотрим установку Go на Windows, macOS и Linux.
+Go (or Golang) is a modern programming language developed at Google. Before you can start working with Go, you need to install the compiler and set up your environment. In this lesson, we'll cover installing Go on Windows, macOS, and Linux.
 
-## Проверка текущей версии
+## Checking the Current Version
 
-Если Go уже установлен в вашей системе, вы можете проверить версию командой:
+If Go is already installed on your system, you can check the version with:
 
 ```bash
 go version
 ```
 
-Вывод будет примерно таким:
+The output will look something like:
 
 ```
-go version go1.25.5 linux/amd64
+go version go1.23.4 linux/amd64
 ```
 
-## Установка на Windows
+## Installing on Windows
 
-### Способ 1: Официальный установщик
+### Option 1: Official Installer
 
-1. Перейдите на официальный сайт [go.dev/dl](https://go.dev/dl/)
-2. Скачайте MSI-установщик для Windows (например, `go1.25.5.windows-amd64.msi`)
-3. Запустите установщик и следуйте инструкциям
-4. По умолчанию Go устанавливается в `C:\Go`
+1. Head to the official site [go.dev/dl](https://go.dev/dl/)
+2. Download the MSI installer for Windows (e.g., `go1.23.4.windows-amd64.msi`)
+3. Run the installer and follow the prompts
+4. By default, Go installs to `C:\Go`
 
-### Способ 2: Через winget
+### Option 2: Via winget
 
 ```bash
 winget install GoLang.Go
 ```
 
-### Способ 3: Через Chocolatey
+### Option 3: Via Chocolatey
 
 ```bash
 choco install golang
 ```
 
-После установки откройте новый терминал и проверьте:
+After installation, open a new terminal and verify:
 
 ```bash
 go version
 ```
 
-## Установка на macOS
+## Installing on macOS
 
-### Способ 1: Официальный установщик
+### Option 1: Official Installer
 
-1. Скачайте PKG-файл с [go.dev/dl](https://go.dev/dl/)
-2. Откройте скачанный файл и следуйте инструкциям
-3. Go будет установлен в `/usr/local/go`
+1. Download the PKG file from [go.dev/dl](https://go.dev/dl/)
+2. Open the downloaded file and follow the prompts
+3. Go will be installed to `/usr/local/go`
 
-### Способ 2: Через Homebrew (рекомендуется)
+### Option 2: Via Homebrew (recommended)
 
 ```bash
 brew install go
 ```
 
-Проверка установки:
+Verify the installation:
 
 ```bash
 go version
 ```
 
-## Установка на Linux
+## Installing on Linux
 
 ### Ubuntu/Debian
 
 ```bash
-# Удаляем старую версию (если есть)
+# Remove old version (if present)
 sudo rm -rf /usr/local/go
 
-# Скачиваем и распаковываем
-wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
+# Download and extract
+wget https://go.dev/dl/go1.23.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz
 
-# Добавляем в PATH (в ~/.bashrc или ~/.zshrc)
+# Add to PATH (in ~/.bashrc or ~/.zshrc)
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 source ~/.bashrc
 ```
@@ -106,25 +106,25 @@ sudo dnf install golang
 sudo pacman -S go
 ```
 
-## Настройка переменных окружения
+## Setting Up Environment Variables
 
-После установки Go автоматически настраивает основные переменные. Проверить их можно командой:
+After installation, Go automatically configures the main variables. You can check them with:
 
 ```bash
 go env
 ```
 
-Основные переменные:
+Key variables:
 
-| Переменная | Описание | Пример значения |
-|------------|----------|-----------------|
-| `GOROOT` | Путь к установке Go | `/usr/local/go` |
-| `GOPATH` | Рабочая директория | `~/go` |
-| `GOBIN` | Путь для бинарных файлов | `~/go/bin` |
+| Variable | Description | Example Value |
+|----------|-------------|---------------|
+| `GOROOT` | Path to Go installation | `/usr/local/go` |
+| `GOPATH` | Working directory | `~/go` |
+| `GOBIN` | Path for binaries | `~/go/bin` |
 
-## Первая программа
+## First Programme
 
-Создадим простую программу для проверки установки:
+Let's create a simple programme to verify the installation:
 
 ```go
 package main
@@ -135,64 +135,64 @@ import (
 )
 
 func main() {
-    fmt.Println("Go успешно установлен!")
-    fmt.Printf("Версия: %s\n", runtime.Version())
+    fmt.Println("Go installed successfully!")
+    fmt.Printf("Version: %s\n", runtime.Version())
 }
 ```
 
-Сохраните код в файл `hello.go` и запустите:
+Save the code to a file called `hello.go` and run it:
 
 ```bash
 go run hello.go
 ```
 
-Вывод (версия зависит от установленной):
+Output (version depends on what's installed):
 
 ```
-Go успешно установлен!
-Версия: go1.25.5
+Go installed successfully!
+Version: go1.23.4
 ```
 
-## Обновление Go
+## Updating Go
 
-### Windows и macOS
+### Windows and macOS
 
-Просто скачайте и запустите новый установщик — он заменит предыдущую версию.
+Simply download and run the new installer — it will replace the previous version.
 
 ### Linux
 
 ```bash
-# Удаляем старую версию
+# Remove old version
 sudo rm -rf /usr/local/go
 
-# Устанавливаем новую (замените версию на актуальную)
-wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
+# Install the new one (replace with the current version)
+wget https://go.dev/dl/go1.23.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz
 ```
 
-## Управление версиями с помощью gvm
+## Managing Versions with gvm
 
-Для работы с несколькими версиями Go можно использовать Go Version Manager:
+To work with multiple Go versions, you can use Go Version Manager:
 
 ```bash
-# Установка gvm
+# Install gvm
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 
-# Использование
-gvm install go1.25.5
-gvm use go1.25.5 --default
+# Usage
+gvm install go1.23.4
+gvm use go1.23.4 --default
 ```
 
-## Практика
+## Exercises
 
-### Задание 1
-Установите Go на вашу систему и выполните команду `go version`. Какая версия установлена?
+### Exercise 1
+Install Go on your system and run `go version`. What version is installed?
 
-### Задание 2
-Выполните команду `go env` и найдите значения переменных `GOROOT` и `GOPATH`.
+### Exercise 2
+Run `go env` and find the values of `GOROOT` and `GOPATH`.
 
-### Задание 3
-Создайте файл `check.go` со следующим содержимым и запустите его:
+### Exercise 3
+Create a file called `check.go` with the following contents and run it:
 
 ```go
 package main
@@ -210,12 +210,20 @@ func main() {
 }
 ```
 
-## Итоги
+## Summary
 
-- Go можно установить через официальный установщик, пакетный менеджер или вручную
-- После установки команда `go version` показывает текущую версию
-- `go env` выводит все переменные окружения Go
-- Для работы с несколькими версиями используйте gvm
-- Обновление Go выполняется простой переустановкой
+- Go can be installed via the official installer, a package manager, or manually
+- After installation, `go version` shows the current version
+- `go env` displays all Go environment variables
+- For working with multiple versions, use gvm
+- Updating Go is done by simply reinstalling
 
-В следующем уроке мы настроим рабочее пространство и структуру проекта.
+In the next lesson, we'll write our first programme.
+
+---
+
+## Sources
+
+- [Go Downloads](https://go.dev/dl/)
+- [Getting Started](https://go.dev/doc/install)
+- [Managing Go installations](https://go.dev/doc/manage-install)
