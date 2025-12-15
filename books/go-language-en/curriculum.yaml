@@ -1,8 +1,8 @@
 # Godojo Go Tutorial - Curriculum Configuration (English)
-# Central configuration of the tutorial structure
+# v2 format - flat structure with content/en/ prefix
 # Style: learn.javascript.ru (flat URLs, table of contents on main page)
 
-version: "1.0"
+version: "2.0"
 language: en
 title: "Complete Go Tutorial"
 description: "From basics to expert - 79 modules, 17 blocks"
@@ -16,1730 +16,789 @@ stats:
 
 blocks:
   # ============================================
-  # BLOCK 1: Go Language Fundamentals
+  # BLOCK 1: Introduction to Go
   # ============================================
-  - id: fundamentals
-    order: 1
-    title: "Go Language Fundamentals"
-    description: "Basic Go language concepts"
-    modules:
-      # Module 1: Go Environment & Setup
-      - id: environment
-        order: 1
-        title: "Environment & Setup"
-        topics:
-          - slug: installation
-            title: "Installing Go"
-            description: "Go installation, versions, updates"
-          - slug: workspace-setup
-            title: "Workspace Setup"
-            description: "GOPATH vs GOMOD, workspace structure"
-          - slug: ide-configuration
-            title: "IDE Configuration"
-            description: "VS Code, GoLand, vim-go setup"
-          - slug: first-program
-            title: "First Program"
-            description: "Hello World, running programs"
-          - slug: go-command-intro
-            title: "Go Commands"
-            description: "go run, go build basic commands"
+  - id: intro
+    title: "Introduction to Go"
+    description: "Getting started with Go"
+    path: "01-intro"
+    flat: true
+    topics:
+      - slug: what-is-go
+        title: "What is Go?"
+        file: 01-what-is-go.md
+      - slug: ide-setup
+        title: "Code Editor"
+        file: 02-ide-setup.md
+      - slug: installation
+        title: "Installing Go"
+        file: 03-installation.md
+      - slug: hello-world
+        title: "Hello World"
+        file: 04-hello-world.md
+      - slug: program-structure
+        title: "Program Structure"
+        file: 05-program-structure.md
+      - slug: compile-and-run
+        title: "Compile and Run"
+        file: 06-compile-and-run.md
+      - slug: go-playground
+        title: "Go Playground"
+        file: 07-go-playground.md
+      - slug: docs-and-resources
+        title: "Docs and Resources"
+        file: 08-docs-and-resources.md
 
-      # Module 2: Variables & Data Types
+  # ============================================
+  # BLOCK 2: Go Basics
+  # ============================================
+  - id: basics
+    title: "Go Basics"
+    description: "Fundamental concepts"
+    path: "02-basics"
+    modules:
       - id: variables
-        order: 2
-        title: "Variables & Data Types"
+        title: "Variables & Types"
+        path: variables
         topics:
           - slug: variables-declaration
             title: "Variable Declaration"
-            description: "var, := short form, zero values"
+            file: 01-variables-declaration.md
           - slug: basic-types
             title: "Basic Types"
-            description: "int, float, string, bool types"
+            file: 02-basic-types.md
           - slug: type-conversion
             title: "Type Conversion"
-            description: "Explicit type casting"
+            file: 03-type-conversion.md
           - slug: constants
             title: "Constants"
-            description: "const declaration, typed/untyped constants"
-          - slug: variable-scope
-            title: "Variable Scope"
-            description: "Variable scoping rules"
+            file: 04-constants.md
+          - slug: zero-values
+            title: "Zero Values"
+            file: 05-zero-values.md
+          - slug: type-inference
+            title: "Type Inference"
+            file: 06-type-inference.md
 
-      # Module 3: Operators & Expressions
       - id: operators
-        order: 3
-        title: "Operators & Expressions"
+        title: "Operators"
+        path: operators
         topics:
           - slug: arithmetic-operators
             title: "Arithmetic Operators"
-            description: "+, -, *, /, % operators"
+            file: 01-arithmetic-operators.md
           - slug: comparison-operators
             title: "Comparison Operators"
-            description: "==, !=, <, >, <=, >= comparisons"
+            file: 02-comparison-operators.md
           - slug: logical-operators
             title: "Logical Operators"
-            description: "&&, ||, ! logical operations"
+            file: 03-logical-operators.md
           - slug: assignment-operators
             title: "Assignment Operators"
-            description: "=, +=, -=, *=, /= assignments"
+            file: 04-assignment-operators.md
+          - slug: bitwise-operators
+            title: "Bitwise Operators"
+            file: 05-bitwise-operators.md
           - slug: operator-precedence
             title: "Operator Precedence"
-            description: "Order of operations"
+            file: 06-operator-precedence.md
 
-      # Module 4: Control Flow
       - id: control-flow
-        order: 4
         title: "Control Flow"
+        path: control-flow
         topics:
           - slug: if-statements
             title: "If Statements"
-            description: "if, else, else if conditions"
+            file: 01-if-statements.md
           - slug: switch-statements
             title: "Switch Statements"
-            description: "switch, case, default, fallthrough"
+            file: 02-switch-statements.md
           - slug: for-loops
             title: "For Loops"
-            description: "for loop, various forms"
+            file: 03-for-loops.md
           - slug: range-loops
             title: "Range Loops"
-            description: "range with arrays, slices, maps"
+            file: 04-range-loops.md
           - slug: break-continue
             title: "Break & Continue"
-            description: "Loop control statements"
+            file: 05-break-continue.md
+          - slug: goto-labels
+            title: "Goto & Labels"
+            file: 06-goto-labels.md
 
-      # Module 5: Functions
-      - id: functions
-        order: 5
-        title: "Functions"
-        topics:
-          - slug: function-declaration
-            title: "Function Declaration"
-            description: "func declaration, parameters"
-          - slug: return-values
-            title: "Return Values"
-            description: "Return values, multiple returns"
-          - slug: named-returns
-            title: "Named Returns"
-            description: "Named return values"
-          - slug: variadic-functions
-            title: "Variadic Functions"
-            description: "Functions with variable arguments"
-          - slug: anonymous-functions
-            title: "Anonymous Functions"
-            description: "Anonymous functions, closures"
+  # ============================================
+  # BLOCK 3: Functions
+  # ============================================
+  - id: functions
+    title: "Functions"
+    description: "Functions in Go"
+    path: "05-functions"
+    flat: true
+    topics:
+      - slug: function-declaration
+        title: "Function Declaration"
+        file: 01-function-declaration.md
+      - slug: parameters
+        title: "Parameters"
+        file: 02-parameters.md
+      - slug: return-values
+        title: "Return Values"
+        file: 03-return-values.md
+      - slug: multiple-returns
+        title: "Multiple Returns"
+        file: 04-multiple-returns.md
+      - slug: named-returns
+        title: "Named Returns"
+        file: 05-named-returns.md
+      - slug: variadic-functions
+        title: "Variadic Functions"
+        file: 06-variadic-functions.md
+      - slug: anonymous-functions
+        title: "Anonymous Functions"
+        file: 07-anonymous-functions.md
+      - slug: closures
+        title: "Closures"
+        file: 08-closures.md
+      - slug: defer
+        title: "Defer"
+        file: 09-defer.md
+      - slug: recursion
+        title: "Recursion"
+        file: 10-recursion.md
 
-      # Module 6: Packages & Imports
-      - id: packages
-        order: 6
-        title: "Packages & Imports"
+  # ============================================
+  # BLOCK 4: Composite Types
+  # ============================================
+  - id: composite-types
+    title: "Composite Types"
+    description: "Arrays, slices, maps, structs"
+    path: "03-composite-types"
+    modules:
+      - id: arrays
+        title: "Arrays"
+        path: arrays
         topics:
-          - slug: package-basics
-            title: "Package Basics"
-            description: "package declaration, main package"
-          - slug: import-statements
-            title: "Import Statements"
-            description: "Importing packages, aliases"
-          - slug: visibility-rules
-            title: "Visibility Rules"
-            description: "Exported vs unexported identifiers"
-          - slug: package-organization
-            title: "Package Organization"
-            description: "Package structure, naming conventions"
-          - slug: init-functions
-            title: "Init Functions"
-            description: "init functions, initialization order"
-
-      # Module 7: Arrays & Slices
-      - id: arrays-slices
-        order: 7
-        title: "Arrays & Slices"
-        topics:
-          - slug: arrays-basics
+          - slug: array-basics
             title: "Array Basics"
-            description: "Array declaration, initialization, access"
-          - slug: array-operations
-            title: "Array Operations"
-            description: "Array length, iteration, multidimensional"
-          - slug: slices-introduction
-            title: "Introduction to Slices"
-            description: "Slice creation, differences from arrays"
+            file: 01-array-basics.md
+          - slug: array-initialization
+            title: "Array Initialization"
+            file: 02-array-initialization.md
+          - slug: multidimensional-arrays
+            title: "Multidimensional Arrays"
+            file: 03-multidimensional-arrays.md
+          - slug: array-comparison
+            title: "Array Comparison"
+            file: 04-array-comparison.md
+
+      - id: slices
+        title: "Slices"
+        path: slices
+        topics:
+          - slug: slice-basics
+            title: "Slice Basics"
+            file: 01-slice-basics.md
           - slug: slice-operations
             title: "Slice Operations"
-            description: "append, copy, len, cap operations"
+            file: 02-slice-operations.md
           - slug: slice-internals
             title: "Slice Internals"
-            description: "Internal structure, memory layout"
+            file: 03-slice-internals.md
+          - slug: append-copy
+            title: "Append & Copy"
+            file: 04-append-copy.md
+          - slug: slice-tricks
+            title: "Slice Tricks"
+            file: 05-slice-tricks.md
 
-      # Module 8: Maps & Strings
-      - id: maps-strings
-        order: 8
-        title: "Maps & Strings"
+      - id: maps
+        title: "Maps"
+        path: maps
         topics:
-          - slug: maps-basics
+          - slug: map-basics
             title: "Map Basics"
-            description: "Map creation, initialization, element access"
+            file: 01-map-basics.md
           - slug: map-operations
             title: "Map Operations"
-            description: "Adding, deleting, checking existence"
-          - slug: maps-iteration
+            file: 02-map-operations.md
+          - slug: map-iteration
             title: "Map Iteration"
-            description: "Iterating over maps, element order"
-          - slug: strings-basics
-            title: "String Basics"
-            description: "String literals, unicode, UTF-8"
-          - slug: string-operations
-            title: "String Operations"
-            description: "Length, indexing, concatenation, strings package"
+            file: 03-map-iteration.md
+          - slug: map-internals
+            title: "Map Internals"
+            file: 04-map-internals.md
 
-      # Module 9: Structs & Methods
-      - id: structs-methods
-        order: 9
-        title: "Structs & Methods"
+      - id: structs
+        title: "Structs"
+        path: structs
         topics:
-          - slug: struct-declaration
-            title: "Struct Declaration"
-            description: "Struct definition, fields, tags"
+          - slug: struct-basics
+            title: "Struct Basics"
+            file: 01-struct-basics.md
           - slug: struct-initialization
             title: "Struct Initialization"
-            description: "Struct literals, zero values"
+            file: 02-struct-initialization.md
+          - slug: anonymous-structs
+            title: "Anonymous Structs"
+            file: 03-anonymous-structs.md
           - slug: struct-embedding
             title: "Struct Embedding"
-            description: "Anonymous fields, composition"
-          - slug: methods-basics
-            title: "Method Basics"
-            description: "Method definition, receivers"
-          - slug: pointer-receivers
-            title: "Pointer Receivers"
-            description: "Value vs pointer receivers"
+            file: 04-struct-embedding.md
+          - slug: struct-tags
+            title: "Struct Tags"
+            file: 05-struct-tags.md
 
-      # Module 10: Interfaces
-      - id: interfaces
-        order: 10
-        title: "Interfaces"
-        topics:
-          - slug: interface-declaration
-            title: "Interface Declaration"
-            description: "Interface definition, methods"
-          - slug: interface-implementation
-            title: "Interface Implementation"
-            description: "Implicit interface implementation"
-          - slug: empty-interface
-            title: "Empty Interface"
-            description: "interface{}, type assertions"
-          - slug: type-switches
-            title: "Type Switches"
-            description: "Type switch, type assertion"
-          - slug: interface-composition
-            title: "Interface Composition"
-            description: "Composing interfaces"
+  # ============================================
+  # BLOCK 5: Strings
+  # ============================================
+  - id: strings
+    title: "Strings"
+    description: "Working with strings"
+    path: "08-maps-strings"
+    flat: true
+    topics:
+      - slug: string-basics
+        title: "String Basics"
+        file: 01-string-basics.md
+      - slug: runes-bytes
+        title: "Runes & Bytes"
+        file: 02-runes-bytes.md
+      - slug: string-operations
+        title: "String Operations"
+        file: 03-string-operations.md
+      - slug: strings-package
+        title: "strings Package"
+        file: 04-strings-package.md
+      - slug: strconv-package
+        title: "strconv Package"
+        file: 05-strconv-package.md
+      - slug: string-formatting
+        title: "String Formatting"
+        file: 06-string-formatting.md
+      - slug: string-builder
+        title: "String Builder"
+        file: 07-string-builder.md
+      - slug: regular-expressions
+        title: "Regular Expressions"
+        file: 08-regular-expressions.md
 
-      # Module 11: Pointers & Memory
-      - id: pointers-memory
-        order: 11
-        title: "Pointers & Memory"
-        topics:
-          - slug: pointers-basics
-            title: "Pointer Basics"
-            description: "Pointer declaration, & and * operators"
-          - slug: pointer-arithmetic
-            title: "Pointer Arithmetic"
-            description: "No pointer arithmetic in Go"
-          - slug: memory-allocation
-            title: "Memory Allocation"
-            description: "new, make functions"
-          - slug: pass-by-value
-            title: "Pass by Value"
-            description: "Pass by value vs by reference"
-          - slug: memory-management
-            title: "Memory Management"
-            description: "Stack vs heap, garbage collector basics"
+  # ============================================
+  # BLOCK 6: Pointers
+  # ============================================
+  - id: pointers
+    title: "Pointers"
+    description: "Working with pointers"
+    path: "04-pointers"
+    flat: true
+    topics:
+      - slug: pointer-basics
+        title: "Pointer Basics"
+        file: 01-pointer-basics.md
+      - slug: pointer-operations
+        title: "Pointer Operations"
+        file: 02-pointer-operations.md
+      - slug: pointers-and-functions
+        title: "Pointers & Functions"
+        file: 03-pointers-and-functions.md
+      - slug: pointers-and-structs
+        title: "Pointers & Structs"
+        file: 04-pointers-and-structs.md
+      - slug: new-vs-make
+        title: "new vs make"
+        file: 05-new-vs-make.md
 
-      # Module 12: Error Handling
-      - id: error-handling
-        order: 12
+  # ============================================
+  # BLOCK 7: Methods
+  # ============================================
+  - id: methods
+    title: "Methods"
+    description: "Methods in Go"
+    path: "06-methods-interfaces"
+    flat: true
+    topics:
+      - slug: method-basics
+        title: "Method Basics"
+        file: 01-method-basics.md
+      - slug: value-receivers
+        title: "Value Receivers"
+        file: 02-value-receivers.md
+      - slug: pointer-receivers
+        title: "Pointer Receivers"
+        file: 03-pointer-receivers.md
+      - slug: method-values
+        title: "Method Values"
+        file: 04-method-values.md
+      - slug: method-expressions
+        title: "Method Expressions"
+        file: 05-method-expressions.md
+
+  # ============================================
+  # BLOCK 8: Interfaces
+  # ============================================
+  - id: interfaces
+    title: "Interfaces"
+    description: "Interfaces in Go"
+    path: "06-methods-interfaces"
+    flat: true
+    topics:
+      - slug: interface-basics
+        title: "Interface Basics"
+        file: 01-interface-basics.md
+      - slug: interface-implementation
+        title: "Interface Implementation"
+        file: 02-interface-implementation.md
+      - slug: empty-interface
+        title: "Empty Interface"
+        file: 03-empty-interface.md
+      - slug: type-assertions
+        title: "Type Assertions"
+        file: 04-type-assertions.md
+      - slug: type-switches
+        title: "Type Switches"
+        file: 05-type-switches.md
+      - slug: interface-composition
+        title: "Interface Composition"
+        file: 06-interface-composition.md
+      - slug: common-interfaces
+        title: "Common Interfaces"
+        file: 07-common-interfaces.md
+
+  # ============================================
+  # BLOCK 9: Error Handling
+  # ============================================
+  - id: errors
+    title: "Error Handling"
+    description: "Handling errors in Go"
+    path: "07-errors"
+    flat: true
+    topics:
+      - slug: error-basics
+        title: "Error Basics"
+        file: 01-error-basics.md
+      - slug: error-handling
         title: "Error Handling"
-        topics:
-          - slug: error-interface
-            title: "Error Interface"
-            description: "Error interface, creating errors"
-          - slug: error-handling-patterns
-            title: "Error Handling Patterns"
-            description: "if err != nil pattern, error checking"
-          - slug: custom-errors
-            title: "Custom Errors"
-            description: "Creating custom error types"
-          - slug: error-wrapping
-            title: "Error Wrapping"
-            description: "fmt.Errorf, errors.Wrap, error chains"
-          - slug: panic-recover
-            title: "Panic & Recover"
-            description: "panic, recover, when to use"
-
-      # Module 13: Generics Basics
-      - id: generics
-        order: 13
-        title: "Generics Basics"
-        topics:
-          - slug: type-parameters
-            title: "Type Parameters"
-            description: "Generic functions, type constraints"
-          - slug: generic-types
-            title: "Generic Types"
-            description: "Generic structs, interfaces"
-          - slug: type-inference
-            title: "Type Inference"
-            description: "Automatic type inference"
-          - slug: constraint-interfaces
-            title: "Constraint Interfaces"
-            description: "Constraint definition, comparable"
-          - slug: generic-examples
-            title: "Generic Examples"
-            description: "Practical usage examples"
+        file: 02-error-handling.md
+      - slug: custom-errors
+        title: "Custom Errors"
+        file: 03-custom-errors.md
+      - slug: error-wrapping
+        title: "Error Wrapping"
+        file: 04-error-wrapping.md
+      - slug: errors-package
+        title: "errors Package"
+        file: 05-errors-package.md
+      - slug: panic-recover
+        title: "Panic & Recover"
+        file: 06-panic-recover.md
 
   # ============================================
-  # BLOCK 2: Go Toolchain
+  # BLOCK 10: Packages & Modules
   # ============================================
-  - id: toolchain
-    order: 2
-    title: "Go Toolchain"
-    description: "Go development tools"
-    modules:
-      - id: go-toolchain
-        order: 14
-        title: "Go Tools"
-        topics:
-          - slug: go-modules
-            title: "Go Modules"
-            description: "go mod init, go mod tidy, dependency management"
-          - slug: go-commands
-            title: "Go Commands"
-            description: "go build, go run, go test, go install in detail"
-          - slug: go-fmt-imports
-            title: "Code Formatting"
-            description: "Code formatting, automatic imports"
-          - slug: go-vet-lint
-            title: "Static Analysis"
-            description: "Static analysis, linters"
-          - slug: cross-compilation
-            title: "Cross Compilation"
-            description: "Building for different platforms"
-
-      - id: code-quality
-        order: 15
-        title: "Code Quality Tools"
-        topics:
-          - slug: golangci-lint
-            title: "golangci-lint"
-            description: "Setup, configuration, CI integration"
-          - slug: staticcheck
-            title: "staticcheck"
-            description: "Advanced static analysis"
-          - slug: goimports-gofumpt
-            title: "goimports & gofumpt"
-            description: "Advanced formatting"
-          - slug: debugging-tools
-            title: "Debugging Tools"
-            description: "delve, IDE debugging, print debugging"
-          - slug: git-hooks
-            title: "Git Hooks"
-            description: "pre-commit hooks for Go projects"
+  - id: packages
+    title: "Packages & Modules"
+    description: "Code organization"
+    path: "08-packages"
+    flat: true
+    topics:
+      - slug: package-basics
+        title: "Package Basics"
+        file: 01-package-basics.md
+      - slug: import-statements
+        title: "Import Statements"
+        file: 02-import-statements.md
+      - slug: visibility
+        title: "Visibility"
+        file: 03-visibility.md
+      - slug: init-function
+        title: "init Function"
+        file: 04-init-function.md
+      - slug: go-modules
+        title: "Go Modules"
+        file: 05-go-modules.md
+      - slug: dependency-management
+        title: "Dependency Management"
+        file: 06-dependency-management.md
+      - slug: internal-packages
+        title: "Internal Packages"
+        file: 07-internal-packages.md
 
   # ============================================
-  # BLOCK 3: Concurrency
+  # BLOCK 11: Concurrency
   # ============================================
   - id: concurrency
-    order: 3
     title: "Concurrency"
-    description: "Goroutines, channels, and patterns"
+    description: "Goroutines and channels"
+    path: "10-concurrency"
     modules:
       - id: goroutines
-        order: 16
-        title: "Goroutine Fundamentals"
+        title: "Goroutines"
+        path: goroutines
         topics:
           - slug: goroutine-basics
             title: "Goroutine Basics"
-            description: "go keyword, creating goroutines"
+            file: 01-goroutine-basics.md
           - slug: goroutine-lifecycle
             title: "Goroutine Lifecycle"
-            description: "Goroutine lifecycle, termination"
-          - slug: main-goroutine
-            title: "Main Goroutine"
-            description: "main function as goroutine"
+            file: 02-goroutine-lifecycle.md
           - slug: goroutine-scheduling
             title: "Goroutine Scheduling"
-            description: "Go scheduler basics, GOMAXPROCS"
-          - slug: goroutine-memory
-            title: "Goroutine Memory"
-            description: "Stack size, goroutine vs threads"
+            file: 03-goroutine-scheduling.md
+          - slug: race-conditions
+            title: "Race Conditions"
+            file: 04-race-conditions.md
 
       - id: channels
-        order: 17
-        title: "Channel Fundamentals"
+        title: "Channels"
+        path: channels
         topics:
           - slug: channel-basics
             title: "Channel Basics"
-            description: "Channel creation, send, receive"
-          - slug: channel-types
-            title: "Channel Types"
-            description: "Bidirectional vs unidirectional channels"
+            file: 01-channel-basics.md
           - slug: buffered-channels
             title: "Buffered Channels"
-            description: "Buffered vs unbuffered channels"
-          - slug: channel-closing
-            title: "Channel Closing"
-            description: "Closing channels, checking closure"
-          - slug: range-over-channels
-            title: "Range over Channels"
-            description: "Iterating over channels"
-
-      - id: channel-patterns
-        order: 18
-        title: "Channel Patterns"
-        topics:
-          - slug: select-statement
-            title: "Select Statement"
-            description: "select for multiple choice"
-          - slug: timeout-patterns
-            title: "Timeout Patterns"
-            description: "Timeouts with channels and time.After"
-          - slug: non-blocking-operations
-            title: "Non-blocking Operations"
-            description: "default in select, non-blocking I/O"
+            file: 02-buffered-channels.md
           - slug: channel-direction
             title: "Channel Direction"
-            description: "Send-only, receive-only channels"
-          - slug: channel-of-channels
-            title: "Channel of Channels"
-            description: "Channels of channels, dynamic communication"
+            file: 03-channel-direction.md
+          - slug: closing-channels
+            title: "Closing Channels"
+            file: 04-closing-channels.md
+          - slug: range-over-channels
+            title: "Range over Channels"
+            file: 05-range-over-channels.md
 
-      - id: sync-primitives
-        order: 19
-        title: "Sync Primitives"
+      - id: select
+        title: "Select"
+        path: select
         topics:
-          - slug: mutex-basics
-            title: "Mutex Basics"
-            description: "sync.Mutex, critical sections"
+          - slug: select-basics
+            title: "Select Basics"
+            file: 01-select-basics.md
+          - slug: select-default
+            title: "Select Default"
+            file: 02-select-default.md
+          - slug: timeouts
+            title: "Timeouts"
+            file: 03-timeouts.md
+
+      - id: sync-package
+        title: "sync Package"
+        path: sync-package
+        topics:
+          - slug: mutex
+            title: "Mutex"
+            file: 01-mutex.md
           - slug: rwmutex
             title: "RWMutex"
-            description: "sync.RWMutex, readers vs writers"
+            file: 02-rwmutex.md
           - slug: waitgroup
             title: "WaitGroup"
-            description: "sync.WaitGroup, waiting for goroutines"
+            file: 03-waitgroup.md
           - slug: once
             title: "Once"
-            description: "sync.Once, one-time execution"
-          - slug: atomic-operations
-            title: "Atomic Operations"
-            description: "sync/atomic, atomic operations"
+            file: 04-once.md
+          - slug: pool
+            title: "Pool"
+            file: 05-pool.md
 
-      - id: context
-        order: 20
-        title: "Context Package"
-        topics:
-          - slug: context-basics
-            title: "Context Basics"
-            description: "context.Context, context tree"
-          - slug: context-with-cancel
-            title: "Context with Cancel"
-            description: "Cancellation, context.WithCancel"
-          - slug: context-with-timeout
-            title: "Context with Timeout"
-            description: "Timeouts, context.WithTimeout"
-          - slug: context-with-deadline
-            title: "Context with Deadline"
-            description: "Deadlines, context.WithDeadline"
-          - slug: context-values
-            title: "Context Values"
-            description: "Passing values through context"
-
-      - id: advanced-concurrency
-        order: 21
-        title: "Advanced Concurrency"
+      - id: patterns
+        title: "Concurrency Patterns"
+        path: patterns
         topics:
           - slug: worker-pools
             title: "Worker Pools"
-            description: "Worker pool pattern, task distribution"
+            file: 01-worker-pools.md
           - slug: fan-in-fan-out
             title: "Fan-in & Fan-out"
-            description: "Fan-in, fan-out patterns"
-          - slug: pipeline-patterns
-            title: "Pipeline Patterns"
-            description: "Pipeline data processing"
-          - slug: rate-limiting
-            title: "Rate Limiting"
-            description: "Token bucket, sliding window patterns"
-          - slug: circuit-breaker
-            title: "Circuit Breaker"
-            description: "Circuit breaker implementation"
+            file: 02-fan-in-fan-out.md
+          - slug: pipeline
+            title: "Pipeline"
+            file: 03-pipeline.md
+          - slug: cancellation
+            title: "Cancellation"
+            file: 04-cancellation.md
 
   # ============================================
-  # BLOCK 4: Web Development
+  # BLOCK 12: Context
   # ============================================
-  - id: web
-    order: 4
-    title: "Web Development"
-    description: "HTTP, Gin Framework, API Design"
-    modules:
-      - id: http-fundamentals
-        order: 22
-        title: "HTTP Fundamentals"
-        topics:
-          - slug: net-http-basics
-            title: "net/http Package"
-            description: "net/http package, HTTP server creation"
-          - slug: http-handlers
-            title: "HTTP Handlers"
-            description: "http.Handler interface, http.HandlerFunc"
-          - slug: http-servemux
-            title: "HTTP Routing"
-            description: "http.ServeMux, routing"
-          - slug: http-request-response
-            title: "Request & Response"
-            description: "http.Request, http.ResponseWriter"
-          - slug: http-middleware
-            title: "HTTP Middleware"
-            description: "Middleware pattern, wrapper functions"
-
-      - id: gin-basics
-        order: 23
-        title: "Gin Framework Basics"
-        topics:
-          - slug: gin-installation
-            title: "Installing Gin"
-            description: "Gin installation, first server"
-          - slug: gin-routing
-            title: "Routing in Gin"
-            description: "GET, POST, PUT, DELETE routes"
-          - slug: gin-parameters
-            title: "Parameters in Gin"
-            description: "Path parameters, query parameters"
-          - slug: gin-json-binding
-            title: "JSON in Gin"
-            description: "JSON request/response handling"
-          - slug: gin-middleware-basics
-            title: "Middleware in Gin"
-            description: "Built-in middleware, Logger, Recovery"
-
-      - id: gin-advanced
-        order: 24
-        title: "Gin Advanced Features"
-        topics:
-          - slug: gin-validation
-            title: "Validation in Gin"
-            description: "Request validation, custom validators"
-          - slug: gin-file-upload
-            title: "File Upload"
-            description: "File upload, multipart forms"
-          - slug: gin-templates
-            title: "Templates in Gin"
-            description: "HTML templates, static files"
-          - slug: gin-custom-middleware
-            title: "Custom Middleware"
-            description: "Creating custom middleware"
-          - slug: gin-error-handling
-            title: "Error Handling in Gin"
-            description: "Error handling patterns, custom errors"
-
-      - id: api-design
-        order: 25
-        title: "API Design Patterns"
-        topics:
-          - slug: rest-principles
-            title: "REST Principles"
-            description: "RESTful API design principles"
-          - slug: http-status-codes
-            title: "HTTP Status Codes"
-            description: "Proper status code usage"
-          - slug: api-versioning
-            title: "API Versioning"
-            description: "URL vs header versioning"
-          - slug: request-response-formats
-            title: "Data Formats"
-            description: "JSON, XML response formats"
-          - slug: api-documentation
-            title: "API Documentation"
-            description: "API documentation, OpenAPI basics"
+  - id: context
+    title: "Context"
+    description: "Working with context"
+    path: "11-context"
+    flat: true
+    topics:
+      - slug: context-basics
+        title: "Context Basics"
+        file: 01-context-basics.md
+      - slug: context-with-cancel
+        title: "Context with Cancel"
+        file: 02-context-with-cancel.md
+      - slug: context-with-timeout
+        title: "Context with Timeout"
+        file: 03-context-with-timeout.md
+      - slug: context-with-deadline
+        title: "Context with Deadline"
+        file: 04-context-with-deadline.md
+      - slug: context-with-value
+        title: "Context with Value"
+        file: 05-context-with-value.md
+      - slug: context-best-practices
+        title: "Best Practices"
+        file: 06-context-best-practices.md
 
   # ============================================
-  # BLOCK 5: Database Integration
-  # ============================================
-  - id: database
-    order: 5
-    title: "Database Integration"
-    description: "SQL, GORM, migrations, testing"
-    modules:
-      - id: database-sql
-        order: 26
-        title: "Database/SQL Package"
-        topics:
-          - slug: database-sql-basics
-            title: "database/sql Basics"
-            description: "database/sql package, drivers"
-          - slug: connection-management
-            title: "Connection Management"
-            description: "sql.DB, connection pooling"
-          - slug: query-execution
-            title: "Query Execution"
-            description: "Query, QueryRow, Exec methods"
-          - slug: prepared-statements
-            title: "Prepared Statements"
-            description: "sql.Stmt, parameterized queries"
-          - slug: transaction-handling
-            title: "Transactions"
-            description: "sql.Tx, Begin, Commit, Rollback"
-
-      - id: gorm-fundamentals
-        order: 27
-        title: "GORM Fundamentals"
-        topics:
-          - slug: gorm-installation
-            title: "Installing GORM"
-            description: "GORM setup, database drivers"
-          - slug: gorm-models
-            title: "GORM Models"
-            description: "Model definition, struct tags"
-          - slug: gorm-crud
-            title: "CRUD Operations"
-            description: "Create, Read, Update, Delete operations"
-          - slug: gorm-queries
-            title: "GORM Queries"
-            description: "Where, Order, Limit, Offset queries"
-          - slug: gorm-relationships
-            title: "GORM Relationships"
-            description: "Has One, Has Many, Many2Many"
-
-      - id: gorm-advanced
-        order: 28
-        title: "GORM Advanced"
-        topics:
-          - slug: gorm-associations
-            title: "GORM Associations"
-            description: "Association Mode, related data handling"
-          - slug: gorm-hooks
-            title: "GORM Hooks"
-            description: "BeforeCreate, AfterSave and other hooks"
-          - slug: gorm-transactions
-            title: "GORM Transactions"
-            description: "Transaction handling, rollback"
-          - slug: gorm-raw-sql
-            title: "Raw SQL in GORM"
-            description: "Raw queries, SQL expressions"
-          - slug: gorm-performance
-            title: "GORM Performance"
-            description: "Preloading, eager loading, N+1 problem"
-
-      - id: migrations
-        order: 29
-        title: "Database Migrations"
-        topics:
-          - slug: migration-concepts
-            title: "Migration Concepts"
-            description: "Schema versioning, up/down migrations"
-          - slug: gorm-migrations
-            title: "GORM Migrations"
-            description: "AutoMigrate, Migrator interface"
-          - slug: manual-migrations
-            title: "Manual Migrations"
-            description: "Raw SQL migrations, migration tools"
-          - slug: migration-strategies
-            title: "Migration Strategies"
-            description: "Zero-downtime migrations, rollback plans"
-          - slug: schema-management
-            title: "Schema Management"
-            description: "Schema evolution, best practices"
-
-      - id: database-testing
-        order: 30
-        title: "Database Testing"
-        topics:
-          - slug: test-databases
-            title: "Test Databases"
-            description: "In-memory databases, test fixtures"
-          - slug: database-mocking
-            title: "Database Mocking"
-            description: "sqlmock, interface mocking"
-          - slug: transaction-testing
-            title: "Transaction Testing"
-            description: "Rollback testing, isolation"
-          - slug: integration-testing-db
-            title: "Integration Testing"
-            description: "Real database testing, testcontainers"
-          - slug: seeding-data
-            title: "Seeding Data"
-            description: "Test data setup, factories"
-
-  # ============================================
-  # BLOCK 6: Testing & Quality
+  # BLOCK 13: Testing
   # ============================================
   - id: testing
-    order: 6
-    title: "Testing & Quality"
-    description: "Unit tests, benchmarks, integration testing"
+    title: "Testing"
+    description: "Testing in Go"
+    path: "14-testing"
     modules:
-      - id: testing-package
-        order: 31
-        title: "Testing Package"
+      - id: unit-testing
+        title: "Unit Testing"
+        path: unit-testing
         topics:
           - slug: testing-basics
             title: "Testing Basics"
-            description: "testing package, test files, test functions"
+            file: 01-testing-basics.md
+          - slug: test-functions
+            title: "Test Functions"
+            file: 02-test-functions.md
           - slug: table-driven-tests
             title: "Table-Driven Tests"
-            description: "Table-driven test pattern"
-          - slug: test-helpers
-            title: "Test Helpers"
-            description: "t.Helper(), test utility functions"
+            file: 03-table-driven-tests.md
           - slug: subtests
             title: "Subtests"
-            description: "t.Run(), test organization"
+            file: 04-subtests.md
+          - slug: test-helpers
+            title: "Test Helpers"
+            file: 05-test-helpers.md
+
+      - id: advanced-testing
+        title: "Advanced Testing"
+        path: advanced-testing
+        topics:
           - slug: test-coverage
             title: "Test Coverage"
-            description: "go test -cover, coverage analysis"
-
-      - id: testify
-        order: 32
-        title: "Testify Library"
-        topics:
-          - slug: testify-assert
-            title: "Testify Assert"
-            description: "assert package, assertions"
-          - slug: testify-require
-            title: "Testify Require"
-            description: "require package, test stoppers"
-          - slug: testify-mock
-            title: "Testify Mock"
-            description: "mock package, interface mocking"
-          - slug: testify-suite
-            title: "Testify Suite"
-            description: "suite package, test suites"
-          - slug: testify-http
-            title: "HTTP Testing"
-            description: "HTTP testing utilities"
-
-      - id: benchmarking
-        order: 33
-        title: "Benchmarking & Performance"
-        topics:
-          - slug: benchmark-basics
-            title: "Benchmark Basics"
-            description: "Benchmark functions, b.N usage"
-          - slug: benchmark-setup
-            title: "Benchmark Setup"
-            description: "Setup/teardown in benchmarks"
-          - slug: memory-benchmarks
-            title: "Memory Benchmarks"
-            description: "b.ReportAllocs(), memory profiling"
-          - slug: benchmark-comparison
-            title: "Benchmark Comparison"
-            description: "Comparing performance"
-          - slug: performance-regression
-            title: "Performance Regression"
-            description: "Automated regression detection"
-
-      - id: integration-testing
-        order: 34
-        title: "Integration Testing"
-        topics:
-          - slug: integration-concepts
-            title: "Integration Testing Concepts"
-            description: "Integration vs unit testing"
-          - slug: testcontainers
-            title: "Testcontainers"
-            description: "Docker containers in tests"
+            file: 01-test-coverage.md
+          - slug: mocking
+            title: "Mocking"
+            file: 02-mocking.md
           - slug: http-testing
             title: "HTTP Testing"
-            description: "httptest package, API testing"
-          - slug: database-integration-tests
-            title: "Database Tests"
-            description: "Testing with real database"
-          - slug: external-services
-            title: "External Services"
-            description: "Mocking external services"
+            file: 03-http-testing.md
+          - slug: benchmark-tests
+            title: "Benchmark Tests"
+            file: 04-benchmark-tests.md
+          - slug: example-tests
+            title: "Example Tests"
+            file: 05-example-tests.md
 
   # ============================================
-  # BLOCK 7: Production Basics
+  # BLOCK 14: Standard Library
   # ============================================
-  - id: production
-    order: 7
-    title: "Production Basics"
-    description: "Logging, configuration, monitoring"
+  - id: stdlib
+    title: "Standard Library"
+    description: "Key standard library packages"
+    path: "12-io"
     modules:
-      - id: logging
-        order: 35
-        title: "Structured Logging"
+      - id: io
+        title: "I/O Operations"
+        path: io
         topics:
-          - slug: logging-concepts
-            title: "Logging Concepts"
-            description: "Logging levels, structured vs unstructured"
-          - slug: standard-log
-            title: "Standard Log"
-            description: "log package, basic functions"
-          - slug: logrus-library
-            title: "Logrus"
-            description: "logrus setup, fields, hooks"
-          - slug: zap-library
-            title: "Zap"
-            description: "uber-go/zap, high performance logging"
-          - slug: logging-best-practices
-            title: "Logging Best Practices"
-            description: "Context logging, sensitive data"
+          - slug: io-reader-writer
+            title: "Reader & Writer"
+            file: 01-io-reader-writer.md
+          - slug: bufio
+            title: "bufio Package"
+            file: 02-bufio.md
+          - slug: ioutil
+            title: "ioutil Package"
+            file: 03-ioutil.md
 
-      - id: health
-        order: 36
-        title: "Application Health"
+      - id: files
+        title: "File Operations"
+        path: files
         topics:
-          - slug: health-checks
-            title: "Health Checks"
-            description: "Health check endpoints, patterns"
-          - slug: readiness-liveness
-            title: "Readiness & Liveness"
-            description: "Kubernetes readiness/liveness probes"
-          - slug: graceful-shutdown
-            title: "Graceful Shutdown"
-            description: "Signal handling, graceful termination"
-          - slug: connection-draining
-            title: "Connection Draining"
-            description: "Proper connection cleanup"
-          - slug: startup-procedures
-            title: "Startup Procedures"
-            description: "Application initialization, startup checks"
+          - slug: os-package
+            title: "os Package"
+            file: 01-os-package.md
+          - slug: filepath
+            title: "filepath Package"
+            file: 02-filepath.md
+          - slug: file-operations
+            title: "File Operations"
+            file: 03-file-operations.md
 
-      - id: configuration
-        order: 37
-        title: "Configuration Management"
+      - id: json
+        title: "JSON"
+        path: json
         topics:
-          - slug: environment-variables
-            title: "Environment Variables"
-            description: "os.Getenv, environment configuration"
-          - slug: config-files
-            title: "Configuration Files"
-            description: "JSON, YAML, TOML configuration"
-          - slug: viper-library
-            title: "Viper"
-            description: "spf13/viper, configuration management"
-          - slug: secrets-handling
-            title: "Secrets Handling"
-            description: "Environment secrets, secure configuration"
-          - slug: feature-flags
-            title: "Feature Flags"
-            description: "Feature toggles, configuration-driven features"
+          - slug: json-encoding
+            title: "JSON Encoding"
+            file: 01-json-encoding.md
+          - slug: json-decoding
+            title: "JSON Decoding"
+            file: 02-json-decoding.md
+          - slug: custom-json
+            title: "Custom JSON"
+            file: 03-custom-json.md
 
-      - id: monitoring
-        order: 38
-        title: "Basic Monitoring"
+      - id: time
+        title: "Time"
+        path: time
         topics:
-          - slug: metrics-concepts
-            title: "Metrics Concepts"
-            description: "Metrics types, observability basics"
-          - slug: prometheus-client
-            title: "Prometheus Client"
-            description: "prometheus/client_golang"
-          - slug: custom-metrics
-            title: "Custom Metrics"
-            description: "Counter, Gauge, Histogram metrics"
-          - slug: metrics-exposition
-            title: "Metrics Exposition"
-            description: "/metrics endpoint, scraping"
-          - slug: basic-alerting
-            title: "Basic Alerting"
-            description: "Simple alerting rules"
+          - slug: time-basics
+            title: "Time Basics"
+            file: 01-time-basics.md
+          - slug: time-formatting
+            title: "Time Formatting"
+            file: 02-time-formatting.md
+          - slug: timers-tickers
+            title: "Timers & Tickers"
+            file: 03-timers-tickers.md
 
   # ============================================
-  # BLOCK 8: Performance & Profiling
+  # BLOCK 15: Networking
   # ============================================
-  - id: performance
-    order: 8
-    title: "Performance & Profiling"
-    description: "Profiling, optimization, load testing"
+  - id: networking
+    title: "Networking"
+    description: "Network programming"
+    path: "13-network"
     modules:
-      - id: profiling-fundamentals
-        order: 39
-        title: "Profiling Fundamentals"
+      - id: http
+        title: "HTTP"
+        path: http
         topics:
-          - slug: profiling-concepts
-            title: "Profiling Concepts"
-            description: "CPU, memory, goroutine profiling"
-          - slug: pprof-basics
-            title: "pprof Basics"
-            description: "pprof package, profile generation"
-          - slug: profile-types
-            title: "Profile Types"
-            description: "CPU, heap, goroutine, mutex profiles"
-          - slug: profiling-in-production
-            title: "Profiling in Production"
-            description: "Safe production profiling"
-          - slug: profile-analysis
-            title: "Profile Analysis"
-            description: "Reading profiles, identifying bottlenecks"
+          - slug: http-basics
+            title: "HTTP Basics"
+            file: 01-http-basics.md
+          - slug: http-server
+            title: "HTTP Server"
+            file: 02-http-server.md
+          - slug: http-client
+            title: "HTTP Client"
+            file: 03-http-client.md
+          - slug: http-handlers
+            title: "HTTP Handlers"
+            file: 04-http-handlers.md
+          - slug: http-middleware
+            title: "HTTP Middleware"
+            file: 05-http-middleware.md
 
-      - id: cpu-profiling
-        order: 40
-        title: "CPU Profiling"
+      - id: tcp-udp
+        title: "TCP/UDP"
+        path: tcp-udp
         topics:
-          - slug: cpu-profile-generation
-            title: "CPU Profile Generation"
-            description: "Generating CPU profiles"
-          - slug: flame-graphs
-            title: "Flame Graphs"
-            description: "Flame graph analysis, hot paths"
-          - slug: cpu-optimization
-            title: "CPU Optimization"
-            description: "CPU bottleneck identification"
-          - slug: profiling-tools
-            title: "Profiling Tools"
-            description: "go tool pprof, web interface"
-          - slug: cpu-performance-patterns
-            title: "CPU Performance Patterns"
-            description: "Common CPU optimization patterns"
-
-      - id: memory-profiling
-        order: 41
-        title: "Memory Profiling"
-        topics:
-          - slug: heap-profiling
-            title: "Heap Profiling"
-            description: "Heap profile generation, analysis"
-          - slug: memory-leaks
-            title: "Memory Leaks"
-            description: "Memory leak detection, goroutine leaks"
-          - slug: allocation-profiling
-            title: "Allocation Profiling"
-            description: "Allocation tracking, hot spots"
-          - slug: memory-optimization
-            title: "Memory Optimization"
-            description: "Memory usage optimization"
-          - slug: gc-analysis
-            title: "GC Analysis"
-            description: "Garbage collector behavior analysis"
-
-      - id: benchmarking-advanced
-        order: 42
-        title: "Benchmarking Advanced"
-        topics:
-          - slug: benchmark-driven-development
-            title: "Benchmark-Driven Development"
-            description: "Performance testing methodology"
-          - slug: micro-benchmarks
-            title: "Micro-Benchmarks"
-            description: "Function-level benchmarking"
-          - slug: integration-benchmarks
-            title: "Integration Benchmarks"
-            description: "Full system benchmarking"
-          - slug: benchmark-automation
-            title: "Benchmark Automation"
-            description: "Automated performance regression"
-          - slug: performance-budgets
-            title: "Performance Budgets"
-            description: "Performance targets, monitoring"
-
-      - id: gc-tuning
-        order: 43
-        title: "GC Tuning"
-        topics:
-          - slug: gc-fundamentals
-            title: "GC Fundamentals"
-            description: "Garbage collector internals"
-          - slug: gogc-tuning
-            title: "GOGC Tuning"
-            description: "GOGC environment variable tuning"
-          - slug: gomemlimit
-            title: "GOMEMLIMIT"
-            description: "Memory limit configuration"
-          - slug: gc-metrics
-            title: "GC Metrics"
-            description: "GC metrics monitoring"
-          - slug: gc-optimization
-            title: "GC Optimization"
-            description: "Application-specific GC tuning"
-
-      - id: load-testing
-        order: 44
-        title: "Load Testing"
-        topics:
-          - slug: load-testing-concepts
-            title: "Load Testing Concepts"
-            description: "Load vs stress vs spike testing"
-          - slug: k6-framework
-            title: "k6 Framework"
-            description: "k6 load testing tool for Go APIs"
-          - slug: artillery-testing
-            title: "Artillery"
-            description: "Artillery for HTTP load testing"
-          - slug: custom-load-tests
-            title: "Custom Load Tests"
-            description: "Writing custom load tests"
-          - slug: performance-analysis
-            title: "Performance Analysis"
-            description: "Load test result analysis"
+          - slug: tcp-basics
+            title: "TCP Basics"
+            file: 01-tcp-basics.md
+          - slug: udp-basics
+            title: "UDP Basics"
+            file: 02-udp-basics.md
 
   # ============================================
-  # BLOCK 9: Advanced Web Frameworks
+  # BLOCK 16: Generics
   # ============================================
-  - id: frameworks
-    order: 9
-    title: "Advanced Web Frameworks"
-    description: "Fiber, Echo, framework comparison"
-    modules:
-      - id: framework-comparison
-        order: 45
-        title: "Framework Comparison"
-        topics:
-          - slug: framework-landscape
-            title: "Framework Landscape"
-            description: "Gin vs Fiber vs Echo vs net/http"
-          - slug: performance-benchmarks
-            title: "Performance Benchmarks"
-            description: "Real-world performance comparison"
-          - slug: ecosystem-analysis
-            title: "Ecosystem Analysis"
-            description: "Middleware, community, support"
-          - slug: choosing-criteria
-            title: "Choosing Criteria"
-            description: "Framework selection decision matrix"
-          - slug: migration-strategies
-            title: "Migration Strategies"
-            description: "Framework migration patterns"
-
-      - id: fiber
-        order: 46
-        title: "Fiber Framework"
-        topics:
-          - slug: fiber-fundamentals
-            title: "Fiber Fundamentals"
-            description: "Express.js-like API, fasthttp benefits"
-          - slug: fiber-routing
-            title: "Fiber Routing"
-            description: "Advanced routing, parameter handling"
-          - slug: fiber-middleware
-            title: "Fiber Middleware"
-            description: "Built-in middleware, custom middleware"
-          - slug: fiber-performance
-            title: "Fiber Performance"
-            description: "Performance optimization techniques"
-          - slug: fiber-vs-gin
-            title: "Fiber vs Gin"
-            description: "When to choose Fiber over Gin"
-
-      - id: echo
-        order: 47
-        title: "Echo Framework"
-        topics:
-          - slug: echo-fundamentals
-            title: "Echo Fundamentals"
-            description: "Echo architecture, middleware system"
-          - slug: echo-advanced
-            title: "Echo Advanced"
-            description: "Custom binders, validators, error handling"
-          - slug: echo-performance
-            title: "Echo Performance"
-            description: "Performance optimization, best practices"
-          - slug: echo-ecosystem
-            title: "Echo Ecosystem"
-            description: "Echo middleware ecosystem"
-          - slug: echo-production
-            title: "Echo in Production"
-            description: "Production deployment patterns"
-
-      - id: advanced-http
-        order: 48
-        title: "Advanced HTTP Patterns"
-        topics:
-          - slug: custom-middleware-patterns
-            title: "Middleware Patterns"
-            description: "Advanced middleware patterns"
-          - slug: http-interceptors
-            title: "HTTP Interceptors"
-            description: "Request/response interceptors"
-          - slug: rate-limiting-advanced
-            title: "Advanced Rate Limiting"
-            description: "Advanced rate limiting strategies"
-          - slug: authentication-patterns
-            title: "Authentication Patterns"
-            description: "JWT, OAuth2, session handling"
-          - slug: websocket-integration
-            title: "WebSocket Integration"
-            description: "WebSocket support, real-time features"
+  - id: generics
+    title: "Generics"
+    description: "Generic programming"
+    path: "09-generics"
+    flat: true
+    topics:
+      - slug: generics-basics
+        title: "Generics Basics"
+        file: 01-generics-basics.md
+      - slug: type-parameters
+        title: "Type Parameters"
+        file: 02-type-parameters.md
+      - slug: type-constraints
+        title: "Type Constraints"
+        file: 03-type-constraints.md
+      - slug: generic-functions
+        title: "Generic Functions"
+        file: 04-generic-functions.md
+      - slug: generic-types
+        title: "Generic Types"
+        file: 05-generic-types.md
+      - slug: type-inference
+        title: "Type Inference"
+        file: 06-type-inference.md
 
   # ============================================
-  # BLOCK 10: Advanced Database & Data
+  # BLOCK 17: Best Practices
   # ============================================
-  - id: advanced-database
-    order: 10
-    title: "Advanced Database & Data"
-    description: "Database performance, NoSQL, alternative ORMs"
-    modules:
-      - id: database-performance
-        order: 49
-        title: "Database Performance"
-        topics:
-          - slug: query-optimization
-            title: "Query Optimization"
-            description: "Go-specific query optimization"
-          - slug: connection-pooling-advanced
-            title: "Connection Pooling"
-            description: "Advanced connection pool configuration"
-          - slug: database-monitoring
-            title: "Database Monitoring"
-            description: "Query performance monitoring"
-          - slug: index-optimization
-            title: "Index Optimization"
-            description: "Index usage in Go applications"
-          - slug: database-profiling
-            title: "Database Profiling"
-            description: "Database profiling from Go"
-
-      - id: alternative-orms
-        order: 50
-        title: "Alternative ORMs"
-        topics:
-          - slug: sqlx-advanced
-            title: "Advanced sqlx"
-            description: "Advanced sqlx patterns, named queries"
-          - slug: ent-framework
-            title: "Ent Framework"
-            description: "Facebook's ent ORM, code generation"
-          - slug: sqlc-generator
-            title: "sqlc"
-            description: "sqlc code generation from SQL"
-          - slug: orm-comparison
-            title: "ORM Comparison"
-            description: "GORM vs sqlx vs ent comparison"
-          - slug: raw-sql-patterns
-            title: "Raw SQL Patterns"
-            description: "When to use raw SQL"
-
-      - id: nosql
-        order: 51
-        title: "NoSQL Integration"
-        topics:
-          - slug: mongodb-driver
-            title: "MongoDB Driver"
-            description: "Official MongoDB driver for Go"
-          - slug: redis-integration
-            title: "Redis Integration"
-            description: "go-redis client, caching patterns"
-          - slug: redis-advanced
-            title: "Advanced Redis"
-            description: "Redis streams, pub/sub, scripting"
-          - slug: database-patterns
-            title: "Database Patterns"
-            description: "Repository pattern variations"
-          - slug: polyglot-persistence
-            title: "Polyglot Persistence"
-            description: "Multiple database integration"
-
-      - id: data-validation
-        order: 52
-        title: "Data Validation"
-        topics:
-          - slug: input-validation
-            title: "Input Validation"
-            description: "Request validation patterns"
-          - slug: validator-library
-            title: "Validator Library"
-            description: "go-playground/validator usage"
-          - slug: custom-validators
-            title: "Custom Validators"
-            description: "Custom validation rules"
-          - slug: sanitization
-            title: "Sanitization"
-            description: "Input sanitization, security"
-          - slug: validation-middleware
-            title: "Validation Middleware"
-            description: "Validation middleware patterns"
+  - id: best-practices
+    title: "Best Practices"
+    description: "Writing idiomatic Go"
+    path: "19-patterns"
+    flat: true
+    topics:
+      - slug: code-style
+        title: "Code Style"
+        file: 01-code-style.md
+      - slug: naming-conventions
+        title: "Naming Conventions"
+        file: 02-naming-conventions.md
+      - slug: error-handling-practices
+        title: "Error Handling Practices"
+        file: 03-error-handling-practices.md
+      - slug: documentation
+        title: "Documentation"
+        file: 04-documentation.md
+      - slug: project-structure
+        title: "Project Structure"
+        file: 05-project-structure.md
+      - slug: performance-tips
+        title: "Performance Tips"
+        file: 06-performance-tips.md
 
   # ============================================
-  # BLOCK 11: Production Engineering
+  # BLOCK 18: Go Toolchain
   # ============================================
-  - id: prod-engineering
-    order: 11
-    title: "Production Engineering"
-    description: "Deployment, containers, debugging"
-    modules:
-      - id: config-advanced
-        order: 53
-        title: "Configuration Advanced"
-        topics:
-          - slug: config-patterns
-            title: "Configuration Patterns"
-            description: "Advanced configuration patterns"
-          - slug: viper-advanced
-            title: "Advanced Viper"
-            description: "Viper advanced features, watchers"
-          - slug: environment-management
-            title: "Environment Management"
-            description: "Multi-environment configuration"
-          - slug: secret-rotation
-            title: "Secret Rotation"
-            description: "Dynamic secret management"
-          - slug: feature-flag-systems
-            title: "Feature Flag Systems"
-            description: "Advanced feature flag integration"
-
-      - id: deployment
-        order: 54
-        title: "Deployment Strategies"
-        topics:
-          - slug: blue-green-deployment
-            title: "Blue-Green Deployment"
-            description: "Blue-green deployment patterns"
-          - slug: canary-deployment
-            title: "Canary Deployment"
-            description: "Canary release strategies"
-          - slug: rolling-deployment
-            title: "Rolling Deployment"
-            description: "Rolling update patterns"
-          - slug: deployment-automation
-            title: "Deployment Automation"
-            description: "Automated deployment pipelines"
-          - slug: rollback-procedures
-            title: "Rollback Procedures"
-            description: "Safe rollback strategies"
-
-      - id: containers
-        order: 55
-        title: "Container Optimization"
-        topics:
-          - slug: dockerfile-optimization
-            title: "Dockerfile Optimization"
-            description: "Multi-stage builds, layer caching"
-          - slug: image-security
-            title: "Image Security"
-            description: "Security scanning, minimal images"
-          - slug: container-patterns
-            title: "Container Patterns"
-            description: "Go-specific container patterns"
-          - slug: image-size-optimization
-            title: "Image Size Optimization"
-            description: "Minimal image techniques"
-          - slug: container-debugging
-            title: "Container Debugging"
-            description: "Debugging containerized Go apps"
-
-      - id: prod-debugging
-        order: 56
-        title: "Production Debugging"
-        topics:
-          - slug: remote-debugging
-            title: "Remote Debugging"
-            description: "Production debugging techniques"
-          - slug: debug-endpoints
-            title: "Debug Endpoints"
-            description: "Debug endpoints, pprof in production"
-          - slug: distributed-debugging
-            title: "Distributed Debugging"
-            description: "Debugging across microservices"
-          - slug: log-analysis
-            title: "Log Analysis"
-            description: "Log analysis, structured logging"
-          - slug: troubleshooting-methodology
-            title: "Troubleshooting Methodology"
-            description: "Systematic troubleshooting"
-
-      - id: incident-response
-        order: 57
-        title: "Incident Response"
-        topics:
-          - slug: incident-detection
-            title: "Incident Detection"
-            description: "Automated incident detection"
-          - slug: runbook-creation
-            title: "Runbook Creation"
-            description: "Runbook development, documentation"
-          - slug: escalation-procedures
-            title: "Escalation Procedures"
-            description: "Incident escalation patterns"
-          - slug: post-mortem-process
-            title: "Post-Mortem Process"
-            description: "Blameless post-mortems"
-          - slug: reliability-patterns
-            title: "Reliability Patterns"
-            description: "Building reliable Go services"
+  - id: toolchain
+    title: "Go Toolchain"
+    description: "Go development tools"
+    path: "16-tooling"
+    flat: true
+    topics:
+      - slug: go-build
+        title: "go build"
+        file: 01-go-build.md
+      - slug: go-test
+        title: "go test"
+        file: 02-go-test.md
+      - slug: go-mod
+        title: "go mod"
+        file: 03-go-mod.md
+      - slug: go-fmt
+        title: "go fmt"
+        file: 04-go-fmt.md
+      - slug: go-vet
+        title: "go vet"
+        file: 05-go-vet.md
+      - slug: go-generate
+        title: "go generate"
+        file: 06-go-generate.md
 
   # ============================================
-  # BLOCK 12: Go Security Integration
+  # BLOCK 19: Reflection
   # ============================================
-  - id: security
-    order: 12
-    title: "Go Security Integration"
-    description: "Validation, authentication, cryptography"
-    modules:
-      - id: input-security
-        order: 58
-        title: "Input Security"
-        topics:
-          - slug: input-validation-security
-            title: "Security Validation"
-            description: "Security-focused input validation"
-          - slug: sql-injection-prevention
-            title: "SQL Injection Prevention"
-            description: "SQL injection prevention in Go"
-          - slug: xss-prevention
-            title: "XSS Prevention"
-            description: "XSS prevention, output encoding"
-          - slug: command-injection
-            title: "Command Injection"
-            description: "Command injection prevention"
-          - slug: deserialization-security
-            title: "Deserialization Security"
-            description: "Safe JSON/XML deserialization"
-
-      - id: auth
-        order: 59
-        title: "Authentication & Authorization"
-        topics:
-          - slug: jwt-implementation
-            title: "JWT Implementation"
-            description: "JWT implementation, security best practices"
-          - slug: oauth2-integration
-            title: "OAuth2 Integration"
-            description: "OAuth2 client/server implementation"
-          - slug: session-security
-            title: "Session Security"
-            description: "Secure session management"
-          - slug: rbac-implementation
-            title: "RBAC Implementation"
-            description: "Role-based access control"
-          - slug: api-key-management
-            title: "API Key Management"
-            description: "API key authentication patterns"
-
-      - id: crypto
-        order: 60
-        title: "Crypto & TLS"
-        topics:
-          - slug: tls-configuration
-            title: "TLS Configuration"
-            description: "TLS server configuration, cipher suites"
-          - slug: certificate-management
-            title: "Certificate Management"
-            description: "Certificate handling, rotation"
-          - slug: crypto-primitives
-            title: "Crypto Primitives"
-            description: "Go crypto package usage"
-          - slug: secure-communication
-            title: "Secure Communication"
-            description: "mTLS, secure client communication"
-          - slug: key-management
-            title: "Key Management"
-            description: "Cryptographic key management"
-
-  # ============================================
-  # BLOCK 13: Kubernetes for Go
-  # ============================================
-  - id: kubernetes
-    order: 13
-    title: "Kubernetes for Go"
-    description: "Containerization, deployment, monitoring in K8s"
-    modules:
-      - id: containerization
-        order: 61
-        title: "Go App Containerization"
-        topics:
-          - slug: go-dockerfile-patterns
-            title: "Dockerfile Patterns for Go"
-            description: "Go-specific Dockerfile optimization"
-          - slug: health-check-integration
-            title: "Health Check Integration"
-            description: "Health checks for Kubernetes"
-          - slug: signal-handling
-            title: "Signal Handling"
-            description: "Graceful shutdown for Kubernetes"
-          - slug: resource-management
-            title: "Resource Management"
-            description: "Memory/CPU resource configuration"
-          - slug: 12-factor-compliance
-            title: "12-Factor Compliance"
-            description: "12-factor app principles"
-
-      - id: k8s-deployment
-        order: 62
-        title: "Kubernetes Deployment"
-        topics:
-          - slug: k8s-manifests
-            title: "K8s Manifests"
-            description: "Deployment, Service, ConfigMap for Go apps"
-          - slug: rolling-updates
-            title: "Rolling Updates"
-            description: "Kubernetes rolling updates"
-          - slug: horizontal-scaling
-            title: "Horizontal Scaling"
-            description: "HPA configuration for Go services"
-          - slug: resource-limits
-            title: "Resource Limits"
-            description: "Resource limits, requests optimization"
-          - slug: liveness-readiness
-            title: "Liveness & Readiness"
-            description: "Proper probe configuration"
-
-      - id: k8s-monitoring
-        order: 63
-        title: "Kubernetes Monitoring"
-        topics:
-          - slug: prometheus-k8s
-            title: "Prometheus in K8s"
-            description: "Prometheus metrics in Kubernetes"
-          - slug: service-discovery
-            title: "Service Discovery"
-            description: "Kubernetes service discovery"
-          - slug: distributed-tracing
-            title: "Distributed Tracing"
-            description: "Tracing in Kubernetes environment"
-          - slug: log-aggregation
-            title: "Log Aggregation"
-            description: "Centralized logging for Go pods"
-          - slug: troubleshooting-k8s
-            title: "Troubleshooting in K8s"
-            description: "Debugging Go apps in Kubernetes"
-
-  # ============================================
-  # BLOCK 14: Advanced Concurrency
-  # ============================================
-  - id: advanced-concurrency
-    order: 14
-    title: "Advanced Concurrency"
-    description: "Patterns, synchronization, distributed coordination"
-    modules:
-      - id: concurrency-patterns-advanced
-        order: 64
-        title: "Concurrency Patterns Advanced"
-        topics:
-          - slug: select-patterns-advanced
-            title: "Advanced Select Patterns"
-            description: "Advanced select patterns"
-          - slug: timeout-handling
-            title: "Timeout Handling"
-            description: "Complex timeout scenarios"
-          - slug: cancellation-patterns
-            title: "Cancellation Patterns"
-            description: "Graceful cancellation strategies"
-          - slug: backpressure-handling
-            title: "Backpressure Handling"
-            description: "Backpressure in concurrent systems"
-          - slug: concurrency-testing
-            title: "Concurrency Testing"
-            description: "Testing concurrent code"
-
-      - id: custom-sync
-        order: 65
-        title: "Custom Synchronization"
-        topics:
-          - slug: custom-sync-primitives
-            title: "Custom Sync Primitives"
-            description: "Building custom sync primitives"
-          - slug: lock-free-programming
-            title: "Lock-Free Programming"
-            description: "Lock-free data structures"
-          - slug: memory-ordering
-            title: "Memory Ordering"
-            description: "Memory ordering in Go"
-          - slug: atomic-patterns
-            title: "Atomic Patterns"
-            description: "Advanced atomic operations"
-          - slug: sync-pool-advanced
-            title: "Advanced sync.Pool"
-            description: "sync.Pool optimization patterns"
-
-      - id: goroutine-management
-        order: 66
-        title: "Goroutine Management"
-        topics:
-          - slug: goroutine-pools
-            title: "Goroutine Pools"
-            description: "Advanced goroutine pool patterns"
-          - slug: goroutine-leak-detection
-            title: "Goroutine Leak Detection"
-            description: "Detecting goroutine leaks"
-          - slug: goroutine-lifecycle-advanced
-            title: "Goroutine Lifecycle"
-            description: "Advanced lifecycle management"
-          - slug: goroutine-monitoring
-            title: "Goroutine Monitoring"
-            description: "Runtime goroutine monitoring"
-          - slug: scheduler-tuning
-            title: "Scheduler Tuning"
-            description: "Go scheduler optimization"
-
-      - id: distributed-coordination
-        order: 67
-        title: "Distributed Coordination"
-        topics:
-          - slug: distributed-locks
-            title: "Distributed Locks"
-            description: "Distributed locking patterns"
-          - slug: leader-election
-            title: "Leader Election"
-            description: "Leader election algorithms"
-          - slug: consensus-basics
-            title: "Consensus Basics"
-            description: "Consensus algorithm basics"
-          - slug: coordination-patterns
-            title: "Coordination Patterns"
-            description: "Service coordination patterns"
-          - slug: distributed-state
-            title: "Distributed State"
-            description: "Distributed state management"
-
-  # ============================================
-  # BLOCK 15: System Architecture
-  # ============================================
-  - id: architecture
-    order: 15
-    title: "System Architecture"
-    description: "Microservices, gRPC, message queues"
-    modules:
-      - id: microservices
-        order: 68
-        title: "Microservices Design"
-        topics:
-          - slug: service-decomposition
-            title: "Service Decomposition"
-            description: "Service boundary identification"
-          - slug: domain-driven-design
-            title: "Domain-Driven Design"
-            description: "DDD principles for Go services"
-          - slug: service-contracts
-            title: "Service Contracts"
-            description: "API contract design"
-          - slug: data-consistency
-            title: "Data Consistency"
-            description: "Eventual consistency patterns"
-          - slug: service-mesh-basics
-            title: "Service Mesh Basics"
-            description: "Service mesh integration"
-
-      - id: grpc
-        order: 69
-        title: "gRPC Implementation"
-        topics:
-          - slug: protobuf-design
-            title: "Protocol Buffers Design"
-            description: "Protocol Buffers schema design"
-          - slug: grpc-server
-            title: "gRPC Server"
-            description: "gRPC server implementation"
-          - slug: grpc-client
-            title: "gRPC Client"
-            description: "gRPC client patterns"
-          - slug: grpc-streaming
-            title: "gRPC Streaming"
-            description: "Streaming RPC patterns"
-          - slug: grpc-security
-            title: "gRPC Security"
-            description: "gRPC authentication, TLS"
-
-      - id: message-queues
-        order: 70
-        title: "Message Queues"
-        topics:
-          - slug: kafka-integration
-            title: "Kafka Integration"
-            description: "Kafka producer/consumer in Go"
-          - slug: rabbitmq-patterns
-            title: "RabbitMQ Patterns"
-            description: "RabbitMQ integration patterns"
-          - slug: message-patterns
-            title: "Message Patterns"
-            description: "Message queue design patterns"
-          - slug: event-sourcing
-            title: "Event Sourcing"
-            description: "Event sourcing implementation"
-          - slug: cqrs-implementation
-            title: "CQRS Implementation"
-            description: "CQRS pattern implementation"
-
-      - id: api-gateway
-        order: 71
-        title: "API Gateway"
-        topics:
-          - slug: reverse-proxy
-            title: "Reverse Proxy"
-            description: "Reverse proxy implementation"
-          - slug: load-balancing
-            title: "Load Balancing"
-            description: "Load balancing algorithms"
-          - slug: rate-limiting-gateway
-            title: "Gateway Rate Limiting"
-            description: "Gateway-level rate limiting"
-          - slug: circuit-breaker-gateway
-            title: "Gateway Circuit Breaker"
-            description: "Circuit breaker patterns"
-          - slug: api-composition
-            title: "API Composition"
-            description: "API composition patterns"
-
-      - id: distributed-systems
-        order: 72
-        title: "Distributed Systems"
-        topics:
-          - slug: cap-theorem
-            title: "CAP Theorem"
-            description: "CAP theorem implications"
-          - slug: consistency-patterns
-            title: "Consistency Patterns"
-            description: "Consistency model implementation"
-          - slug: partition-tolerance
-            title: "Partition Tolerance"
-            description: "Handling network partitions"
-          - slug: distributed-transactions
-            title: "Distributed Transactions"
-            description: "Saga pattern implementation"
-          - slug: failure-modes
-            title: "Failure Modes"
-            description: "Distributed system failure handling"
-
-  # ============================================
-  # BLOCK 16: Interview Mastery
-  # ============================================
-  - id: interview
-    order: 16
-    title: "Interview Mastery"
-    description: "Coding, System Design, Behavioral"
-    modules:
-      - id: coding-interviews
-        order: 73
-        title: "Coding Interviews"
-        topics:
-          - slug: leetcode-go-patterns
-            title: "LeetCode in Go"
-            description: "LeetCode solutions in Go"
-          - slug: algorithm-implementation
-            title: "Algorithm Implementation"
-            description: "Algorithm implementation in Go"
-          - slug: data-structure-go
-            title: "Data Structures in Go"
-            description: "Data structures in Go"
-          - slug: complexity-analysis
-            title: "Complexity Analysis"
-            description: "Big O analysis for Go code"
-          - slug: coding-style
-            title: "Coding Style"
-            description: "Interview coding style"
-
-      - id: system-design
-        order: 74
-        title: "System Design"
-        topics:
-          - slug: go-system-design
-            title: "System Design in Go"
-            description: "Go-specific system design"
-          - slug: scalability-patterns
-            title: "Scalability Patterns"
-            description: "Scalability with Go services"
-          - slug: performance-estimation
-            title: "Performance Estimation"
-            description: "Performance estimation"
-          - slug: technology-choices
-            title: "Technology Choices"
-            description: "Technology selection reasoning"
-          - slug: architecture-tradeoffs
-            title: "Architecture Tradeoffs"
-            description: "Architecture decision making"
-
-      - id: behavioral
-        order: 75
-        title: "Behavioral Interviews"
-        topics:
-          - slug: leadership-examples
-            title: "Leadership Examples"
-            description: "Technical leadership examples"
-          - slug: project-management
-            title: "Project Management"
-            description: "Project management experience"
-          - slug: team-collaboration
-            title: "Team Collaboration"
-            description: "Team collaboration stories"
-          - slug: conflict-resolution
-            title: "Conflict Resolution"
-            description: "Technical conflict resolution"
-          - slug: mentoring-experience
-            title: "Mentoring Experience"
-            description: "Mentoring and knowledge sharing"
-
-      - id: portfolio
-        order: 76
-        title: "Portfolio Projects"
-        topics:
-          - slug: github-optimization
-            title: "GitHub Optimization"
-            description: "GitHub profile optimization"
-          - slug: project-showcase
-            title: "Project Showcase"
-            description: "Showcase project selection"
-          - slug: documentation-quality
-            title: "Documentation Quality"
-            description: "Technical documentation"
-          - slug: code-quality-demo
-            title: "Code Quality Demo"
-            description: "Code quality demonstration"
-          - slug: contribution-history
-            title: "Contribution History"
-            description: "Open source contributions"
-
-  # ============================================
-  # BLOCK 17: Advanced Topics
-  # ============================================
-  - id: advanced
-    order: 17
-    title: "Advanced Topics"
-    description: "Performance engineering, SRE, Go internals"
-    modules:
-      - id: performance-engineering
-        order: 77
-        title: "Performance Engineering"
-        topics:
-          - slug: performance-methodology
-            title: "Performance Methodology"
-            description: "Performance engineering methodology"
-          - slug: bottleneck-analysis
-            title: "Bottleneck Analysis"
-            description: "Systematic bottleneck analysis"
-          - slug: capacity-planning
-            title: "Capacity Planning"
-            description: "Service capacity planning"
-          - slug: performance-monitoring
-            title: "Performance Monitoring"
-            description: "Continuous performance monitoring"
-          - slug: optimization-strategies
-            title: "Optimization Strategies"
-            description: "Performance optimization strategies"
-
-      - id: production-excellence
-        order: 78
-        title: "Production Excellence"
-        topics:
-          - slug: sre-principles
-            title: "SRE Principles"
-            description: "SRE principles for Go services"
-          - slug: reliability-engineering
-            title: "Reliability Engineering"
-            description: "Building reliable systems"
-          - slug: chaos-engineering
-            title: "Chaos Engineering"
-            description: "Chaos engineering practices"
-          - slug: failure-testing
-            title: "Failure Testing"
-            description: "Failure mode testing"
-          - slug: resilience-patterns
-            title: "Resilience Patterns"
-            description: "Resilience design patterns"
-
-      - id: go-advanced-features
-        order: 79
-        title: "Go Advanced Features"
-        topics:
-          - slug: reflection-advanced
-            title: "Advanced Reflection"
-            description: "Advanced reflection usage"
-          - slug: unsafe-package
-            title: "Unsafe Package"
-            description: "unsafe package, when to use"
-          - slug: cgo-integration
-            title: "CGO Integration"
-            description: "CGO integration patterns"
-          - slug: build-constraints
-            title: "Build Constraints"
-            description: "Advanced build constraints"
-          - slug: compiler-optimizations
-            title: "Compiler Optimizations"
-            description: "Go compiler optimization understanding"
+  - id: reflection
+    title: "Reflection"
+    description: "Runtime reflection"
+    path: "17-safety"
+    flat: true
+    topics:
+      - slug: reflection-basics
+        title: "Reflection Basics"
+        file: 01-reflection-basics.md
+      - slug: type-value
+        title: "Type & Value"
+        file: 02-type-value.md
+      - slug: struct-reflection
+        title: "Struct Reflection"
+        file: 03-struct-reflection.md
+      - slug: reflection-use-cases
+        title: "Use Cases"
+        file: 04-reflection-use-cases.md

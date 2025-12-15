@@ -1,6 +1,0 @@
-id: toolchain
-order: 2
-title: Go Toolchain
-titleEn: Go Toolchain
-description: Инструменты разработки Go
-modulesCount: 2

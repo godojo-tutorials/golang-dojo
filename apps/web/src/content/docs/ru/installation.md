@@ -218,3 +218,17 @@ func main() {
 - Обновление Go выполняется простой переустановкой
 
 В следующем уроке мы настроим рабочее пространство и структуру проекта.
+
+
+---
+
+<nav class="lesson-nav">
+  <a href="/ru/ide-setup/" class="lesson-nav-link">
+    <span class="lesson-nav-label">← Предыдущий</span>
+    <span class="lesson-nav-title">Редактор кода</span>
+  </a>
+  <a href="/ru/hello-world/" class="lesson-nav-link" style="text-align: right;">
+    <span class="lesson-nav-label">Следующий →</span>
+    <span class="lesson-nav-title">Hello World</span>
+  </a>
+</nav>

@@ -1,6 +1,0 @@
-id: sync-primitives
-order: 19
-title: Примитивы синхронизации
-titleEn: Sync Primitives
-block: concurrency
-topicsCount: 5

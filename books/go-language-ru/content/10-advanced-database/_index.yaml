@@ -1,6 +1,0 @@
-id: advanced-database
-order: 10
-title: Продвинутые базы данных
-titleEn: Advanced Database & Data
-description: Производительность БД, NoSQL, альтернативные ORM
-modulesCount: 4

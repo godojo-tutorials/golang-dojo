@@ -4,6 +4,10 @@
  * Стиль learn.javascript.ru:
  * - Блоки с заголовками
  * - Плоский список топиков с нумерацией X.Y
+ *
+ * Supports two block types:
+ * - flat: true blocks have topics directly (no modules)
+ * - blocks with modules have nested structure
  */
 
 import tocData from '@/data/toc.json';
@@ -16,6 +20,7 @@ interface Props {
 interface Topic {
   slug: string;
   title: string;
+  number?: string;
 }
 
 interface Module {
@@ -27,7 +32,10 @@ interface Module {
 interface Block {
   id: string;
   title: string;
-  modules: Module[];
+  number?: number;
+  flat?: boolean;
+  topics?: Topic[];
+  modules?: Module[];
 }
 
 interface TocData {
@@ -41,22 +49,34 @@ const labels = t(lang).toc;
 ---
 
 <div class="toc-container">
-  {blocks.map((block, blockIndex) => {
-    const sectionNumber = blockIndex + 1;
+  {blocks.map((block) => {
+    // Use block.number from curriculum (preserves position even with unpublished topics)
+    const sectionNumber = block.number || 1;
 
-    let itemNumber = 0;
     const items: { number: string; title: string; slug: string }[] = [];
 
-    block.modules.forEach((module) => {
-      module.topics.forEach((topic) => {
-        itemNumber++;
+    // Handle flat blocks (topics directly in block)
+    if (block.flat && block.topics) {
+      block.topics.forEach((topic) => {
         items.push({
-          number: `${sectionNumber}.${itemNumber}`,
+          number: topic.number || '0',
           title: topic.title,
           slug: topic.slug,
         });
       });
-    });
+    }
+    // Handle blocks with modules
+    else if (block.modules) {
+      block.modules.forEach((module) => {
+        module.topics.forEach((topic) => {
+          items.push({
+            number: topic.number || '0',
+            title: topic.title,
+            slug: topic.slug,
+          });
+        });
+      });
+    }
 
     return (
       <section class="toc-section">

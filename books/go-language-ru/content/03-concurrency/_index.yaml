@@ -1,6 +1,0 @@
-id: concurrency
-order: 3
-title: Конкурентность
-titleEn: Concurrency Deep Dive
-description: Горутины, каналы и паттерны
-modulesCount: 6

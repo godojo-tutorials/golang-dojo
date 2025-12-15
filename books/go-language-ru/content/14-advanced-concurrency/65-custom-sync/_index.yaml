@@ -1,6 +1,0 @@
-id: custom-sync
-order: 65
-title: Кастомная синхронизация
-titleEn: Custom Synchronization
-block: advanced-concurrency
-topicsCount: 5

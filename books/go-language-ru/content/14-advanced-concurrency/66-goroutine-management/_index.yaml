@@ -1,6 +1,0 @@
-id: goroutine-management
-order: 66
-title: Управление горутинами
-titleEn: Goroutine Management
-block: advanced-concurrency
-topicsCount: 5

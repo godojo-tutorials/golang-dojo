@@ -3,12 +3,10 @@
  * sync-content.js
  * Syncs content from books/ to frontend
  *
- * What it does:
- * 1. Reads curriculum.yaml from books/go-language-ru and books/go-language-en
- * 2. Copies article.md files, transforming to Starlight format
- * 3. Generates toc.json for table of contents (per language)
- * 4. Adds prev/next navigation
- * 5. Only syncs topics with published: true
+ * New structure (v2):
+ * - content/ru/{block}/{module?}/{topic}.md
+ * - flat: true blocks have topics directly in block folder
+ * - modules have topics in module subfolder
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'fs';
@@ -84,7 +82,6 @@ for (const lang of languages) {
 
   // Clean and recreate destination directory (except index.mdx and authors.mdx)
   if (existsSync(contentDestDir)) {
-    // Keep index.mdx and authors.mdx, remove everything else
     const indexPath = join(contentDestDir, 'index.mdx');
     const authorsPath = join(contentDestDir, 'authors.mdx');
     const indexContent = existsSync(indexPath) ? readFileSync(indexPath, 'utf8') : null;
@@ -101,54 +98,104 @@ for (const lang of languages) {
     mkdirSync(contentDestDir, { recursive: true });
   }
 
-  // Collect all topics with block info for breadcrumbs
+  /**
+   * Build source file path for a topic
+   * New structure: content/{lang}/{block.path}/{module.path?}/{topic.file}
+   * Old structure: content/{blockNum}-{block}/{moduleNum}-{module}/{topic}/article.md
+   */
+  function buildSourcePath(block, module, topic) {
+    // New structure (v2) - has 'path' and 'file' fields
+    if (block.path && topic.file) {
+      if (block.flat) {
+        // Flat block: content/ru/01-intro/03-installation.md
+        return join(contentSourceDir, block.path, topic.file);
+      } else if (module && module.path) {
+        // Block with modules: content/ru/02-basics/01-lexical/01-source-code.md
+        return join(contentSourceDir, block.path, module.path, topic.file);
+      }
+    }
+
+    // Old structure (v1) - uses block.id, module.id, topic.slug
+    // content/{blockNum}-{block.id}/{moduleNum}-{module.id}/{topic.slug}/article.md
+    const blockNums = Array.from({ length: 20 }, (_, i) => String(i + 1).padStart(2, '0'));
+    const moduleNums = Array.from({ length: 80 }, (_, i) => String(i + 1).padStart(2, '0'));
+
+    for (const blockNum of blockNums) {
+      const blockPath = join(contentSourceDir, `${blockNum}-${block.id}`);
+      if (!existsSync(blockPath)) continue;
+
+      for (const moduleNum of moduleNums) {
+        const modulePath = join(blockPath, `${moduleNum}-${module?.id || ''}`);
+        if (!existsSync(modulePath)) continue;
+
+        const articlePath = join(modulePath, topic.slug, 'article.md');
+        if (existsSync(articlePath)) {
+          return articlePath;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  // Collect all topics with block/module info and numbering
   const allTopics = [];
-  for (const block of curriculum.blocks) {
-    for (const module of block.modules) {
-      for (const topic of module.topics) {
+
+  for (let blockIndex = 0; blockIndex < curriculum.blocks.length; blockIndex++) {
+    const block = curriculum.blocks[blockIndex];
+    const blockNum = blockIndex + 1;
+    let topicNum = 0;
+
+    if (block.flat && block.topics) {
+      // Flat block - topics directly in block
+      for (const topic of block.topics) {
+        topicNum++;
         allTopics.push({
           slug: topic.slug,
           title: topic.title,
           description: topic.description,
-          block: block.id,
+          file: topic.file,
+          block: block,
+          blockIndex: blockIndex,
+          module: null,
           blockTitle: block.title,
-          module: module.id,
-          moduleTitle: module.title,
+          moduleTitle: null,
+          number: `${blockNum}.${topicNum}`,
         });
+      }
+    } else if (block.modules) {
+      // Block with modules
+      for (const module of block.modules) {
+        for (const topic of module.topics) {
+          topicNum++;
+          allTopics.push({
+            slug: topic.slug,
+            title: topic.title,
+            description: topic.description,
+            file: topic.file,
+            block: block,
+            blockIndex: blockIndex,
+            module: module,
+            blockTitle: block.title,
+            moduleTitle: module.title,
+            number: `${blockNum}.${topicNum}`,
+          });
+        }
       }
     }
   }
 
   console.log(`   📄 Total topics: ${allTopics.length}`);
 
-  // Find source file
-  function findSourceFile(block, module, topic) {
-    const blockNums = Array.from({ length: 20 }, (_, i) => String(i + 1).padStart(2, '0'));
-
-    for (const blockNum of blockNums) {
-      const blockPath = join(contentSourceDir, `${blockNum}-${block}`);
-      if (!existsSync(blockPath)) continue;
-
-      const moduleNums = Array.from({ length: 80 }, (_, i) => String(i + 1).padStart(2, '0'));
-      for (const moduleNum of moduleNums) {
-        const modulePath = join(blockPath, `${moduleNum}-${module}`);
-        if (!existsSync(modulePath)) continue;
-
-        const articlePath = join(modulePath, topic, 'article.md');
-        if (existsSync(articlePath)) {
-          return articlePath;
-        }
-      }
-    }
-    return null;
-  }
-
   // Filter published topics
   const publishedTopics = [];
 
   for (const topic of allTopics) {
-    const sourcePath = findSourceFile(topic.block, topic.module, topic.slug);
-    if (!sourcePath) continue;
+    const sourcePath = buildSourcePath(topic.block, topic.module, topic);
+
+    if (!existsSync(sourcePath)) {
+      continue;
+    }
 
     const sourceContent = readFileSync(sourcePath, 'utf8');
     const { data: sourceFrontmatter } = matter(sourceContent);
@@ -168,8 +215,8 @@ for (const lang of languages) {
     const prev = i > 0 ? publishedTopics[i - 1] : null;
     const next = i < publishedTopics.length - 1 ? publishedTopics[i + 1] : null;
 
-    const sourcePath = findSourceFile(topic.block, topic.module, topic.slug);
-    if (!sourcePath) continue;
+    const sourcePath = buildSourcePath(topic.block, topic.module, topic);
+    if (!existsSync(sourcePath)) continue;
 
     const sourceContent = readFileSync(sourcePath, 'utf8');
     const { data: sourceFrontmatter, content } = matter(sourceContent);
@@ -235,33 +282,61 @@ for (const lang of languages) {
 
   console.log(`   ✅ Synced: ${syncedCount} files`);
 
-  // Generate TOC data (only published)
+  // Generate TOC data (only published) - include number from curriculum
   const publishedSlugs = new Set(publishedTopics.map(t => t.slug));
+  // Build a map of slug -> number from allTopics
+  const slugToNumber = {};
+  for (const topic of allTopics) {
+    slugToNumber[topic.slug] = topic.number;
+  }
 
   allTocData[lang.code] = {
     blocks: curriculum.blocks
-      .map(block => {
-        const filteredModules = block.modules
-          .map(module => {
-            const filteredTopics = module.topics.filter(topic => publishedSlugs.has(topic.slug));
-            if (filteredTopics.length === 0) return null;
-            return {
-              id: module.id,
-              title: module.title,
-              topics: filteredTopics.map(topic => ({
-                slug: topic.slug,
-                title: topic.title,
-              })),
-            };
-          })
-          .filter(Boolean);
+      .map((block, blockIndex) => {
+        const blockNum = blockIndex + 1;
 
-        if (filteredModules.length === 0) return null;
-        return {
-          id: block.id,
-          title: block.title,
-          modules: filteredModules,
-        };
+        if (block.flat && block.topics) {
+          // Flat block
+          const filteredTopics = block.topics.filter(topic => publishedSlugs.has(topic.slug));
+          if (filteredTopics.length === 0) return null;
+          return {
+            id: block.id,
+            title: block.title,
+            number: blockNum,
+            flat: true,
+            topics: filteredTopics.map(topic => ({
+              slug: topic.slug,
+              title: topic.title,
+              number: slugToNumber[topic.slug],
+            })),
+          };
+        } else if (block.modules) {
+          // Block with modules
+          const filteredModules = block.modules
+            .map(module => {
+              const filteredTopics = module.topics.filter(topic => publishedSlugs.has(topic.slug));
+              if (filteredTopics.length === 0) return null;
+              return {
+                id: module.id,
+                title: module.title,
+                topics: filteredTopics.map(topic => ({
+                  slug: topic.slug,
+                  title: topic.title,
+                  number: slugToNumber[topic.slug],
+                })),
+              };
+            })
+            .filter(Boolean);
+
+          if (filteredModules.length === 0) return null;
+          return {
+            id: block.id,
+            title: block.title,
+            number: blockNum,
+            modules: filteredModules,
+          };
+        }
+        return null;
       })
       .filter(Boolean),
   };
@@ -289,38 +364,50 @@ for (const [lang, data] of Object.entries(allTocData)) {
   const chapters = [];
 
   for (const block of data.blocks) {
-    // Each block becomes a collapsible group
-    const group = {
-      label: block.title,
-      collapsed: false,
-      items: [],
-    };
-
-    for (const module of block.modules) {
-      // Each module with its topics
-      if (module.topics.length > 1) {
-        // Multiple topics - create subgroup
-        const subgroup = {
-          label: module.title,
-          collapsed: true,
-          items: module.topics.map(topic => ({
-            label: topic.title,
-            link: `/${lang}/${topic.slug}/`,
-          })),
-        };
-        group.items.push(subgroup);
-      } else if (module.topics.length === 1) {
-        // Single topic - add directly with module title
-        const topic = module.topics[0];
-        group.items.push({
+    if (block.flat && block.topics) {
+      // Flat block - topics directly as items
+      const group = {
+        label: block.title,
+        collapsed: false,
+        items: block.topics.map(topic => ({
           label: topic.title,
           link: `/${lang}/${topic.slug}/`,
-        });
-      }
-    }
-
-    if (group.items.length > 0) {
+        })),
+      };
       chapters.push(group);
+    } else if (block.modules) {
+      // Block with modules
+      const group = {
+        label: block.title,
+        collapsed: false,
+        items: [],
+      };
+
+      for (const module of block.modules) {
+        if (module.topics.length > 1) {
+          // Multiple topics - create subgroup
+          const subgroup = {
+            label: module.title,
+            collapsed: true,
+            items: module.topics.map(topic => ({
+              label: topic.title,
+              link: `/${lang}/${topic.slug}/`,
+            })),
+          };
+          group.items.push(subgroup);
+        } else if (module.topics.length === 1) {
+          // Single topic - add directly with module title
+          const topic = module.topics[0];
+          group.items.push({
+            label: topic.title,
+            link: `/${lang}/${topic.slug}/`,
+          });
+        }
+      }
+
+      if (group.items.length > 0) {
+        chapters.push(group);
+      }
     }
   }
 
@@ -338,7 +425,6 @@ writeFileSync(join(dataDir, 'sidebar.json'), JSON.stringify(sidebars, null, 2));
 console.log(`📑 Created sidebar.json`);
 
 // Generate unified sidebar with translations for Starlight
-// This creates a single sidebar that works for all locales
 function generateUnifiedSidebar() {
   // Build topic map: slug -> { ru: title, en: title }
   const topicTitles = {};
@@ -351,13 +437,20 @@ function generateUnifiedSidebar() {
       if (!blockTitles[block.id]) blockTitles[block.id] = {};
       blockTitles[block.id][lang] = block.title;
 
-      for (const module of block.modules) {
-        if (!moduleTitles[module.id]) moduleTitles[module.id] = {};
-        moduleTitles[module.id][lang] = module.title;
-
-        for (const topic of module.topics) {
+      if (block.flat && block.topics) {
+        for (const topic of block.topics) {
           if (!topicTitles[topic.slug]) topicTitles[topic.slug] = {};
           topicTitles[topic.slug][lang] = topic.title;
+        }
+      } else if (block.modules) {
+        for (const module of block.modules) {
+          if (!moduleTitles[module.id]) moduleTitles[module.id] = {};
+          moduleTitles[module.id][lang] = module.title;
+
+          for (const topic of module.topics) {
+            if (!topicTitles[topic.slug]) topicTitles[topic.slug] = {};
+            topicTitles[topic.slug][lang] = topic.title;
+          }
         }
       }
     }
@@ -384,32 +477,9 @@ function generateUnifiedSidebar() {
       items: [],
     };
 
-    for (const module of block.modules) {
-      const moduleTranslations = {};
-      if (moduleTitles[module.id]?.en) {
-        moduleTranslations.en = moduleTitles[module.id].en;
-      }
-
-      if (module.topics.length > 1) {
-        const subgroup = {
-          label: module.title,
-          ...(Object.keys(moduleTranslations).length > 0 && { translations: moduleTranslations }),
-          collapsed: true,
-          items: module.topics.map(topic => {
-            const topicTranslations = {};
-            if (topicTitles[topic.slug]?.en) {
-              topicTranslations.en = topicTitles[topic.slug].en;
-            }
-            return {
-              label: topic.title,
-              ...(Object.keys(topicTranslations).length > 0 && { translations: topicTranslations }),
-              slug: topic.slug,
-            };
-          }),
-        };
-        group.items.push(subgroup);
-      } else if (module.topics.length === 1) {
-        const topic = module.topics[0];
+    if (block.flat && block.topics) {
+      // Flat block
+      for (const topic of block.topics) {
         const topicTranslations = {};
         if (topicTitles[topic.slug]?.en) {
           topicTranslations.en = topicTitles[topic.slug].en;
@@ -419,6 +489,45 @@ function generateUnifiedSidebar() {
           ...(Object.keys(topicTranslations).length > 0 && { translations: topicTranslations }),
           slug: topic.slug,
         });
+      }
+    } else if (block.modules) {
+      // Block with modules
+      for (const module of block.modules) {
+        const moduleTranslations = {};
+        if (moduleTitles[module.id]?.en) {
+          moduleTranslations.en = moduleTitles[module.id].en;
+        }
+
+        if (module.topics.length > 1) {
+          const subgroup = {
+            label: module.title,
+            ...(Object.keys(moduleTranslations).length > 0 && { translations: moduleTranslations }),
+            collapsed: true,
+            items: module.topics.map(topic => {
+              const topicTranslations = {};
+              if (topicTitles[topic.slug]?.en) {
+                topicTranslations.en = topicTitles[topic.slug].en;
+              }
+              return {
+                label: topic.title,
+                ...(Object.keys(topicTranslations).length > 0 && { translations: topicTranslations }),
+                slug: topic.slug,
+              };
+            }),
+          };
+          group.items.push(subgroup);
+        } else if (module.topics.length === 1) {
+          const topic = module.topics[0];
+          const topicTranslations = {};
+          if (topicTitles[topic.slug]?.en) {
+            topicTranslations.en = topicTitles[topic.slug].en;
+          }
+          group.items.push({
+            label: topic.title,
+            ...(Object.keys(topicTranslations).length > 0 && { translations: topicTranslations }),
+            slug: topic.slug,
+          });
+        }
       }
     }
 

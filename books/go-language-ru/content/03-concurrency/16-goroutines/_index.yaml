@@ -1,6 +1,0 @@
-id: goroutines
-order: 16
-title: Основы горутин
-titleEn: Goroutines Fundamentals
-block: concurrency
-topicsCount: 5

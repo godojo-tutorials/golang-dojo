@@ -1,6 +1,0 @@
-id: containerization
-order: 61
-title: Контейнеризация Go
-titleEn: Go App Containerization
-block: kubernetes
-topicsCount: 5

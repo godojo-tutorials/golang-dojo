@@ -1,5 +1,0 @@
-id: production
-order: 7
-title: Production Basics
-description: Logging, configuration, monitoring
-modulesCount: 4

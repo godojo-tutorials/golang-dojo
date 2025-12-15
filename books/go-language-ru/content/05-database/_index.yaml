@@ -1,6 +1,0 @@
-id: database
-order: 5
-title: Работа с базами данных
-titleEn: Database Integration
-description: SQL, GORM, миграции, тестирование
-modulesCount: 5

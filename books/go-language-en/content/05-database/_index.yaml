@@ -1,5 +1,0 @@
-id: database
-order: 5
-title: Database Integration
-description: SQL, GORM, migrations, testing
-modulesCount: 5

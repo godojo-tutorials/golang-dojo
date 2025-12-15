@@ -7,18 +7,46 @@
     "collapsed": false,
     "items": [
       {
-        "label": "Основы языка Go",
+        "label": "Введение в Go",
         "translations": {
-          "en": "Go Language Fundamentals"
+          "en": "Introduction to Go"
         },
         "collapsed": false,
         "items": [
+          {
+            "label": "Что такое Go",
+            "translations": {
+              "en": "What is Go?"
+            },
+            "slug": "what-is-go"
+          },
+          {
+            "label": "Редактор кода",
+            "translations": {
+              "en": "Code Editor"
+            },
+            "slug": "ide-setup"
+          },
           {
             "label": "Установка Go",
             "translations": {
               "en": "Installing Go"
             },
             "slug": "installation"
+          },
+          {
+            "label": "Hello World",
+            "translations": {
+              "en": "Hello World"
+            },
+            "slug": "hello-world"
+          },
+          {
+            "label": "Структура программы",
+            "translations": {
+              "en": "Program Structure"
+            },
+            "slug": "program-structure"
           }
         ]
       }

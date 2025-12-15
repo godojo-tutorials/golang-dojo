@@ -5,12 +5,28 @@
       "collapsed": false,
       "items": [
         {
-          "label": "Основы языка Go",
+          "label": "Введение в Go",
           "collapsed": false,
           "items": [
             {
+              "label": "Что такое Go",
+              "link": "/ru/what-is-go/"
+            },
+            {
+              "label": "Редактор кода",
+              "link": "/ru/ide-setup/"
+            },
+            {
               "label": "Установка Go",
               "link": "/ru/installation/"
+            },
+            {
+              "label": "Hello World",
+              "link": "/ru/hello-world/"
+            },
+            {
+              "label": "Структура программы",
+              "link": "/ru/program-structure/"
             }
           ]
         }
@@ -23,12 +39,28 @@
       "collapsed": false,
       "items": [
         {
-          "label": "Go Language Fundamentals",
+          "label": "Introduction to Go",
           "collapsed": false,
           "items": [
             {
+              "label": "What is Go?",
+              "link": "/en/what-is-go/"
+            },
+            {
+              "label": "Code Editor",
+              "link": "/en/ide-setup/"
+            },
+            {
               "label": "Installing Go",
               "link": "/en/installation/"
+            },
+            {
+              "label": "Hello World",
+              "link": "/en/hello-world/"
+            },
+            {
+              "label": "Program Structure",
+              "link": "/en/program-structure/"
             }
           ]
         }

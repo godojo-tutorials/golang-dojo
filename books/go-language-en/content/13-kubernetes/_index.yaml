@@ -1,5 +1,0 @@
-id: kubernetes
-order: 13
-title: Kubernetes for Go
-description: Containerization, deployment, monitoring in K8s
-modulesCount: 3

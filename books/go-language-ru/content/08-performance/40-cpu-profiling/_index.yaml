@@ -1,6 +1,0 @@
-id: cpu-profiling
-order: 40
-title: Профилирование CPU
-titleEn: CPU Profiling
-block: performance
-topicsCount: 5

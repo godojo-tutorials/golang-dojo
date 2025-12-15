@@ -1,6 +1,0 @@
-id: advanced
-order: 17
-title: Продвинутые темы
-titleEn: Advanced Topics
-description: Performance engineering, SRE, Go internals
-modulesCount: 3

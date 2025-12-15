@@ -1,6 +1,0 @@
-id: prod-engineering
-order: 11
-title: Production инжиниринг
-titleEn: Production Engineering
-description: Деплой, контейнеры, отладка
-modulesCount: 5

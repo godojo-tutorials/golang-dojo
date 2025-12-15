@@ -1,1923 +1,1442 @@
 # Godojo Go Tutorial - Curriculum Configuration
 # Центральная конфигурация структуры учебника
-# Стиль: learn.javascript.ru (плоские URL, оглавление на главной)
+# Новая структура: content/ru/{block}/{module?}/{topic}.md
 
-version: "1.0"
+version: "2.0"
 language: ru
 title: "Полный учебник по Go"
-description: "От основ до эксперта - 79 модулей, 17 блоков"
+description: "От основ до эксперта"
 
-# Статистика
-stats:
-  totalBlocks: 17
-  totalModules: 79
-  totalTopics: 395  # ~5 топиков на модуль
-  estimatedHours: 370
+# Структура контента
+# Путь к файлу: content/ru/{block.path}/{module.path?}/{topic.file}
+# Где module.path опционален для плоских блоков (01-intro, 04-pointers и т.д.)
 
 blocks:
   # ============================================
-  # БЛОК 1: Go Language Fundamentals
+  # БЛОК 1: Введение
   # ============================================
-  - id: fundamentals
-    order: 1
-    title: "Основы языка Go"
-    titleEn: "Go Language Fundamentals"
+  - id: intro
+    path: "01-intro"
+    title: "Введение в Go"
+    titleEn: "Introduction to Go"
+    description: "Знакомство с языком Go"
+    flat: true  # Топики лежат прямо в блоке, без модулей
+    topics:
+      - file: "01-what-is-go.md"
+        slug: what-is-go
+        title: "Что такое Go"
+        description: "Обзор языка Go, его особенности и применение"
+      - file: "02-ide-setup.md"
+        slug: ide-setup
+        title: "Редактор кода"
+        description: "Настройка VS Code, GoLand и других редакторов для Go"
+      - file: "03-installation.md"
+        slug: installation
+        title: "Установка Go"
+        description: "Go установка, версии, обновление"
+      - file: "04-hello-world.md"
+        slug: hello-world
+        title: "Hello World"
+        description: "Первая программа на Go"
+      - file: "05-program-structure.md"
+        slug: program-structure
+        title: "Структура программы"
+        description: "Основные элементы Go программы"
+      - file: "06-compile-and-run.md"
+        slug: compile-and-run
+        title: "Компиляция и запуск"
+        description: "go build, go run и исполняемые файлы"
+      - file: "07-go-playground.md"
+        slug: go-playground
+        title: "Go Playground"
+        description: "Онлайн-среда для экспериментов"
+      - file: "08-docs-and-resources.md"
+        slug: docs-and-resources
+        title: "Документация и ресурсы"
+        description: "Где искать информацию о Go"
+
+  # ============================================
+  # БЛОК 2: Основы
+  # ============================================
+  - id: basics
+    path: "02-basics"
+    title: "Основы языка"
+    titleEn: "Language Basics"
     description: "Базовые концепции языка Go"
     modules:
-      # Module 1: Go Environment & Setup
-      - id: environment
-        order: 1
-        title: "Окружение и установка"
-        titleEn: "Go Environment & Setup"
+      # Модуль 2.1: Лексика
+      - id: lexical
+        path: "01-lexical"
+        title: "Лексические элементы"
+        titleEn: "Lexical Elements"
         topics:
-          - slug: installation
-            title: "Установка Go"
-            description: "Go установка, версии, обновление"
-          - slug: workspace-setup
-            title: "Настройка workspace"
-            description: "GOPATH vs GOMOD, workspace структура"
-          - slug: ide-configuration
-            title: "Настройка IDE"
-            description: "VS Code, GoLand, vim-go настройка"
-          - slug: first-program
-            title: "Первая программа"
-            description: "Hello World, запуск программы"
-          - slug: go-command-intro
-            title: "Команды Go"
-            description: "go run, go build базовые команды"
+          - file: "01-source-code-representation.md"
+            slug: source-code-representation
+            title: "Представление исходного кода"
+            description: "UTF-8, Unicode и файлы Go"
+          - file: "02-keywords-identifiers.md"
+            slug: keywords-identifiers
+            title: "Ключевые слова и идентификаторы"
+            description: "Зарезервированные слова и правила именования"
+          - file: "03-operators-punctuation.md"
+            slug: operators-punctuation
+            title: "Операторы и пунктуация"
+            description: "Символы операторов и разделители"
+          - file: "04-integer-literals.md"
+            slug: integer-literals
+            title: "Целочисленные литералы"
+            description: "Десятичные, двоичные, восьмеричные, шестнадцатеричные"
+          - file: "05-float-literals.md"
+            slug: float-literals
+            title: "Литералы с плавающей точкой"
+            description: "Decimal и hex float литералы"
+          - file: "06-imaginary-literals.md"
+            slug: imaginary-literals
+            title: "Мнимые литералы"
+            description: "Комплексные числа в Go"
+          - file: "07-rune-literals.md"
+            slug: rune-literals
+            title: "Руновые литералы"
+            description: "Unicode code points"
+          - file: "08-string-literals.md"
+            slug: string-literals
+            title: "Строковые литералы"
+            description: "Обычные и raw строки"
 
-      # Module 2: Variables & Data Types
-      - id: variables
-        order: 2
-        title: "Переменные и типы данных"
-        titleEn: "Variables & Data Types"
+      # Модуль 2.2: Типы
+      - id: types
+        path: "02-types"
+        title: "Система типов"
+        titleEn: "Type System"
         topics:
-          - slug: variables-declaration
-            title: "Объявление переменных"
-            description: "var, := краткая форма, zero values"
-          - slug: basic-types
-            title: "Базовые типы"
-            description: "int, float, string, bool типы"
-          - slug: type-conversion
+          - file: "01-type-system-overview.md"
+            slug: type-system-overview
+            title: "Обзор системы типов"
+            description: "Статическая типизация в Go"
+          - file: "02-bool.md"
+            slug: bool
+            title: "Тип bool"
+            description: "Булевый тип и логические значения"
+          - file: "03-integers.md"
+            slug: integers
+            title: "Целочисленные типы"
+            description: "int, int8, int16, int32, int64, uint..."
+          - file: "04-floats.md"
+            slug: floats
+            title: "Типы с плавающей точкой"
+            description: "float32, float64"
+          - file: "05-complex.md"
+            slug: complex
+            title: "Комплексные типы"
+            description: "complex64, complex128"
+          - file: "06-string.md"
+            slug: string
+            title: "Тип string"
+            description: "Строки в Go"
+          - file: "07-rune-byte.md"
+            slug: rune-byte
+            title: "Типы rune и byte"
+            description: "Алиасы для работы с символами"
+          - file: "08-type-aliases.md"
+            slug: type-aliases
+            title: "Алиасы типов"
+            description: "type alias = existing"
+          - file: "09-type-definitions.md"
+            slug: type-definitions
+            title: "Определение типов"
+            description: "type NewType underlying"
+          - file: "10-zero-values.md"
+            slug: zero-values
+            title: "Нулевые значения"
+            description: "Zero values для всех типов"
+          - file: "11-type-conversions.md"
+            slug: type-conversions
             title: "Преобразование типов"
             description: "Явное приведение типов"
-          - slug: constants
-            title: "Константы"
-            description: "const объявление, typed/untyped константы"
-          - slug: variable-scope
-            title: "Области видимости"
-            description: "Области видимости переменных"
+          - file: "12-type-inference.md"
+            slug: type-inference
+            title: "Вывод типов"
+            description: "Автоматический вывод типов"
 
-      # Module 3: Operators & Expressions
-      - id: operators
-        order: 3
-        title: "Операторы и выражения"
-        titleEn: "Operators & Expressions"
+      # Модуль 2.3: Переменные
+      - id: variables
+        path: "03-variables"
+        title: "Переменные и константы"
+        titleEn: "Variables & Constants"
         topics:
-          - slug: arithmetic-operators
-            title: "Арифметические операторы"
-            description: "+, -, *, /, % операторы"
-          - slug: comparison-operators
-            title: "Операторы сравнения"
-            description: "==, !=, <, >, <=, >= сравнения"
-          - slug: logical-operators
-            title: "Логические операторы"
-            description: "&&, ||, ! логические операции"
-          - slug: assignment-operators
-            title: "Операторы присваивания"
-            description: "=, +=, -=, *=, /= присваивания"
-          - slug: operator-precedence
-            title: "Приоритет операторов"
-            description: "Приоритет операторов"
+          - file: "01-var-declaration.md"
+            slug: var-declaration
+            title: "Объявление var"
+            description: "Полная форма объявления переменных"
+          - file: "02-short-declaration.md"
+            slug: short-declaration
+            title: "Краткое объявление :="
+            description: "Короткая форма объявления"
+          - file: "03-multiple-declaration.md"
+            slug: multiple-declaration
+            title: "Множественное объявление"
+            description: "Объявление нескольких переменных"
+          - file: "04-constants.md"
+            slug: constants
+            title: "Константы"
+            description: "const объявление"
+          - file: "05-iota.md"
+            slug: iota
+            title: "Генератор iota"
+            description: "Автоматическая нумерация констант"
+          - file: "06-typed-untyped-constants.md"
+            slug: typed-untyped-constants
+            title: "Типизированные и нетипизированные константы"
+            description: "Разница между typed и untyped"
+          - file: "07-constant-expressions.md"
+            slug: constant-expressions
+            title: "Константные выражения"
+            description: "Вычисление констант во время компиляции"
+          - file: "08-scope-visibility.md"
+            slug: scope-visibility
+            title: "Области видимости"
+            description: "Block scope и видимость"
+          - file: "09-shadowing.md"
+            slug: shadowing
+            title: "Затенение переменных"
+            description: "Variable shadowing"
+          - file: "10-blank-identifier.md"
+            slug: blank-identifier
+            title: "Пустой идентификатор"
+            description: "Использование _"
+          - file: "11-naming-conventions.md"
+            slug: naming-conventions
+            title: "Соглашения об именовании"
+            description: "Стиль именования в Go"
+          - file: "12-exported-unexported.md"
+            slug: exported-unexported
+            title: "Экспортируемые и неэкспортируемые"
+            description: "Публичные и приватные идентификаторы"
 
-      # Module 4: Control Flow
+      # Модуль 2.4: Операторы
+      - id: operators
+        path: "04-operators"
+        title: "Операторы"
+        titleEn: "Operators"
+        topics:
+          - file: "01-arithmetic.md"
+            slug: arithmetic
+            title: "Арифметические операторы"
+            description: "+, -, *, /, %"
+          - file: "02-comparison.md"
+            slug: comparison
+            title: "Операторы сравнения"
+            description: "==, !=, <, >, <=, >="
+          - file: "03-logical.md"
+            slug: logical
+            title: "Логические операторы"
+            description: "&&, ||, !"
+          - file: "04-bitwise.md"
+            slug: bitwise
+            title: "Побитовые операторы"
+            description: "&, |, ^, &^, <<, >>"
+          - file: "05-assignment.md"
+            slug: assignment
+            title: "Операторы присваивания"
+            description: "=, +=, -=, *=, /="
+          - file: "06-address-dereference.md"
+            slug: address-dereference
+            title: "Адрес и разыменование"
+            description: "& и * операторы"
+          - file: "07-precedence.md"
+            slug: precedence
+            title: "Приоритет операторов"
+            description: "Порядок выполнения операций"
+          - file: "08-order-of-evaluation.md"
+            slug: order-of-evaluation
+            title: "Порядок вычисления"
+            description: "Evaluation order в Go"
+
+      # Модуль 2.5: Управление потоком
       - id: control-flow
-        order: 4
+        path: "05-control-flow"
         title: "Управление потоком"
         titleEn: "Control Flow"
         topics:
-          - slug: if-statements
-            title: "Условия if"
-            description: "if, else, else if условия"
-          - slug: switch-statements
+          - file: "01-if-else.md"
+            slug: if-else
+            title: "Условия if-else"
+            description: "Условные операторы"
+          - file: "02-switch.md"
+            slug: switch
             title: "Конструкция switch"
             description: "switch, case, default, fallthrough"
-          - slug: for-loops
-            title: "Циклы for"
-            description: "for цикл, различные формы"
-          - slug: range-loops
-            title: "Циклы range"
-            description: "range с arrays, slices, maps"
-          - slug: break-continue
+          - file: "03-type-switch.md"
+            slug: type-switch
+            title: "Type switch"
+            description: "switch по типам"
+          - file: "04-for.md"
+            slug: for
+            title: "Цикл for"
+            description: "Единственный цикл в Go"
+          - file: "05-range.md"
+            slug: range
+            title: "Цикл range"
+            description: "Итерация по коллекциям"
+          - file: "06-break-continue.md"
+            slug: break-continue
             title: "Break и Continue"
             description: "Управление циклами"
+          - file: "07-goto.md"
+            slug: goto
+            title: "Оператор goto"
+            description: "Безусловный переход"
+          - file: "08-labels.md"
+            slug: labels
+            title: "Метки"
+            description: "Labels для break и continue"
 
-      # Module 5: Functions
-      - id: functions
-        order: 5
-        title: "Функции"
-        titleEn: "Functions"
+  # ============================================
+  # БЛОК 3: Составные типы
+  # ============================================
+  - id: composite-types
+    path: "03-composite-types"
+    title: "Составные типы"
+    titleEn: "Composite Types"
+    description: "Массивы, срезы, карты, структуры"
+    modules:
+      # Модуль 3.1: Составные литералы
+      - id: composite-literals
+        path: "01-composite-literals"
+        title: "Составные литералы"
+        titleEn: "Composite Literals"
         topics:
-          - slug: function-declaration
-            title: "Объявление функций"
-            description: "func объявление, параметры"
-          - slug: return-values
-            title: "Возвращаемые значения"
-            description: "Возвращаемые значения, множественный return"
-          - slug: named-returns
-            title: "Именованные возвраты"
-            description: "Именованные возвращаемые значения"
-          - slug: variadic-functions
-            title: "Вариадические функции"
-            description: "Функции с переменным числом аргументов"
-          - slug: anonymous-functions
-            title: "Анонимные функции"
-            description: "Анонимные функции, closures"
+          - file: "01-syntax.md"
+            slug: composite-literal-syntax
+            title: "Синтаксис составных литералов"
+            description: "Общий синтаксис composite literals"
+          - file: "02-nested-literals.md"
+            slug: nested-literals
+            title: "Вложенные литералы"
+            description: "Литералы внутри литералов"
+          - file: "03-keyed-elements.md"
+            slug: keyed-elements
+            title: "Ключевые элементы"
+            description: "Именованные поля в литералах"
+          - file: "04-address-of-literal.md"
+            slug: address-of-literal
+            title: "Адрес литерала"
+            description: "&T{} паттерн"
 
-      # Module 6: Packages & Imports
-      - id: packages
-        order: 6
-        title: "Пакеты и импорты"
-        titleEn: "Packages & Imports"
+      # Модуль 3.2: Массивы
+      - id: arrays
+        path: "02-arrays"
+        title: "Массивы"
+        titleEn: "Arrays"
         topics:
-          - slug: package-basics
-            title: "Основы пакетов"
-            description: "package объявление, main package"
-          - slug: import-statements
-            title: "Импорт пакетов"
-            description: "Импорт пакетов, алиасы"
-          - slug: visibility-rules
-            title: "Правила видимости"
-            description: "Экспортируемые vs приватные идентификаторы"
-          - slug: package-organization
-            title: "Организация пакетов"
-            description: "Структура пакетов, naming conventions"
-          - slug: init-functions
-            title: "Функции init"
-            description: "init функции, порядок инициализации"
+          - file: "01-declaration.md"
+            slug: array-declaration
+            title: "Объявление массивов"
+            description: "[n]T синтаксис"
+          - file: "02-initialization.md"
+            slug: array-initialization
+            title: "Инициализация массивов"
+            description: "Литералы массивов"
+          - file: "03-indexing.md"
+            slug: array-indexing
+            title: "Индексация массивов"
+            description: "Доступ к элементам"
+          - file: "04-arrays-vs-slices.md"
+            slug: arrays-vs-slices
+            title: "Массивы vs Срезы"
+            description: "Когда использовать массивы"
 
-      # Module 7: Arrays & Slices
-      - id: arrays-slices
-        order: 7
-        title: "Массивы и срезы"
-        titleEn: "Arrays & Slices"
+      # Модуль 3.3: Срезы
+      - id: slices
+        path: "03-slices"
+        title: "Срезы"
+        titleEn: "Slices"
         topics:
-          - slug: arrays-basics
-            title: "Основы массивов"
-            description: "Array объявление, инициализация, доступ"
-          - slug: array-operations
-            title: "Операции с массивами"
-            description: "Длина массива, итерация, многомерные массивы"
-          - slug: slices-introduction
-            title: "Введение в срезы"
-            description: "Slice создание, отличия от arrays"
-          - slug: slice-operations
-            title: "Операции со срезами"
-            description: "append, copy, len, cap операции"
-          - slug: slice-internals
-            title: "Устройство срезов"
-            description: "Внутреннее устройство, memory layout"
+          - file: "01-slice-basics.md"
+            slug: slice-basics
+            title: "Основы срезов"
+            description: "[]T тип и создание"
+          - file: "02-make.md"
+            slug: slice-make
+            title: "Функция make"
+            description: "make([]T, len, cap)"
+          - file: "03-len-cap.md"
+            slug: slice-len-cap
+            title: "Длина и ёмкость"
+            description: "len() и cap() для срезов"
+          - file: "04-slicing.md"
+            slug: slicing
+            title: "Срезание"
+            description: "a[low:high:max] синтаксис"
+          - file: "05-append.md"
+            slug: slice-append
+            title: "Функция append"
+            description: "Добавление элементов"
+          - file: "06-copy.md"
+            slug: slice-copy
+            title: "Функция copy"
+            description: "Копирование срезов"
+          - file: "07-nil-vs-empty.md"
+            slug: nil-vs-empty
+            title: "nil vs пустой срез"
+            description: "Разница между nil и []T{}"
+          - file: "08-slice-internals.md"
+            slug: slice-internals
+            title: "Внутреннее устройство"
+            description: "Slice header и backing array"
+          - file: "09-slice-tricks.md"
+            slug: slice-tricks
+            title: "Приёмы работы со срезами"
+            description: "Полезные паттерны"
+          - file: "10-slices-package.md"
+            slug: slices-package
+            title: "Пакет slices"
+            description: "Стандартные функции для срезов"
 
-      # Module 8: Maps & Strings
-      - id: maps-strings
-        order: 8
-        title: "Карты и строки"
-        titleEn: "Maps & Strings"
+      # Модуль 3.4: Карты
+      - id: maps
+        path: "04-maps"
+        title: "Карты"
+        titleEn: "Maps"
         topics:
-          - slug: maps-basics
+          - file: "01-map-basics.md"
+            slug: map-basics
             title: "Основы карт"
-            description: "Map создание, инициализация, доступ к элементам"
-          - slug: map-operations
-            title: "Операции с картами"
-            description: "Добавление, удаление, проверка существования"
-          - slug: maps-iteration
+            description: "map[K]V тип"
+          - file: "02-make-map.md"
+            slug: make-map
+            title: "Создание карт"
+            description: "make(map[K]V)"
+          - file: "03-crud-operations.md"
+            slug: map-crud
+            title: "CRUD операции"
+            description: "Добавление, чтение, обновление, удаление"
+          - file: "04-comma-ok.md"
+            slug: comma-ok
+            title: "Идиома comma-ok"
+            description: "v, ok := m[key]"
+          - file: "05-iteration.md"
+            slug: map-iteration
             title: "Итерация по картам"
-            description: "Итерация по maps, порядок элементов"
-          - slug: strings-basics
-            title: "Основы строк"
-            description: "String литералы, unicode, UTF-8"
-          - slug: string-operations
-            title: "Операции со строками"
-            description: "Длина, индексация, concatenation, strings package"
+            description: "for k, v := range m"
+          - file: "06-maps-package.md"
+            slug: maps-package
+            title: "Пакет maps"
+            description: "Стандартные функции для карт"
 
-      # Module 9: Structs & Methods
-      - id: structs-methods
-        order: 9
-        title: "Структуры и методы"
-        titleEn: "Structs & Methods"
+      # Модуль 3.5: Структуры
+      - id: structs
+        path: "05-structs"
+        title: "Структуры"
+        titleEn: "Structs"
         topics:
-          - slug: struct-declaration
-            title: "Объявление структур"
-            description: "Struct определение, поля, тэги"
-          - slug: struct-initialization
-            title: "Инициализация структур"
-            description: "Литералы структур, нулевые значения"
-          - slug: struct-embedding
-            title: "Встраивание структур"
-            description: "Анонимные поля, композиция"
-          - slug: methods-basics
-            title: "Основы методов"
-            description: "Method определение, receivers"
-          - slug: pointer-receivers
-            title: "Указатели-получатели"
-            description: "Value vs pointer receivers"
+          - file: "01-struct-basics.md"
+            slug: struct-basics
+            title: "Основы структур"
+            description: "type T struct {}"
+          - file: "02-field-access.md"
+            slug: field-access
+            title: "Доступ к полям"
+            description: "Точечная нотация"
+          - file: "03-anonymous-fields.md"
+            slug: anonymous-fields
+            title: "Анонимные поля"
+            description: "Поля без имени"
+          - file: "04-embedding.md"
+            slug: struct-embedding
+            title: "Встраивание"
+            description: "Композиция структур"
+          - file: "05-struct-tags.md"
+            slug: struct-tags
+            title: "Теги структур"
+            description: "Метаданные полей"
+          - file: "06-comparable-structs.md"
+            slug: comparable-structs
+            title: "Сравнимые структуры"
+            description: "Когда структуры можно сравнивать"
+          - file: "07-anonymous-structs.md"
+            slug: anonymous-structs
+            title: "Анонимные структуры"
+            description: "Структуры без имени типа"
+          - file: "08-struct-patterns.md"
+            slug: struct-patterns
+            title: "Паттерны структур"
+            description: "Полезные приёмы"
 
-      # Module 10: Interfaces
+  # ============================================
+  # БЛОК 4: Указатели
+  # ============================================
+  - id: pointers
+    path: "04-pointers"
+    title: "Указатели"
+    titleEn: "Pointers"
+    description: "Указатели в Go"
+    flat: true
+    topics:
+      - file: "01-pointer-basics.md"
+        slug: pointer-basics
+        title: "Основы указателей"
+        description: "*T тип и nil"
+      - file: "02-address-operator.md"
+        slug: address-operator
+        title: "Оператор адреса"
+        description: "& оператор"
+      - file: "03-dereference.md"
+        slug: dereference
+        title: "Разыменование"
+        description: "* оператор"
+      - file: "04-pointers-vs-values.md"
+        slug: pointers-vs-values
+        title: "Указатели vs Значения"
+        description: "Когда использовать указатели"
+      - file: "05-nil-pointers.md"
+        slug: nil-pointers
+        title: "nil указатели"
+        description: "Работа с nil"
+      - file: "06-pointer-to-struct.md"
+        slug: pointer-to-struct
+        title: "Указатели на структуры"
+        description: "Автоматическое разыменование"
+
+  # ============================================
+  # БЛОК 5: Функции
+  # ============================================
+  - id: functions
+    path: "05-functions"
+    title: "Функции"
+    titleEn: "Functions"
+    description: "Функции в Go"
+    modules:
+      # Модуль 5.1: Основы
+      - id: basics
+        path: "01-basics"
+        title: "Основы функций"
+        titleEn: "Function Basics"
+        topics:
+          - file: "01-declaration.md"
+            slug: func-declaration
+            title: "Объявление функций"
+            description: "func keyword"
+          - file: "02-parameters.md"
+            slug: func-parameters
+            title: "Параметры"
+            description: "Параметры функций"
+          - file: "03-return-values.md"
+            slug: func-return-values
+            title: "Возвращаемые значения"
+            description: "Один и несколько результатов"
+          - file: "04-named-returns.md"
+            slug: named-returns
+            title: "Именованные возвраты"
+            description: "Named return values"
+          - file: "05-variadic.md"
+            slug: variadic
+            title: "Вариадические функции"
+            description: "...T параметры"
+          - file: "06-terminating-statements.md"
+            slug: terminating-statements
+            title: "Завершающие операторы"
+            description: "Terminating statements"
+
+      # Модуль 5.2: Функции как значения
+      - id: first-class
+        path: "02-first-class"
+        title: "Функции первого класса"
+        titleEn: "First-Class Functions"
+        topics:
+          - file: "01-function-types.md"
+            slug: function-types
+            title: "Типы функций"
+            description: "func(params) returns"
+          - file: "02-function-values.md"
+            slug: function-values
+            title: "Функции как значения"
+            description: "Присваивание функций"
+          - file: "03-anonymous-functions.md"
+            slug: anonymous-functions
+            title: "Анонимные функции"
+            description: "func() {} литералы"
+          - file: "04-closures.md"
+            slug: closures
+            title: "Замыкания"
+            description: "Захват переменных"
+          - file: "05-callbacks.md"
+            slug: callbacks
+            title: "Callback функции"
+            description: "Функции как аргументы"
+          - file: "06-higher-order.md"
+            slug: higher-order
+            title: "Функции высшего порядка"
+            description: "Функции, возвращающие функции"
+
+      # Модуль 5.3: defer, panic, recover
+      - id: defer-panic-recover
+        path: "03-defer-panic-recover"
+        title: "defer, panic, recover"
+        titleEn: "defer, panic, recover"
+        topics:
+          - file: "01-defer-basics.md"
+            slug: defer-basics
+            title: "Основы defer"
+            description: "Отложенное выполнение"
+          - file: "02-defer-order.md"
+            slug: defer-order
+            title: "Порядок defer"
+            description: "LIFO выполнение"
+          - file: "03-defer-in-loops.md"
+            slug: defer-in-loops
+            title: "defer в циклах"
+            description: "Подводные камни"
+          - file: "04-panic.md"
+            slug: panic
+            title: "Паника"
+            description: "panic() функция"
+          - file: "05-recover.md"
+            slug: recover
+            title: "Восстановление"
+            description: "recover() функция"
+          - file: "06-defer-patterns.md"
+            slug: defer-patterns
+            title: "Паттерны defer"
+            description: "Полезные приёмы"
+
+  # ============================================
+  # БЛОК 6: Методы и интерфейсы
+  # ============================================
+  - id: methods-interfaces
+    path: "06-methods-interfaces"
+    title: "Методы и интерфейсы"
+    titleEn: "Methods & Interfaces"
+    description: "ООП в Go"
+    modules:
+      # Модуль 6.1: Методы
+      - id: methods
+        path: "01-methods"
+        title: "Методы"
+        titleEn: "Methods"
+        topics:
+          - file: "01-method-basics.md"
+            slug: method-basics
+            title: "Основы методов"
+            description: "func (r T) Name()"
+          - file: "02-value-receivers.md"
+            slug: value-receivers
+            title: "Value receivers"
+            description: "Получатели-значения"
+          - file: "03-pointer-receivers.md"
+            slug: pointer-receivers
+            title: "Pointer receivers"
+            description: "Получатели-указатели"
+          - file: "04-method-values.md"
+            slug: method-values
+            title: "Method values"
+            description: "Методы как значения"
+          - file: "05-method-expressions.md"
+            slug: method-expressions
+            title: "Method expressions"
+            description: "T.Method синтаксис"
+          - file: "06-methods-on-types.md"
+            slug: methods-on-types
+            title: "Методы на типах"
+            description: "Какие типы могут иметь методы"
+          - file: "07-embedded-methods.md"
+            slug: embedded-methods
+            title: "Методы встроенных типов"
+            description: "Promotion методов"
+          - file: "08-receiver-guidelines.md"
+            slug: receiver-guidelines
+            title: "Выбор получателя"
+            description: "Когда value, когда pointer"
+
+      # Модуль 6.2: Интерфейсы
       - id: interfaces
-        order: 10
+        path: "02-interfaces"
         title: "Интерфейсы"
         titleEn: "Interfaces"
         topics:
-          - slug: interface-declaration
-            title: "Объявление интерфейсов"
-            description: "Interface определение, методы"
-          - slug: interface-implementation
-            title: "Реализация интерфейсов"
-            description: "Неявная реализация интерфейсов"
-          - slug: empty-interface
+          - file: "01-interface-basics.md"
+            slug: interface-basics
+            title: "Основы интерфейсов"
+            description: "type I interface {}"
+          - file: "02-implicit-implementation.md"
+            slug: implicit-implementation
+            title: "Неявная реализация"
+            description: "Duck typing в Go"
+          - file: "03-empty-interface.md"
+            slug: empty-interface
             title: "Пустой интерфейс"
-            description: "interface{}, type assertions"
-          - slug: type-switches
-            title: "Type switches"
-            description: "Type switch, тип assertion"
-          - slug: interface-composition
+            description: "interface{} и any"
+          - file: "04-type-assertions.md"
+            slug: type-assertions
+            title: "Type assertions"
+            description: "i.(T) синтаксис"
+          - file: "05-type-switch.md"
+            slug: interface-type-switch
+            title: "Type switch"
+            description: "switch i.(type)"
+          - file: "06-interface-composition.md"
+            slug: interface-composition
             title: "Композиция интерфейсов"
-            description: "Композиция интерфейсов"
+            description: "Встраивание интерфейсов"
+          - file: "07-common-interfaces.md"
+            slug: common-interfaces
+            title: "Стандартные интерфейсы"
+            description: "io.Reader, io.Writer, etc."
+          - file: "08-interface-values.md"
+            slug: interface-values
+            title: "Значения интерфейсов"
+            description: "Dynamic type и value"
+          - file: "09-nil-interface.md"
+            slug: nil-interface
+            title: "nil интерфейсы"
+            description: "nil vs nil interface"
+          - file: "10-interface-vs-concrete.md"
+            slug: interface-vs-concrete
+            title: "Интерфейсы vs Конкретные типы"
+            description: "Когда использовать интерфейсы"
+          - file: "11-interface-design.md"
+            slug: interface-design
+            title: "Проектирование интерфейсов"
+            description: "Маленькие интерфейсы"
+          - file: "12-type-identity.md"
+            slug: type-identity
+            title: "Идентичность типов"
+            description: "Type identity rules"
+          - file: "13-assignability.md"
+            slug: assignability
+            title: "Присваиваемость"
+            description: "Assignability rules"
+          - file: "14-comparable.md"
+            slug: comparable
+            title: "Сравнимость"
+            description: "comparable constraint"
+          - file: "15-any-keyword.md"
+            slug: any-keyword
+            title: "Ключевое слово any"
+            description: "any как алиас"
+          - file: "16-interface-patterns.md"
+            slug: interface-patterns
+            title: "Паттерны интерфейсов"
+            description: "Полезные приёмы"
 
-      # Module 11: Pointers & Memory
-      - id: pointers-memory
-        order: 11
-        title: "Указатели и память"
-        titleEn: "Pointers & Memory"
-        topics:
-          - slug: pointers-basics
-            title: "Основы указателей"
-            description: "Pointer объявление, & и * операторы"
-          - slug: pointer-arithmetic
-            title: "Арифметика указателей"
-            description: "Отсутствие pointer arithmetic в Go"
-          - slug: memory-allocation
-            title: "Выделение памяти"
-            description: "new, make функции"
-          - slug: pass-by-value
-            title: "Передача по значению"
-            description: "Передача по значению vs по ссылке"
-          - slug: memory-management
-            title: "Управление памятью"
-            description: "Stack vs heap, garbage collector основы"
-
-      # Module 12: Error Handling
-      - id: error-handling
-        order: 12
+  # ============================================
+  # БЛОК 7: Ошибки
+  # ============================================
+  - id: errors
+    path: "07-errors"
+    title: "Обработка ошибок"
+    titleEn: "Error Handling"
+    description: "Работа с ошибками в Go"
+    flat: true
+    topics:
+      - file: "01-error-interface.md"
+        slug: error-interface
+        title: "Интерфейс error"
+        description: "Основа обработки ошибок"
+      - file: "02-creating-errors.md"
+        slug: creating-errors
+        title: "Создание ошибок"
+        description: "errors.New, fmt.Errorf"
+      - file: "03-error-handling.md"
+        slug: error-handling
         title: "Обработка ошибок"
-        titleEn: "Error Handling"
-        topics:
-          - slug: error-interface
-            title: "Интерфейс error"
-            description: "Error interface, error создание"
-          - slug: error-handling-patterns
-            title: "Паттерны обработки ошибок"
-            description: "if err != nil паттерн, error checking"
-          - slug: custom-errors
-            title: "Пользовательские ошибки"
-            description: "Создание собственных error типов"
-          - slug: error-wrapping
-            title: "Оборачивание ошибок"
-            description: "fmt.Errorf, errors.Wrap, error chains"
-          - slug: panic-recover
-            title: "Panic и Recover"
-            description: "panic, recover, когда использовать"
-
-      # Module 13: Generics Basics
-      - id: generics
-        order: 13
-        title: "Основы дженериков"
-        titleEn: "Generics Basics"
-        topics:
-          - slug: type-parameters
-            title: "Параметры типов"
-            description: "Generic functions, type constraints"
-          - slug: generic-types
-            title: "Обобщённые типы"
-            description: "Generic structs, interfaces"
-          - slug: type-inference
-            title: "Вывод типов"
-            description: "Автоматический вывод типов"
-          - slug: constraint-interfaces
-            title: "Интерфейсы-ограничения"
-            description: "Constraint определение, comparable"
-          - slug: generic-examples
-            title: "Примеры дженериков"
-            description: "Практические примеры использования"
+        description: "if err != nil"
+      - file: "04-wrapping-errors.md"
+        slug: wrapping-errors
+        title: "Оборачивание ошибок"
+        description: "%w и error chains"
+      - file: "05-errors-is-as.md"
+        slug: errors-is-as
+        title: "errors.Is и errors.As"
+        description: "Проверка типов ошибок"
+      - file: "06-custom-errors.md"
+        slug: custom-errors
+        title: "Пользовательские ошибки"
+        description: "Собственные типы ошибок"
+      - file: "07-sentinel-errors.md"
+        slug: sentinel-errors
+        title: "Sentinel ошибки"
+        description: "Предопределённые ошибки"
+      - file: "08-error-patterns.md"
+        slug: error-patterns
+        title: "Паттерны ошибок"
+        description: "Полезные приёмы"
+      - file: "09-dont-panic.md"
+        slug: dont-panic
+        title: "Не паникуй"
+        description: "Когда использовать panic"
+      - file: "10-error-best-practices.md"
+        slug: error-best-practices
+        title: "Best practices"
+        description: "Лучшие практики"
 
   # ============================================
-  # БЛОК 2: Go Toolchain
+  # БЛОК 8: Пакеты
   # ============================================
-  - id: toolchain
-    order: 2
-    title: "Go Toolchain"
-    titleEn: "Go Toolchain"
-    description: "Инструменты разработки Go"
-
-    modules:
-      # Module 14: Go Toolchain
-      - id: go-toolchain
-        order: 14
-        title: "Инструменты Go"
-        titleEn: "Go Toolchain"
-        topics:
-          - slug: go-modules
-            title: "Go Modules"
-            description: "go mod init, go mod tidy, dependency management"
-          - slug: go-commands
-            title: "Команды Go"
-            description: "go build, go run, go test, go install детально"
-          - slug: go-fmt-imports
-            title: "Форматирование кода"
-            description: "Форматирование кода, автоматические импорты"
-          - slug: go-vet-lint
-            title: "Статический анализ"
-            description: "Статический анализ, линтеры"
-          - slug: cross-compilation
-            title: "Кросс-компиляция"
-            description: "Сборка для разных платформ"
-
-      # Module 15: Code Quality Tools
-      - id: code-quality
-        order: 15
-        title: "Инструменты качества кода"
-        titleEn: "Code Quality Tools"
-        topics:
-          - slug: golangci-lint
-            title: "golangci-lint"
-            description: "Настройка, конфигурация, CI интеграция"
-          - slug: staticcheck
-            title: "staticcheck"
-            description: "Продвинутый статический анализ"
-          - slug: goimports-gofumpt
-            title: "goimports и gofumpt"
-            description: "Продвинутое форматирование"
-          - slug: debugging-tools
-            title: "Инструменты отладки"
-            description: "delve, IDE debugging, print debugging"
-          - slug: git-hooks
-            title: "Git хуки"
-            description: "pre-commit хуки для Go проектов"
+  - id: packages
+    path: "08-packages"
+    title: "Пакеты и модули"
+    titleEn: "Packages & Modules"
+    description: "Организация кода в Go"
+    flat: true
+    topics:
+      - file: "01-package-basics.md"
+        slug: package-basics
+        title: "Основы пакетов"
+        description: "package declaration"
+      - file: "02-imports.md"
+        slug: imports
+        title: "Импорты"
+        description: "import statement"
+      - file: "03-go-modules.md"
+        slug: go-modules
+        title: "Go Modules"
+        description: "go mod init"
+      - file: "04-go-mod-file.md"
+        slug: go-mod-file
+        title: "Файл go.mod"
+        description: "Структура go.mod"
+      - file: "05-go-sum.md"
+        slug: go-sum
+        title: "Файл go.sum"
+        description: "Checksums зависимостей"
+      - file: "06-versioning.md"
+        slug: versioning
+        title: "Версионирование"
+        description: "Semantic versioning"
+      - file: "07-init-function.md"
+        slug: init-function
+        title: "Функция init"
+        description: "Инициализация пакета"
+      - file: "08-program-initialization.md"
+        slug: program-initialization
+        title: "Инициализация программы"
+        description: "Порядок инициализации"
+      - file: "09-internal-packages.md"
+        slug: internal-packages
+        title: "Internal пакеты"
+        description: "Приватные пакеты"
+      - file: "10-package-organization.md"
+        slug: package-organization
+        title: "Организация пакетов"
+        description: "Структура проекта"
+      - file: "11-documentation.md"
+        slug: package-documentation
+        title: "Документация"
+        description: "godoc комментарии"
+      - file: "12-publishing.md"
+        slug: publishing
+        title: "Публикация"
+        description: "Публикация модулей"
 
   # ============================================
-  # БЛОК 3: Concurrency Deep Dive
+  # БЛОК 9: Дженерики
+  # ============================================
+  - id: generics
+    path: "09-generics"
+    title: "Дженерики"
+    titleEn: "Generics"
+    description: "Обобщённое программирование"
+    flat: true
+    topics:
+      - file: "01-why-generics.md"
+        slug: why-generics
+        title: "Зачем дженерики"
+        description: "Мотивация и история"
+      - file: "02-type-parameters.md"
+        slug: type-parameters
+        title: "Параметры типов"
+        description: "[T any] синтаксис"
+      - file: "03-type-constraints.md"
+        slug: type-constraints
+        title: "Ограничения типов"
+        description: "Constraints"
+      - file: "04-any-comparable.md"
+        slug: any-comparable
+        title: "any и comparable"
+        description: "Встроенные constraints"
+      - file: "05-generic-functions.md"
+        slug: generic-functions
+        title: "Обобщённые функции"
+        description: "func F[T any]()"
+      - file: "06-generic-types.md"
+        slug: generic-types
+        title: "Обобщённые типы"
+        description: "type T[P any] struct"
+      - file: "07-generic-interfaces.md"
+        slug: generic-interfaces
+        title: "Обобщённые интерфейсы"
+        description: "type I[T any] interface"
+      - file: "08-type-inference.md"
+        slug: generic-type-inference
+        title: "Вывод типов"
+        description: "Type argument inference"
+      - file: "09-constraints-package.md"
+        slug: constraints-package
+        title: "Пакет constraints"
+        description: "Стандартные constraints"
+      - file: "10-slices-maps-packages.md"
+        slug: slices-maps-packages
+        title: "Пакеты slices и maps"
+        description: "Обобщённые функции stdlib"
+      - file: "11-generic-patterns.md"
+        slug: generic-patterns
+        title: "Паттерны дженериков"
+        description: "Полезные приёмы"
+      - file: "12-limitations.md"
+        slug: generic-limitations
+        title: "Ограничения"
+        description: "Что нельзя делать"
+      - file: "13-generic-type-aliases.md"
+        slug: generic-type-aliases
+        title: "Generic type aliases"
+        description: "Go 1.24 feature"
+      - file: "14-when-to-use.md"
+        slug: when-to-use-generics
+        title: "Когда использовать"
+        description: "Generics vs interfaces"
+
+  # ============================================
+  # БЛОК 10: Конкурентность
   # ============================================
   - id: concurrency
-    order: 3
+    path: "10-concurrency"
     title: "Конкурентность"
-    titleEn: "Concurrency Deep Dive"
-    description: "Горутины, каналы и паттерны"
-
+    titleEn: "Concurrency"
+    description: "Горутины, каналы, синхронизация"
     modules:
-      # Module 16: Goroutines Fundamentals
+      # Модуль 10.1: Горутины
       - id: goroutines
-        order: 16
-        title: "Основы горутин"
-        titleEn: "Goroutines Fundamentals"
+        path: "01-goroutines"
+        title: "Горутины"
+        titleEn: "Goroutines"
         topics:
-          - slug: goroutine-basics
+          - file: "01-concurrency-vs-parallelism.md"
+            slug: concurrency-vs-parallelism
+            title: "Конкурентность vs Параллелизм"
+            description: "Важное различие"
+          - file: "02-goroutine-basics.md"
+            slug: goroutine-basics
             title: "Основы горутин"
-            description: "go keyword, goroutine создание"
-          - slug: goroutine-lifecycle
-            title: "Жизненный цикл горутин"
-            description: "Жизненный цикл goroutine, завершение"
-          - slug: main-goroutine
-            title: "Главная горутина"
-            description: "main функция как goroutine"
-          - slug: goroutine-scheduling
-            title: "Планировщик горутин"
-            description: "Go scheduler основы, GOMAXPROCS"
-          - slug: goroutine-memory
-            title: "Память горутин"
-            description: "Stack size, goroutine vs threads"
+            description: "go keyword"
+          - file: "03-go-keyword.md"
+            slug: go-keyword
+            title: "Ключевое слово go"
+            description: "Запуск горутин"
+          - file: "04-goroutine-lifecycle.md"
+            slug: goroutine-lifecycle
+            title: "Жизненный цикл"
+            description: "Создание и завершение"
+          - file: "05-anonymous-goroutines.md"
+            slug: anonymous-goroutines
+            title: "Анонимные горутины"
+            description: "go func() {}"
+          - file: "06-goroutine-leaks.md"
+            slug: goroutine-leaks
+            title: "Утечки горутин"
+            description: "Как избежать"
+          - file: "07-gomaxprocs.md"
+            slug: gomaxprocs
+            title: "GOMAXPROCS"
+            description: "Параллелизм"
+          - file: "08-goroutine-patterns.md"
+            slug: goroutine-patterns
+            title: "Паттерны горутин"
+            description: "Полезные приёмы"
 
-      # Module 17: Channels Fundamentals
+      # Модуль 10.2: Каналы
       - id: channels
-        order: 17
-        title: "Основы каналов"
-        titleEn: "Channels Fundamentals"
+        path: "02-channels"
+        title: "Каналы"
+        titleEn: "Channels"
         topics:
-          - slug: channel-basics
+          - file: "01-channel-basics.md"
+            slug: channel-basics
             title: "Основы каналов"
-            description: "Channel создание, отправка, получение"
-          - slug: channel-types
-            title: "Типы каналов"
-            description: "Bidirectional vs unidirectional channels"
-          - slug: buffered-channels
+            description: "chan T тип"
+          - file: "02-buffered-channels.md"
+            slug: buffered-channels
             title: "Буферизованные каналы"
-            description: "Буферизованные vs небуферизованные каналы"
-          - slug: channel-closing
-            title: "Закрытие каналов"
-            description: "Закрытие каналов, проверка закрытия"
-          - slug: range-over-channels
-            title: "Range по каналам"
-            description: "Итерация по каналам"
-
-      # Module 18: Channel Patterns
-      - id: channel-patterns
-        order: 18
-        title: "Паттерны каналов"
-        titleEn: "Channel Patterns"
-        topics:
-          - slug: select-statement
-            title: "Оператор select"
-            description: "select для множественного выбора"
-          - slug: timeout-patterns
-            title: "Паттерны таймаутов"
-            description: "Таймауты с channels и time.After"
-          - slug: non-blocking-operations
-            title: "Неблокирующие операции"
-            description: "default в select, non-blocking I/O"
-          - slug: channel-direction
+            description: "make(chan T, n)"
+          - file: "03-send-receive.md"
+            slug: send-receive
+            title: "Отправка и получение"
+            description: "ch <- v и v := <-ch"
+          - file: "04-channel-direction.md"
+            slug: channel-direction
             title: "Направление каналов"
-            description: "Send-only, receive-only каналы"
-          - slug: channel-of-channels
-            title: "Каналы каналов"
-            description: "Каналы каналов, динамическая коммуникация"
+            description: "chan<- и <-chan"
+          - file: "05-closing-channels.md"
+            slug: closing-channels
+            title: "Закрытие каналов"
+            description: "close(ch)"
+          - file: "06-range-over-channel.md"
+            slug: range-over-channel
+            title: "Range по каналу"
+            description: "for v := range ch"
+          - file: "07-select.md"
+            slug: select
+            title: "Оператор select"
+            description: "Мультиплексирование"
+          - file: "08-default-case.md"
+            slug: default-case
+            title: "default case"
+            description: "Non-blocking operations"
+          - file: "09-nil-channels.md"
+            slug: nil-channels
+            title: "nil каналы"
+            description: "Блокирующие каналы"
+          - file: "10-channel-patterns.md"
+            slug: channel-patterns
+            title: "Паттерны каналов"
+            description: "Полезные приёмы"
 
-      # Module 19: Sync Primitives
-      - id: sync-primitives
-        order: 19
-        title: "Примитивы синхронизации"
-        titleEn: "Sync Primitives"
+      # Модуль 10.3: Синхронизация
+      - id: sync
+        path: "03-sync"
+        title: "Синхронизация"
+        titleEn: "Synchronization"
         topics:
-          - slug: mutex-basics
-            title: "Основы Mutex"
-            description: "sync.Mutex, критические секции"
-          - slug: rwmutex
-            title: "RWMutex"
-            description: "sync.RWMutex, читатели vs писатели"
-          - slug: waitgroup
-            title: "WaitGroup"
-            description: "sync.WaitGroup, ожидание goroutines"
-          - slug: once
-            title: "Once"
-            description: "sync.Once, однократное выполнение"
-          - slug: atomic-operations
-            title: "Атомарные операции"
-            description: "sync/atomic, атомарные операции"
-
-      # Module 20: Context Package
-      - id: context
-        order: 20
-        title: "Пакет context"
-        titleEn: "Context Package"
-        topics:
-          - slug: context-basics
-            title: "Основы context"
-            description: "context.Context, context tree"
-          - slug: context-with-cancel
-            title: "Context с отменой"
-            description: "Отмена операций, context.WithCancel"
-          - slug: context-with-timeout
-            title: "Context с таймаутом"
-            description: "Таймауты, context.WithTimeout"
-          - slug: context-with-deadline
-            title: "Context с дедлайном"
-            description: "Дедлайны, context.WithDeadline"
-          - slug: context-values
-            title: "Значения в context"
-            description: "Передача значений через context"
-
-      # Module 21: Advanced Concurrency
-      - id: advanced-concurrency
-        order: 21
-        title: "Продвинутая конкурентность"
-        titleEn: "Advanced Concurrency"
-        topics:
-          - slug: worker-pools
-            title: "Worker Pools"
-            description: "Worker pool pattern, task distribution"
-          - slug: fan-in-fan-out
-            title: "Fan-in и Fan-out"
-            description: "Fan-in, fan-out patterns"
-          - slug: pipeline-patterns
-            title: "Pipeline паттерны"
-            description: "Pipeline обработка данных"
-          - slug: rate-limiting
-            title: "Rate Limiting"
-            description: "Token bucket, sliding window паттерны"
-          - slug: circuit-breaker
-            title: "Circuit Breaker"
-            description: "Circuit breaker implementation"
+          - file: "01-race-conditions.md"
+            slug: race-conditions
+            title: "Race conditions"
+            description: "Состояния гонки"
+          - file: "02-mutex.md"
+            slug: mutex
+            title: "sync.Mutex"
+            description: "Взаимное исключение"
+          - file: "03-rwmutex.md"
+            slug: rwmutex
+            title: "sync.RWMutex"
+            description: "Читатели/писатели"
+          - file: "04-waitgroup.md"
+            slug: waitgroup
+            title: "sync.WaitGroup"
+            description: "Ожидание горутин"
+          - file: "05-once.md"
+            slug: once
+            title: "sync.Once"
+            description: "Однократное выполнение"
+          - file: "06-cond.md"
+            slug: cond
+            title: "sync.Cond"
+            description: "Условные переменные"
+          - file: "07-atomic.md"
+            slug: atomic
+            title: "sync/atomic"
+            description: "Атомарные операции"
 
   # ============================================
-  # БЛОК 4: Web Development с Gin
+  # БЛОК 11: Context
   # ============================================
-  - id: web
-    order: 4
-    title: "Web разработка"
-    titleEn: "Web Development"
-    description: "HTTP, Gin Framework, API Design"
-
-    modules:
-      # Module 22: HTTP Fundamentals
-      - id: http-fundamentals
-        order: 22
-        title: "Основы HTTP"
-        titleEn: "HTTP Fundamentals"
-        topics:
-          - slug: net-http-basics
-            title: "Пакет net/http"
-            description: "net/http package, HTTP server создание"
-          - slug: http-handlers
-            title: "HTTP обработчики"
-            description: "http.Handler interface, http.HandlerFunc"
-          - slug: http-servemux
-            title: "HTTP маршрутизация"
-            description: "http.ServeMux, маршрутизация"
-          - slug: http-request-response
-            title: "Request и Response"
-            description: "http.Request, http.ResponseWriter"
-          - slug: http-middleware
-            title: "HTTP Middleware"
-            description: "Middleware pattern, функции-обертки"
-
-      # Module 23: Gin Framework Basics
-      - id: gin-basics
-        order: 23
-        title: "Основы Gin"
-        titleEn: "Gin Framework Basics"
-        topics:
-          - slug: gin-installation
-            title: "Установка Gin"
-            description: "Gin установка, первый сервер"
-          - slug: gin-routing
-            title: "Маршрутизация в Gin"
-            description: "GET, POST, PUT, DELETE маршруты"
-          - slug: gin-parameters
-            title: "Параметры в Gin"
-            description: "Path parameters, query parameters"
-          - slug: gin-json-binding
-            title: "JSON в Gin"
-            description: "JSON request/response handling"
-          - slug: gin-middleware-basics
-            title: "Middleware в Gin"
-            description: "Встроенные middleware, Logger, Recovery"
-
-      # Module 24: Gin Advanced Features
-      - id: gin-advanced
-        order: 24
-        title: "Продвинутый Gin"
-        titleEn: "Gin Advanced Features"
-        topics:
-          - slug: gin-validation
-            title: "Валидация в Gin"
-            description: "Request validation, custom validators"
-          - slug: gin-file-upload
-            title: "Загрузка файлов"
-            description: "File upload, multipart forms"
-          - slug: gin-templates
-            title: "Шаблоны в Gin"
-            description: "HTML templates, static files"
-          - slug: gin-custom-middleware
-            title: "Кастомный Middleware"
-            description: "Создание собственных middleware"
-          - slug: gin-error-handling
-            title: "Обработка ошибок в Gin"
-            description: "Error handling patterns, custom errors"
-
-      # Module 25: API Design Patterns
-      - id: api-design
-        order: 25
-        title: "Проектирование API"
-        titleEn: "API Design Patterns"
-        topics:
-          - slug: rest-principles
-            title: "Принципы REST"
-            description: "RESTful API design принципы"
-          - slug: http-status-codes
-            title: "HTTP статус коды"
-            description: "Правильное использование status codes"
-          - slug: api-versioning
-            title: "Версионирование API"
-            description: "URL vs header versioning"
-          - slug: request-response-formats
-            title: "Форматы данных"
-            description: "JSON, XML форматы ответов"
-          - slug: api-documentation
-            title: "Документация API"
-            description: "Документирование API, OpenAPI basics"
+  - id: context
+    path: "11-context"
+    title: "Context"
+    titleEn: "Context"
+    description: "Управление контекстом"
+    flat: true
+    topics:
+      - file: "01-why-context.md"
+        slug: why-context
+        title: "Зачем context"
+        description: "Мотивация и использование"
+      - file: "02-context-interface.md"
+        slug: context-interface
+        title: "Интерфейс Context"
+        description: "context.Context"
+      - file: "03-background-todo.md"
+        slug: background-todo
+        title: "Background и TODO"
+        description: "context.Background()"
+      - file: "04-withcancel.md"
+        slug: withcancel
+        title: "WithCancel"
+        description: "Отмена операций"
+      - file: "05-withtimeout-deadline.md"
+        slug: withtimeout-deadline
+        title: "WithTimeout и WithDeadline"
+        description: "Таймауты и дедлайны"
 
   # ============================================
-  # БЛОК 5: Database Integration с GORM
+  # БЛОК 12: I/O
   # ============================================
-  - id: database
-    order: 5
-    title: "Работа с базами данных"
-    titleEn: "Database Integration"
-    description: "SQL, GORM, миграции, тестирование"
-
-    modules:
-      # Module 26: Database/SQL Package
-      - id: database-sql
-        order: 26
-        title: "Пакет database/sql"
-        titleEn: "Database/SQL Package"
-        topics:
-          - slug: database-sql-basics
-            title: "Основы database/sql"
-            description: "database/sql package, drivers"
-          - slug: connection-management
-            title: "Управление соединениями"
-            description: "sql.DB, connection pooling"
-          - slug: query-execution
-            title: "Выполнение запросов"
-            description: "Query, QueryRow, Exec методы"
-          - slug: prepared-statements
-            title: "Подготовленные запросы"
-            description: "sql.Stmt, параметризованные запросы"
-          - slug: transaction-handling
-            title: "Транзакции"
-            description: "sql.Tx, Begin, Commit, Rollback"
-
-      # Module 27: GORM Fundamentals
-      - id: gorm-fundamentals
-        order: 27
-        title: "Основы GORM"
-        titleEn: "GORM Fundamentals"
-        topics:
-          - slug: gorm-installation
-            title: "Установка GORM"
-            description: "GORM setup, database drivers"
-          - slug: gorm-models
-            title: "Модели GORM"
-            description: "Model definition, struct tags"
-          - slug: gorm-crud
-            title: "CRUD операции"
-            description: "Create, Read, Update, Delete operations"
-          - slug: gorm-queries
-            title: "Запросы GORM"
-            description: "Where, Order, Limit, Offset queries"
-          - slug: gorm-relationships
-            title: "Связи в GORM"
-            description: "Has One, Has Many, Many2Many"
-
-      # Module 28: GORM Advanced
-      - id: gorm-advanced
-        order: 28
-        title: "Продвинутый GORM"
-        titleEn: "GORM Advanced"
-        topics:
-          - slug: gorm-associations
-            title: "Ассоциации GORM"
-            description: "Association Mode, related data handling"
-          - slug: gorm-hooks
-            title: "Хуки GORM"
-            description: "BeforeCreate, AfterSave и другие hooks"
-          - slug: gorm-transactions
-            title: "Транзакции GORM"
-            description: "Transaction handling, rollback"
-          - slug: gorm-raw-sql
-            title: "Raw SQL в GORM"
-            description: "Raw queries, SQL expressions"
-          - slug: gorm-performance
-            title: "Производительность GORM"
-            description: "Preloading, eager loading, N+1 проблема"
-
-      # Module 29: Database Migrations
-      - id: migrations
-        order: 29
-        title: "Миграции базы данных"
-        titleEn: "Database Migrations"
-        topics:
-          - slug: migration-concepts
-            title: "Концепции миграций"
-            description: "Schema versioning, up/down migrations"
-          - slug: gorm-migrations
-            title: "Миграции в GORM"
-            description: "AutoMigrate, Migrator interface"
-          - slug: manual-migrations
-            title: "Ручные миграции"
-            description: "Raw SQL migrations, migration tools"
-          - slug: migration-strategies
-            title: "Стратегии миграций"
-            description: "Zero-downtime migrations, rollback plans"
-          - slug: schema-management
-            title: "Управление схемой"
-            description: "Schema evolution, best practices"
-
-      # Module 30: Database Testing
-      - id: database-testing
-        order: 30
-        title: "Тестирование БД"
-        titleEn: "Database Testing"
-        topics:
-          - slug: test-databases
-            title: "Тестовые базы данных"
-            description: "In-memory databases, test fixtures"
-          - slug: database-mocking
-            title: "Мокирование БД"
-            description: "sqlmock, interface mocking"
-          - slug: transaction-testing
-            title: "Тестирование транзакций"
-            description: "Rollback testing, isolation"
-          - slug: integration-testing-db
-            title: "Интеграционное тестирование"
-            description: "Real database testing, testcontainers"
-          - slug: seeding-data
-            title: "Начальные данные"
-            description: "Test data setup, factories"
+  - id: io
+    path: "12-io"
+    title: "Ввод/вывод"
+    titleEn: "I/O"
+    description: "Работа с вводом/выводом"
+    flat: true
+    topics:
+      - file: "01-reader-writer.md"
+        slug: reader-writer
+        title: "Reader и Writer"
+        description: "io.Reader, io.Writer"
+      - file: "02-files.md"
+        slug: files
+        title: "Работа с файлами"
+        description: "os.Open, os.Create"
+      - file: "03-bufio.md"
+        slug: bufio
+        title: "bufio пакет"
+        description: "Буферизованный I/O"
+      - file: "04-ioutil-deprecation.md"
+        slug: ioutil-deprecation
+        title: "ioutil deprecated"
+        description: "Миграция с ioutil"
+      - file: "05-os-package.md"
+        slug: os-package
+        title: "os пакет"
+        description: "Операции ОС"
+      - file: "06-filepath.md"
+        slug: filepath
+        title: "filepath пакет"
+        description: "Работа с путями"
+      - file: "07-json.md"
+        slug: json
+        title: "JSON"
+        description: "encoding/json"
+      - file: "08-xml.md"
+        slug: xml
+        title: "XML"
+        description: "encoding/xml"
+      - file: "09-csv.md"
+        slug: csv
+        title: "CSV"
+        description: "encoding/csv"
+      - file: "10-binary.md"
+        slug: binary
+        title: "Binary"
+        description: "encoding/binary"
+      - file: "11-embed.md"
+        slug: embed
+        title: "embed пакет"
+        description: "Встраивание файлов"
+      - file: "12-streaming.md"
+        slug: streaming
+        title: "Streaming"
+        description: "Потоковая обработка"
+      - file: "13-stdin-stdout.md"
+        slug: stdin-stdout
+        title: "stdin/stdout"
+        description: "Стандартные потоки"
+      - file: "14-pipes.md"
+        slug: pipes
+        title: "io.Pipe"
+        description: "In-memory pipes"
+      - file: "15-temp-files.md"
+        slug: temp-files
+        title: "Временные файлы"
+        description: "os.CreateTemp"
 
   # ============================================
-  # БЛОК 6: Testing & Quality
+  # БЛОК 13: Сеть
+  # ============================================
+  - id: network
+    path: "13-network"
+    title: "Сеть"
+    titleEn: "Network"
+    description: "Сетевое программирование"
+    flat: true
+    topics:
+      - file: "01-net-package.md"
+        slug: net-package
+        title: "net пакет"
+        description: "Основы сетей"
+      - file: "02-tcp-client.md"
+        slug: tcp-client
+        title: "TCP клиент"
+        description: "net.Dial"
+      - file: "03-tcp-server.md"
+        slug: tcp-server
+        title: "TCP сервер"
+        description: "net.Listen"
+      - file: "04-http-client.md"
+        slug: http-client
+        title: "HTTP клиент"
+        description: "http.Get, http.Client"
+      - file: "05-http-server.md"
+        slug: http-server
+        title: "HTTP сервер"
+        description: "http.ListenAndServe"
+      - file: "06-handlers-mux.md"
+        slug: handlers-mux
+        title: "Handlers и Mux"
+        description: "http.Handler, http.ServeMux"
+      - file: "07-middleware.md"
+        slug: middleware
+        title: "Middleware"
+        description: "Middleware паттерн"
+      - file: "08-json-api.md"
+        slug: json-api
+        title: "JSON API"
+        description: "REST API на Go"
+      - file: "09-timeouts.md"
+        slug: http-timeouts
+        title: "Таймауты"
+        description: "HTTP таймауты"
+      - file: "10-graceful-shutdown.md"
+        slug: graceful-shutdown
+        title: "Graceful shutdown"
+        description: "Корректное завершение"
+      - file: "11-http2.md"
+        slug: http2
+        title: "HTTP/2"
+        description: "HTTP/2 поддержка"
+      - file: "12-websockets.md"
+        slug: websockets
+        title: "WebSockets"
+        description: "Real-time коммуникация"
+
+  # ============================================
+  # БЛОК 14: Тестирование
   # ============================================
   - id: testing
-    order: 6
+    path: "14-testing"
     title: "Тестирование"
-    titleEn: "Testing & Quality"
-    description: "Unit тесты, бенчмарки, интеграционное тестирование"
-
-    modules:
-      # Module 31: Testing Package
-      - id: testing-package
-        order: 31
-        title: "Пакет testing"
-        titleEn: "Testing Package"
-        topics:
-          - slug: testing-basics
-            title: "Основы тестирования"
-            description: "testing package, test files, test functions"
-          - slug: table-driven-tests
-            title: "Table-driven тесты"
-            description: "Table-driven test pattern"
-          - slug: test-helpers
-            title: "Тестовые хелперы"
-            description: "t.Helper(), test utility functions"
-          - slug: subtests
-            title: "Подтесты"
-            description: "t.Run(), организация тестов"
-          - slug: test-coverage
-            title: "Покрытие тестами"
-            description: "go test -cover, coverage analysis"
-
-      # Module 32: Testify Library
-      - id: testify
-        order: 32
-        title: "Библиотека Testify"
-        titleEn: "Testify Library"
-        topics:
-          - slug: testify-assert
-            title: "Assert в Testify"
-            description: "assert package, assertions"
-          - slug: testify-require
-            title: "Require в Testify"
-            description: "require package, test stoppers"
-          - slug: testify-mock
-            title: "Mock в Testify"
-            description: "mock package, interface mocking"
-          - slug: testify-suite
-            title: "Suite в Testify"
-            description: "suite package, test suites"
-          - slug: testify-http
-            title: "HTTP тестирование"
-            description: "HTTP testing utilities"
-
-      # Module 33: Benchmarking & Performance
-      - id: benchmarking
-        order: 33
-        title: "Бенчмарки"
-        titleEn: "Benchmarking & Performance"
-        topics:
-          - slug: benchmark-basics
-            title: "Основы бенчмарков"
-            description: "Benchmark functions, b.N usage"
-          - slug: benchmark-setup
-            title: "Настройка бенчмарков"
-            description: "Setup/teardown в benchmarks"
-          - slug: memory-benchmarks
-            title: "Бенчмарки памяти"
-            description: "b.ReportAllocs(), memory profiling"
-          - slug: benchmark-comparison
-            title: "Сравнение бенчмарков"
-            description: "Сравнение производительности"
-          - slug: performance-regression
-            title: "Регрессия производительности"
-            description: "Автоматическое обнаружение регрессий"
-
-      # Module 34: Integration Testing
-      - id: integration-testing
-        order: 34
-        title: "Интеграционное тестирование"
-        titleEn: "Integration Testing"
-        topics:
-          - slug: integration-concepts
-            title: "Концепции интеграционного тестирования"
-            description: "Integration vs unit testing"
-          - slug: testcontainers
-            title: "Testcontainers"
-            description: "Docker containers в тестах"
-          - slug: http-testing
-            title: "HTTP тестирование"
-            description: "httptest package, API testing"
-          - slug: database-integration-tests
-            title: "Тесты с БД"
-            description: "Тестирование с real database"
-          - slug: external-services
-            title: "Внешние сервисы"
-            description: "Мокирование внешних сервисов"
+    titleEn: "Testing"
+    description: "Тестирование в Go"
+    flat: true
+    topics:
+      - file: "01-testing-basics.md"
+        slug: testing-basics
+        title: "Основы тестирования"
+        description: "testing пакет"
+      - file: "02-table-tests.md"
+        slug: table-tests
+        title: "Table tests"
+        description: "Табличные тесты"
+      - file: "03-subtests.md"
+        slug: subtests
+        title: "Subtests"
+        description: "t.Run()"
+      - file: "04-test-helpers.md"
+        slug: test-helpers
+        title: "Test helpers"
+        description: "t.Helper()"
+      - file: "05-testmain.md"
+        slug: testmain
+        title: "TestMain"
+        description: "Setup/teardown"
+      - file: "06-benchmarks.md"
+        slug: benchmarks
+        title: "Benchmarks"
+        description: "Бенчмарки"
+      - file: "07-examples.md"
+        slug: examples
+        title: "Examples"
+        description: "Примеры как тесты"
+      - file: "08-fuzzing.md"
+        slug: fuzzing
+        title: "Fuzzing"
+        description: "Fuzz testing"
+      - file: "09-coverage.md"
+        slug: coverage
+        title: "Coverage"
+        description: "Покрытие кода"
+      - file: "10-mocking.md"
+        slug: mocking
+        title: "Mocking"
+        description: "Моки и стабы"
+      - file: "11-integration-tests.md"
+        slug: integration-tests
+        title: "Integration tests"
+        description: "Интеграционные тесты"
+      - file: "12-testing-patterns.md"
+        slug: testing-patterns
+        title: "Паттерны тестирования"
+        description: "Полезные приёмы"
 
   # ============================================
-  # БЛОК 7: Production Basics
+  # БЛОК 15: Встроенные функции
   # ============================================
-  - id: production
-    order: 7
-    title: "Основы production"
-    titleEn: "Production Basics"
-    description: "Логирование, конфигурация, мониторинг"
-
-    modules:
-      # Module 35: Structured Logging
-      - id: logging
-        order: 35
-        title: "Структурированное логирование"
-        titleEn: "Structured Logging"
-        topics:
-          - slug: logging-concepts
-            title: "Концепции логирования"
-            description: "Logging levels, structured vs unstructured"
-          - slug: standard-log
-            title: "Стандартный log"
-            description: "log package, основные функции"
-          - slug: logrus-library
-            title: "Logrus"
-            description: "logrus setup, fields, hooks"
-          - slug: zap-library
-            title: "Zap"
-            description: "uber-go/zap, high performance logging"
-          - slug: logging-best-practices
-            title: "Best practices логирования"
-            description: "Context logging, sensitive data"
-
-      # Module 36: Application Health
-      - id: health
-        order: 36
-        title: "Здоровье приложения"
-        titleEn: "Application Health"
-        topics:
-          - slug: health-checks
-            title: "Health checks"
-            description: "Health check endpoints, patterns"
-          - slug: readiness-liveness
-            title: "Readiness и Liveness"
-            description: "Kubernetes readiness/liveness probes"
-          - slug: graceful-shutdown
-            title: "Graceful shutdown"
-            description: "Signal handling, graceful termination"
-          - slug: connection-draining
-            title: "Connection draining"
-            description: "Proper connection cleanup"
-          - slug: startup-procedures
-            title: "Процедуры запуска"
-            description: "Application initialization, startup checks"
-
-      # Module 37: Configuration Management
-      - id: configuration
-        order: 37
-        title: "Управление конфигурацией"
-        titleEn: "Configuration Management"
-        topics:
-          - slug: environment-variables
-            title: "Переменные окружения"
-            description: "os.Getenv, environment configuration"
-          - slug: config-files
-            title: "Файлы конфигурации"
-            description: "JSON, YAML, TOML configuration"
-          - slug: viper-library
-            title: "Viper"
-            description: "spf13/viper, configuration management"
-          - slug: secrets-handling
-            title: "Работа с секретами"
-            description: "Environment secrets, secure configuration"
-          - slug: feature-flags
-            title: "Feature flags"
-            description: "Feature toggles, configuration-driven features"
-
-      # Module 38: Basic Monitoring
-      - id: monitoring
-        order: 38
-        title: "Базовый мониторинг"
-        titleEn: "Basic Monitoring"
-        topics:
-          - slug: metrics-concepts
-            title: "Концепции метрик"
-            description: "Metrics types, observability basics"
-          - slug: prometheus-client
-            title: "Prometheus клиент"
-            description: "prometheus/client_golang"
-          - slug: custom-metrics
-            title: "Кастомные метрики"
-            description: "Counter, Gauge, Histogram metrics"
-          - slug: metrics-exposition
-            title: "Экспозиция метрик"
-            description: "/metrics endpoint, scraping"
-          - slug: basic-alerting
-            title: "Базовый алертинг"
-            description: "Simple alerting rules"
+  - id: builtins
+    path: "15-builtins"
+    title: "Встроенные функции"
+    titleEn: "Built-in Functions"
+    description: "Встроенные функции Go"
+    flat: true
+    topics:
+      - file: "01-builtin-overview.md"
+        slug: builtin-overview
+        title: "Обзор встроенных функций"
+        description: "Все builtins"
+      - file: "02-make-new.md"
+        slug: make-new
+        title: "make и new"
+        description: "Выделение памяти"
+      - file: "03-len-cap.md"
+        slug: len-cap
+        title: "len и cap"
+        description: "Длина и ёмкость"
+      - file: "04-append-copy-delete.md"
+        slug: append-copy-delete
+        title: "append, copy, delete"
+        description: "Операции с коллекциями"
+      - file: "05-close.md"
+        slug: close
+        title: "close"
+        description: "Закрытие каналов"
+      - file: "06-panic-recover.md"
+        slug: panic-recover
+        title: "panic и recover"
+        description: "Обработка паники"
 
   # ============================================
-  # БЛОК 8: Performance & Profiling (Middle)
+  # БЛОК 16: Инструменты
   # ============================================
-  - id: performance
-    order: 8
-    title: "Производительность"
-    titleEn: "Performance & Profiling"
-    description: "Профилирование, оптимизация, нагрузочное тестирование"
-
-    modules:
-      # Module 39: Profiling Fundamentals
-      - id: profiling-fundamentals
-        order: 39
-        title: "Основы профилирования"
-        titleEn: "Profiling Fundamentals"
-        topics:
-          - slug: profiling-concepts
-            title: "Концепции профилирования"
-            description: "CPU, memory, goroutine profiling"
-          - slug: pprof-basics
-            title: "Основы pprof"
-            description: "pprof package, profile generation"
-          - slug: profile-types
-            title: "Типы профилей"
-            description: "CPU, heap, goroutine, mutex profiles"
-          - slug: profiling-in-production
-            title: "Профилирование в production"
-            description: "Safe production profiling"
-          - slug: profile-analysis
-            title: "Анализ профилей"
-            description: "Reading profiles, identifying bottlenecks"
-
-      # Module 40: CPU Profiling
-      - id: cpu-profiling
-        order: 40
-        title: "Профилирование CPU"
-        titleEn: "CPU Profiling"
-        topics:
-          - slug: cpu-profile-generation
-            title: "Генерация CPU профилей"
-            description: "Generating CPU profiles"
-          - slug: flame-graphs
-            title: "Flame графы"
-            description: "Flame graph analysis, hot paths"
-          - slug: cpu-optimization
-            title: "Оптимизация CPU"
-            description: "CPU bottleneck identification"
-          - slug: profiling-tools
-            title: "Инструменты профилирования"
-            description: "go tool pprof, web interface"
-          - slug: cpu-performance-patterns
-            title: "Паттерны оптимизации CPU"
-            description: "Common CPU optimization patterns"
-
-      # Module 41: Memory Profiling
-      - id: memory-profiling
-        order: 41
-        title: "Профилирование памяти"
-        titleEn: "Memory Profiling"
-        topics:
-          - slug: heap-profiling
-            title: "Профилирование heap"
-            description: "Heap profile generation, analysis"
-          - slug: memory-leaks
-            title: "Утечки памяти"
-            description: "Memory leak detection, goroutine leaks"
-          - slug: allocation-profiling
-            title: "Профилирование аллокаций"
-            description: "Allocation tracking, hot spots"
-          - slug: memory-optimization
-            title: "Оптимизация памяти"
-            description: "Memory usage optimization"
-          - slug: gc-analysis
-            title: "Анализ GC"
-            description: "Garbage collector behavior analysis"
-
-      # Module 42: Benchmarking Advanced
-      - id: benchmarking-advanced
-        order: 42
-        title: "Продвинутые бенчмарки"
-        titleEn: "Benchmarking Advanced"
-        topics:
-          - slug: benchmark-driven-development
-            title: "Benchmark-driven development"
-            description: "Performance testing methodology"
-          - slug: micro-benchmarks
-            title: "Микро-бенчмарки"
-            description: "Function-level benchmarking"
-          - slug: integration-benchmarks
-            title: "Интеграционные бенчмарки"
-            description: "Full system benchmarking"
-          - slug: benchmark-automation
-            title: "Автоматизация бенчмарков"
-            description: "Automated performance regression"
-          - slug: performance-budgets
-            title: "Performance budgets"
-            description: "Performance targets, monitoring"
-
-      # Module 43: GC Tuning
-      - id: gc-tuning
-        order: 43
-        title: "Настройка GC"
-        titleEn: "GC Tuning"
-        topics:
-          - slug: gc-fundamentals
-            title: "Основы GC"
-            description: "Garbage collector internals"
-          - slug: gogc-tuning
-            title: "Настройка GOGC"
-            description: "GOGC environment variable tuning"
-          - slug: gomemlimit
-            title: "GOMEMLIMIT"
-            description: "Memory limit configuration"
-          - slug: gc-metrics
-            title: "Метрики GC"
-            description: "GC metrics monitoring"
-          - slug: gc-optimization
-            title: "Оптимизация GC"
-            description: "Application-specific GC tuning"
-
-      # Module 44: Load Testing
-      - id: load-testing
-        order: 44
-        title: "Нагрузочное тестирование"
-        titleEn: "Load Testing"
-        topics:
-          - slug: load-testing-concepts
-            title: "Концепции нагрузочного тестирования"
-            description: "Load vs stress vs spike testing"
-          - slug: k6-framework
-            title: "k6 framework"
-            description: "k6 load testing tool для Go APIs"
-          - slug: artillery-testing
-            title: "Artillery"
-            description: "Artillery для HTTP load testing"
-          - slug: custom-load-tests
-            title: "Кастомные нагрузочные тесты"
-            description: "Writing custom load tests"
-          - slug: performance-analysis
-            title: "Анализ производительности"
-            description: "Load test result analysis"
+  - id: tooling
+    path: "16-tooling"
+    title: "Инструменты"
+    titleEn: "Tooling"
+    description: "Инструменты Go"
+    flat: true
+    topics:
+      - file: "01-go-command.md"
+        slug: go-command
+        title: "Команда go"
+        description: "Обзор go CLI"
+      - file: "02-go-build.md"
+        slug: go-build
+        title: "go build"
+        description: "Компиляция"
+      - file: "03-go-install.md"
+        slug: go-install
+        title: "go install"
+        description: "Установка"
+      - file: "04-go-get.md"
+        slug: go-get
+        title: "go get"
+        description: "Зависимости"
+      - file: "05-go-mod.md"
+        slug: go-mod
+        title: "go mod"
+        description: "Модули"
+      - file: "06-go-fmt.md"
+        slug: go-fmt
+        title: "go fmt"
+        description: "Форматирование"
+      - file: "07-go-vet.md"
+        slug: go-vet
+        title: "go vet"
+        description: "Статический анализ"
+      - file: "08-staticcheck.md"
+        slug: staticcheck
+        title: "staticcheck"
+        description: "Расширенный линтер"
+      - file: "09-pprof.md"
+        slug: pprof
+        title: "pprof"
+        description: "Профилирование"
+      - file: "10-cross-compilation.md"
+        slug: cross-compilation
+        title: "Кросс-компиляция"
+        description: "GOOS, GOARCH"
 
   # ============================================
-  # БЛОК 9: Advanced Web Frameworks (Middle)
+  # БЛОК 17: Безопасность
   # ============================================
-  - id: frameworks
-    order: 9
-    title: "Продвинутые фреймворки"
-    titleEn: "Advanced Web Frameworks"
-    description: "Fiber, Echo, сравнение фреймворков"
-
-    modules:
-      # Module 45: Framework Comparison
-      - id: framework-comparison
-        order: 45
-        title: "Сравнение фреймворков"
-        titleEn: "Framework Comparison"
-        topics:
-          - slug: framework-landscape
-            title: "Ландшафт фреймворков"
-            description: "Gin vs Fiber vs Echo vs net/http"
-          - slug: performance-benchmarks
-            title: "Бенчмарки производительности"
-            description: "Real-world performance comparison"
-          - slug: ecosystem-analysis
-            title: "Анализ экосистемы"
-            description: "Middleware, community, support"
-          - slug: choosing-criteria
-            title: "Критерии выбора"
-            description: "Framework selection decision matrix"
-          - slug: migration-strategies
-            title: "Стратегии миграции"
-            description: "Framework migration patterns"
-
-      # Module 46: Fiber Framework
-      - id: fiber
-        order: 46
-        title: "Fiber Framework"
-        titleEn: "Fiber Framework"
-        topics:
-          - slug: fiber-fundamentals
-            title: "Основы Fiber"
-            description: "Express.js-like API, fasthttp benefits"
-          - slug: fiber-routing
-            title: "Маршрутизация Fiber"
-            description: "Advanced routing, parameter handling"
-          - slug: fiber-middleware
-            title: "Middleware Fiber"
-            description: "Built-in middleware, custom middleware"
-          - slug: fiber-performance
-            title: "Производительность Fiber"
-            description: "Performance optimization techniques"
-          - slug: fiber-vs-gin
-            title: "Fiber vs Gin"
-            description: "When to choose Fiber over Gin"
-
-      # Module 47: Echo Framework
-      - id: echo
-        order: 47
-        title: "Echo Framework"
-        titleEn: "Echo Framework"
-        topics:
-          - slug: echo-fundamentals
-            title: "Основы Echo"
-            description: "Echo architecture, middleware system"
-          - slug: echo-advanced
-            title: "Продвинутый Echo"
-            description: "Custom binders, validators, error handling"
-          - slug: echo-performance
-            title: "Производительность Echo"
-            description: "Performance optimization, best practices"
-          - slug: echo-ecosystem
-            title: "Экосистема Echo"
-            description: "Echo middleware ecosystem"
-          - slug: echo-production
-            title: "Echo в production"
-            description: "Production deployment patterns"
-
-      # Module 48: Advanced HTTP Patterns
-      - id: advanced-http
-        order: 48
-        title: "Продвинутые HTTP паттерны"
-        titleEn: "Advanced HTTP Patterns"
-        topics:
-          - slug: custom-middleware-patterns
-            title: "Паттерны Middleware"
-            description: "Advanced middleware patterns"
-          - slug: http-interceptors
-            title: "HTTP интерцепторы"
-            description: "Request/response interceptors"
-          - slug: rate-limiting-advanced
-            title: "Продвинутый Rate Limiting"
-            description: "Advanced rate limiting strategies"
-          - slug: authentication-patterns
-            title: "Паттерны аутентификации"
-            description: "JWT, OAuth2, session handling"
-          - slug: websocket-integration
-            title: "WebSocket интеграция"
-            description: "WebSocket support, real-time features"
-
-  # ============================================
-  # БЛОК 10: Advanced Database & Data (Middle)
-  # ============================================
-  - id: advanced-database
-    order: 10
-    title: "Продвинутые базы данных"
-    titleEn: "Advanced Database & Data"
-    description: "Производительность БД, NoSQL, альтернативные ORM"
-
-    modules:
-      # Module 49: Database Performance
-      - id: database-performance
-        order: 49
-        title: "Производительность БД"
-        titleEn: "Database Performance"
-        topics:
-          - slug: query-optimization
-            title: "Оптимизация запросов"
-            description: "Go-specific query optimization"
-          - slug: connection-pooling-advanced
-            title: "Connection pooling"
-            description: "Advanced connection pool configuration"
-          - slug: database-monitoring
-            title: "Мониторинг БД"
-            description: "Query performance monitoring"
-          - slug: index-optimization
-            title: "Оптимизация индексов"
-            description: "Index usage in Go applications"
-          - slug: database-profiling
-            title: "Профилирование БД"
-            description: "Database profiling from Go"
-
-      # Module 50: Alternative ORMs
-      - id: alternative-orms
-        order: 50
-        title: "Альтернативные ORM"
-        titleEn: "Alternative ORMs"
-        topics:
-          - slug: sqlx-advanced
-            title: "Продвинутый sqlx"
-            description: "Advanced sqlx patterns, named queries"
-          - slug: ent-framework
-            title: "Ent Framework"
-            description: "Facebook's ent ORM, code generation"
-          - slug: sqlc-generator
-            title: "sqlc"
-            description: "sqlc code generation from SQL"
-          - slug: orm-comparison
-            title: "Сравнение ORM"
-            description: "GORM vs sqlx vs ent comparison"
-          - slug: raw-sql-patterns
-            title: "Raw SQL паттерны"
-            description: "When to use raw SQL"
-
-      # Module 51: NoSQL Integration
-      - id: nosql
-        order: 51
-        title: "NoSQL интеграция"
-        titleEn: "NoSQL Integration"
-        topics:
-          - slug: mongodb-driver
-            title: "MongoDB Driver"
-            description: "Official MongoDB driver for Go"
-          - slug: redis-integration
-            title: "Redis интеграция"
-            description: "go-redis client, caching patterns"
-          - slug: redis-advanced
-            title: "Продвинутый Redis"
-            description: "Redis streams, pub/sub, scripting"
-          - slug: database-patterns
-            title: "Паттерны баз данных"
-            description: "Repository pattern variations"
-          - slug: polyglot-persistence
-            title: "Polyglot Persistence"
-            description: "Multiple database integration"
-
-      # Module 52: Data Validation
-      - id: data-validation
-        order: 52
-        title: "Валидация данных"
-        titleEn: "Data Validation"
-        topics:
-          - slug: input-validation
-            title: "Валидация ввода"
-            description: "Request validation patterns"
-          - slug: validator-library
-            title: "Библиотека validator"
-            description: "go-playground/validator usage"
-          - slug: custom-validators
-            title: "Кастомные валидаторы"
-            description: "Custom validation rules"
-          - slug: sanitization
-            title: "Санитизация"
-            description: "Input sanitization, security"
-          - slug: validation-middleware
-            title: "Validation middleware"
-            description: "Validation middleware patterns"
-
-  # ============================================
-  # БЛОК 11: Production Engineering (Middle)
-  # ============================================
-  - id: prod-engineering
-    order: 11
-    title: "Production инжиниринг"
-    titleEn: "Production Engineering"
-    description: "Деплой, контейнеры, отладка"
-
-    modules:
-      # Module 53: Configuration Advanced
-      - id: config-advanced
-        order: 53
-        title: "Продвинутая конфигурация"
-        titleEn: "Configuration Advanced"
-        topics:
-          - slug: config-patterns
-            title: "Паттерны конфигурации"
-            description: "Advanced configuration patterns"
-          - slug: viper-advanced
-            title: "Продвинутый Viper"
-            description: "Viper advanced features, watchers"
-          - slug: environment-management
-            title: "Управление окружениями"
-            description: "Multi-environment configuration"
-          - slug: secret-rotation
-            title: "Ротация секретов"
-            description: "Dynamic secret management"
-          - slug: feature-flag-systems
-            title: "Системы Feature Flags"
-            description: "Advanced feature flag integration"
-
-      # Module 54: Deployment Strategies
-      - id: deployment
-        order: 54
-        title: "Стратегии деплоя"
-        titleEn: "Deployment Strategies"
-        topics:
-          - slug: blue-green-deployment
-            title: "Blue-Green деплой"
-            description: "Blue-green deployment patterns"
-          - slug: canary-deployment
-            title: "Canary деплой"
-            description: "Canary release strategies"
-          - slug: rolling-deployment
-            title: "Rolling деплой"
-            description: "Rolling update patterns"
-          - slug: deployment-automation
-            title: "Автоматизация деплоя"
-            description: "Automated deployment pipelines"
-          - slug: rollback-procedures
-            title: "Процедуры отката"
-            description: "Safe rollback strategies"
-
-      # Module 55: Container Optimization
-      - id: containers
-        order: 55
-        title: "Оптимизация контейнеров"
-        titleEn: "Container Optimization"
-        topics:
-          - slug: dockerfile-optimization
-            title: "Оптимизация Dockerfile"
-            description: "Multi-stage builds, layer caching"
-          - slug: image-security
-            title: "Безопасность образов"
-            description: "Security scanning, minimal images"
-          - slug: container-patterns
-            title: "Паттерны контейнеров"
-            description: "Go-specific container patterns"
-          - slug: image-size-optimization
-            title: "Оптимизация размера"
-            description: "Minimal image techniques"
-          - slug: container-debugging
-            title: "Отладка контейнеров"
-            description: "Debugging containerized Go apps"
-
-      # Module 56: Production Debugging
-      - id: prod-debugging
-        order: 56
-        title: "Отладка в production"
-        titleEn: "Production Debugging"
-        topics:
-          - slug: remote-debugging
-            title: "Удалённая отладка"
-            description: "Production debugging techniques"
-          - slug: debug-endpoints
-            title: "Debug эндпоинты"
-            description: "Debug endpoints, pprof in production"
-          - slug: distributed-debugging
-            title: "Распределённая отладка"
-            description: "Debugging across microservices"
-          - slug: log-analysis
-            title: "Анализ логов"
-            description: "Log analysis, structured logging"
-          - slug: troubleshooting-methodology
-            title: "Методология troubleshooting"
-            description: "Systematic troubleshooting"
-
-      # Module 57: Incident Response
-      - id: incident-response
-        order: 57
-        title: "Реагирование на инциденты"
-        titleEn: "Incident Response"
-        topics:
-          - slug: incident-detection
-            title: "Обнаружение инцидентов"
-            description: "Automated incident detection"
-          - slug: runbook-creation
-            title: "Создание Runbook"
-            description: "Runbook development, documentation"
-          - slug: escalation-procedures
-            title: "Процедуры эскалации"
-            description: "Incident escalation patterns"
-          - slug: post-mortem-process
-            title: "Post-mortem процесс"
-            description: "Blameless post-mortems"
-          - slug: reliability-patterns
-            title: "Паттерны надёжности"
-            description: "Building reliable Go services"
-
-  # ============================================
-  # БЛОК 12: Go Security Integration (Middle)
-  # ============================================
-  - id: security
-    order: 12
+  - id: safety
+    path: "17-safety"
     title: "Безопасность"
-    titleEn: "Go Security Integration"
-    description: "Валидация, аутентификация, криптография"
-
-    modules:
-      # Module 58: Input Security
-      - id: input-security
-        order: 58
-        title: "Безопасность ввода"
-        titleEn: "Input Security"
-        topics:
-          - slug: input-validation-security
-            title: "Валидация для безопасности"
-            description: "Security-focused input validation"
-          - slug: sql-injection-prevention
-            title: "Защита от SQL инъекций"
-            description: "SQL injection prevention in Go"
-          - slug: xss-prevention
-            title: "Защита от XSS"
-            description: "XSS prevention, output encoding"
-          - slug: command-injection
-            title: "Command injection"
-            description: "Command injection prevention"
-          - slug: deserialization-security
-            title: "Безопасность десериализации"
-            description: "Safe JSON/XML deserialization"
-
-      # Module 59: Authentication & Authorization
-      - id: auth
-        order: 59
-        title: "Аутентификация и авторизация"
-        titleEn: "Authentication & Authorization"
-        topics:
-          - slug: jwt-implementation
-            title: "Реализация JWT"
-            description: "JWT implementation, security best practices"
-          - slug: oauth2-integration
-            title: "OAuth2 интеграция"
-            description: "OAuth2 client/server implementation"
-          - slug: session-security
-            title: "Безопасность сессий"
-            description: "Secure session management"
-          - slug: rbac-implementation
-            title: "Реализация RBAC"
-            description: "Role-based access control"
-          - slug: api-key-management
-            title: "Управление API ключами"
-            description: "API key authentication patterns"
-
-      # Module 60: Crypto & TLS
-      - id: crypto
-        order: 60
-        title: "Криптография и TLS"
-        titleEn: "Crypto & TLS"
-        topics:
-          - slug: tls-configuration
-            title: "Настройка TLS"
-            description: "TLS server configuration, cipher suites"
-          - slug: certificate-management
-            title: "Управление сертификатами"
-            description: "Certificate handling, rotation"
-          - slug: crypto-primitives
-            title: "Криптографические примитивы"
-            description: "Go crypto package usage"
-          - slug: secure-communication
-            title: "Безопасная коммуникация"
-            description: "mTLS, secure client communication"
-          - slug: key-management
-            title: "Управление ключами"
-            description: "Cryptographic key management"
+    titleEn: "Safety"
+    description: "Безопасность в Go"
+    flat: true
+    topics:
+      - file: "01-memory-safety.md"
+        slug: memory-safety
+        title: "Безопасность памяти"
+        description: "Memory safety в Go"
+      - file: "02-race-detector.md"
+        slug: race-detector
+        title: "Race detector"
+        description: "-race флаг"
+      - file: "03-unsafe-package.md"
+        slug: unsafe-package
+        title: "unsafe пакет"
+        description: "Небезопасные операции"
+      - file: "04-cgo-basics.md"
+        slug: cgo-basics
+        title: "CGO основы"
+        description: "Интеграция с C"
+      - file: "05-security-practices.md"
+        slug: security-practices
+        title: "Практики безопасности"
+        description: "Security best practices"
 
   # ============================================
-  # БЛОК 13: Kubernetes for Go (Middle)
+  # БЛОК 18: Современный Go
   # ============================================
-  - id: kubernetes
-    order: 13
-    title: "Kubernetes"
-    titleEn: "Kubernetes for Go"
-    description: "Контейнеризация, деплой, мониторинг в K8s"
-
-    modules:
-      # Module 61: Go App Containerization
-      - id: containerization
-        order: 61
-        title: "Контейнеризация Go"
-        titleEn: "Go App Containerization"
-        topics:
-          - slug: go-dockerfile-patterns
-            title: "Паттерны Dockerfile для Go"
-            description: "Go-specific Dockerfile optimization"
-          - slug: health-check-integration
-            title: "Интеграция health checks"
-            description: "Health checks for Kubernetes"
-          - slug: signal-handling
-            title: "Обработка сигналов"
-            description: "Graceful shutdown for Kubernetes"
-          - slug: resource-management
-            title: "Управление ресурсами"
-            description: "Memory/CPU resource configuration"
-          - slug: 12-factor-compliance
-            title: "12-factor соответствие"
-            description: "12-factor app principles"
-
-      # Module 62: Kubernetes Deployment
-      - id: k8s-deployment
-        order: 62
-        title: "Деплой в Kubernetes"
-        titleEn: "Kubernetes Deployment"
-        topics:
-          - slug: k8s-manifests
-            title: "K8s манифесты"
-            description: "Deployment, Service, ConfigMap для Go apps"
-          - slug: rolling-updates
-            title: "Rolling updates"
-            description: "Kubernetes rolling updates"
-          - slug: horizontal-scaling
-            title: "Горизонтальное масштабирование"
-            description: "HPA configuration для Go services"
-          - slug: resource-limits
-            title: "Лимиты ресурсов"
-            description: "Resource limits, requests optimization"
-          - slug: liveness-readiness
-            title: "Liveness и Readiness"
-            description: "Proper probe configuration"
-
-      # Module 63: Kubernetes Monitoring
-      - id: k8s-monitoring
-        order: 63
-        title: "Мониторинг в Kubernetes"
-        titleEn: "Kubernetes Monitoring"
-        topics:
-          - slug: prometheus-k8s
-            title: "Prometheus в K8s"
-            description: "Prometheus metrics в Kubernetes"
-          - slug: service-discovery
-            title: "Service Discovery"
-            description: "Kubernetes service discovery"
-          - slug: distributed-tracing
-            title: "Распределённый трейсинг"
-            description: "Tracing в Kubernetes environment"
-          - slug: log-aggregation
-            title: "Агрегация логов"
-            description: "Centralized logging для Go pods"
-          - slug: troubleshooting-k8s
-            title: "Troubleshooting в K8s"
-            description: "Debugging Go apps в Kubernetes"
+  - id: modern-go
+    path: "18-modern-go"
+    title: "Современный Go"
+    titleEn: "Modern Go"
+    description: "Новые возможности Go"
+    flat: true
+    topics:
+      - file: "01-go-1-18.md"
+        slug: go-1-18
+        title: "Go 1.18"
+        description: "Дженерики, fuzzing"
+      - file: "02-go-1-19.md"
+        slug: go-1-19
+        title: "Go 1.19"
+        description: "Улучшения памяти"
+      - file: "03-go-1-20.md"
+        slug: go-1-20
+        title: "Go 1.20"
+        description: "PGO, error improvements"
+      - file: "04-go-1-21.md"
+        slug: go-1-21
+        title: "Go 1.21"
+        description: "min, max, clear"
+      - file: "05-go-1-22.md"
+        slug: go-1-22
+        title: "Go 1.22"
+        description: "Range over int, loop vars"
+      - file: "06-go-1-23.md"
+        slug: go-1-23
+        title: "Go 1.23"
+        description: "Range over func"
+      - file: "07-go-1-24.md"
+        slug: go-1-24
+        title: "Go 1.24"
+        description: "Generic type aliases"
 
   # ============================================
-  # БЛОК 14: Advanced Concurrency (Senior)
+  # БЛОК 19: Паттерны
   # ============================================
-  - id: advanced-concurrency
-    order: 14
-    title: "Продвинутая конкурентность"
-    titleEn: "Advanced Concurrency"
-    description: "Паттерны, синхронизация, распределённая координация"
-
-    modules:
-      # Module 64: Concurrency Patterns Advanced
-      - id: concurrency-patterns-advanced
-        order: 64
-        title: "Продвинутые паттерны конкурентности"
-        titleEn: "Concurrency Patterns Advanced"
-        topics:
-          - slug: select-patterns-advanced
-            title: "Продвинутые select паттерны"
-            description: "Advanced select patterns"
-          - slug: timeout-handling
-            title: "Обработка таймаутов"
-            description: "Complex timeout scenarios"
-          - slug: cancellation-patterns
-            title: "Паттерны отмены"
-            description: "Graceful cancellation strategies"
-          - slug: backpressure-handling
-            title: "Обработка backpressure"
-            description: "Backpressure в concurrent systems"
-          - slug: concurrency-testing
-            title: "Тестирование конкурентности"
-            description: "Testing concurrent code"
-
-      # Module 65: Custom Synchronization
-      - id: custom-sync
-        order: 65
-        title: "Кастомная синхронизация"
-        titleEn: "Custom Synchronization"
-        topics:
-          - slug: custom-sync-primitives
-            title: "Кастомные примитивы синхронизации"
-            description: "Building custom sync primitives"
-          - slug: lock-free-programming
-            title: "Lock-free программирование"
-            description: "Lock-free data structures"
-          - slug: memory-ordering
-            title: "Memory ordering"
-            description: "Memory ordering в Go"
-          - slug: atomic-patterns
-            title: "Атомарные паттерны"
-            description: "Advanced atomic operations"
-          - slug: sync-pool-advanced
-            title: "Продвинутый sync.Pool"
-            description: "sync.Pool optimization patterns"
-
-      # Module 66: Goroutine Management
-      - id: goroutine-management
-        order: 66
-        title: "Управление горутинами"
-        titleEn: "Goroutine Management"
-        topics:
-          - slug: goroutine-pools
-            title: "Пулы горутин"
-            description: "Advanced goroutine pool patterns"
-          - slug: goroutine-leak-detection
-            title: "Обнаружение утечек горутин"
-            description: "Detecting goroutine leaks"
-          - slug: goroutine-lifecycle-advanced
-            title: "Жизненный цикл горутин"
-            description: "Advanced lifecycle management"
-          - slug: goroutine-monitoring
-            title: "Мониторинг горутин"
-            description: "Runtime goroutine monitoring"
-          - slug: scheduler-tuning
-            title: "Настройка планировщика"
-            description: "Go scheduler optimization"
-
-      # Module 67: Distributed Coordination
-      - id: distributed-coordination
-        order: 67
-        title: "Распределённая координация"
-        titleEn: "Distributed Coordination"
-        topics:
-          - slug: distributed-locks
-            title: "Распределённые блокировки"
-            description: "Distributed locking patterns"
-          - slug: leader-election
-            title: "Выбор лидера"
-            description: "Leader election algorithms"
-          - slug: consensus-basics
-            title: "Основы консенсуса"
-            description: "Consensus algorithm basics"
-          - slug: coordination-patterns
-            title: "Паттерны координации"
-            description: "Service coordination patterns"
-          - slug: distributed-state
-            title: "Распределённое состояние"
-            description: "Distributed state management"
-
-  # ============================================
-  # БЛОК 15: System Architecture (Senior)
-  # ============================================
-  - id: architecture
-    order: 15
-    title: "Системная архитектура"
-    titleEn: "System Architecture"
-    description: "Микросервисы, gRPC, очереди сообщений"
-
-    modules:
-      # Module 68: Microservices Design
-      - id: microservices
-        order: 68
-        title: "Проектирование микросервисов"
-        titleEn: "Microservices Design"
-        topics:
-          - slug: service-decomposition
-            title: "Декомпозиция сервисов"
-            description: "Service boundary identification"
-          - slug: domain-driven-design
-            title: "Domain-Driven Design"
-            description: "DDD principles для Go services"
-          - slug: service-contracts
-            title: "Контракты сервисов"
-            description: "API contract design"
-          - slug: data-consistency
-            title: "Консистентность данных"
-            description: "Eventual consistency patterns"
-          - slug: service-mesh-basics
-            title: "Основы Service Mesh"
-            description: "Service mesh integration"
-
-      # Module 69: gRPC Implementation
-      - id: grpc
-        order: 69
-        title: "gRPC реализация"
-        titleEn: "gRPC Implementation"
-        topics:
-          - slug: protobuf-design
-            title: "Дизайн Protocol Buffers"
-            description: "Protocol Buffers schema design"
-          - slug: grpc-server
-            title: "gRPC сервер"
-            description: "gRPC server implementation"
-          - slug: grpc-client
-            title: "gRPC клиент"
-            description: "gRPC client patterns"
-          - slug: grpc-streaming
-            title: "gRPC стриминг"
-            description: "Streaming RPC patterns"
-          - slug: grpc-security
-            title: "gRPC безопасность"
-            description: "gRPC authentication, TLS"
-
-      # Module 70: Message Queues
-      - id: message-queues
-        order: 70
-        title: "Очереди сообщений"
-        titleEn: "Message Queues"
-        topics:
-          - slug: kafka-integration
-            title: "Kafka интеграция"
-            description: "Kafka producer/consumer в Go"
-          - slug: rabbitmq-patterns
-            title: "RabbitMQ паттерны"
-            description: "RabbitMQ integration patterns"
-          - slug: message-patterns
-            title: "Паттерны сообщений"
-            description: "Message queue design patterns"
-          - slug: event-sourcing
-            title: "Event Sourcing"
-            description: "Event sourcing implementation"
-          - slug: cqrs-implementation
-            title: "CQRS реализация"
-            description: "CQRS pattern implementation"
-
-      # Module 71: API Gateway
-      - id: api-gateway
-        order: 71
-        title: "API Gateway"
-        titleEn: "API Gateway"
-        topics:
-          - slug: reverse-proxy
-            title: "Reverse Proxy"
-            description: "Reverse proxy implementation"
-          - slug: load-balancing
-            title: "Load Balancing"
-            description: "Load balancing algorithms"
-          - slug: rate-limiting-gateway
-            title: "Rate Limiting на шлюзе"
-            description: "Gateway-level rate limiting"
-          - slug: circuit-breaker-gateway
-            title: "Circuit Breaker на шлюзе"
-            description: "Circuit breaker patterns"
-          - slug: api-composition
-            title: "API композиция"
-            description: "API composition patterns"
-
-      # Module 72: Distributed Systems
-      - id: distributed-systems
-        order: 72
-        title: "Распределённые системы"
-        titleEn: "Distributed Systems"
-        topics:
-          - slug: cap-theorem
-            title: "CAP теорема"
-            description: "CAP theorem implications"
-          - slug: consistency-patterns
-            title: "Паттерны консистентности"
-            description: "Consistency model implementation"
-          - slug: partition-tolerance
-            title: "Устойчивость к разделению"
-            description: "Handling network partitions"
-          - slug: distributed-transactions
-            title: "Распределённые транзакции"
-            description: "Saga pattern implementation"
-          - slug: failure-modes
-            title: "Режимы отказов"
-            description: "Distributed system failure handling"
-
-  # ============================================
-  # БЛОК 16: Interview Mastery (Senior)
-  # ============================================
-  - id: interview
-    order: 16
-    title: "Мастерство собеседований"
-    titleEn: "Interview Mastery"
-    description: "Coding, System Design, Behavioral"
-
-    modules:
-      # Module 73: Coding Interviews
-      - id: coding-interviews
-        order: 73
-        title: "Coding собеседования"
-        titleEn: "Coding Interviews"
-        topics:
-          - slug: leetcode-go-patterns
-            title: "LeetCode на Go"
-            description: "LeetCode решения на Go"
-          - slug: algorithm-implementation
-            title: "Реализация алгоритмов"
-            description: "Algorithm implementation в Go"
-          - slug: data-structure-go
-            title: "Структуры данных на Go"
-            description: "Data structures на Go"
-          - slug: complexity-analysis
-            title: "Анализ сложности"
-            description: "Big O analysis для Go code"
-          - slug: coding-style
-            title: "Стиль кодирования"
-            description: "Interview coding style"
-
-      # Module 74: System Design
-      - id: system-design
-        order: 74
-        title: "System Design"
-        titleEn: "System Design"
-        topics:
-          - slug: go-system-design
-            title: "System Design на Go"
-            description: "Go-specific system design"
-          - slug: scalability-patterns
-            title: "Паттерны масштабируемости"
-            description: "Scalability с Go services"
-          - slug: performance-estimation
-            title: "Оценка производительности"
-            description: "Performance estimation"
-          - slug: technology-choices
-            title: "Выбор технологий"
-            description: "Technology selection reasoning"
-          - slug: architecture-tradeoffs
-            title: "Архитектурные компромиссы"
-            description: "Architecture decision making"
-
-      # Module 75: Behavioral Interviews
-      - id: behavioral
-        order: 75
-        title: "Behavioral собеседования"
-        titleEn: "Behavioral Interviews"
-        topics:
-          - slug: leadership-examples
-            title: "Примеры лидерства"
-            description: "Technical leadership examples"
-          - slug: project-management
-            title: "Управление проектами"
-            description: "Project management experience"
-          - slug: team-collaboration
-            title: "Работа в команде"
-            description: "Team collaboration stories"
-          - slug: conflict-resolution
-            title: "Разрешение конфликтов"
-            description: "Technical conflict resolution"
-          - slug: mentoring-experience
-            title: "Опыт менторства"
-            description: "Mentoring и knowledge sharing"
-
-      # Module 76: Portfolio Projects
-      - id: portfolio
-        order: 76
-        title: "Портфолио проекты"
-        titleEn: "Portfolio Projects"
-        topics:
-          - slug: github-optimization
-            title: "Оптимизация GitHub"
-            description: "GitHub profile optimization"
-          - slug: project-showcase
-            title: "Демонстрация проектов"
-            description: "Showcase project selection"
-          - slug: documentation-quality
-            title: "Качество документации"
-            description: "Technical documentation"
-          - slug: code-quality-demo
-            title: "Демонстрация качества кода"
-            description: "Code quality demonstration"
-          - slug: contribution-history
-            title: "История контрибуций"
-            description: "Open source contributions"
-
-  # ============================================
-  # БЛОК 17: Advanced Topics (Senior)
-  # ============================================
-  - id: advanced
-    order: 17
-    title: "Продвинутые темы"
-    titleEn: "Advanced Topics"
-    description: "Performance engineering, SRE, Go internals"
-
-    modules:
-      # Module 77: Performance Engineering
-      - id: performance-engineering
-        order: 77
-        title: "Performance Engineering"
-        titleEn: "Performance Engineering"
-        topics:
-          - slug: performance-methodology
-            title: "Методология производительности"
-            description: "Performance engineering methodology"
-          - slug: bottleneck-analysis
-            title: "Анализ узких мест"
-            description: "Systematic bottleneck analysis"
-          - slug: capacity-planning
-            title: "Планирование ёмкости"
-            description: "Service capacity planning"
-          - slug: performance-monitoring
-            title: "Мониторинг производительности"
-            description: "Continuous performance monitoring"
-          - slug: optimization-strategies
-            title: "Стратегии оптимизации"
-            description: "Performance optimization strategies"
-
-      # Module 78: Production Excellence
-      - id: production-excellence
-        order: 78
-        title: "Production Excellence"
-        titleEn: "Production Excellence"
-        topics:
-          - slug: sre-principles
-            title: "Принципы SRE"
-            description: "SRE principles для Go services"
-          - slug: reliability-engineering
-            title: "Reliability Engineering"
-            description: "Building reliable systems"
-          - slug: chaos-engineering
-            title: "Chaos Engineering"
-            description: "Chaos engineering practices"
-          - slug: failure-testing
-            title: "Тестирование отказов"
-            description: "Failure mode testing"
-          - slug: resilience-patterns
-            title: "Паттерны устойчивости"
-            description: "Resilience design patterns"
-
-      # Module 79: Go Advanced Features
-      - id: go-advanced-features
-        order: 79
-        title: "Продвинутые возможности Go"
-        titleEn: "Go Advanced Features"
-        topics:
-          - slug: reflection-advanced
-            title: "Продвинутая рефлексия"
-            description: "Advanced reflection usage"
-          - slug: unsafe-package
-            title: "Пакет unsafe"
-            description: "unsafe package, when to use"
-          - slug: cgo-integration
-            title: "CGO интеграция"
-            description: "CGO integration patterns"
-          - slug: build-constraints
-            title: "Build constraints"
-            description: "Advanced build constraints"
-          - slug: compiler-optimizations
-            title: "Оптимизации компилятора"
-            description: "Go compiler optimization understanding"
+  - id: patterns
+    path: "19-patterns"
+    title: "Паттерны"
+    titleEn: "Patterns"
+    description: "Паттерны проектирования"
+    flat: true
+    topics:
+      - file: "01-options-pattern.md"
+        slug: options-pattern
+        title: "Options паттерн"
+        description: "Functional options"
+      - file: "02-builder-pattern.md"
+        slug: builder-pattern
+        title: "Builder паттерн"
+        description: "Построитель"
+      - file: "03-factory-pattern.md"
+        slug: factory-pattern
+        title: "Factory паттерн"
+        description: "Фабрика"
+      - file: "04-worker-pool.md"
+        slug: worker-pool
+        title: "Worker Pool"
+        description: "Пул воркеров"
+      - file: "05-pipeline.md"
+        slug: pipeline
+        title: "Pipeline"
+        description: "Конвейер"
+      - file: "06-fan-out-fan-in.md"
+        slug: fan-out-fan-in
+        title: "Fan-out/Fan-in"
+        description: "Распределение/сбор"
+      - file: "07-graceful-degradation.md"
+        slug: graceful-degradation
+        title: "Graceful Degradation"
+        description: "Отказоустойчивость"

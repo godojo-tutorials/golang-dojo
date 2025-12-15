@@ -1,6 +1,0 @@
-id: k8s-monitoring
-order: 63
-title: Мониторинг в Kubernetes
-titleEn: Kubernetes Monitoring
-block: kubernetes
-topicsCount: 5
