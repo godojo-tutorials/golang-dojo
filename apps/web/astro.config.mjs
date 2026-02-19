@@ -61,6 +61,11 @@ export default defineConfig({
         maxHeadingLevel: 3,
       },
       head: [
+        // Vercel Analytics
+        {
+          tag: 'script',
+          attrs: { defer: true, src: '/_vercel/insights/script.js' },
+        },
         // Open Graph
         {
           tag: 'meta',
