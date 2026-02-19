@@ -65,6 +65,10 @@
             {
               "label": "Program Structure",
               "link": "/en/program-structure/"
+            },
+            {
+              "label": "Compile and Run",
+              "link": "/en/compile-and-run/"
             }
           ]
         }

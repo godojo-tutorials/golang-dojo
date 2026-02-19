@@ -1,15 +1,14 @@
 ---
-title: "Compile and Run"
-description: "go build, go run and executables"
-slug: compile-and-run
-published: true
+title: Compile and Run
+description: 'go build, go run and executables'
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 3
 author: godojo
-updatedAt: "2026-02-20"
-readingTime: 14
+authorName: Godojo Master
+updatedAt: '2026-02-20'
+readingTime: 29
 ---
-
-# Compile and Run: What Actually Happens When You Run a Go Programme
-
 In the previous lesson we dissected what makes up a Go programme. By now you've typed `go run main.go` a dozen times and seen the output. But what's behind that command? Where does the compiled file go? And how do you turn code into a **binary** — an executable file containing machine instructions that you can simply copy onto a server and run — no Go, no dependencies, no nothing?
 
 In the first lesson we mentioned "compiled language" and "single binary with no dependencies" — time to see what those words mean in practice. Compilation is the translation of your code into the language of the processor: ones and zeroes that the CPU executes directly. The result of that translation is the binary (from the word binary — base-two). Unlike Python, where an interpreter reads and executes your programme's text line by line every time, Go does the translation once — and from that point the processor works with the finished result. That's where the speed comes from.
@@ -823,3 +822,14 @@ Now you can turn code into a binary, build for any platform, and understand what
 - [How to Reduce Go Binary Size](https://words.filippo.io/shrink-your-go-binaries-with-this-one-weird-trick/) — Filippo Valsorda on size optimisation
 - [Effective Go](https://go.dev/doc/effective_go) — recommendations for idiomatic Go
 - [Understanding Go Compiler](https://www.linkedin.com/pulse/understanding-go-compiler-kanishka-naik-sbmwc) — Kanishka Naik on the Go compilation pipeline
+
+
+---
+
+<nav class="lesson-nav">
+  <a href="/en/program-structure/" class="lesson-nav-link">
+    <span class="lesson-nav-label">← Previous</span>
+    <span class="lesson-nav-title">Program Structure</span>
+  </a>
+  <div></div>
+</nav>

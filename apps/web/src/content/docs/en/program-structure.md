@@ -857,5 +857,8 @@ Now you know what a Go programme is made of. In the next lesson we'll cover **co
     <span class="lesson-nav-label">← Previous</span>
     <span class="lesson-nav-title">Hello World</span>
   </a>
-  <div></div>
+  <a href="/en/compile-and-run/" class="lesson-nav-link" style="text-align: right;">
+    <span class="lesson-nav-label">Next →</span>
+    <span class="lesson-nav-title">Compile and Run</span>
+  </a>
 </nav>

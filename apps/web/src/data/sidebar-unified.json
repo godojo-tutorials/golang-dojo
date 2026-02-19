@@ -50,6 +50,9 @@
           },
           {
             "label": "Компиляция и запуск",
+            "translations": {
+              "en": "Compile and Run"
+            },
             "slug": "compile-and-run"
           }
         ]

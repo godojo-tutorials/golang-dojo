@@ -73,6 +73,11 @@
             "slug": "program-structure",
             "title": "Program Structure",
             "number": "1.5"
+          },
+          {
+            "slug": "compile-and-run",
+            "title": "Compile and Run",
+            "number": "1.6"
           }
         ]
       }
