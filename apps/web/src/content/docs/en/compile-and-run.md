@@ -11,7 +11,7 @@ readingTime: 29
 ---
 In the previous lesson we dissected what makes up a Go programme. By now you've typed `go run main.go` a dozen times and seen the output. But what's behind that command? Where does the compiled file go? And how do you turn code into a **binary** — an executable file containing machine instructions that you can simply copy onto a server and run — no Go, no dependencies, no nothing?
 
-In the first lesson we mentioned "compiled language" and "single binary with no dependencies" — time to see what those words mean in practice. Compilation is the translation of your code into the language of the processor: ones and zeroes that the CPU executes directly. The result of that translation is the binary (from the word binary — base-two). Unlike Python, where an interpreter reads and executes your programme's text line by line every time, Go does the translation once — and from that point the processor works with the finished result. That's where the speed comes from.
+In the first lesson we mentioned "compiled language" and "single binary with no dependencies" — time to see what those words mean in practice. Compilation is the translation of your code into the language of the processor: ones and zeroes that the CPU executes directly. The result of that translation is the binary (from the word binary — base-two). Unlike Python, where code is first compiled to bytecode and then executed by a virtual machine (CPython VM), Go compiles straight to native machine instructions — no intermediate layers. That's where the speed comes from.
 
 Today we pop the bonnet.
 
