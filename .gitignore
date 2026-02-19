@@ -8,3 +8,6 @@ dist/
 .env
 .env.*
 !.env.example
+research/**/*.md
+tips.md
+.idea/

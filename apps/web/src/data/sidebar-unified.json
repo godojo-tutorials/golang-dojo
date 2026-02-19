@@ -47,6 +47,13 @@
               "en": "Program Structure"
             },
             "slug": "program-structure"
+          },
+          {
+            "label": "Компиляция и запуск",
+            "translations": {
+              "en": "Compile and Run"
+            },
+            "slug": "compile-and-run"
           }
         ]
       }

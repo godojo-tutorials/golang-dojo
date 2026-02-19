@@ -1,15 +1,14 @@
 ---
-title: "Компиляция и запуск"
-description: "go build, go run и исполняемые файлы"
-slug: compile-and-run
-published: true
+title: Компиляция и запуск
+description: 'go build, go run и исполняемые файлы'
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 3
 author: godojo
-updatedAt: "2026-02-20"
-readingTime: 14
+authorName: Godojo Master
+updatedAt: '2026-02-20'
+readingTime: 26
 ---
-
-# Компиляция и запуск: что на самом деле происходит, когда вы запускаете Go-программу
-
 В предыдущем уроке мы разобрали, из каких деталей состоит Go-программа. Вы уже десяток раз набирали `go run main.go` и видели результат. Но что стоит за этой командой? Куда девается скомпилированный файл? И как превратить код в **бинарник** — исполняемый файл с машинными инструкциями, который можно просто скопировать на сервер и запустить — без Go, без зависимостей, без ничего?
 
 В первом уроке мы упоминали "компилируемый язык" и "один бинарник без зависимостей" — пришло время разобраться, что за этими словами стоит на практике. Компиляция — это перевод вашего кода в язык процессора: нули и единицы, которые CPU выполняет напрямую. Результат этого перевода — тот самый бинарник (от слова binary — двоичный). В отличие от Python, где интерпретатор каждый раз читает и выполняет текст программы строка за строкой, Go делает перевод один раз — а дальше процессор работает с готовым результатом. Отсюда и скорость.
@@ -823,3 +822,14 @@ dist:
 - [How to Reduce Go Binary Size](https://words.filippo.io/shrink-your-go-binaries-with-this-one-weird-trick/) — Filippo Valsorda об оптимизации размера
 - [Effective Go](https://go.dev/doc/effective_go) — рекомендации по идиоматичному Go
 - [Understanding Go Compiler](https://www.linkedin.com/pulse/understanding-go-compiler-kanishka-naik-sbmwc) — Kanishka Naik о пайплайне компиляции Go
+
+
+---
+
+<nav class="lesson-nav">
+  <a href="/ru/program-structure/" class="lesson-nav-link">
+    <span class="lesson-nav-label">← Предыдущий</span>
+    <span class="lesson-nav-title">Структура программы</span>
+  </a>
+  <div></div>
+</nav>

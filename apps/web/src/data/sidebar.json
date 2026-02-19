@@ -27,6 +27,10 @@
             {
               "label": "Структура программы",
               "link": "/ru/program-structure/"
+            },
+            {
+              "label": "Компиляция и запуск",
+              "link": "/ru/compile-and-run/"
             }
           ]
         }
@@ -61,6 +65,10 @@
             {
               "label": "Program Structure",
               "link": "/en/program-structure/"
+            },
+            {
+              "label": "Compile and Run",
+              "link": "/en/compile-and-run/"
             }
           ]
         }

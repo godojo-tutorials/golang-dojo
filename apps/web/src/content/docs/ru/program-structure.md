@@ -868,5 +868,8 @@ func main() {
     <span class="lesson-nav-label">← Предыдущий</span>
     <span class="lesson-nav-title">Hello World</span>
   </a>
-  <div></div>
+  <a href="/ru/compile-and-run/" class="lesson-nav-link" style="text-align: right;">
+    <span class="lesson-nav-label">Следующий →</span>
+    <span class="lesson-nav-title">Компиляция и запуск</span>
+  </a>
 </nav>

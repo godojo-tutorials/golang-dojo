@@ -122,7 +122,7 @@ Key variables:
 | `GOPATH` | Working directory | `~/go` |
 | `GOBIN` | Path for binaries | `~/go/bin` |
 
-## First Programme
+## First Program
 
 Let's create a simple programme to verify the installation:
 

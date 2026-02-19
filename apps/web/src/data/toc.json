@@ -31,6 +31,11 @@
             "slug": "program-structure",
             "title": "Структура программы",
             "number": "1.5"
+          },
+          {
+            "slug": "compile-and-run",
+            "title": "Компиляция и запуск",
+            "number": "1.6"
           }
         ]
       }
@@ -68,6 +73,11 @@
             "slug": "program-structure",
             "title": "Program Structure",
             "number": "1.5"
+          },
+          {
+            "slug": "compile-and-run",
+            "title": "Compile and Run",
+            "number": "1.6"
           }
         ]
       }
