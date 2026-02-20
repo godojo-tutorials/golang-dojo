@@ -1,804 +1,775 @@
 # Godojo Go Tutorial - Curriculum Configuration (English)
-# v2 format - flat structure with content/en/ prefix
-# Style: learn.javascript.ru (flat URLs, table of contents on main page)
+# Central configuration for the tutorial structure
+# Structure: content/{block.path}/{module.path?}/{topic.file}
 
 version: "2.0"
 language: en
 title: "Complete Go Tutorial"
-description: "From basics to expert - 79 modules, 17 blocks"
-
-# Statistics
-stats:
-  totalBlocks: 17
-  totalModules: 79
-  totalTopics: 395
-  estimatedHours: 370
+description: "From basics to expert"
 
 blocks:
   # ============================================
-  # BLOCK 1: Introduction to Go
+  # BLOCK 1: Introduction
   # ============================================
   - id: intro
+    path: "01-intro"
     title: "Introduction to Go"
     description: "Getting started with Go"
-    path: "01-intro"
     flat: true
     topics:
-      - slug: what-is-go
-        title: "What is Go?"
-        file: 01-what-is-go.md
-      - slug: ide-setup
+      - file: "01-what-is-go.md"
+        slug: what-is-go
+        title: "What is Go"
+        description: "Overview of Go, its features and use cases"
+      - file: "02-ide-setup.md"
+        slug: ide-setup
         title: "Code Editor"
-        file: 02-ide-setup.md
-      - slug: installation
+        description: "Setting up VS Code, GoLand and other editors for Go"
+      - file: "03-installation.md"
+        slug: installation
         title: "Installing Go"
-        file: 03-installation.md
-      - slug: hello-world
+        description: "Go installation, versions, updating"
+      - file: "04-hello-world.md"
+        slug: hello-world
         title: "Hello World"
-        file: 04-hello-world.md
-      - slug: program-structure
-        title: "Program Structure"
-        file: 05-program-structure.md
-      - slug: compile-and-run
+        description: "Your first Go programme"
+      - file: "05-program-structure.md"
+        slug: program-structure
+        title: "Programme Structure"
+        description: "Core elements of a Go programme"
+      - file: "06-compile-and-run.md"
+        slug: compile-and-run
         title: "Compile and Run"
-        file: 06-compile-and-run.md
-      - slug: go-playground
+        description: "go build, go run and executables"
+      - file: "07-go-playground.md"
+        slug: go-playground
         title: "Go Playground"
-        file: 07-go-playground.md
-      - slug: docs-and-resources
+        description: "Online environment for experiments"
+      - file: "08-docs-and-resources.md"
+        slug: docs-and-resources
         title: "Docs and Resources"
-        file: 08-docs-and-resources.md
+        description: "Where to find information about Go"
 
   # ============================================
-  # BLOCK 2: Go Basics
+  # BLOCK 2: Language Basics
   # ============================================
   - id: basics
-    title: "Go Basics"
-    description: "Fundamental concepts"
     path: "02-basics"
+    title: "Language Basics"
+    description: "Fundamental concepts of Go"
     modules:
-      - id: variables
+      # Module 2.1: Variables & Types
+      - id: variables-types
+        path: "01-variables-types"
         title: "Variables & Types"
-        path: variables
         topics:
-          - slug: variables-declaration
-            title: "Variable Declaration"
-            file: 01-variables-declaration.md
-          - slug: basic-types
+          - file: "01-variables.md"
+            slug: variables
+            title: "Variables"
+            description: "var, :=, multiple declaration, zero values"
+          - file: "02-basic-types.md"
+            slug: basic-types
             title: "Basic Types"
-            file: 02-basic-types.md
-          - slug: type-conversion
-            title: "Type Conversion"
-            file: 03-type-conversion.md
-          - slug: constants
+            description: "bool, int, float, complex, string, rune, byte, UTF-8 and literals"
+          - file: "03-constants.md"
+            slug: constants
             title: "Constants"
-            file: 04-constants.md
-          - slug: zero-values
-            title: "Zero Values"
-            file: 05-zero-values.md
-          - slug: type-inference
-            title: "Type Inference"
-            file: 06-type-inference.md
+            description: "const, iota, typed and untyped constants"
+          - file: "04-type-definitions.md"
+            slug: type-definitions
+            title: "Type Definitions"
+            description: "type definition, aliases, conversion and type inference"
+          - file: "05-scope-shadowing.md"
+            slug: scope-shadowing
+            title: "Scope and Shadowing"
+            description: "Block scope, variable shadowing"
+          - file: "06-naming-export.md"
+            slug: naming-export
+            title: "Naming and Export"
+            description: "Keywords, conventions, blank identifier, export"
+          - file: "07-fmt-printing.md"
+            slug: fmt-printing
+            title: "Formatted Output"
+            description: "fmt verbs, Printf, Sprintf, formatting"
 
+      # Module 2.2: Operators
       - id: operators
+        path: "02-operators"
         title: "Operators"
-        path: operators
         topics:
-          - slug: arithmetic-operators
-            title: "Arithmetic Operators"
-            file: 01-arithmetic-operators.md
-          - slug: comparison-operators
-            title: "Comparison Operators"
-            file: 02-comparison-operators.md
-          - slug: logical-operators
-            title: "Logical Operators"
-            file: 03-logical-operators.md
-          - slug: assignment-operators
-            title: "Assignment Operators"
-            file: 04-assignment-operators.md
-          - slug: bitwise-operators
-            title: "Bitwise Operators"
-            file: 05-bitwise-operators.md
-          - slug: operator-precedence
-            title: "Operator Precedence"
-            file: 06-operator-precedence.md
+          - file: "01-arithmetic-comparison-logical.md"
+            slug: arithmetic-comparison-logical
+            title: "Arithmetic, Comparison and Logical"
+            description: "+, -, *, /, %, ==, !=, <, >, &&, ||, !"
+          - file: "02-bitwise-assignment.md"
+            slug: bitwise-assignment
+            title: "Bitwise and Assignment"
+            description: "&, |, ^, <<, >>, =, +=, -="
+          - file: "03-precedence.md"
+            slug: precedence
+            title: "Precedence and Evaluation Order"
+            description: "Operator precedence and evaluation order"
 
+      # Module 2.3: Control Flow
       - id: control-flow
+        path: "03-control-flow"
         title: "Control Flow"
-        path: control-flow
         topics:
-          - slug: if-statements
-            title: "If Statements"
-            file: 01-if-statements.md
-          - slug: switch-statements
-            title: "Switch Statements"
-            file: 02-switch-statements.md
-          - slug: for-loops
-            title: "For Loops"
-            file: 03-for-loops.md
-          - slug: range-loops
-            title: "Range Loops"
-            file: 04-range-loops.md
-          - slug: break-continue
-            title: "Break & Continue"
-            file: 05-break-continue.md
-          - slug: goto-labels
-            title: "Goto & Labels"
-            file: 06-goto-labels.md
+          - file: "01-if-else.md"
+            slug: if-else
+            title: "if-else Conditionals"
+            description: "Conditional statements"
+          - file: "02-switch.md"
+            slug: switch
+            title: "switch and type switch"
+            description: "switch, case, default, fallthrough, type switch"
+          - file: "03-for.md"
+            slug: for
+            title: "for Loop"
+            description: "The only loop in Go"
+          - file: "04-range.md"
+            slug: range
+            title: "range Loop"
+            description: "Iterating over collections"
+          - file: "05-break-continue-goto.md"
+            slug: break-continue-goto
+            title: "break, continue, goto and Labels"
+            description: "Loop control, labels, unconditional jump"
 
   # ============================================
-  # BLOCK 3: Functions
-  # ============================================
-  - id: functions
-    title: "Functions"
-    description: "Functions in Go"
-    path: "05-functions"
-    flat: true
-    topics:
-      - slug: function-declaration
-        title: "Function Declaration"
-        file: 01-function-declaration.md
-      - slug: parameters
-        title: "Parameters"
-        file: 02-parameters.md
-      - slug: return-values
-        title: "Return Values"
-        file: 03-return-values.md
-      - slug: multiple-returns
-        title: "Multiple Returns"
-        file: 04-multiple-returns.md
-      - slug: named-returns
-        title: "Named Returns"
-        file: 05-named-returns.md
-      - slug: variadic-functions
-        title: "Variadic Functions"
-        file: 06-variadic-functions.md
-      - slug: anonymous-functions
-        title: "Anonymous Functions"
-        file: 07-anonymous-functions.md
-      - slug: closures
-        title: "Closures"
-        file: 08-closures.md
-      - slug: defer
-        title: "Defer"
-        file: 09-defer.md
-      - slug: recursion
-        title: "Recursion"
-        file: 10-recursion.md
-
-  # ============================================
-  # BLOCK 4: Composite Types
+  # BLOCK 3: Composite Types
   # ============================================
   - id: composite-types
+    path: "03-composite-types"
     title: "Composite Types"
     description: "Arrays, slices, maps, structs"
-    path: "03-composite-types"
     modules:
-      - id: arrays
-        title: "Arrays"
-        path: arrays
+      # Module 3.1: Collections
+      - id: collections
+        path: "01-collections"
+        title: "Collections"
         topics:
-          - slug: array-basics
-            title: "Array Basics"
-            file: 01-array-basics.md
-          - slug: array-initialization
-            title: "Array Initialization"
-            file: 02-array-initialization.md
-          - slug: multidimensional-arrays
-            title: "Multidimensional Arrays"
-            file: 03-multidimensional-arrays.md
-          - slug: array-comparison
-            title: "Array Comparison"
-            file: 04-array-comparison.md
-
-      - id: slices
-        title: "Slices"
-        path: slices
-        topics:
-          - slug: slice-basics
+          - file: "01-array-basics.md"
+            slug: array-basics
+            title: "Arrays"
+            description: "Declaration, initialisation, indexing"
+          - file: "02-slice-basics.md"
+            slug: slice-basics
             title: "Slice Basics"
-            file: 01-slice-basics.md
-          - slug: slice-operations
-            title: "Slice Operations"
-            file: 02-slice-operations.md
-          - slug: slice-internals
-            title: "Slice Internals"
-            file: 03-slice-internals.md
-          - slug: append-copy
-            title: "Append & Copy"
-            file: 04-append-copy.md
-          - slug: slice-tricks
-            title: "Slice Tricks"
-            file: 05-slice-tricks.md
+            description: "[]T type, make, len, cap, arrays vs slices"
+          - file: "03-slicing-internals.md"
+            slug: slicing-internals
+            title: "Slicing and Internals"
+            description: "a[low:high:max], slice header, backing array"
+          - file: "04-append-copy-nil.md"
+            slug: append-copy-nil
+            title: "append, copy and nil vs empty"
+            description: "Appending, copying, nil vs []T{} difference"
+          - file: "05-slice-tricks.md"
+            slug: slice-tricks
+            title: "Tricks and the slices Package"
+            description: "Useful patterns and standard functions"
+          - file: "06-map-basics.md"
+            slug: map-basics
+            title: "Maps"
+            description: "map[K]V, make, CRUD operations"
+          - file: "07-map-iteration-comma-ok.md"
+            slug: map-iteration-comma-ok
+            title: "Iteration and comma-ok"
+            description: "for k, v := range m and v, ok := m[key]"
+          - file: "08-maps-package.md"
+            slug: maps-package
+            title: "maps Package"
+            description: "Standard functions for maps"
+          - file: "09-collection-patterns.md"
+            slug: collection-patterns
+            title: "Collection Patterns"
+            description: "Common techniques for arrays, slices and maps"
 
-      - id: maps
-        title: "Maps"
-        path: maps
-        topics:
-          - slug: map-basics
-            title: "Map Basics"
-            file: 01-map-basics.md
-          - slug: map-operations
-            title: "Map Operations"
-            file: 02-map-operations.md
-          - slug: map-iteration
-            title: "Map Iteration"
-            file: 03-map-iteration.md
-          - slug: map-internals
-            title: "Map Internals"
-            file: 04-map-internals.md
-
+      # Module 3.2: Structs
       - id: structs
+        path: "02-structs"
         title: "Structs"
-        path: structs
         topics:
-          - slug: struct-basics
+          - file: "01-struct-basics.md"
+            slug: struct-basics
             title: "Struct Basics"
-            file: 01-struct-basics.md
-          - slug: struct-initialization
-            title: "Struct Initialization"
-            file: 02-struct-initialization.md
-          - slug: anonymous-structs
-            title: "Anonymous Structs"
-            file: 03-anonymous-structs.md
-          - slug: struct-embedding
-            title: "Struct Embedding"
-            file: 04-struct-embedding.md
-          - slug: struct-tags
-            title: "Struct Tags"
-            file: 05-struct-tags.md
+            description: "type T struct{}, field access"
+          - file: "02-embedding.md"
+            slug: struct-embedding
+            title: "Anonymous Fields and Embedding"
+            description: "Embedded fields and struct composition"
+          - file: "03-struct-tags.md"
+            slug: struct-tags
+            title: "Tags and Comparability"
+            description: "Field metadata and when structs can be compared"
+          - file: "04-struct-patterns.md"
+            slug: struct-patterns
+            title: "Anonymous Structs and Patterns"
+            description: "Unnamed structs and useful techniques"
 
   # ============================================
-  # BLOCK 5: Strings
-  # ============================================
-  - id: strings
-    title: "Strings"
-    description: "Working with strings"
-    path: "08-maps-strings"
-    flat: true
-    topics:
-      - slug: string-basics
-        title: "String Basics"
-        file: 01-string-basics.md
-      - slug: runes-bytes
-        title: "Runes & Bytes"
-        file: 02-runes-bytes.md
-      - slug: string-operations
-        title: "String Operations"
-        file: 03-string-operations.md
-      - slug: strings-package
-        title: "strings Package"
-        file: 04-strings-package.md
-      - slug: strconv-package
-        title: "strconv Package"
-        file: 05-strconv-package.md
-      - slug: string-formatting
-        title: "String Formatting"
-        file: 06-string-formatting.md
-      - slug: string-builder
-        title: "String Builder"
-        file: 07-string-builder.md
-      - slug: regular-expressions
-        title: "Regular Expressions"
-        file: 08-regular-expressions.md
-
-  # ============================================
-  # BLOCK 6: Pointers
+  # BLOCK 4: Pointers
   # ============================================
   - id: pointers
-    title: "Pointers"
-    description: "Working with pointers"
     path: "04-pointers"
+    title: "Pointers"
+    description: "Pointers in Go"
     flat: true
     topics:
-      - slug: pointer-basics
+      - file: "01-pointer-basics.md"
+        slug: pointer-basics
         title: "Pointer Basics"
-        file: 01-pointer-basics.md
-      - slug: pointer-operations
-        title: "Pointer Operations"
-        file: 02-pointer-operations.md
-      - slug: pointers-and-functions
-        title: "Pointers & Functions"
-        file: 03-pointers-and-functions.md
-      - slug: pointers-and-structs
-        title: "Pointers & Structs"
-        file: 04-pointers-and-structs.md
-      - slug: new-vs-make
-        title: "new vs make"
-        file: 05-new-vs-make.md
+        description: "*T type, nil, address-of &, dereferencing *"
+      - file: "02-address-dereference.md"
+        slug: address-dereference
+        title: "Address and Dereference"
+        description: "& and * operators in detail"
+      - file: "03-pointers-vs-values.md"
+        slug: pointers-vs-values
+        title: "Pointers vs Values"
+        description: "When to use pointers, nil pointers"
+      - file: "04-pointer-to-struct.md"
+        slug: pointer-to-struct
+        title: "Pointers to Structs"
+        description: "Automatic dereferencing"
 
   # ============================================
-  # BLOCK 7: Methods
+  # BLOCK 5: Functions
   # ============================================
-  - id: methods
-    title: "Methods"
-    description: "Methods in Go"
+  - id: functions
+    path: "05-functions"
+    title: "Functions"
+    description: "Functions in Go"
+    modules:
+      # Module 5.1: Function Basics
+      - id: basics
+        path: "01-basics"
+        title: "Function Basics"
+        topics:
+          - file: "01-declaration-parameters.md"
+            slug: func-declaration-parameters
+            title: "Declaration and Parameters"
+            description: "func keyword, function parameters"
+          - file: "02-return-values.md"
+            slug: func-return-values
+            title: "Return Values"
+            description: "Single and multiple results, named returns"
+          - file: "03-variadic.md"
+            slug: variadic
+            title: "Variadic Functions"
+            description: "...T parameters"
+
+      # Module 5.2: First-Class Functions
+      - id: first-class
+        path: "02-first-class"
+        title: "First-Class Functions"
+        topics:
+          - file: "01-function-types-values.md"
+            slug: function-types-values
+            title: "Function Types and Values"
+            description: "func(params) returns, assigning functions"
+          - file: "02-closures.md"
+            slug: closures
+            title: "Anonymous Functions and Closures"
+            description: "func(){} literals, capturing variables"
+          - file: "03-higher-order.md"
+            slug: higher-order
+            title: "Callbacks and Higher-Order Functions"
+            description: "Functions as arguments and return values"
+
+      # Module 5.3: defer, panic, recover
+      - id: defer-panic-recover
+        path: "03-defer-panic-recover"
+        title: "defer, panic, recover"
+        topics:
+          - file: "01-defer.md"
+            slug: defer
+            title: "defer"
+            description: "Deferred execution, order, pitfalls in loops"
+          - file: "02-panic-recover.md"
+            slug: panic-recover
+            title: "panic and recover"
+            description: "Panic and recovery"
+          - file: "03-defer-patterns.md"
+            slug: defer-patterns
+            title: "defer Patterns"
+            description: "Useful techniques"
+
+  # ============================================
+  # BLOCK 6: Methods & Interfaces
+  # ============================================
+  - id: methods-interfaces
     path: "06-methods-interfaces"
-    flat: true
-    topics:
-      - slug: method-basics
-        title: "Method Basics"
-        file: 01-method-basics.md
-      - slug: value-receivers
-        title: "Value Receivers"
-        file: 02-value-receivers.md
-      - slug: pointer-receivers
-        title: "Pointer Receivers"
-        file: 03-pointer-receivers.md
-      - slug: method-values
-        title: "Method Values"
-        file: 04-method-values.md
-      - slug: method-expressions
-        title: "Method Expressions"
-        file: 05-method-expressions.md
+    title: "Methods & Interfaces"
+    description: "OOP in Go"
+    modules:
+      # Module 6.1: Methods
+      - id: methods
+        path: "01-methods"
+        title: "Methods"
+        topics:
+          - file: "01-method-basics.md"
+            slug: method-basics
+            title: "Method Basics"
+            description: "func (r T) Name(), which types can have methods"
+          - file: "02-receivers.md"
+            slug: receivers
+            title: "Value and Pointer Receivers"
+            description: "Value receivers, pointer receivers, choosing a receiver"
+          - file: "03-method-values-expressions.md"
+            slug: method-values-expressions
+            title: "Method Values and Expressions"
+            description: "Methods as values, T.Method syntax"
+          - file: "04-embedded-methods.md"
+            slug: embedded-methods
+            title: "Embedded Type Methods"
+            description: "Method promotion"
+
+      # Module 6.2: Interfaces
+      - id: interfaces
+        path: "02-interfaces"
+        title: "Interfaces"
+        topics:
+          - file: "01-interface-basics.md"
+            slug: interface-basics
+            title: "Interface Basics"
+            description: "type I interface{}, implicit implementation, type identity"
+          - file: "02-empty-interface-any.md"
+            slug: empty-interface-any
+            title: "Empty Interface and any"
+            description: "interface{}, any as alias"
+          - file: "03-type-assertions-switch.md"
+            slug: type-assertions-switch
+            title: "Type Assertions and type switch"
+            description: "i.(T) and switch i.(type)"
+          - file: "04-interface-composition.md"
+            slug: interface-composition
+            title: "Interface Composition"
+            description: "Embedding interfaces"
+          - file: "05-common-interfaces.md"
+            slug: common-interfaces
+            title: "Common Interfaces"
+            description: "io.Reader, io.Writer, Stringer and others"
+          - file: "06-interface-values-nil.md"
+            slug: interface-values-nil
+            title: "Interface Values and nil"
+            description: "Dynamic type/value, nil vs nil interface"
+          - file: "07-interface-design.md"
+            slug: interface-design
+            title: "Interface Design"
+            description: "Small interfaces, patterns, comparable"
 
   # ============================================
-  # BLOCK 8: Interfaces
-  # ============================================
-  - id: interfaces
-    title: "Interfaces"
-    description: "Interfaces in Go"
-    path: "06-methods-interfaces"
-    flat: true
-    topics:
-      - slug: interface-basics
-        title: "Interface Basics"
-        file: 01-interface-basics.md
-      - slug: interface-implementation
-        title: "Interface Implementation"
-        file: 02-interface-implementation.md
-      - slug: empty-interface
-        title: "Empty Interface"
-        file: 03-empty-interface.md
-      - slug: type-assertions
-        title: "Type Assertions"
-        file: 04-type-assertions.md
-      - slug: type-switches
-        title: "Type Switches"
-        file: 05-type-switches.md
-      - slug: interface-composition
-        title: "Interface Composition"
-        file: 06-interface-composition.md
-      - slug: common-interfaces
-        title: "Common Interfaces"
-        file: 07-common-interfaces.md
-
-  # ============================================
-  # BLOCK 9: Error Handling
+  # BLOCK 7: Error Handling
   # ============================================
   - id: errors
-    title: "Error Handling"
-    description: "Handling errors in Go"
     path: "07-errors"
+    title: "Error Handling"
+    description: "Working with errors in Go"
     flat: true
     topics:
-      - slug: error-basics
-        title: "Error Basics"
-        file: 01-error-basics.md
-      - slug: error-handling
+      - file: "01-error-basics.md"
+        slug: error-basics
+        title: "The error Interface and Creating Errors"
+        description: "error interface, errors.New, fmt.Errorf"
+      - file: "02-error-handling.md"
+        slug: error-handling
         title: "Error Handling"
-        file: 02-error-handling.md
-      - slug: custom-errors
-        title: "Custom Errors"
-        file: 03-custom-errors.md
-      - slug: error-wrapping
-        title: "Error Wrapping"
-        file: 04-error-wrapping.md
-      - slug: errors-package
-        title: "errors Package"
-        file: 05-errors-package.md
-      - slug: panic-recover
-        title: "Panic & Recover"
-        file: 06-panic-recover.md
+        description: "if err != nil pattern"
+      - file: "03-wrapping-is-as.md"
+        slug: wrapping-is-as
+        title: "Wrapping, Is and As"
+        description: "%w, error chains, errors.Is, errors.As"
+      - file: "04-custom-sentinel.md"
+        slug: custom-sentinel
+        title: "Custom and Sentinel Errors"
+        description: "Custom error types and predefined errors"
+      - file: "05-error-practices.md"
+        slug: error-practices
+        title: "Patterns and Best Practices"
+        description: "Useful techniques, when to use panic"
 
   # ============================================
-  # BLOCK 10: Packages & Modules
+  # BLOCK 8: Packages & Modules
   # ============================================
   - id: packages
-    title: "Packages & Modules"
-    description: "Code organization"
     path: "08-packages"
+    title: "Packages & Modules"
+    description: "Code organisation in Go"
     flat: true
     topics:
-      - slug: package-basics
-        title: "Package Basics"
-        file: 01-package-basics.md
-      - slug: import-statements
-        title: "Import Statements"
-        file: 02-import-statements.md
-      - slug: visibility
-        title: "Visibility"
-        file: 03-visibility.md
-      - slug: init-function
-        title: "init Function"
-        file: 04-init-function.md
-      - slug: go-modules
+      - file: "01-package-imports.md"
+        slug: package-imports
+        title: "Packages and Imports"
+        description: "package declaration, import statement"
+      - file: "02-go-modules.md"
+        slug: go-modules
         title: "Go Modules"
-        file: 05-go-modules.md
-      - slug: dependency-management
-        title: "Dependency Management"
-        file: 06-dependency-management.md
-      - slug: internal-packages
-        title: "Internal Packages"
-        file: 07-internal-packages.md
+        description: "go mod, go.mod, go.sum, versioning"
+      - file: "03-init-initialization.md"
+        slug: init-initialization
+        title: "init and Initialisation Order"
+        description: "init function, programme initialisation order"
+      - file: "04-internal-organization.md"
+        slug: internal-organization
+        title: "Internal Packages and Organisation"
+        description: "Private packages, project structure"
+      - file: "05-docs-publishing.md"
+        slug: docs-publishing
+        title: "Documentation and Publishing"
+        description: "godoc comments, publishing modules"
 
   # ============================================
-  # BLOCK 11: Concurrency
-  # ============================================
-  - id: concurrency
-    title: "Concurrency"
-    description: "Goroutines and channels"
-    path: "10-concurrency"
-    modules:
-      - id: goroutines
-        title: "Goroutines"
-        path: goroutines
-        topics:
-          - slug: goroutine-basics
-            title: "Goroutine Basics"
-            file: 01-goroutine-basics.md
-          - slug: goroutine-lifecycle
-            title: "Goroutine Lifecycle"
-            file: 02-goroutine-lifecycle.md
-          - slug: goroutine-scheduling
-            title: "Goroutine Scheduling"
-            file: 03-goroutine-scheduling.md
-          - slug: race-conditions
-            title: "Race Conditions"
-            file: 04-race-conditions.md
-
-      - id: channels
-        title: "Channels"
-        path: channels
-        topics:
-          - slug: channel-basics
-            title: "Channel Basics"
-            file: 01-channel-basics.md
-          - slug: buffered-channels
-            title: "Buffered Channels"
-            file: 02-buffered-channels.md
-          - slug: channel-direction
-            title: "Channel Direction"
-            file: 03-channel-direction.md
-          - slug: closing-channels
-            title: "Closing Channels"
-            file: 04-closing-channels.md
-          - slug: range-over-channels
-            title: "Range over Channels"
-            file: 05-range-over-channels.md
-
-      - id: select
-        title: "Select"
-        path: select
-        topics:
-          - slug: select-basics
-            title: "Select Basics"
-            file: 01-select-basics.md
-          - slug: select-default
-            title: "Select Default"
-            file: 02-select-default.md
-          - slug: timeouts
-            title: "Timeouts"
-            file: 03-timeouts.md
-
-      - id: sync-package
-        title: "sync Package"
-        path: sync-package
-        topics:
-          - slug: mutex
-            title: "Mutex"
-            file: 01-mutex.md
-          - slug: rwmutex
-            title: "RWMutex"
-            file: 02-rwmutex.md
-          - slug: waitgroup
-            title: "WaitGroup"
-            file: 03-waitgroup.md
-          - slug: once
-            title: "Once"
-            file: 04-once.md
-          - slug: pool
-            title: "Pool"
-            file: 05-pool.md
-
-      - id: patterns
-        title: "Concurrency Patterns"
-        path: patterns
-        topics:
-          - slug: worker-pools
-            title: "Worker Pools"
-            file: 01-worker-pools.md
-          - slug: fan-in-fan-out
-            title: "Fan-in & Fan-out"
-            file: 02-fan-in-fan-out.md
-          - slug: pipeline
-            title: "Pipeline"
-            file: 03-pipeline.md
-          - slug: cancellation
-            title: "Cancellation"
-            file: 04-cancellation.md
-
-  # ============================================
-  # BLOCK 12: Context
-  # ============================================
-  - id: context
-    title: "Context"
-    description: "Working with context"
-    path: "11-context"
-    flat: true
-    topics:
-      - slug: context-basics
-        title: "Context Basics"
-        file: 01-context-basics.md
-      - slug: context-with-cancel
-        title: "Context with Cancel"
-        file: 02-context-with-cancel.md
-      - slug: context-with-timeout
-        title: "Context with Timeout"
-        file: 03-context-with-timeout.md
-      - slug: context-with-deadline
-        title: "Context with Deadline"
-        file: 04-context-with-deadline.md
-      - slug: context-with-value
-        title: "Context with Value"
-        file: 05-context-with-value.md
-      - slug: context-best-practices
-        title: "Best Practices"
-        file: 06-context-best-practices.md
-
-  # ============================================
-  # BLOCK 13: Testing
-  # ============================================
-  - id: testing
-    title: "Testing"
-    description: "Testing in Go"
-    path: "14-testing"
-    modules:
-      - id: unit-testing
-        title: "Unit Testing"
-        path: unit-testing
-        topics:
-          - slug: testing-basics
-            title: "Testing Basics"
-            file: 01-testing-basics.md
-          - slug: test-functions
-            title: "Test Functions"
-            file: 02-test-functions.md
-          - slug: table-driven-tests
-            title: "Table-Driven Tests"
-            file: 03-table-driven-tests.md
-          - slug: subtests
-            title: "Subtests"
-            file: 04-subtests.md
-          - slug: test-helpers
-            title: "Test Helpers"
-            file: 05-test-helpers.md
-
-      - id: advanced-testing
-        title: "Advanced Testing"
-        path: advanced-testing
-        topics:
-          - slug: test-coverage
-            title: "Test Coverage"
-            file: 01-test-coverage.md
-          - slug: mocking
-            title: "Mocking"
-            file: 02-mocking.md
-          - slug: http-testing
-            title: "HTTP Testing"
-            file: 03-http-testing.md
-          - slug: benchmark-tests
-            title: "Benchmark Tests"
-            file: 04-benchmark-tests.md
-          - slug: example-tests
-            title: "Example Tests"
-            file: 05-example-tests.md
-
-  # ============================================
-  # BLOCK 14: Standard Library
-  # ============================================
-  - id: stdlib
-    title: "Standard Library"
-    description: "Key standard library packages"
-    path: "12-io"
-    modules:
-      - id: io
-        title: "I/O Operations"
-        path: io
-        topics:
-          - slug: io-reader-writer
-            title: "Reader & Writer"
-            file: 01-io-reader-writer.md
-          - slug: bufio
-            title: "bufio Package"
-            file: 02-bufio.md
-          - slug: ioutil
-            title: "ioutil Package"
-            file: 03-ioutil.md
-
-      - id: files
-        title: "File Operations"
-        path: files
-        topics:
-          - slug: os-package
-            title: "os Package"
-            file: 01-os-package.md
-          - slug: filepath
-            title: "filepath Package"
-            file: 02-filepath.md
-          - slug: file-operations
-            title: "File Operations"
-            file: 03-file-operations.md
-
-      - id: json
-        title: "JSON"
-        path: json
-        topics:
-          - slug: json-encoding
-            title: "JSON Encoding"
-            file: 01-json-encoding.md
-          - slug: json-decoding
-            title: "JSON Decoding"
-            file: 02-json-decoding.md
-          - slug: custom-json
-            title: "Custom JSON"
-            file: 03-custom-json.md
-
-      - id: time
-        title: "Time"
-        path: time
-        topics:
-          - slug: time-basics
-            title: "Time Basics"
-            file: 01-time-basics.md
-          - slug: time-formatting
-            title: "Time Formatting"
-            file: 02-time-formatting.md
-          - slug: timers-tickers
-            title: "Timers & Tickers"
-            file: 03-timers-tickers.md
-
-  # ============================================
-  # BLOCK 15: Networking
-  # ============================================
-  - id: networking
-    title: "Networking"
-    description: "Network programming"
-    path: "13-network"
-    modules:
-      - id: http
-        title: "HTTP"
-        path: http
-        topics:
-          - slug: http-basics
-            title: "HTTP Basics"
-            file: 01-http-basics.md
-          - slug: http-server
-            title: "HTTP Server"
-            file: 02-http-server.md
-          - slug: http-client
-            title: "HTTP Client"
-            file: 03-http-client.md
-          - slug: http-handlers
-            title: "HTTP Handlers"
-            file: 04-http-handlers.md
-          - slug: http-middleware
-            title: "HTTP Middleware"
-            file: 05-http-middleware.md
-
-      - id: tcp-udp
-        title: "TCP/UDP"
-        path: tcp-udp
-        topics:
-          - slug: tcp-basics
-            title: "TCP Basics"
-            file: 01-tcp-basics.md
-          - slug: udp-basics
-            title: "UDP Basics"
-            file: 02-udp-basics.md
-
-  # ============================================
-  # BLOCK 16: Generics
+  # BLOCK 9: Generics
   # ============================================
   - id: generics
+    path: "09-generics"
     title: "Generics"
     description: "Generic programming"
-    path: "09-generics"
     flat: true
     topics:
-      - slug: generics-basics
-        title: "Generics Basics"
-        file: 01-generics-basics.md
-      - slug: type-parameters
-        title: "Type Parameters"
-        file: 02-type-parameters.md
-      - slug: type-constraints
-        title: "Type Constraints"
-        file: 03-type-constraints.md
-      - slug: generic-functions
+      - file: "01-why-generics.md"
+        slug: why-generics
+        title: "Why Generics"
+        description: "Motivation and history"
+      - file: "02-type-parameters-constraints.md"
+        slug: type-parameters-constraints
+        title: "Type Parameters and Constraints"
+        description: "[T any], constraints, any, comparable"
+      - file: "03-generic-functions.md"
+        slug: generic-functions
         title: "Generic Functions"
-        file: 04-generic-functions.md
-      - slug: generic-types
-        title: "Generic Types"
-        file: 05-generic-types.md
-      - slug: type-inference
+        description: "func F[T any]()"
+      - file: "04-generic-types-interfaces.md"
+        slug: generic-types-interfaces
+        title: "Generic Types and Interfaces"
+        description: "type T[P any] struct, type I[T any] interface"
+      - file: "05-type-inference.md"
+        slug: generic-type-inference
         title: "Type Inference"
-        file: 06-type-inference.md
+        description: "Type argument inference"
+      - file: "06-stdlib-packages.md"
+        slug: generic-stdlib-packages
+        title: "constraints, slices, maps Packages"
+        description: "Standard constraints and generic functions"
+      - file: "07-patterns-limitations.md"
+        slug: generic-patterns-limitations
+        title: "Patterns and Limitations"
+        description: "Techniques, generic type aliases, when to use"
 
   # ============================================
-  # BLOCK 17: Best Practices
+  # BLOCK 10: Concurrency
   # ============================================
-  - id: best-practices
-    title: "Best Practices"
-    description: "Writing idiomatic Go"
-    path: "19-patterns"
-    flat: true
-    topics:
-      - slug: code-style
-        title: "Code Style"
-        file: 01-code-style.md
-      - slug: naming-conventions
-        title: "Naming Conventions"
-        file: 02-naming-conventions.md
-      - slug: error-handling-practices
-        title: "Error Handling Practices"
-        file: 03-error-handling-practices.md
-      - slug: documentation
-        title: "Documentation"
-        file: 04-documentation.md
-      - slug: project-structure
-        title: "Project Structure"
-        file: 05-project-structure.md
-      - slug: performance-tips
-        title: "Performance Tips"
-        file: 06-performance-tips.md
+  - id: concurrency
+    path: "10-concurrency"
+    title: "Concurrency"
+    description: "Goroutines, channels, synchronisation"
+    modules:
+      # Module 10.1: Goroutines
+      - id: goroutines
+        path: "01-goroutines"
+        title: "Goroutines"
+        topics:
+          - file: "01-concurrency-vs-parallelism.md"
+            slug: concurrency-vs-parallelism
+            title: "Concurrency vs Parallelism"
+            description: "The important distinction"
+          - file: "02-goroutine-basics.md"
+            slug: goroutine-basics
+            title: "Goroutines"
+            description: "go keyword, launching, lifecycle"
+          - file: "03-anonymous-goroutines-leaks.md"
+            slug: anonymous-goroutines-leaks
+            title: "Anonymous Goroutines and Leaks"
+            description: "go func(){}, avoiding leaks"
+          - file: "04-gomaxprocs-patterns.md"
+            slug: gomaxprocs-patterns
+            title: "GOMAXPROCS and Patterns"
+            description: "Parallelism and useful techniques"
+
+      # Module 10.2: Channels
+      - id: channels
+        path: "02-channels"
+        title: "Channels"
+        topics:
+          - file: "01-channel-basics.md"
+            slug: channel-basics
+            title: "Channels"
+            description: "chan T, buffering, send and receive"
+          - file: "02-channel-direction-close.md"
+            slug: channel-direction-close
+            title: "Direction and Closing"
+            description: "chan<-, <-chan, close(ch)"
+          - file: "03-range-channel.md"
+            slug: range-channel
+            title: "Range over Channel"
+            description: "for v := range ch"
+          - file: "04-select.md"
+            slug: select
+            title: "select"
+            description: "Multiplexing, default, nil channels"
+          - file: "05-channel-patterns.md"
+            slug: channel-patterns
+            title: "Channel Patterns"
+            description: "Useful techniques"
+
+      # Module 10.3: Synchronisation
+      - id: sync
+        path: "03-sync"
+        title: "Synchronisation"
+        topics:
+          - file: "01-race-mutex.md"
+            slug: race-mutex
+            title: "Race Conditions and Mutex"
+            description: "Race conditions, sync.Mutex"
+          - file: "02-rwmutex-waitgroup.md"
+            slug: rwmutex-waitgroup
+            title: "RWMutex and WaitGroup"
+            description: "sync.RWMutex, sync.WaitGroup"
+          - file: "03-once-cond-atomic.md"
+            slug: once-cond-atomic
+            title: "Once, Cond, atomic"
+            description: "sync.Once, sync.Cond, sync/atomic"
 
   # ============================================
-  # BLOCK 18: Go Toolchain
+  # BLOCK 11: Context
   # ============================================
-  - id: toolchain
-    title: "Go Toolchain"
-    description: "Go development tools"
-    path: "16-tooling"
+  - id: context
+    path: "11-context"
+    title: "Context"
+    description: "Context management"
     flat: true
     topics:
-      - slug: go-build
-        title: "go build"
-        file: 01-go-build.md
-      - slug: go-test
-        title: "go test"
-        file: 02-go-test.md
-      - slug: go-mod
-        title: "go mod"
-        file: 03-go-mod.md
-      - slug: go-fmt
-        title: "go fmt"
-        file: 04-go-fmt.md
-      - slug: go-vet
-        title: "go vet"
-        file: 05-go-vet.md
-      - slug: go-generate
+      - file: "01-why-context.md"
+        slug: why-context
+        title: "Why Context"
+        description: "Motivation, Context interface, Background, TODO"
+      - file: "02-withcancel.md"
+        slug: withcancel
+        title: "WithCancel"
+        description: "Cancelling operations"
+      - file: "03-withtimeout-deadline.md"
+        slug: withtimeout-deadline
+        title: "WithTimeout and WithDeadline"
+        description: "Timeouts and deadlines"
+
+  # ============================================
+  # BLOCK 12: I/O
+  # ============================================
+  - id: io
+    path: "12-io"
+    title: "I/O"
+    description: "Working with input/output"
+    flat: true
+    topics:
+      - file: "01-reader-writer.md"
+        slug: reader-writer
+        title: "Reader and Writer"
+        description: "io.Reader, io.Writer"
+      - file: "02-files.md"
+        slug: files
+        title: "Working with Files"
+        description: "os.Open, os.Create, OS operations"
+      - file: "03-bufio.md"
+        slug: bufio
+        title: "bufio Package"
+        description: "Buffered I/O"
+      - file: "04-filepath.md"
+        slug: filepath
+        title: "filepath Package"
+        description: "Working with paths"
+      - file: "05-json.md"
+        slug: json
+        title: "JSON"
+        description: "encoding/json"
+      - file: "06-xml-csv.md"
+        slug: xml-csv
+        title: "XML and CSV"
+        description: "encoding/xml, encoding/csv"
+      - file: "07-binary.md"
+        slug: binary
+        title: "Binary"
+        description: "encoding/binary"
+      - file: "08-embed.md"
+        slug: embed
+        title: "embed Package"
+        description: "Embedding files"
+      - file: "09-streaming.md"
+        slug: streaming
+        title: "Streaming"
+        description: "Streaming, io.Pipe, stdin/stdout"
+      - file: "10-temp-files.md"
+        slug: temp-files
+        title: "Temporary Files"
+        description: "os.CreateTemp"
+
+  # ============================================
+  # BLOCK 13: Network
+  # ============================================
+  - id: network
+    path: "13-network"
+    title: "Network"
+    description: "Network programming"
+    flat: true
+    topics:
+      - file: "01-net-package.md"
+        slug: net-package
+        title: "net Package"
+        description: "Networking basics"
+      - file: "02-tcp.md"
+        slug: tcp
+        title: "TCP Client and Server"
+        description: "net.Dial, net.Listen"
+      - file: "03-http-client.md"
+        slug: http-client
+        title: "HTTP Client"
+        description: "http.Get, http.Client"
+      - file: "04-http-server.md"
+        slug: http-server
+        title: "HTTP Server"
+        description: "http.ListenAndServe, Handlers, ServeMux"
+      - file: "05-middleware.md"
+        slug: middleware
+        title: "Middleware"
+        description: "Middleware pattern"
+      - file: "06-json-api.md"
+        slug: json-api
+        title: "JSON API"
+        description: "REST API in Go"
+      - file: "07-timeouts-shutdown.md"
+        slug: timeouts-shutdown
+        title: "Timeouts and Graceful Shutdown"
+        description: "HTTP timeouts, graceful termination"
+      - file: "08-http2-websockets.md"
+        slug: http2-websockets
+        title: "HTTP/2 and WebSockets"
+        description: "HTTP/2 support, real-time communication"
+
+  # ============================================
+  # BLOCK 14: Testing
+  # ============================================
+  - id: testing
+    path: "14-testing"
+    title: "Testing"
+    description: "Testing in Go"
+    flat: true
+    topics:
+      - file: "01-testing-basics.md"
+        slug: testing-basics
+        title: "Testing Basics"
+        description: "testing package"
+      - file: "02-table-subtests.md"
+        slug: table-subtests
+        title: "Table Tests and Subtests"
+        description: "Table-driven tests, t.Run()"
+      - file: "03-helpers-testmain.md"
+        slug: helpers-testmain
+        title: "Helpers and TestMain"
+        description: "t.Helper(), setup/teardown"
+      - file: "04-benchmarks-examples.md"
+        slug: benchmarks-examples
+        title: "Benchmarks and Examples"
+        description: "Benchmarks and examples as tests"
+      - file: "05-fuzzing.md"
+        slug: fuzzing
+        title: "Fuzzing"
+        description: "Fuzz testing"
+      - file: "06-coverage.md"
+        slug: coverage
+        title: "Coverage"
+        description: "Code coverage"
+      - file: "07-mocking-integration.md"
+        slug: mocking-integration
+        title: "Mocking and Integration Tests"
+        description: "Mocks, stubs, integration tests"
+      - file: "08-testing-patterns.md"
+        slug: testing-patterns
+        title: "Testing Patterns"
+        description: "Useful techniques"
+
+  # ============================================
+  # BLOCK 15: Tooling
+  # ============================================
+  - id: tooling
+    path: "15-tooling"
+    title: "Tooling"
+    description: "Go developer tools"
+    flat: true
+    topics:
+      - file: "01-go-fmt.md"
+        slug: go-fmt
+        title: "go fmt and goimports"
+        description: "Code formatting"
+      - file: "02-go-vet-staticcheck.md"
+        slug: go-vet-staticcheck
+        title: "go vet and staticcheck"
+        description: "Static analysis and linting"
+      - file: "03-pprof.md"
+        slug: pprof
+        title: "Profiling"
+        description: "pprof and performance diagnostics"
+      - file: "04-go-install.md"
+        slug: go-install
+        title: "go install"
+        description: "Installing tools"
+      - file: "05-go-generate.md"
+        slug: go-generate
         title: "go generate"
-        file: 06-go-generate.md
+        description: "Code generation"
 
   # ============================================
-  # BLOCK 19: Reflection
+  # BLOCK 16: Safety
   # ============================================
-  - id: reflection
-    title: "Reflection"
-    description: "Runtime reflection"
-    path: "17-safety"
+  - id: safety
+    path: "16-safety"
+    title: "Safety"
+    description: "Safety in Go"
     flat: true
     topics:
-      - slug: reflection-basics
-        title: "Reflection Basics"
-        file: 01-reflection-basics.md
-      - slug: type-value
-        title: "Type & Value"
-        file: 02-type-value.md
-      - slug: struct-reflection
-        title: "Struct Reflection"
-        file: 03-struct-reflection.md
-      - slug: reflection-use-cases
-        title: "Use Cases"
-        file: 04-reflection-use-cases.md
+      - file: "01-memory-safety.md"
+        slug: memory-safety
+        title: "Memory Safety"
+        description: "Memory safety in Go"
+      - file: "02-race-detector.md"
+        slug: race-detector
+        title: "Race Detector"
+        description: "-race flag"
+      - file: "03-unsafe-package.md"
+        slug: unsafe-package
+        title: "unsafe Package"
+        description: "Unsafe operations"
+      - file: "04-cgo-basics.md"
+        slug: cgo-basics
+        title: "CGO Basics"
+        description: "C integration"
+      - file: "05-security-practices.md"
+        slug: security-practices
+        title: "Security Practices"
+        description: "Security best practices"
+
+  # ============================================
+  # BLOCK 17: Patterns
+  # ============================================
+  - id: patterns
+    path: "17-patterns"
+    title: "Patterns"
+    description: "Design patterns"
+    flat: true
+    topics:
+      - file: "01-options-builder.md"
+        slug: options-builder
+        title: "Options and Builder"
+        description: "Functional options, builder pattern"
+      - file: "02-factory.md"
+        slug: factory
+        title: "Factory Pattern"
+        description: "Factory"
+      - file: "03-worker-pool-pipeline.md"
+        slug: worker-pool-pipeline
+        title: "Worker Pool and Pipeline"
+        description: "Worker pool and pipeline"
+      - file: "04-fan-out-fan-in.md"
+        slug: fan-out-fan-in
+        title: "Fan-out/Fan-in and Graceful Degradation"
+        description: "Distribution/collection and fault tolerance"

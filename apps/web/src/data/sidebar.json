@@ -55,7 +55,7 @@
           "collapsed": false,
           "items": [
             {
-              "label": "What is Go?",
+              "label": "What is Go",
               "link": "/en/what-is-go/"
             },
             {
@@ -71,7 +71,7 @@
               "link": "/en/hello-world/"
             },
             {
-              "label": "Program Structure",
+              "label": "Programme Structure",
               "link": "/en/program-structure/"
             },
             {

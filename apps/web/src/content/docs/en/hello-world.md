@@ -386,6 +386,6 @@ You've run your first programme and experimented with output. But what do `packa
   </a>
   <a href="/en/program-structure/" class="lesson-nav-link" style="text-align: right;">
     <span class="lesson-nav-label">Next →</span>
-    <span class="lesson-nav-title">Program Structure</span>
+    <span class="lesson-nav-title">Programme Structure</span>
   </a>
 </nav>

@@ -178,7 +178,7 @@ The editor is ready. In the next lesson, we'll install Go itself.
 <nav class="lesson-nav">
   <a href="/en/what-is-go/" class="lesson-nav-link">
     <span class="lesson-nav-label">← Previous</span>
-    <span class="lesson-nav-title">What is Go?</span>
+    <span class="lesson-nav-title">What is Go</span>
   </a>
   <a href="/en/installation/" class="lesson-nav-link" style="text-align: right;">
     <span class="lesson-nav-label">Next →</span>

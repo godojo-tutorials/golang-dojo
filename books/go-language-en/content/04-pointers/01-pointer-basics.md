@@ -1,6 +1,6 @@
 ---
 title: "Pointer Basics"
-description: ""
+description: "*T type, nil, address-of &, dereferencing *"
 slug: pointer-basics
 published: false
 ---

@@ -61,7 +61,7 @@
         "topics": [
           {
             "slug": "what-is-go",
-            "title": "What is Go?",
+            "title": "What is Go",
             "number": "1.1"
           },
           {
@@ -81,7 +81,7 @@
           },
           {
             "slug": "program-structure",
-            "title": "Program Structure",
+            "title": "Programme Structure",
             "number": "1.5"
           },
           {

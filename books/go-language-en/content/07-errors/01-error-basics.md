@@ -1,11 +1,11 @@
 ---
-title: "Error Basics"
-description: ""
+title: "The error Interface and Creating Errors"
+description: "error interface, errors.New, fmt.Errorf"
 slug: error-basics
 published: false
 ---
 
-# Error Basics
+# The error Interface and Creating Errors
 
 > TODO: Description
 

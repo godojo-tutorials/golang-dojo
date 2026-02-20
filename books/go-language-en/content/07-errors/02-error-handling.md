@@ -1,6 +1,6 @@
 ---
 title: "Error Handling"
-description: ""
+description: "if err != nil pattern"
 slug: error-handling
 published: false
 ---

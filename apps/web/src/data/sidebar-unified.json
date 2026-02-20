@@ -16,7 +16,7 @@
           {
             "label": "Что такое Go",
             "translations": {
-              "en": "What is Go?"
+              "en": "What is Go"
             },
             "slug": "what-is-go"
           },
@@ -44,7 +44,7 @@
           {
             "label": "Структура программы",
             "translations": {
-              "en": "Program Structure"
+              "en": "Programme Structure"
             },
             "slug": "program-structure"
           },

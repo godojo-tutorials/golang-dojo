@@ -66,39 +66,31 @@ blocks:
         title: "Переменные и типы"
         titleEn: "Variables & Types"
         topics:
-          - file: "01-source-code-representation.md"
-            slug: source-code-representation
-            title: "Представление исходного кода"
-            description: "UTF-8, Unicode и файлы Go"
-          - file: "02-keywords-identifiers.md"
-            slug: keywords-identifiers
-            title: "Ключевые слова и идентификаторы"
-            description: "Зарезервированные слова и правила именования"
-          - file: "03-basic-types.md"
-            slug: basic-types
-            title: "Базовые типы"
-            description: "bool, int, float, complex, string, rune, byte и литералы"
-          - file: "04-variables.md"
+          - file: "01-variables.md"
             slug: variables
             title: "Переменные"
             description: "var, :=, множественное объявление, нулевые значения"
-          - file: "05-constants.md"
+          - file: "02-basic-types.md"
+            slug: basic-types
+            title: "Базовые типы"
+            description: "bool, int, float, complex, string, rune, byte, UTF-8 и литералы"
+          - file: "03-constants.md"
             slug: constants
             title: "Константы"
             description: "const, iota, типизированные и нетипизированные константы"
-          - file: "06-type-definitions.md"
+          - file: "04-type-definitions.md"
             slug: type-definitions
             title: "Определение типов"
             description: "type definition, aliases, преобразование и вывод типов"
-          - file: "07-scope-shadowing.md"
+          - file: "05-scope-shadowing.md"
             slug: scope-shadowing
             title: "Области видимости и затенение"
             description: "Block scope, variable shadowing"
-          - file: "08-naming-export.md"
+          - file: "06-naming-export.md"
             slug: naming-export
             title: "Именование и экспорт"
-            description: "Соглашения, пустой идентификатор, экспорт"
-          - file: "09-fmt-printing.md"
+            description: "Ключевые слова, соглашения, пустой идентификатор, экспорт"
+          - file: "07-fmt-printing.md"
             slug: fmt-printing
             title: "Форматированный вывод"
             description: "fmt verbs, Printf, Sprintf, форматирование"

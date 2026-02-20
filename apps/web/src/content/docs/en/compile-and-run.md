@@ -829,7 +829,7 @@ Now you can turn code into a binary, build for any platform, and understand what
 <nav class="lesson-nav">
   <a href="/en/program-structure/" class="lesson-nav-link">
     <span class="lesson-nav-label">← Previous</span>
-    <span class="lesson-nav-title">Program Structure</span>
+    <span class="lesson-nav-title">Programme Structure</span>
   </a>
   <a href="/en/go-playground/" class="lesson-nav-link" style="text-align: right;">
     <span class="lesson-nav-label">Next →</span>
