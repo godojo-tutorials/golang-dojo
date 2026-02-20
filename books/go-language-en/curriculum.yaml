@@ -32,11 +32,11 @@ blocks:
       - file: "04-hello-world.md"
         slug: hello-world
         title: "Hello World"
-        description: "Your first Go programme"
+        description: "Your first Go program"
       - file: "05-program-structure.md"
         slug: program-structure
-        title: "Programme Structure"
-        description: "Core elements of a Go programme"
+        title: "Program Structure"
+        description: "Core elements of a Go program"
       - file: "06-compile-and-run.md"
         slug: compile-and-run
         title: "Compile and Run"

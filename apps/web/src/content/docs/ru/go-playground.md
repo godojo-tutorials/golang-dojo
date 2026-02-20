@@ -1,6 +1,6 @@
 ---
 title: Go Playground
-description: Онлайн-среда для экспериментов с Go
+description: Онлайн-среда для экспериментов
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 3

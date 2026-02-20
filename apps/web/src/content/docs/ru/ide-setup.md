@@ -1,6 +1,6 @@
 ---
-title: Code Editor
-description: Setting up VS Code
+title: Редактор кода
+description: 'Настройка VS Code, GoLand и других редакторов для Go'
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 3

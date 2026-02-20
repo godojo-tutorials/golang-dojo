@@ -1,6 +1,6 @@
 ---
 title: Docs and Resources
-description: Where to find Go information
+description: Where to find information about Go
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 3

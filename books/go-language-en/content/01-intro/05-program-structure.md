@@ -1,6 +1,6 @@
 ---
 title: "Program Structure"
-description: "Essential elements of a Go programme"
+description: "Essential elements of a Go program"
 slug: program-structure
 published: true
 author: godojo
@@ -8,7 +8,7 @@ updatedAt: "2025-12-15"
 readingTime: 14
 ---
 
-# Go Programme Structure: Anatomy of Your First Code
+# Go Program Structure: Anatomy of Your First Code
 
 Go is a language with strict rules. Code is either written correctly and runs, or it won't even start. At first this feels restrictive, but then you realise: less time faffing about with trivialities, more time thinking about what the programme should actually do.
 

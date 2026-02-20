@@ -1,6 +1,6 @@
 ---
-title: What is Go?
-description: 'Overview of Go, its history, philosophy and use cases'
+title: What is Go
+description: 'Overview of Go, its features and use cases'
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 3

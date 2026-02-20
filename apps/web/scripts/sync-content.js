@@ -237,8 +237,8 @@ for (const lang of languages) {
 
     // Create Starlight frontmatter with meta for custom PageTitle component
     const starlightFrontmatter = {
-      title: sourceFrontmatter.title || topic.title,
-      description: sourceFrontmatter.description || topic.description,
+      title: topic.title || sourceFrontmatter.title,
+      description: topic.description || sourceFrontmatter.description,
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 3,

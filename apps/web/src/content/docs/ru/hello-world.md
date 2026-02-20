@@ -1,6 +1,6 @@
 ---
 title: Hello World
-description: Your first Go programme
+description: Первая программа на Go
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 3

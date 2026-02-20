@@ -1,6 +1,6 @@
 ---
 title: Go Playground
-description: Online environment for Go experiments
+description: Online environment for experiments
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 3

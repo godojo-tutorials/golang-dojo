@@ -1,6 +1,6 @@
 ---
 title: Program Structure
-description: Essential elements of a Go programme
+description: Core elements of a Go program
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 3
