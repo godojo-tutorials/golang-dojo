@@ -4,6 +4,25 @@
   "buildCommand": "cd apps/web && npm run build",
   "outputDirectory": "apps/web/dist",
   "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "(?i)^ru.*"
+        }
+      ],
+      "destination": "/ru/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "destination": "/en/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
