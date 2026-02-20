@@ -12,3 +12,5 @@ research/**/*.md
 tips.md
 .idea/
 issues/
+.vercel
+.env*.local
