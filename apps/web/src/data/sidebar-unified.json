@@ -54,6 +54,20 @@
               "en": "Compile and Run"
             },
             "slug": "compile-and-run"
+          },
+          {
+            "label": "Go Playground",
+            "translations": {
+              "en": "Go Playground"
+            },
+            "slug": "go-playground"
+          },
+          {
+            "label": "Документация и ресурсы",
+            "translations": {
+              "en": "Docs and Resources"
+            },
+            "slug": "docs-and-resources"
           }
         ]
       }

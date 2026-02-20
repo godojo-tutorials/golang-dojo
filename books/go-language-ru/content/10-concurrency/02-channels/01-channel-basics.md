@@ -1,11 +1,11 @@
 ---
-title: "Основы каналов"
-description: ""
+title: "Каналы"
+description: "chan T, буферизация, отправка и получение"
 slug: channel-basics
 published: false
 ---
 
-# Основы каналов
+# Каналы
 
 > TODO: Описание
 

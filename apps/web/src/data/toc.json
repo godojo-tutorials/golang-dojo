@@ -36,6 +36,16 @@
             "slug": "compile-and-run",
             "title": "Компиляция и запуск",
             "number": "1.6"
+          },
+          {
+            "slug": "go-playground",
+            "title": "Go Playground",
+            "number": "1.7"
+          },
+          {
+            "slug": "docs-and-resources",
+            "title": "Документация и ресурсы",
+            "number": "1.8"
           }
         ]
       }
@@ -78,6 +88,16 @@
             "slug": "compile-and-run",
             "title": "Compile and Run",
             "number": "1.6"
+          },
+          {
+            "slug": "go-playground",
+            "title": "Go Playground",
+            "number": "1.7"
+          },
+          {
+            "slug": "docs-and-resources",
+            "title": "Docs and Resources",
+            "number": "1.8"
           }
         ]
       }

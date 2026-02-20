@@ -1,6 +1,6 @@
 ---
 title: "Основы методов"
-description: ""
+description: "func (r T) Name(), какие типы могут иметь методы"
 slug: method-basics
 published: false
 ---

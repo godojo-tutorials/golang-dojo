@@ -1,6 +1,6 @@
 ---
 title: "bufio пакет"
-description: ""
+description: "Буферизованный I/O"
 slug: bufio
 published: false
 ---

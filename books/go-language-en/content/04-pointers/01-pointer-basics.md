@@ -1,18 +1,18 @@
 ---
-title: "Основы указателей"
+title: "Pointer Basics"
 description: ""
 slug: pointer-basics
 published: false
 ---
 
-# Основы указателей
+# Pointer Basics
 
-> TODO: Описание
+> TODO: Description
 
-## Введение
+## Introduction
 
 TODO
 
-## Итоги
+## Summary
 
 TODO

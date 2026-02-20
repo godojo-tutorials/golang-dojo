@@ -31,6 +31,14 @@
             {
               "label": "Компиляция и запуск",
               "link": "/ru/compile-and-run/"
+            },
+            {
+              "label": "Go Playground",
+              "link": "/ru/go-playground/"
+            },
+            {
+              "label": "Документация и ресурсы",
+              "link": "/ru/docs-and-resources/"
             }
           ]
         }
@@ -69,6 +77,14 @@
             {
               "label": "Compile and Run",
               "link": "/en/compile-and-run/"
+            },
+            {
+              "label": "Go Playground",
+              "link": "/en/go-playground/"
+            },
+            {
+              "label": "Docs and Resources",
+              "link": "/en/docs-and-resources/"
             }
           ]
         }

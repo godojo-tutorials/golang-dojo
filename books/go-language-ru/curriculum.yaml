@@ -1,15 +1,11 @@
 # Godojo Go Tutorial - Curriculum Configuration
 # Центральная конфигурация структуры учебника
-# Новая структура: content/ru/{block}/{module?}/{topic}.md
+# Структура: content/{block.path}/{module.path?}/{topic.file}
 
 version: "2.0"
 language: ru
 title: "Полный учебник по Go"
 description: "От основ до эксперта"
-
-# Структура контента
-# Путь к файлу: content/ru/{block.path}/{module.path?}/{topic.file}
-# Где module.path опционален для плоских блоков (01-intro, 04-pointers и т.д.)
 
 blocks:
   # ============================================
@@ -20,7 +16,7 @@ blocks:
     title: "Введение в Go"
     titleEn: "Introduction to Go"
     description: "Знакомство с языком Go"
-    flat: true  # Топики лежат прямо в блоке, без модулей
+    flat: true
     topics:
       - file: "01-what-is-go.md"
         slug: what-is-go
@@ -56,7 +52,7 @@ blocks:
         description: "Где искать информацию о Go"
 
   # ============================================
-  # БЛОК 2: Основы
+  # БЛОК 2: Основы языка
   # ============================================
   - id: basics
     path: "02-basics"
@@ -64,11 +60,11 @@ blocks:
     titleEn: "Language Basics"
     description: "Базовые концепции языка Go"
     modules:
-      # Модуль 2.1: Лексика
-      - id: lexical
-        path: "01-lexical"
-        title: "Лексические элементы"
-        titleEn: "Lexical Elements"
+      # Модуль 2.1: Переменные и типы
+      - id: variables-types
+        path: "01-variables-types"
+        title: "Переменные и типы"
+        titleEn: "Variables & Types"
         topics:
           - file: "01-source-code-representation.md"
             slug: source-code-representation
@@ -78,183 +74,57 @@ blocks:
             slug: keywords-identifiers
             title: "Ключевые слова и идентификаторы"
             description: "Зарезервированные слова и правила именования"
-          - file: "03-operators-punctuation.md"
-            slug: operators-punctuation
-            title: "Операторы и пунктуация"
-            description: "Символы операторов и разделители"
-          - file: "04-integer-literals.md"
-            slug: integer-literals
-            title: "Целочисленные литералы"
-            description: "Десятичные, двоичные, восьмеричные, шестнадцатеричные"
-          - file: "05-float-literals.md"
-            slug: float-literals
-            title: "Литералы с плавающей точкой"
-            description: "Decimal и hex float литералы"
-          - file: "06-imaginary-literals.md"
-            slug: imaginary-literals
-            title: "Мнимые литералы"
-            description: "Комплексные числа в Go"
-          - file: "07-rune-literals.md"
-            slug: rune-literals
-            title: "Руновые литералы"
-            description: "Unicode code points"
-          - file: "08-string-literals.md"
-            slug: string-literals
-            title: "Строковые литералы"
-            description: "Обычные и raw строки"
-
-      # Модуль 2.2: Типы
-      - id: types
-        path: "02-types"
-        title: "Система типов"
-        titleEn: "Type System"
-        topics:
-          - file: "01-type-system-overview.md"
-            slug: type-system-overview
-            title: "Обзор системы типов"
-            description: "Статическая типизация в Go"
-          - file: "02-bool.md"
-            slug: bool
-            title: "Тип bool"
-            description: "Булевый тип и логические значения"
-          - file: "03-integers.md"
-            slug: integers
-            title: "Целочисленные типы"
-            description: "int, int8, int16, int32, int64, uint..."
-          - file: "04-floats.md"
-            slug: floats
-            title: "Типы с плавающей точкой"
-            description: "float32, float64"
-          - file: "05-complex.md"
-            slug: complex
-            title: "Комплексные типы"
-            description: "complex64, complex128"
-          - file: "06-string.md"
-            slug: string
-            title: "Тип string"
-            description: "Строки в Go"
-          - file: "07-rune-byte.md"
-            slug: rune-byte
-            title: "Типы rune и byte"
-            description: "Алиасы для работы с символами"
-          - file: "08-type-aliases.md"
-            slug: type-aliases
-            title: "Алиасы типов"
-            description: "type alias = existing"
-          - file: "09-type-definitions.md"
-            slug: type-definitions
-            title: "Определение типов"
-            description: "type NewType underlying"
-          - file: "10-zero-values.md"
-            slug: zero-values
-            title: "Нулевые значения"
-            description: "Zero values для всех типов"
-          - file: "11-type-conversions.md"
-            slug: type-conversions
-            title: "Преобразование типов"
-            description: "Явное приведение типов"
-          - file: "12-type-inference.md"
-            slug: type-inference
-            title: "Вывод типов"
-            description: "Автоматический вывод типов"
-
-      # Модуль 2.3: Переменные
-      - id: variables
-        path: "03-variables"
-        title: "Переменные и константы"
-        titleEn: "Variables & Constants"
-        topics:
-          - file: "01-var-declaration.md"
-            slug: var-declaration
-            title: "Объявление var"
-            description: "Полная форма объявления переменных"
-          - file: "02-short-declaration.md"
-            slug: short-declaration
-            title: "Краткое объявление :="
-            description: "Короткая форма объявления"
-          - file: "03-multiple-declaration.md"
-            slug: multiple-declaration
-            title: "Множественное объявление"
-            description: "Объявление нескольких переменных"
-          - file: "04-constants.md"
+          - file: "03-basic-types.md"
+            slug: basic-types
+            title: "Базовые типы"
+            description: "bool, int, float, complex, string, rune, byte и литералы"
+          - file: "04-variables.md"
+            slug: variables
+            title: "Переменные"
+            description: "var, :=, множественное объявление, нулевые значения"
+          - file: "05-constants.md"
             slug: constants
             title: "Константы"
-            description: "const объявление"
-          - file: "05-iota.md"
-            slug: iota
-            title: "Генератор iota"
-            description: "Автоматическая нумерация констант"
-          - file: "06-typed-untyped-constants.md"
-            slug: typed-untyped-constants
-            title: "Типизированные и нетипизированные константы"
-            description: "Разница между typed и untyped"
-          - file: "07-constant-expressions.md"
-            slug: constant-expressions
-            title: "Константные выражения"
-            description: "Вычисление констант во время компиляции"
-          - file: "08-scope-visibility.md"
-            slug: scope-visibility
-            title: "Области видимости"
-            description: "Block scope и видимость"
-          - file: "09-shadowing.md"
-            slug: shadowing
-            title: "Затенение переменных"
-            description: "Variable shadowing"
-          - file: "10-blank-identifier.md"
-            slug: blank-identifier
-            title: "Пустой идентификатор"
-            description: "Использование _"
-          - file: "11-naming-conventions.md"
-            slug: naming-conventions
-            title: "Соглашения об именовании"
-            description: "Стиль именования в Go"
-          - file: "12-exported-unexported.md"
-            slug: exported-unexported
-            title: "Экспортируемые и неэкспортируемые"
-            description: "Публичные и приватные идентификаторы"
+            description: "const, iota, типизированные и нетипизированные константы"
+          - file: "06-type-definitions.md"
+            slug: type-definitions
+            title: "Определение типов"
+            description: "type definition, aliases, преобразование и вывод типов"
+          - file: "07-scope-shadowing.md"
+            slug: scope-shadowing
+            title: "Области видимости и затенение"
+            description: "Block scope, variable shadowing"
+          - file: "08-naming-export.md"
+            slug: naming-export
+            title: "Именование и экспорт"
+            description: "Соглашения, пустой идентификатор, экспорт"
+          - file: "09-fmt-printing.md"
+            slug: fmt-printing
+            title: "Форматированный вывод"
+            description: "fmt verbs, Printf, Sprintf, форматирование"
 
-      # Модуль 2.4: Операторы
+      # Модуль 2.2: Операторы
       - id: operators
-        path: "04-operators"
+        path: "02-operators"
         title: "Операторы"
         titleEn: "Operators"
         topics:
-          - file: "01-arithmetic.md"
-            slug: arithmetic
-            title: "Арифметические операторы"
-            description: "+, -, *, /, %"
-          - file: "02-comparison.md"
-            slug: comparison
-            title: "Операторы сравнения"
-            description: "==, !=, <, >, <=, >="
-          - file: "03-logical.md"
-            slug: logical
-            title: "Логические операторы"
-            description: "&&, ||, !"
-          - file: "04-bitwise.md"
-            slug: bitwise
-            title: "Побитовые операторы"
-            description: "&, |, ^, &^, <<, >>"
-          - file: "05-assignment.md"
-            slug: assignment
-            title: "Операторы присваивания"
-            description: "=, +=, -=, *=, /="
-          - file: "06-address-dereference.md"
-            slug: address-dereference
-            title: "Адрес и разыменование"
-            description: "& и * операторы"
-          - file: "07-precedence.md"
+          - file: "01-arithmetic-comparison-logical.md"
+            slug: arithmetic-comparison-logical
+            title: "Арифметические, сравнения и логические"
+            description: "+, -, *, /, %, ==, !=, <, >, &&, ||, !"
+          - file: "02-bitwise-assignment.md"
+            slug: bitwise-assignment
+            title: "Побитовые и присваивания"
+            description: "&, |, ^, <<, >>, =, +=, -="
+          - file: "03-precedence.md"
             slug: precedence
-            title: "Приоритет операторов"
-            description: "Порядок выполнения операций"
-          - file: "08-order-of-evaluation.md"
-            slug: order-of-evaluation
-            title: "Порядок вычисления"
-            description: "Evaluation order в Go"
+            title: "Приоритет и порядок вычисления"
+            description: "Порядок выполнения операций и evaluation order"
 
-      # Модуль 2.5: Управление потоком
+      # Модуль 2.3: Управление потоком
       - id: control-flow
-        path: "05-control-flow"
+        path: "03-control-flow"
         title: "Управление потоком"
         titleEn: "Control Flow"
         topics:
@@ -264,32 +134,20 @@ blocks:
             description: "Условные операторы"
           - file: "02-switch.md"
             slug: switch
-            title: "Конструкция switch"
-            description: "switch, case, default, fallthrough"
-          - file: "03-type-switch.md"
-            slug: type-switch
-            title: "Type switch"
-            description: "switch по типам"
-          - file: "04-for.md"
+            title: "switch и type switch"
+            description: "switch, case, default, fallthrough, type switch"
+          - file: "03-for.md"
             slug: for
             title: "Цикл for"
             description: "Единственный цикл в Go"
-          - file: "05-range.md"
+          - file: "04-range.md"
             slug: range
             title: "Цикл range"
             description: "Итерация по коллекциям"
-          - file: "06-break-continue.md"
-            slug: break-continue
-            title: "Break и Continue"
-            description: "Управление циклами"
-          - file: "07-goto.md"
-            slug: goto
-            title: "Оператор goto"
-            description: "Безусловный переход"
-          - file: "08-labels.md"
-            slug: labels
-            title: "Метки"
-            description: "Labels для break и continue"
+          - file: "05-break-continue-goto.md"
+            slug: break-continue-goto
+            title: "break, continue, goto и метки"
+            description: "Управление циклами, labels, безусловный переход"
 
   # ============================================
   # БЛОК 3: Составные типы
@@ -300,168 +158,71 @@ blocks:
     titleEn: "Composite Types"
     description: "Массивы, срезы, карты, структуры"
     modules:
-      # Модуль 3.1: Составные литералы
-      - id: composite-literals
-        path: "01-composite-literals"
-        title: "Составные литералы"
-        titleEn: "Composite Literals"
+      # Модуль 3.1: Коллекции
+      - id: collections
+        path: "01-collections"
+        title: "Коллекции"
+        titleEn: "Collections"
         topics:
-          - file: "01-syntax.md"
-            slug: composite-literal-syntax
-            title: "Синтаксис составных литералов"
-            description: "Общий синтаксис composite literals"
-          - file: "02-nested-literals.md"
-            slug: nested-literals
-            title: "Вложенные литералы"
-            description: "Литералы внутри литералов"
-          - file: "03-keyed-elements.md"
-            slug: keyed-elements
-            title: "Ключевые элементы"
-            description: "Именованные поля в литералах"
-          - file: "04-address-of-literal.md"
-            slug: address-of-literal
-            title: "Адрес литерала"
-            description: "&T{} паттерн"
-
-      # Модуль 3.2: Массивы
-      - id: arrays
-        path: "02-arrays"
-        title: "Массивы"
-        titleEn: "Arrays"
-        topics:
-          - file: "01-declaration.md"
-            slug: array-declaration
-            title: "Объявление массивов"
-            description: "[n]T синтаксис"
-          - file: "02-initialization.md"
-            slug: array-initialization
-            title: "Инициализация массивов"
-            description: "Литералы массивов"
-          - file: "03-indexing.md"
-            slug: array-indexing
-            title: "Индексация массивов"
-            description: "Доступ к элементам"
-          - file: "04-arrays-vs-slices.md"
-            slug: arrays-vs-slices
-            title: "Массивы vs Срезы"
-            description: "Когда использовать массивы"
-
-      # Модуль 3.3: Срезы
-      - id: slices
-        path: "03-slices"
-        title: "Срезы"
-        titleEn: "Slices"
-        topics:
-          - file: "01-slice-basics.md"
+          - file: "01-array-basics.md"
+            slug: array-basics
+            title: "Массивы"
+            description: "Объявление, инициализация, индексация массивов"
+          - file: "02-slice-basics.md"
             slug: slice-basics
             title: "Основы срезов"
-            description: "[]T тип и создание"
-          - file: "02-make.md"
-            slug: slice-make
-            title: "Функция make"
-            description: "make([]T, len, cap)"
-          - file: "03-len-cap.md"
-            slug: slice-len-cap
-            title: "Длина и ёмкость"
-            description: "len() и cap() для срезов"
-          - file: "04-slicing.md"
-            slug: slicing
-            title: "Срезание"
-            description: "a[low:high:max] синтаксис"
-          - file: "05-append.md"
-            slug: slice-append
-            title: "Функция append"
-            description: "Добавление элементов"
-          - file: "06-copy.md"
-            slug: slice-copy
-            title: "Функция copy"
-            description: "Копирование срезов"
-          - file: "07-nil-vs-empty.md"
-            slug: nil-vs-empty
-            title: "nil vs пустой срез"
-            description: "Разница между nil и []T{}"
-          - file: "08-slice-internals.md"
-            slug: slice-internals
-            title: "Внутреннее устройство"
-            description: "Slice header и backing array"
-          - file: "09-slice-tricks.md"
+            description: "[]T тип, make, len, cap, массивы vs срезы"
+          - file: "03-slicing-internals.md"
+            slug: slicing-internals
+            title: "Срезание и внутреннее устройство"
+            description: "a[low:high:max], slice header, backing array"
+          - file: "04-append-copy-nil.md"
+            slug: append-copy-nil
+            title: "append, copy и nil vs empty"
+            description: "Добавление, копирование, разница nil и []T{}"
+          - file: "05-slice-tricks.md"
             slug: slice-tricks
-            title: "Приёмы работы со срезами"
-            description: "Полезные паттерны"
-          - file: "10-slices-package.md"
-            slug: slices-package
-            title: "Пакет slices"
-            description: "Стандартные функции для срезов"
-
-      # Модуль 3.4: Карты
-      - id: maps
-        path: "04-maps"
-        title: "Карты"
-        titleEn: "Maps"
-        topics:
-          - file: "01-map-basics.md"
+            title: "Приёмы и пакет slices"
+            description: "Полезные паттерны и стандартные функции"
+          - file: "06-map-basics.md"
             slug: map-basics
-            title: "Основы карт"
-            description: "map[K]V тип"
-          - file: "02-make-map.md"
-            slug: make-map
-            title: "Создание карт"
-            description: "make(map[K]V)"
-          - file: "03-crud-operations.md"
-            slug: map-crud
-            title: "CRUD операции"
-            description: "Добавление, чтение, обновление, удаление"
-          - file: "04-comma-ok.md"
-            slug: comma-ok
-            title: "Идиома comma-ok"
-            description: "v, ok := m[key]"
-          - file: "05-iteration.md"
-            slug: map-iteration
-            title: "Итерация по картам"
-            description: "for k, v := range m"
-          - file: "06-maps-package.md"
+            title: "Карты"
+            description: "map[K]V, make, CRUD операции"
+          - file: "07-map-iteration-comma-ok.md"
+            slug: map-iteration-comma-ok
+            title: "Итерация и comma-ok"
+            description: "for k, v := range m и v, ok := m[key]"
+          - file: "08-maps-package.md"
             slug: maps-package
             title: "Пакет maps"
             description: "Стандартные функции для карт"
+          - file: "09-collection-patterns.md"
+            slug: collection-patterns
+            title: "Паттерны коллекций"
+            description: "Общие приёмы работы с массивами, срезами и картами"
 
-      # Модуль 3.5: Структуры
+      # Модуль 3.2: Структуры
       - id: structs
-        path: "05-structs"
+        path: "02-structs"
         title: "Структуры"
         titleEn: "Structs"
         topics:
           - file: "01-struct-basics.md"
             slug: struct-basics
             title: "Основы структур"
-            description: "type T struct {}"
-          - file: "02-field-access.md"
-            slug: field-access
-            title: "Доступ к полям"
-            description: "Точечная нотация"
-          - file: "03-anonymous-fields.md"
-            slug: anonymous-fields
-            title: "Анонимные поля"
-            description: "Поля без имени"
-          - file: "04-embedding.md"
+            description: "type T struct{}, доступ к полям"
+          - file: "02-embedding.md"
             slug: struct-embedding
-            title: "Встраивание"
-            description: "Композиция структур"
-          - file: "05-struct-tags.md"
+            title: "Анонимные поля и встраивание"
+            description: "Embedded fields и композиция структур"
+          - file: "03-struct-tags.md"
             slug: struct-tags
-            title: "Теги структур"
-            description: "Метаданные полей"
-          - file: "06-comparable-structs.md"
-            slug: comparable-structs
-            title: "Сравнимые структуры"
-            description: "Когда структуры можно сравнивать"
-          - file: "07-anonymous-structs.md"
-            slug: anonymous-structs
-            title: "Анонимные структуры"
-            description: "Структуры без имени типа"
-          - file: "08-struct-patterns.md"
+            title: "Теги и сравнимость"
+            description: "Метаданные полей и когда структуры можно сравнивать"
+          - file: "04-struct-patterns.md"
             slug: struct-patterns
-            title: "Паттерны структур"
-            description: "Полезные приёмы"
+            title: "Анонимные структуры и паттерны"
+            description: "Структуры без имени и полезные приёмы"
 
   # ============================================
   # БЛОК 4: Указатели
@@ -476,24 +237,16 @@ blocks:
       - file: "01-pointer-basics.md"
         slug: pointer-basics
         title: "Основы указателей"
-        description: "*T тип и nil"
-      - file: "02-address-operator.md"
-        slug: address-operator
-        title: "Оператор адреса"
-        description: "& оператор"
-      - file: "03-dereference.md"
-        slug: dereference
-        title: "Разыменование"
-        description: "* оператор"
-      - file: "04-pointers-vs-values.md"
+        description: "*T тип, nil, оператор адреса &, разыменование *"
+      - file: "02-address-dereference.md"
+        slug: address-dereference
+        title: "Адрес и разыменование"
+        description: "& и * операторы подробно"
+      - file: "03-pointers-vs-values.md"
         slug: pointers-vs-values
         title: "Указатели vs Значения"
-        description: "Когда использовать указатели"
-      - file: "05-nil-pointers.md"
-        slug: nil-pointers
-        title: "nil указатели"
-        description: "Работа с nil"
-      - file: "06-pointer-to-struct.md"
+        description: "Когда использовать указатели, nil указатели"
+      - file: "04-pointer-to-struct.md"
         slug: pointer-to-struct
         title: "Указатели на структуры"
         description: "Автоматическое разыменование"
@@ -507,67 +260,43 @@ blocks:
     titleEn: "Functions"
     description: "Функции в Go"
     modules:
-      # Модуль 5.1: Основы
+      # Модуль 5.1: Основы функций
       - id: basics
         path: "01-basics"
         title: "Основы функций"
         titleEn: "Function Basics"
         topics:
-          - file: "01-declaration.md"
-            slug: func-declaration
-            title: "Объявление функций"
-            description: "func keyword"
-          - file: "02-parameters.md"
-            slug: func-parameters
-            title: "Параметры"
-            description: "Параметры функций"
-          - file: "03-return-values.md"
+          - file: "01-declaration-parameters.md"
+            slug: func-declaration-parameters
+            title: "Объявление и параметры"
+            description: "func keyword, параметры функций"
+          - file: "02-return-values.md"
             slug: func-return-values
             title: "Возвращаемые значения"
-            description: "Один и несколько результатов"
-          - file: "04-named-returns.md"
-            slug: named-returns
-            title: "Именованные возвраты"
-            description: "Named return values"
-          - file: "05-variadic.md"
+            description: "Один и несколько результатов, именованные возвраты"
+          - file: "03-variadic.md"
             slug: variadic
             title: "Вариадические функции"
             description: "...T параметры"
-          - file: "06-terminating-statements.md"
-            slug: terminating-statements
-            title: "Завершающие операторы"
-            description: "Terminating statements"
 
-      # Модуль 5.2: Функции как значения
+      # Модуль 5.2: Функции первого класса
       - id: first-class
         path: "02-first-class"
         title: "Функции первого класса"
         titleEn: "First-Class Functions"
         topics:
-          - file: "01-function-types.md"
-            slug: function-types
-            title: "Типы функций"
-            description: "func(params) returns"
-          - file: "02-function-values.md"
-            slug: function-values
-            title: "Функции как значения"
-            description: "Присваивание функций"
-          - file: "03-anonymous-functions.md"
-            slug: anonymous-functions
-            title: "Анонимные функции"
-            description: "func() {} литералы"
-          - file: "04-closures.md"
+          - file: "01-function-types-values.md"
+            slug: function-types-values
+            title: "Типы функций и значения"
+            description: "func(params) returns, присваивание функций"
+          - file: "02-closures.md"
             slug: closures
-            title: "Замыкания"
-            description: "Захват переменных"
-          - file: "05-callbacks.md"
-            slug: callbacks
-            title: "Callback функции"
-            description: "Функции как аргументы"
-          - file: "06-higher-order.md"
+            title: "Анонимные функции и замыкания"
+            description: "func(){} литералы, захват переменных"
+          - file: "03-higher-order.md"
             slug: higher-order
-            title: "Функции высшего порядка"
-            description: "Функции, возвращающие функции"
+            title: "Callback и функции высшего порядка"
+            description: "Функции как аргументы и возвращаемые значения"
 
       # Модуль 5.3: defer, panic, recover
       - id: defer-panic-recover
@@ -575,27 +304,15 @@ blocks:
         title: "defer, panic, recover"
         titleEn: "defer, panic, recover"
         topics:
-          - file: "01-defer-basics.md"
-            slug: defer-basics
-            title: "Основы defer"
-            description: "Отложенное выполнение"
-          - file: "02-defer-order.md"
-            slug: defer-order
-            title: "Порядок defer"
-            description: "LIFO выполнение"
-          - file: "03-defer-in-loops.md"
-            slug: defer-in-loops
-            title: "defer в циклах"
-            description: "Подводные камни"
-          - file: "04-panic.md"
-            slug: panic
-            title: "Паника"
-            description: "panic() функция"
-          - file: "05-recover.md"
-            slug: recover
-            title: "Восстановление"
-            description: "recover() функция"
-          - file: "06-defer-patterns.md"
+          - file: "01-defer.md"
+            slug: defer
+            title: "defer"
+            description: "Отложенное выполнение, порядок, подводные камни в циклах"
+          - file: "02-panic-recover.md"
+            slug: panic-recover
+            title: "panic и recover"
+            description: "Паника и восстановление"
+          - file: "03-defer-patterns.md"
             slug: defer-patterns
             title: "Паттерны defer"
             description: "Полезные приёмы"
@@ -618,35 +335,19 @@ blocks:
           - file: "01-method-basics.md"
             slug: method-basics
             title: "Основы методов"
-            description: "func (r T) Name()"
-          - file: "02-value-receivers.md"
-            slug: value-receivers
-            title: "Value receivers"
-            description: "Получатели-значения"
-          - file: "03-pointer-receivers.md"
-            slug: pointer-receivers
-            title: "Pointer receivers"
-            description: "Получатели-указатели"
-          - file: "04-method-values.md"
-            slug: method-values
-            title: "Method values"
-            description: "Методы как значения"
-          - file: "05-method-expressions.md"
-            slug: method-expressions
-            title: "Method expressions"
-            description: "T.Method синтаксис"
-          - file: "06-methods-on-types.md"
-            slug: methods-on-types
-            title: "Методы на типах"
-            description: "Какие типы могут иметь методы"
-          - file: "07-embedded-methods.md"
+            description: "func (r T) Name(), какие типы могут иметь методы"
+          - file: "02-receivers.md"
+            slug: receivers
+            title: "Value и Pointer receivers"
+            description: "Получатели-значения, указатели, выбор получателя"
+          - file: "03-method-values-expressions.md"
+            slug: method-values-expressions
+            title: "Method values и expressions"
+            description: "Методы как значения, T.Method синтаксис"
+          - file: "04-embedded-methods.md"
             slug: embedded-methods
             title: "Методы встроенных типов"
             description: "Promotion методов"
-          - file: "08-receiver-guidelines.md"
-            slug: receiver-guidelines
-            title: "Выбор получателя"
-            description: "Когда value, когда pointer"
 
       # Модуль 6.2: Интерфейсы
       - id: interfaces
@@ -657,67 +358,31 @@ blocks:
           - file: "01-interface-basics.md"
             slug: interface-basics
             title: "Основы интерфейсов"
-            description: "type I interface {}"
-          - file: "02-implicit-implementation.md"
-            slug: implicit-implementation
-            title: "Неявная реализация"
-            description: "Duck typing в Go"
-          - file: "03-empty-interface.md"
-            slug: empty-interface
-            title: "Пустой интерфейс"
-            description: "interface{} и any"
-          - file: "04-type-assertions.md"
-            slug: type-assertions
-            title: "Type assertions"
-            description: "i.(T) синтаксис"
-          - file: "05-type-switch.md"
-            slug: interface-type-switch
-            title: "Type switch"
-            description: "switch i.(type)"
-          - file: "06-interface-composition.md"
+            description: "type I interface{}, неявная реализация, идентичность типов"
+          - file: "02-empty-interface-any.md"
+            slug: empty-interface-any
+            title: "Пустой интерфейс и any"
+            description: "interface{}, any как алиас"
+          - file: "03-type-assertions-switch.md"
+            slug: type-assertions-switch
+            title: "Type assertions и type switch"
+            description: "i.(T) и switch i.(type)"
+          - file: "04-interface-composition.md"
             slug: interface-composition
             title: "Композиция интерфейсов"
             description: "Встраивание интерфейсов"
-          - file: "07-common-interfaces.md"
+          - file: "05-common-interfaces.md"
             slug: common-interfaces
             title: "Стандартные интерфейсы"
-            description: "io.Reader, io.Writer, etc."
-          - file: "08-interface-values.md"
-            slug: interface-values
-            title: "Значения интерфейсов"
-            description: "Dynamic type и value"
-          - file: "09-nil-interface.md"
-            slug: nil-interface
-            title: "nil интерфейсы"
-            description: "nil vs nil interface"
-          - file: "10-interface-vs-concrete.md"
-            slug: interface-vs-concrete
-            title: "Интерфейсы vs Конкретные типы"
-            description: "Когда использовать интерфейсы"
-          - file: "11-interface-design.md"
+            description: "io.Reader, io.Writer, Stringer и другие"
+          - file: "06-interface-values-nil.md"
+            slug: interface-values-nil
+            title: "Значения и nil интерфейсов"
+            description: "Dynamic type/value, nil vs nil interface"
+          - file: "07-interface-design.md"
             slug: interface-design
             title: "Проектирование интерфейсов"
-            description: "Маленькие интерфейсы"
-          - file: "12-type-identity.md"
-            slug: type-identity
-            title: "Идентичность типов"
-            description: "Type identity rules"
-          - file: "13-assignability.md"
-            slug: assignability
-            title: "Присваиваемость"
-            description: "Assignability rules"
-          - file: "14-comparable.md"
-            slug: comparable
-            title: "Сравнимость"
-            description: "comparable constraint"
-          - file: "15-any-keyword.md"
-            slug: any-keyword
-            title: "Ключевое слово any"
-            description: "any как алиас"
-          - file: "16-interface-patterns.md"
-            slug: interface-patterns
-            title: "Паттерны интерфейсов"
-            description: "Полезные приёмы"
+            description: "Маленькие интерфейсы, паттерны, comparable"
 
   # ============================================
   # БЛОК 7: Ошибки
@@ -729,49 +394,29 @@ blocks:
     description: "Работа с ошибками в Go"
     flat: true
     topics:
-      - file: "01-error-interface.md"
-        slug: error-interface
-        title: "Интерфейс error"
-        description: "Основа обработки ошибок"
-      - file: "02-creating-errors.md"
-        slug: creating-errors
-        title: "Создание ошибок"
-        description: "errors.New, fmt.Errorf"
-      - file: "03-error-handling.md"
+      - file: "01-error-basics.md"
+        slug: error-basics
+        title: "Интерфейс error и создание ошибок"
+        description: "error interface, errors.New, fmt.Errorf"
+      - file: "02-error-handling.md"
         slug: error-handling
         title: "Обработка ошибок"
-        description: "if err != nil"
-      - file: "04-wrapping-errors.md"
-        slug: wrapping-errors
-        title: "Оборачивание ошибок"
-        description: "%w и error chains"
-      - file: "05-errors-is-as.md"
-        slug: errors-is-as
-        title: "errors.Is и errors.As"
-        description: "Проверка типов ошибок"
-      - file: "06-custom-errors.md"
-        slug: custom-errors
-        title: "Пользовательские ошибки"
-        description: "Собственные типы ошибок"
-      - file: "07-sentinel-errors.md"
-        slug: sentinel-errors
-        title: "Sentinel ошибки"
-        description: "Предопределённые ошибки"
-      - file: "08-error-patterns.md"
-        slug: error-patterns
-        title: "Паттерны ошибок"
-        description: "Полезные приёмы"
-      - file: "09-dont-panic.md"
-        slug: dont-panic
-        title: "Не паникуй"
-        description: "Когда использовать panic"
-      - file: "10-error-best-practices.md"
-        slug: error-best-practices
-        title: "Best practices"
-        description: "Лучшие практики"
+        description: "if err != nil паттерн"
+      - file: "03-wrapping-is-as.md"
+        slug: wrapping-is-as
+        title: "Оборачивание, Is и As"
+        description: "%w, error chains, errors.Is, errors.As"
+      - file: "04-custom-sentinel.md"
+        slug: custom-sentinel
+        title: "Пользовательские и sentinel ошибки"
+        description: "Собственные типы ошибок и предопределённые ошибки"
+      - file: "05-error-practices.md"
+        slug: error-practices
+        title: "Паттерны и best practices"
+        description: "Полезные приёмы, когда использовать panic"
 
   # ============================================
-  # БЛОК 8: Пакеты
+  # БЛОК 8: Пакеты и модули
   # ============================================
   - id: packages
     path: "08-packages"
@@ -780,54 +425,26 @@ blocks:
     description: "Организация кода в Go"
     flat: true
     topics:
-      - file: "01-package-basics.md"
-        slug: package-basics
-        title: "Основы пакетов"
-        description: "package declaration"
-      - file: "02-imports.md"
-        slug: imports
-        title: "Импорты"
-        description: "import statement"
-      - file: "03-go-modules.md"
+      - file: "01-package-imports.md"
+        slug: package-imports
+        title: "Пакеты и импорты"
+        description: "package declaration, import statement"
+      - file: "02-go-modules.md"
         slug: go-modules
         title: "Go Modules"
-        description: "go mod init"
-      - file: "04-go-mod-file.md"
-        slug: go-mod-file
-        title: "Файл go.mod"
-        description: "Структура go.mod"
-      - file: "05-go-sum.md"
-        slug: go-sum
-        title: "Файл go.sum"
-        description: "Checksums зависимостей"
-      - file: "06-versioning.md"
-        slug: versioning
-        title: "Версионирование"
-        description: "Semantic versioning"
-      - file: "07-init-function.md"
-        slug: init-function
-        title: "Функция init"
-        description: "Инициализация пакета"
-      - file: "08-program-initialization.md"
-        slug: program-initialization
-        title: "Инициализация программы"
-        description: "Порядок инициализации"
-      - file: "09-internal-packages.md"
-        slug: internal-packages
-        title: "Internal пакеты"
-        description: "Приватные пакеты"
-      - file: "10-package-organization.md"
-        slug: package-organization
-        title: "Организация пакетов"
-        description: "Структура проекта"
-      - file: "11-documentation.md"
-        slug: package-documentation
-        title: "Документация"
-        description: "godoc комментарии"
-      - file: "12-publishing.md"
-        slug: publishing
-        title: "Публикация"
-        description: "Публикация модулей"
+        description: "go mod, go.mod, go.sum, версионирование"
+      - file: "03-init-initialization.md"
+        slug: init-initialization
+        title: "init и порядок инициализации"
+        description: "Функция init, порядок инициализации программы"
+      - file: "04-internal-organization.md"
+        slug: internal-organization
+        title: "Internal пакеты и организация"
+        description: "Приватные пакеты, структура проекта"
+      - file: "05-docs-publishing.md"
+        slug: docs-publishing
+        title: "Документация и публикация"
+        description: "godoc комментарии, публикация модулей"
 
   # ============================================
   # БЛОК 9: Дженерики
@@ -843,58 +460,30 @@ blocks:
         slug: why-generics
         title: "Зачем дженерики"
         description: "Мотивация и история"
-      - file: "02-type-parameters.md"
-        slug: type-parameters
-        title: "Параметры типов"
-        description: "[T any] синтаксис"
-      - file: "03-type-constraints.md"
-        slug: type-constraints
-        title: "Ограничения типов"
-        description: "Constraints"
-      - file: "04-any-comparable.md"
-        slug: any-comparable
-        title: "any и comparable"
-        description: "Встроенные constraints"
-      - file: "05-generic-functions.md"
+      - file: "02-type-parameters-constraints.md"
+        slug: type-parameters-constraints
+        title: "Параметры типов и ограничения"
+        description: "[T any], constraints, any, comparable"
+      - file: "03-generic-functions.md"
         slug: generic-functions
         title: "Обобщённые функции"
         description: "func F[T any]()"
-      - file: "06-generic-types.md"
-        slug: generic-types
-        title: "Обобщённые типы"
-        description: "type T[P any] struct"
-      - file: "07-generic-interfaces.md"
-        slug: generic-interfaces
-        title: "Обобщённые интерфейсы"
-        description: "type I[T any] interface"
-      - file: "08-type-inference.md"
+      - file: "04-generic-types-interfaces.md"
+        slug: generic-types-interfaces
+        title: "Обобщённые типы и интерфейсы"
+        description: "type T[P any] struct, type I[T any] interface"
+      - file: "05-type-inference.md"
         slug: generic-type-inference
         title: "Вывод типов"
         description: "Type argument inference"
-      - file: "09-constraints-package.md"
-        slug: constraints-package
-        title: "Пакет constraints"
-        description: "Стандартные constraints"
-      - file: "10-slices-maps-packages.md"
-        slug: slices-maps-packages
-        title: "Пакеты slices и maps"
-        description: "Обобщённые функции stdlib"
-      - file: "11-generic-patterns.md"
-        slug: generic-patterns
-        title: "Паттерны дженериков"
-        description: "Полезные приёмы"
-      - file: "12-limitations.md"
-        slug: generic-limitations
-        title: "Ограничения"
-        description: "Что нельзя делать"
-      - file: "13-generic-type-aliases.md"
-        slug: generic-type-aliases
-        title: "Generic type aliases"
-        description: "Go 1.24 feature"
-      - file: "14-when-to-use.md"
-        slug: when-to-use-generics
-        title: "Когда использовать"
-        description: "Generics vs interfaces"
+      - file: "06-stdlib-packages.md"
+        slug: generic-stdlib-packages
+        title: "Пакеты constraints, slices, maps"
+        description: "Стандартные constraints и обобщённые функции"
+      - file: "07-patterns-limitations.md"
+        slug: generic-patterns-limitations
+        title: "Паттерны и ограничения"
+        description: "Приёмы, generic type aliases, когда использовать"
 
   # ============================================
   # БЛОК 10: Конкурентность
@@ -917,32 +506,16 @@ blocks:
             description: "Важное различие"
           - file: "02-goroutine-basics.md"
             slug: goroutine-basics
-            title: "Основы горутин"
-            description: "go keyword"
-          - file: "03-go-keyword.md"
-            slug: go-keyword
-            title: "Ключевое слово go"
-            description: "Запуск горутин"
-          - file: "04-goroutine-lifecycle.md"
-            slug: goroutine-lifecycle
-            title: "Жизненный цикл"
-            description: "Создание и завершение"
-          - file: "05-anonymous-goroutines.md"
-            slug: anonymous-goroutines
-            title: "Анонимные горутины"
-            description: "go func() {}"
-          - file: "06-goroutine-leaks.md"
-            slug: goroutine-leaks
-            title: "Утечки горутин"
-            description: "Как избежать"
-          - file: "07-gomaxprocs.md"
-            slug: gomaxprocs
-            title: "GOMAXPROCS"
-            description: "Параллелизм"
-          - file: "08-goroutine-patterns.md"
-            slug: goroutine-patterns
-            title: "Паттерны горутин"
-            description: "Полезные приёмы"
+            title: "Горутины"
+            description: "go keyword, запуск, жизненный цикл"
+          - file: "03-anonymous-goroutines-leaks.md"
+            slug: anonymous-goroutines-leaks
+            title: "Анонимные горутины и утечки"
+            description: "go func(){}, как избежать утечек"
+          - file: "04-gomaxprocs-patterns.md"
+            slug: gomaxprocs-patterns
+            title: "GOMAXPROCS и паттерны"
+            description: "Параллелизм и полезные приёмы"
 
       # Модуль 10.2: Каналы
       - id: channels
@@ -952,41 +525,21 @@ blocks:
         topics:
           - file: "01-channel-basics.md"
             slug: channel-basics
-            title: "Основы каналов"
-            description: "chan T тип"
-          - file: "02-buffered-channels.md"
-            slug: buffered-channels
-            title: "Буферизованные каналы"
-            description: "make(chan T, n)"
-          - file: "03-send-receive.md"
-            slug: send-receive
-            title: "Отправка и получение"
-            description: "ch <- v и v := <-ch"
-          - file: "04-channel-direction.md"
-            slug: channel-direction
-            title: "Направление каналов"
-            description: "chan<- и <-chan"
-          - file: "05-closing-channels.md"
-            slug: closing-channels
-            title: "Закрытие каналов"
-            description: "close(ch)"
-          - file: "06-range-over-channel.md"
-            slug: range-over-channel
+            title: "Каналы"
+            description: "chan T, буферизация, отправка и получение"
+          - file: "02-channel-direction-close.md"
+            slug: channel-direction-close
+            title: "Направление и закрытие"
+            description: "chan<-, <-chan, close(ch)"
+          - file: "03-range-channel.md"
+            slug: range-channel
             title: "Range по каналу"
             description: "for v := range ch"
-          - file: "07-select.md"
+          - file: "04-select.md"
             slug: select
-            title: "Оператор select"
-            description: "Мультиплексирование"
-          - file: "08-default-case.md"
-            slug: default-case
-            title: "default case"
-            description: "Non-blocking operations"
-          - file: "09-nil-channels.md"
-            slug: nil-channels
-            title: "nil каналы"
-            description: "Блокирующие каналы"
-          - file: "10-channel-patterns.md"
+            title: "select"
+            description: "Мультиплексирование, default, nil каналы"
+          - file: "05-channel-patterns.md"
             slug: channel-patterns
             title: "Паттерны каналов"
             description: "Полезные приёмы"
@@ -997,34 +550,18 @@ blocks:
         title: "Синхронизация"
         titleEn: "Synchronization"
         topics:
-          - file: "01-race-conditions.md"
-            slug: race-conditions
-            title: "Race conditions"
-            description: "Состояния гонки"
-          - file: "02-mutex.md"
-            slug: mutex
-            title: "sync.Mutex"
-            description: "Взаимное исключение"
-          - file: "03-rwmutex.md"
-            slug: rwmutex
-            title: "sync.RWMutex"
-            description: "Читатели/писатели"
-          - file: "04-waitgroup.md"
-            slug: waitgroup
-            title: "sync.WaitGroup"
-            description: "Ожидание горутин"
-          - file: "05-once.md"
-            slug: once
-            title: "sync.Once"
-            description: "Однократное выполнение"
-          - file: "06-cond.md"
-            slug: cond
-            title: "sync.Cond"
-            description: "Условные переменные"
-          - file: "07-atomic.md"
-            slug: atomic
-            title: "sync/atomic"
-            description: "Атомарные операции"
+          - file: "01-race-mutex.md"
+            slug: race-mutex
+            title: "Race conditions и Mutex"
+            description: "Состояния гонки, sync.Mutex"
+          - file: "02-rwmutex-waitgroup.md"
+            slug: rwmutex-waitgroup
+            title: "RWMutex и WaitGroup"
+            description: "sync.RWMutex, sync.WaitGroup"
+          - file: "03-once-cond-atomic.md"
+            slug: once-cond-atomic
+            title: "Once, Cond, atomic"
+            description: "sync.Once, sync.Cond, sync/atomic"
 
   # ============================================
   # БЛОК 11: Context
@@ -1039,26 +576,18 @@ blocks:
       - file: "01-why-context.md"
         slug: why-context
         title: "Зачем context"
-        description: "Мотивация и использование"
-      - file: "02-context-interface.md"
-        slug: context-interface
-        title: "Интерфейс Context"
-        description: "context.Context"
-      - file: "03-background-todo.md"
-        slug: background-todo
-        title: "Background и TODO"
-        description: "context.Background()"
-      - file: "04-withcancel.md"
+        description: "Мотивация, интерфейс Context, Background, TODO"
+      - file: "02-withcancel.md"
         slug: withcancel
         title: "WithCancel"
         description: "Отмена операций"
-      - file: "05-withtimeout-deadline.md"
+      - file: "03-withtimeout-deadline.md"
         slug: withtimeout-deadline
         title: "WithTimeout и WithDeadline"
         description: "Таймауты и дедлайны"
 
   # ============================================
-  # БЛОК 12: I/O
+  # БЛОК 12: Ввод/вывод
   # ============================================
   - id: io
     path: "12-io"
@@ -1074,56 +603,36 @@ blocks:
       - file: "02-files.md"
         slug: files
         title: "Работа с файлами"
-        description: "os.Open, os.Create"
+        description: "os.Open, os.Create, операции ОС"
       - file: "03-bufio.md"
         slug: bufio
         title: "bufio пакет"
         description: "Буферизованный I/O"
-      - file: "04-ioutil-deprecation.md"
-        slug: ioutil-deprecation
-        title: "ioutil deprecated"
-        description: "Миграция с ioutil"
-      - file: "05-os-package.md"
-        slug: os-package
-        title: "os пакет"
-        description: "Операции ОС"
-      - file: "06-filepath.md"
+      - file: "04-filepath.md"
         slug: filepath
         title: "filepath пакет"
         description: "Работа с путями"
-      - file: "07-json.md"
+      - file: "05-json.md"
         slug: json
         title: "JSON"
         description: "encoding/json"
-      - file: "08-xml.md"
-        slug: xml
-        title: "XML"
-        description: "encoding/xml"
-      - file: "09-csv.md"
-        slug: csv
-        title: "CSV"
-        description: "encoding/csv"
-      - file: "10-binary.md"
+      - file: "06-xml-csv.md"
+        slug: xml-csv
+        title: "XML и CSV"
+        description: "encoding/xml, encoding/csv"
+      - file: "07-binary.md"
         slug: binary
         title: "Binary"
         description: "encoding/binary"
-      - file: "11-embed.md"
+      - file: "08-embed.md"
         slug: embed
         title: "embed пакет"
         description: "Встраивание файлов"
-      - file: "12-streaming.md"
+      - file: "09-streaming.md"
         slug: streaming
-        title: "Streaming"
-        description: "Потоковая обработка"
-      - file: "13-stdin-stdout.md"
-        slug: stdin-stdout
-        title: "stdin/stdout"
-        description: "Стандартные потоки"
-      - file: "14-pipes.md"
-        slug: pipes
-        title: "io.Pipe"
-        description: "In-memory pipes"
-      - file: "15-temp-files.md"
+        title: "Потоковая обработка"
+        description: "Streaming, io.Pipe, stdin/stdout"
+      - file: "10-temp-files.md"
         slug: temp-files
         title: "Временные файлы"
         description: "os.CreateTemp"
@@ -1142,50 +651,34 @@ blocks:
         slug: net-package
         title: "net пакет"
         description: "Основы сетей"
-      - file: "02-tcp-client.md"
-        slug: tcp-client
-        title: "TCP клиент"
-        description: "net.Dial"
-      - file: "03-tcp-server.md"
-        slug: tcp-server
-        title: "TCP сервер"
-        description: "net.Listen"
-      - file: "04-http-client.md"
+      - file: "02-tcp.md"
+        slug: tcp
+        title: "TCP клиент и сервер"
+        description: "net.Dial, net.Listen"
+      - file: "03-http-client.md"
         slug: http-client
         title: "HTTP клиент"
         description: "http.Get, http.Client"
-      - file: "05-http-server.md"
+      - file: "04-http-server.md"
         slug: http-server
         title: "HTTP сервер"
-        description: "http.ListenAndServe"
-      - file: "06-handlers-mux.md"
-        slug: handlers-mux
-        title: "Handlers и Mux"
-        description: "http.Handler, http.ServeMux"
-      - file: "07-middleware.md"
+        description: "http.ListenAndServe, Handlers, ServeMux"
+      - file: "05-middleware.md"
         slug: middleware
         title: "Middleware"
         description: "Middleware паттерн"
-      - file: "08-json-api.md"
+      - file: "06-json-api.md"
         slug: json-api
         title: "JSON API"
         description: "REST API на Go"
-      - file: "09-timeouts.md"
-        slug: http-timeouts
-        title: "Таймауты"
-        description: "HTTP таймауты"
-      - file: "10-graceful-shutdown.md"
-        slug: graceful-shutdown
-        title: "Graceful shutdown"
-        description: "Корректное завершение"
-      - file: "11-http2.md"
-        slug: http2
-        title: "HTTP/2"
-        description: "HTTP/2 поддержка"
-      - file: "12-websockets.md"
-        slug: websockets
-        title: "WebSockets"
-        description: "Real-time коммуникация"
+      - file: "07-timeouts-shutdown.md"
+        slug: timeouts-shutdown
+        title: "Таймауты и Graceful shutdown"
+        description: "HTTP таймауты, корректное завершение"
+      - file: "08-http2-websockets.md"
+        slug: http2-websockets
+        title: "HTTP/2 и WebSockets"
+        description: "HTTP/2 поддержка, real-time коммуникация"
 
   # ============================================
   # БЛОК 14: Тестирование
@@ -1201,142 +694,71 @@ blocks:
         slug: testing-basics
         title: "Основы тестирования"
         description: "testing пакет"
-      - file: "02-table-tests.md"
-        slug: table-tests
-        title: "Table tests"
-        description: "Табличные тесты"
-      - file: "03-subtests.md"
-        slug: subtests
-        title: "Subtests"
-        description: "t.Run()"
-      - file: "04-test-helpers.md"
-        slug: test-helpers
-        title: "Test helpers"
-        description: "t.Helper()"
-      - file: "05-testmain.md"
-        slug: testmain
-        title: "TestMain"
-        description: "Setup/teardown"
-      - file: "06-benchmarks.md"
-        slug: benchmarks
-        title: "Benchmarks"
-        description: "Бенчмарки"
-      - file: "07-examples.md"
-        slug: examples
-        title: "Examples"
-        description: "Примеры как тесты"
-      - file: "08-fuzzing.md"
+      - file: "02-table-subtests.md"
+        slug: table-subtests
+        title: "Table tests и subtests"
+        description: "Табличные тесты, t.Run()"
+      - file: "03-helpers-testmain.md"
+        slug: helpers-testmain
+        title: "Helpers и TestMain"
+        description: "t.Helper(), setup/teardown"
+      - file: "04-benchmarks-examples.md"
+        slug: benchmarks-examples
+        title: "Benchmarks и Examples"
+        description: "Бенчмарки и примеры как тесты"
+      - file: "05-fuzzing.md"
         slug: fuzzing
         title: "Fuzzing"
         description: "Fuzz testing"
-      - file: "09-coverage.md"
+      - file: "06-coverage.md"
         slug: coverage
         title: "Coverage"
         description: "Покрытие кода"
-      - file: "10-mocking.md"
-        slug: mocking
-        title: "Mocking"
-        description: "Моки и стабы"
-      - file: "11-integration-tests.md"
-        slug: integration-tests
-        title: "Integration tests"
-        description: "Интеграционные тесты"
-      - file: "12-testing-patterns.md"
+      - file: "07-mocking-integration.md"
+        slug: mocking-integration
+        title: "Mocking и integration tests"
+        description: "Моки, стабы, интеграционные тесты"
+      - file: "08-testing-patterns.md"
         slug: testing-patterns
         title: "Паттерны тестирования"
         description: "Полезные приёмы"
 
   # ============================================
-  # БЛОК 15: Встроенные функции
-  # ============================================
-  - id: builtins
-    path: "15-builtins"
-    title: "Встроенные функции"
-    titleEn: "Built-in Functions"
-    description: "Встроенные функции Go"
-    flat: true
-    topics:
-      - file: "01-builtin-overview.md"
-        slug: builtin-overview
-        title: "Обзор встроенных функций"
-        description: "Все builtins"
-      - file: "02-make-new.md"
-        slug: make-new
-        title: "make и new"
-        description: "Выделение памяти"
-      - file: "03-len-cap.md"
-        slug: len-cap
-        title: "len и cap"
-        description: "Длина и ёмкость"
-      - file: "04-append-copy-delete.md"
-        slug: append-copy-delete
-        title: "append, copy, delete"
-        description: "Операции с коллекциями"
-      - file: "05-close.md"
-        slug: close
-        title: "close"
-        description: "Закрытие каналов"
-      - file: "06-panic-recover.md"
-        slug: panic-recover
-        title: "panic и recover"
-        description: "Обработка паники"
-
-  # ============================================
-  # БЛОК 16: Инструменты
+  # БЛОК 15: Инструменты
   # ============================================
   - id: tooling
-    path: "16-tooling"
+    path: "15-tooling"
     title: "Инструменты"
     titleEn: "Tooling"
-    description: "Инструменты Go"
+    description: "Инструменты разработчика Go"
     flat: true
     topics:
-      - file: "01-go-command.md"
-        slug: go-command
-        title: "Команда go"
-        description: "Обзор go CLI"
-      - file: "02-go-build.md"
-        slug: go-build
-        title: "go build"
-        description: "Компиляция"
-      - file: "03-go-install.md"
+      - file: "01-go-fmt.md"
+        slug: go-fmt
+        title: "go fmt и goimports"
+        description: "Форматирование кода"
+      - file: "02-go-vet-staticcheck.md"
+        slug: go-vet-staticcheck
+        title: "go vet и staticcheck"
+        description: "Статический анализ и линтинг"
+      - file: "03-pprof.md"
+        slug: pprof
+        title: "Профилирование"
+        description: "pprof и диагностика производительности"
+      - file: "04-go-install.md"
         slug: go-install
         title: "go install"
-        description: "Установка"
-      - file: "04-go-get.md"
-        slug: go-get
-        title: "go get"
-        description: "Зависимости"
-      - file: "05-go-mod.md"
-        slug: go-mod
-        title: "go mod"
-        description: "Модули"
-      - file: "06-go-fmt.md"
-        slug: go-fmt
-        title: "go fmt"
-        description: "Форматирование"
-      - file: "07-go-vet.md"
-        slug: go-vet
-        title: "go vet"
-        description: "Статический анализ"
-      - file: "08-staticcheck.md"
-        slug: staticcheck
-        title: "staticcheck"
-        description: "Расширенный линтер"
-      - file: "09-pprof.md"
-        slug: pprof
-        title: "pprof"
-        description: "Профилирование"
-      - file: "10-cross-compilation.md"
-        slug: cross-compilation
-        title: "Кросс-компиляция"
-        description: "GOOS, GOARCH"
+        description: "Установка инструментов"
+      - file: "05-go-generate.md"
+        slug: go-generate
+        title: "go generate"
+        description: "Генерация кода"
 
   # ============================================
-  # БЛОК 17: Безопасность
+  # БЛОК 16: Безопасность
   # ============================================
   - id: safety
-    path: "17-safety"
+    path: "16-safety"
     title: "Безопасность"
     titleEn: "Safety"
     description: "Безопасность в Go"
@@ -1364,79 +786,28 @@ blocks:
         description: "Security best practices"
 
   # ============================================
-  # БЛОК 18: Современный Go
-  # ============================================
-  - id: modern-go
-    path: "18-modern-go"
-    title: "Современный Go"
-    titleEn: "Modern Go"
-    description: "Новые возможности Go"
-    flat: true
-    topics:
-      - file: "01-go-1-18.md"
-        slug: go-1-18
-        title: "Go 1.18"
-        description: "Дженерики, fuzzing"
-      - file: "02-go-1-19.md"
-        slug: go-1-19
-        title: "Go 1.19"
-        description: "Улучшения памяти"
-      - file: "03-go-1-20.md"
-        slug: go-1-20
-        title: "Go 1.20"
-        description: "PGO, error improvements"
-      - file: "04-go-1-21.md"
-        slug: go-1-21
-        title: "Go 1.21"
-        description: "min, max, clear"
-      - file: "05-go-1-22.md"
-        slug: go-1-22
-        title: "Go 1.22"
-        description: "Range over int, loop vars"
-      - file: "06-go-1-23.md"
-        slug: go-1-23
-        title: "Go 1.23"
-        description: "Range over func"
-      - file: "07-go-1-24.md"
-        slug: go-1-24
-        title: "Go 1.24"
-        description: "Generic type aliases"
-
-  # ============================================
-  # БЛОК 19: Паттерны
+  # БЛОК 17: Паттерны
   # ============================================
   - id: patterns
-    path: "19-patterns"
+    path: "17-patterns"
     title: "Паттерны"
     titleEn: "Patterns"
     description: "Паттерны проектирования"
     flat: true
     topics:
-      - file: "01-options-pattern.md"
-        slug: options-pattern
-        title: "Options паттерн"
-        description: "Functional options"
-      - file: "02-builder-pattern.md"
-        slug: builder-pattern
-        title: "Builder паттерн"
-        description: "Построитель"
-      - file: "03-factory-pattern.md"
-        slug: factory-pattern
+      - file: "01-options-builder.md"
+        slug: options-builder
+        title: "Options и Builder"
+        description: "Functional options, паттерн построитель"
+      - file: "02-factory.md"
+        slug: factory
         title: "Factory паттерн"
         description: "Фабрика"
-      - file: "04-worker-pool.md"
-        slug: worker-pool
-        title: "Worker Pool"
-        description: "Пул воркеров"
-      - file: "05-pipeline.md"
-        slug: pipeline
-        title: "Pipeline"
-        description: "Конвейер"
-      - file: "06-fan-out-fan-in.md"
+      - file: "03-worker-pool-pipeline.md"
+        slug: worker-pool-pipeline
+        title: "Worker Pool и Pipeline"
+        description: "Пул воркеров и конвейер"
+      - file: "04-fan-out-fan-in.md"
         slug: fan-out-fan-in
-        title: "Fan-out/Fan-in"
-        description: "Распределение/сбор"
-      - file: "07-graceful-degradation.md"
-        slug: graceful-degradation
-        title: "Graceful Degradation"
-        description: "Отказоустойчивость"
+        title: "Fan-out/Fan-in и Graceful Degradation"
+        description: "Распределение/сбор и отказоустойчивость"

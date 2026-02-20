@@ -1,6 +1,6 @@
 ---
 title: "Зачем context"
-description: ""
+description: "Мотивация, интерфейс Context, Background, TODO"
 slug: why-context
 published: false
 ---

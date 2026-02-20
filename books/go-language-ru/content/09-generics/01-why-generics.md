@@ -1,6 +1,6 @@
 ---
 title: "Зачем дженерики"
-description: ""
+description: "Мотивация и история"
 slug: why-generics
 published: false
 ---

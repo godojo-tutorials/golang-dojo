@@ -1,6 +1,6 @@
 ---
 title: "Конкурентность vs Параллелизм"
-description: ""
+description: "Важное различие"
 slug: concurrency-vs-parallelism
 published: false
 ---

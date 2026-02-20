@@ -1,11 +1,11 @@
 ---
-title: "Основы горутин"
-description: ""
+title: "Горутины"
+description: "go keyword, запуск, жизненный цикл"
 slug: goroutine-basics
 published: false
 ---
 
-# Основы горутин
+# Горутины
 
 > TODO: Описание
 

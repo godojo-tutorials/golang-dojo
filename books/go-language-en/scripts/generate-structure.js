@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
- * Generate folder structure from curriculum.yaml
- * Creates all necessary directories and article.md templates
+ * Generate folder structure from curriculum.yaml (v2)
+ * Creates all necessary directories and .md stub templates
+ *
+ * Structure: content/{block.path}/{module.path?}/{topic.file}
+ * flat: true — topics directly in block folder
+ * flat: false/absent — topics inside module folders
  */
 
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'fs';
@@ -23,113 +27,75 @@ let totalModules = 0;
 let totalTopics = 0;
 let createdDirs = 0;
 let createdFiles = 0;
+let skippedFiles = 0;
 
-// article.md template
-function createArticleTemplate(topic, module, block) {
+// Article template
+function createArticleTemplate(topic) {
   return `---
 title: "${topic.title}"
-description: "${topic.description}"
+description: "${topic.description || ''}"
 slug: ${topic.slug}
 published: false
 ---
 
 # ${topic.title}
 
-> ${topic.description}
+> TODO: Description
 
 ## Introduction
 
-TODO: Add introduction
-
-## Main Content
-
-TODO: Add main content
-
-## Code Examples
-
-\`\`\`go
-package main
-
-func main() {
-    // TODO: Add example
-}
-\`\`\`
-
-## Practice
-
-TODO: Add exercises
+TODO
 
 ## Summary
 
-TODO: Add summary
+TODO
 `;
-}
-
-// Create _index.yaml for block
-function createBlockIndex(block) {
-  return yaml.stringify({
-    id: block.id,
-    order: block.order,
-    title: block.title,
-    description: block.description,
-    modulesCount: block.modules.length
-  });
-}
-
-// Create _index.yaml for module
-function createModuleIndex(module, block) {
-  return yaml.stringify({
-    id: module.id,
-    order: module.order,
-    title: module.title,
-    block: block.id,
-    topicsCount: module.topics.length
-  });
 }
 
 // Generate structure
 for (const block of curriculum.blocks) {
-  const blockDir = join(rootDir, 'content', `${String(block.order).padStart(2, '0')}-${block.id}`);
+  const contentDir = join(rootDir, 'content');
+  const blockDir = join(contentDir, block.path);
 
   if (!existsSync(blockDir)) {
     mkdirSync(blockDir, { recursive: true });
     createdDirs++;
   }
 
-  const blockIndexPath = join(blockDir, '_index.yaml');
-  if (!existsSync(blockIndexPath)) {
-    writeFileSync(blockIndexPath, createBlockIndex(block));
-    createdFiles++;
-  }
-
-  for (const module of block.modules) {
-    totalModules++;
-    const moduleDir = join(blockDir, `${String(module.order).padStart(2, '0')}-${module.id}`);
-
-    if (!existsSync(moduleDir)) {
-      mkdirSync(moduleDir, { recursive: true });
-      createdDirs++;
-    }
-
-    const moduleIndexPath = join(moduleDir, '_index.yaml');
-    if (!existsSync(moduleIndexPath)) {
-      writeFileSync(moduleIndexPath, createModuleIndex(module, block));
-      createdFiles++;
-    }
-
-    for (const topic of module.topics) {
+  if (block.flat && block.topics) {
+    // Flat block — topics directly in block
+    for (const topic of block.topics) {
       totalTopics++;
-      const topicDir = join(moduleDir, topic.slug);
+      const filePath = join(blockDir, topic.file);
 
-      if (!existsSync(topicDir)) {
-        mkdirSync(topicDir, { recursive: true });
+      if (!existsSync(filePath)) {
+        writeFileSync(filePath, createArticleTemplate(topic));
+        createdFiles++;
+      } else {
+        skippedFiles++;
+      }
+    }
+  } else if (block.modules) {
+    // Block with modules
+    for (const module of block.modules) {
+      totalModules++;
+      const moduleDir = join(blockDir, module.path);
+
+      if (!existsSync(moduleDir)) {
+        mkdirSync(moduleDir, { recursive: true });
         createdDirs++;
       }
 
-      const articlePath = join(topicDir, 'article.md');
-      if (!existsSync(articlePath)) {
-        writeFileSync(articlePath, createArticleTemplate(topic, module, block));
-        createdFiles++;
+      for (const topic of module.topics) {
+        totalTopics++;
+        const filePath = join(moduleDir, topic.file);
+
+        if (!existsSync(filePath)) {
+          writeFileSync(filePath, createArticleTemplate(topic));
+          createdFiles++;
+        } else {
+          skippedFiles++;
+        }
       }
     }
   }
@@ -140,3 +106,4 @@ console.log(`   Modules: ${totalModules}`);
 console.log(`   Topics: ${totalTopics}`);
 console.log(`   Directories created: ${createdDirs}`);
 console.log(`   Files created: ${createdFiles}`);
+console.log(`   Skipped (already exist): ${skippedFiles}`);

@@ -1,18 +1,18 @@
 ---
-title: "Основы пакетов"
+title: "Package Basics"
 description: ""
 slug: package-basics
 published: false
 ---
 
-# Основы пакетов
+# Package Basics
 
-> TODO: Описание
+> TODO: Description
 
-## Введение
+## Introduction
 
 TODO
 
-## Итоги
+## Summary
 
 TODO

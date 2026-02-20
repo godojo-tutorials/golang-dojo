@@ -1,6 +1,6 @@
 ---
 title: "Reader и Writer"
-description: ""
+description: "io.Reader, io.Writer"
 slug: reader-writer
 published: false
 ---

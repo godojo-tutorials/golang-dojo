@@ -1,18 +1,18 @@
 ---
-title: "Параметры типов"
+title: "Type Parameters"
 description: ""
 slug: type-parameters
 published: false
 ---
 
-# Параметры типов
+# Type Parameters
 
-> TODO: Описание
+> TODO: Description
 
-## Введение
+## Introduction
 
 TODO
 
-## Итоги
+## Summary
 
 TODO

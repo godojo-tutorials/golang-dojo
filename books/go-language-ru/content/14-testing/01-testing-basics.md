@@ -1,6 +1,6 @@
 ---
 title: "Основы тестирования"
-description: ""
+description: "testing пакет"
 slug: testing-basics
 published: false
 ---

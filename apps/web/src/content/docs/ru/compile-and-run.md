@@ -831,5 +831,8 @@ dist:
     <span class="lesson-nav-label">← Предыдущий</span>
     <span class="lesson-nav-title">Структура программы</span>
   </a>
-  <div></div>
+  <a href="/ru/go-playground/" class="lesson-nav-link" style="text-align: right;">
+    <span class="lesson-nav-label">Следующий →</span>
+    <span class="lesson-nav-title">Go Playground</span>
+  </a>
 </nav>

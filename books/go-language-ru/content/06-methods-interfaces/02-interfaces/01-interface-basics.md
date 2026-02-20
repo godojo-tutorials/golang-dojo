@@ -1,6 +1,6 @@
 ---
 title: "Основы интерфейсов"
-description: ""
+description: "type I interface{}, неявная реализация, идентичность типов"
 slug: interface-basics
 published: false
 ---

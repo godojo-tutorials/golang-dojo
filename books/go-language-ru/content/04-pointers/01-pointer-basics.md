@@ -1,6 +1,6 @@
 ---
 title: "Основы указателей"
-description: ""
+description: "*T тип, nil, оператор адреса &, разыменование *"
 slug: pointer-basics
 published: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: "net пакет"
-description: ""
+description: "Основы сетей"
 slug: net-package
 published: false
 ---

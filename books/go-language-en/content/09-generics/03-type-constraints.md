@@ -1,18 +1,18 @@
 ---
-title: "Ограничения типов"
+title: "Type Constraints"
 description: ""
 slug: type-constraints
 published: false
 ---
 
-# Ограничения типов
+# Type Constraints
 
-> TODO: Описание
+> TODO: Description
 
-## Введение
+## Introduction
 
 TODO
 
-## Итоги
+## Summary
 
 TODO
