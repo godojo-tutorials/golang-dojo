@@ -606,4 +606,40 @@ console.log(`👥 Total unique authors: ${authorsArray.length}`);
 writeFileSync(join(dataDir, 'authors.json'), JSON.stringify(authorsArray, null, 2));
 console.log(`👥 Created authors.json`);
 
+// Update stats in index.mdx and BookTabs.astro
+// Use RU curriculum as source of truth for total counts
+const ruCurriculum = yaml.parse(readFileSync(join(languages[0].bookDir, 'curriculum.yaml'), 'utf8'));
+let totalTopics = 0;
+for (const block of ruCurriculum.blocks) {
+  if (block.flat && block.topics) {
+    totalTopics += block.topics.length;
+  } else if (block.modules) {
+    for (const module of block.modules) {
+      totalTopics += module.topics.length;
+    }
+  }
+}
+const totalBlocks = ruCurriculum.blocks.length;
+
+// Update index.mdx for each language
+for (const lang of languages) {
+  const indexPath = join(frontendDir, 'src', 'content', 'docs', lang.code, 'index.mdx');
+  if (existsSync(indexPath)) {
+    let content = readFileSync(indexPath, 'utf8');
+    content = content.replace(/\d+ (уроков|lessons)/, `${totalTopics} $1`);
+    content = content.replace(/\d+ (разделов|sections)/, `${totalBlocks} $1`);
+    writeFileSync(indexPath, content);
+  }
+}
+
+// Update BookTabs.astro
+const bookTabsPath = join(frontendDir, 'src', 'components', 'BookTabs.astro');
+if (existsSync(bookTabsPath)) {
+  let content = readFileSync(bookTabsPath, 'utf8');
+  content = content.replace(/lessons: \d+/, `lessons: ${totalTopics}`);
+  writeFileSync(bookTabsPath, content);
+}
+
+console.log(`📊 Updated stats: ${totalTopics} topics, ${totalBlocks} blocks`);
+
 console.log('\n🎉 Sync complete!');
