@@ -14,6 +14,7 @@ try {
 
 export default defineConfig({
   site: 'https://godojo.dev',
+  output: 'static',
   integrations: [
     sitemap(),
     starlight({
