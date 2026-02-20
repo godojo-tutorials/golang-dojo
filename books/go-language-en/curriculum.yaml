@@ -71,26 +71,26 @@ blocks:
             slug: basic-types
             title: "Basic Types"
             description: "bool, int, float, complex, string, rune, byte, UTF-8 and literals"
-          - file: "03-constants.md"
-            slug: constants
-            title: "Constants"
-            description: "const, iota, typed and untyped constants"
-          - file: "04-type-definitions.md"
-            slug: type-definitions
-            title: "Type Definitions"
-            description: "type definition, aliases, conversion and type inference"
-          - file: "05-scope-shadowing.md"
-            slug: scope-shadowing
-            title: "Scope and Shadowing"
-            description: "Block scope, variable shadowing"
-          - file: "06-naming-export.md"
-            slug: naming-export
-            title: "Naming and Export"
-            description: "Keywords, conventions, blank identifier, export"
-          - file: "07-fmt-printing.md"
+          - file: "03-fmt-printing.md"
             slug: fmt-printing
             title: "Formatted Output"
             description: "fmt verbs, Printf, Sprintf, formatting"
+          - file: "04-constants.md"
+            slug: constants
+            title: "Constants"
+            description: "const, iota, typed and untyped constants"
+          - file: "05-type-definitions.md"
+            slug: type-definitions
+            title: "Type Definitions"
+            description: "type definition, aliases, conversion and type inference"
+          - file: "06-scope-shadowing.md"
+            slug: scope-shadowing
+            title: "Scope and Shadowing"
+            description: "Block scope, variable shadowing"
+          - file: "07-naming-export.md"
+            slug: naming-export
+            title: "Naming and Export"
+            description: "Keywords, conventions, blank identifier, export"
 
       # Module 2.2: Operators
       - id: operators

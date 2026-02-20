@@ -74,26 +74,26 @@ blocks:
             slug: basic-types
             title: "Базовые типы"
             description: "bool, int, float, complex, string, rune, byte, UTF-8 и литералы"
-          - file: "03-constants.md"
-            slug: constants
-            title: "Константы"
-            description: "const, iota, типизированные и нетипизированные константы"
-          - file: "04-type-definitions.md"
-            slug: type-definitions
-            title: "Определение типов"
-            description: "type definition, aliases, преобразование и вывод типов"
-          - file: "05-scope-shadowing.md"
-            slug: scope-shadowing
-            title: "Области видимости и затенение"
-            description: "Block scope, variable shadowing"
-          - file: "06-naming-export.md"
-            slug: naming-export
-            title: "Именование и экспорт"
-            description: "Ключевые слова, соглашения, пустой идентификатор, экспорт"
-          - file: "07-fmt-printing.md"
+          - file: "03-fmt-printing.md"
             slug: fmt-printing
             title: "Форматированный вывод"
             description: "fmt verbs, Printf, Sprintf, форматирование"
+          - file: "04-constants.md"
+            slug: constants
+            title: "Константы"
+            description: "const, iota, типизированные и нетипизированные константы"
+          - file: "05-type-definitions.md"
+            slug: type-definitions
+            title: "Определение типов"
+            description: "type definition, aliases, преобразование и вывод типов"
+          - file: "06-scope-shadowing.md"
+            slug: scope-shadowing
+            title: "Области видимости и затенение"
+            description: "Block scope, variable shadowing"
+          - file: "07-naming-export.md"
+            slug: naming-export
+            title: "Именование и экспорт"
+            description: "Ключевые слова, соглашения, пустой идентификатор, экспорт"
 
       # Модуль 2.2: Операторы
       - id: operators
