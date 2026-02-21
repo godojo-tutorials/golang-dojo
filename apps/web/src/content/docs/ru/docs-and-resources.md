@@ -266,5 +266,8 @@ $ go help buildconstraint  # теги сборки для кросс-компи�
     <span class="lesson-nav-label">← Предыдущий</span>
     <span class="lesson-nav-title">Go Playground</span>
   </a>
-  <div></div>
+  <a href="/ru/variables/" class="lesson-nav-link" style="text-align: right;">
+    <span class="lesson-nav-label">Следующий →</span>
+    <span class="lesson-nav-title">Переменные</span>
+  </a>
 </nav>

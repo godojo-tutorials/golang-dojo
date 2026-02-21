@@ -1,15 +1,14 @@
 ---
-title: "Переменные"
-description: "var, :=, нулевые значения, множественное объявление, вывод типов"
-slug: variables
-published: true
+title: Переменные
+description: 'var, :=, множественное объявление, нулевые значения'
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 3
 author: godojo
-updatedAt: "2026-02-21"
-readingTime: 14
+authorName: Godojo Master
+updatedAt: '2026-02-21'
+readingTime: 26
 ---
-
-# Переменные: фундамент программ на Go
-
 Всё, что нужно для старта, — готово. В предыдущем блоке мы настроили окружение, написали первый «Hello World», разобрали структуру программы и даже заглянули под капот компилятора, узнав, как исходный код превращается в машинный. Дальше начинается настоящее программирование.
 
 В этом новом блоке «Основы языка» мы с головой погрузимся в синтаксис Go: типы данных, управляющие конструкции, функции. И начнём с самого фундаментального концепта любого императивного языка — с **переменных**.
@@ -902,3 +901,14 @@ func main() {
 - [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/style.md) — стиль объявлений
 - [Dave Cheney: On Declaring Variables](https://dave.cheney.net/2014/05/24/on-declaring-variables) — когда `var`, когда `:=`
 - [Go 1.22 Release Notes](https://go.dev/doc/go1.22) — исправление scoping в циклах
+
+
+---
+
+<nav class="lesson-nav">
+  <a href="/ru/docs-and-resources/" class="lesson-nav-link">
+    <span class="lesson-nav-label">← Предыдущий</span>
+    <span class="lesson-nav-title">Документация и ресурсы</span>
+  </a>
+  <div></div>
+</nav>

@@ -70,6 +70,22 @@
             "slug": "docs-and-resources"
           }
         ]
+      },
+      {
+        "label": "Основы языка",
+        "translations": {
+          "en": "Language Basics"
+        },
+        "collapsed": false,
+        "items": [
+          {
+            "label": "Переменные",
+            "translations": {
+              "en": "Variables"
+            },
+            "slug": "variables"
+          }
+        ]
       }
     ]
   }

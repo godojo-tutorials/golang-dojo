@@ -1,15 +1,14 @@
 ---
-title: "Variables"
-description: "var, :=, zero values, multiple declaration, type inference"
-slug: variables
-published: true
+title: Variables
+description: 'var, :=, multiple declaration, zero values'
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 3
 author: godojo
-updatedAt: "2026-02-21"
-readingTime: 14
+authorName: Godojo Master
+updatedAt: '2026-02-21'
+readingTime: 28
 ---
-
-# Variables: the Foundation of Go Programmes
-
 Everything you need to get started is ready. In the previous block we set up our environment, wrote our first "Hello World", broke down the structure of a programme, and even peeked under the hood of the compiler to see how source code turns into machine code. Now the real programming begins.
 
 In this new block, "Language Basics", we'll dive deep into Go syntax: data types, control structures, functions. And we'll start with the most fundamental concept in any imperative language — **variables**.
@@ -902,3 +901,14 @@ We know how to store values, but **what exactly** can we put in these variables?
 - [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/style.md) — declaration style
 - [Dave Cheney: On Declaring Variables](https://dave.cheney.net/2014/05/24/on-declaring-variables) — when `var`, when `:=`
 - [Go 1.22 Release Notes](https://go.dev/doc/go1.22) — loop variable scoping fix
+
+
+---
+
+<nav class="lesson-nav">
+  <a href="/en/docs-and-resources/" class="lesson-nav-link">
+    <span class="lesson-nav-label">← Previous</span>
+    <span class="lesson-nav-title">Docs and Resources</span>
+  </a>
+  <div></div>
+</nav>

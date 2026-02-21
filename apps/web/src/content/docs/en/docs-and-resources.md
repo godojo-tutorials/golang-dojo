@@ -266,5 +266,8 @@ In the next block, **"Language Basics"**, we'll dive into Go's syntax: variables
     <span class="lesson-nav-label">← Previous</span>
     <span class="lesson-nav-title">Go Playground</span>
   </a>
-  <div></div>
+  <a href="/en/variables/" class="lesson-nav-link" style="text-align: right;">
+    <span class="lesson-nav-label">Next →</span>
+    <span class="lesson-nav-title">Variables</span>
+  </a>
 </nav>

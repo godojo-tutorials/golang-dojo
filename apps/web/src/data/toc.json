@@ -48,6 +48,24 @@
             "number": "1.8"
           }
         ]
+      },
+      {
+        "id": "basics",
+        "title": "Основы языка",
+        "number": 2,
+        "modules": [
+          {
+            "id": "variables-types",
+            "title": "Переменные и типы",
+            "topics": [
+              {
+                "slug": "variables",
+                "title": "Переменные",
+                "number": "2.1"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -98,6 +116,24 @@
             "slug": "docs-and-resources",
             "title": "Docs and Resources",
             "number": "1.8"
+          }
+        ]
+      },
+      {
+        "id": "basics",
+        "title": "Language Basics",
+        "number": 2,
+        "modules": [
+          {
+            "id": "variables-types",
+            "title": "Variables & Types",
+            "topics": [
+              {
+                "slug": "variables",
+                "title": "Variables",
+                "number": "2.1"
+              }
+            ]
           }
         ]
       }

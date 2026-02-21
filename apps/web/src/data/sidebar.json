@@ -41,6 +41,16 @@
               "link": "/ru/docs-and-resources/"
             }
           ]
+        },
+        {
+          "label": "Основы языка",
+          "collapsed": false,
+          "items": [
+            {
+              "label": "Переменные",
+              "link": "/ru/variables/"
+            }
+          ]
         }
       ]
     }
@@ -85,6 +95,16 @@
             {
               "label": "Docs and Resources",
               "link": "/en/docs-and-resources/"
+            }
+          ]
+        },
+        {
+          "label": "Language Basics",
+          "collapsed": false,
+          "items": [
+            {
+              "label": "Variables",
+              "link": "/en/variables/"
             }
           ]
         }
