@@ -50,6 +50,15 @@ nav.sidebar .top-level > li > details > summary > span {
   --sl-color-hairline-light: #3F4340;
 }
 
+/* ============================================
+   LIGHT THEME
+   ============================================ */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e8ecf4;
+  --sl-color-accent: #16213e;
+  --sl-color-accent-high: #0f1729;
+}
+
 /* Dark theme gradient glow */
 [data-theme='dark'] body::before {
   content: '';
