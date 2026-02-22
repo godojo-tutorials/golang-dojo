@@ -1,0 +1,75 @@
+---
+/**
+ * Global analytics events for GA4
+ * - lesson_complete: user scrolled to lesson navigation (finished reading)
+ * - copy_code: user copied code from a code block
+ * - language_switch: user changed language via Starlight picker
+ * - nav_click: user clicked prev/next lesson navigation
+ */
+---
+
+<script>
+  function initAnalytics() {
+    if (typeof gtag === 'undefined') return;
+
+    const lang = document.documentElement.lang;
+    const slug = location.pathname.split('/').filter(Boolean).pop() || '';
+
+    // === lesson_complete: scroll to lesson nav ===
+    const lessonNav = document.querySelector('.lesson-nav');
+    if (lessonNav) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            gtag('event', 'lesson_complete', {
+              lesson_slug: slug,
+              language: lang,
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(lessonNav);
+    }
+
+    // === nav_click: prev/next lesson navigation ===
+    document.querySelectorAll('.lesson-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        const direction = link.classList.contains('lesson-nav-next') ? 'next' : 'prev';
+        const toSlug = new URL(link.href, location.origin).pathname.split('/').filter(Boolean).pop() || '';
+        gtag('event', 'nav_click', {
+          direction: direction,
+          from_lesson: slug,
+          to_lesson: toSlug,
+          language: lang,
+        });
+      });
+    });
+
+    // === copy_code: click on code copy button ===
+    document.addEventListener('click', (e) => {
+      const copyBtn = e.target.closest('.copy button, button[data-copy], .expressive-code .copy');
+      if (copyBtn) {
+        gtag('event', 'copy_code', {
+          lesson_slug: slug,
+          language: lang,
+        });
+      }
+    });
+
+    // === language_switch: Starlight language picker ===
+    const langSelect = document.querySelector('starlight-lang-select select');
+    if (langSelect) {
+      langSelect.addEventListener('change', (e) => {
+        gtag('event', 'language_switch', {
+          from_lang: lang,
+          to_lang: e.target.value,
+        });
+      });
+    }
+  }
+
+  // Run on initial load and on Astro page transitions (View Transitions)
+  initAnalytics();
+  document.addEventListener('astro:page-load', initAnalytics);
+</script>
