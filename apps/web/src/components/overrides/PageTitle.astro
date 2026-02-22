@@ -25,10 +25,29 @@ const updatedLabel = labels.updated;
 
 // Check if this is a content page (not index or authors)
 const isArticle = author || updatedAt || readingTime;
+
+// Slug for analytics
+const slug = Astro.url.pathname.split('/').filter(Boolean).pop() || '';
 ---
 
 {isArticle && (
-  <script>document.body.classList.add('is-article');</script>
+  <script
+    data-slug={slug}
+    data-title={title}
+    data-lang={lang}
+    data-reading-time={readingTime}
+    set:html={`
+      document.body.classList.add('is-article');
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'lesson_view', {
+          lesson_slug: '${slug}',
+          lesson_title: '${title?.replace(/'/g, "\\'")}',
+          language: '${lang}',
+          reading_time: ${readingTime || 0}
+        });
+      }
+    `}
+  />
 )}
 
 {isArticle && (
