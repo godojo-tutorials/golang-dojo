@@ -541,6 +541,7 @@ body.is-article .sl-container {
 
 .site-footer {
   padding-top: 2rem;
+  padding-bottom: -2rem;
   border-top: 1px solid var(--sl-color-gray-6);
   text-align: center;
   font-size: 0.8rem;
