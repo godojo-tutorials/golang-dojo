@@ -44,6 +44,7 @@ export default defineConfig({
       components: {
         PageTitle: './src/components/overrides/PageTitle.astro',
         Head: './src/components/overrides/Head.astro',
+        Footer: './src/components/overrides/Footer.astro',
       },
       // Кастомизация
       customCss: [

@@ -526,6 +526,56 @@ body.is-article .sl-container {
 }
 
 /* ============================================
+   LEGAL PAGES
+   ============================================ */
+
+.legal-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.site-footer {
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--sl-color-gray-6);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-4);
+}
+
+.site-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-footer-links {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.site-footer-links a {
+  color: var(--sl-color-gray-4);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer-links a:hover {
+  color: var(--sl-color-accent-high);
+}
+
+.site-footer-links a:not(:last-child)::after {
+  content: '·';
+  margin-left: 0.25rem;
+  color: var(--sl-color-gray-5);
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 

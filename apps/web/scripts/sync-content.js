@@ -80,19 +80,20 @@ for (const lang of languages) {
   const curriculum = yaml.parse(readFileSync(curriculumPath, 'utf8'));
   console.log(`   📚 Found ${curriculum.blocks.length} blocks`);
 
-  // Clean and recreate destination directory (except index.mdx and authors.mdx)
+  // Clean and recreate destination directory (preserve custom pages)
+  const preserveFiles = ['index.mdx', 'authors.mdx', 'privacy.mdx', 'terms.mdx', 'cookies.mdx'];
   if (existsSync(contentDestDir)) {
-    const indexPath = join(contentDestDir, 'index.mdx');
-    const authorsPath = join(contentDestDir, 'authors.mdx');
-    const indexContent = existsSync(indexPath) ? readFileSync(indexPath, 'utf8') : null;
-    const authorsContent = existsSync(authorsPath) ? readFileSync(authorsPath, 'utf8') : null;
+    const preserved = {};
+    for (const file of preserveFiles) {
+      const filePath = join(contentDestDir, file);
+      if (existsSync(filePath)) {
+        preserved[file] = readFileSync(filePath, 'utf8');
+      }
+    }
     rmSync(contentDestDir, { recursive: true, force: true });
     mkdirSync(contentDestDir, { recursive: true });
-    if (indexContent) {
-      writeFileSync(indexPath, indexContent);
-    }
-    if (authorsContent) {
-      writeFileSync(authorsPath, authorsContent);
+    for (const [file, content] of Object.entries(preserved)) {
+      writeFileSync(join(contentDestDir, file), content);
     }
   } else {
     mkdirSync(contentDestDir, { recursive: true });

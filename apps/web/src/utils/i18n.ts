@@ -33,6 +33,12 @@ export const translations = {
       minRead: 'мин чтение',
       updated: 'Обновлено',
     },
+    // Footer
+    footer: {
+      privacy: 'Конфиденциальность',
+      terms: 'Условия',
+      cookies: 'Cookies',
+    },
     // Site meta
     site: {
       description: 'Полный учебник по Go - от основ до эксперта',
@@ -64,6 +70,12 @@ export const translations = {
     page: {
       minRead: 'min read',
       updated: 'Updated',
+    },
+    // Footer
+    footer: {
+      privacy: 'Privacy',
+      terms: 'Terms',
+      cookies: 'Cookies',
     },
     // Site meta
     site: {
