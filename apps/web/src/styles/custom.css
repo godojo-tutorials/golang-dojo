@@ -547,6 +547,12 @@ body.is-article .sl-container {
   color: var(--sl-color-gray-4);
 }
 
+/* Break footer out of Starlight's content container */
+.sl-container:has(.site-footer) {
+  max-width: 100%;
+  margin-inline: 0;
+}
+
 .site-footer-inner {
   display: flex;
   flex-direction: column;
