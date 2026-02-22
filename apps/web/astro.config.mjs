@@ -43,6 +43,7 @@ export default defineConfig({
       // Custom components
       components: {
         PageTitle: './src/components/overrides/PageTitle.astro',
+        Head: './src/components/overrides/Head.astro',
       },
       // Кастомизация
       customCss: [
