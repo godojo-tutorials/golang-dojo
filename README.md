@@ -1,125 +1,63 @@
-# Godojo
+# Godojo — Go Tutorial | Учебник Go
 
-Go tutorial platform. Inspired by [learn.javascript.ru](https://learn.javascript.ru).
+Free bilingual (Russian + English) Go programming tutorial. From zero to hero.
 
-**Website:** [godojo.dev](https://godojo.dev)
+**Website: [godojo.dev](https://godojo.dev)**
 
-## Structure
+Бесплатный двуязычный учебник по Go. From zero to hero.
 
-```
-Godojo/
-├── apps/
-│   └── web/                  # Astro + Starlight
-├── books/
-│   ├── go-language-ru/       # Russian course (395 topics)
-│   └── go-language-en/       # English course (395 topics)
-└── package.json
-```
+**Сайт: [godojo.dev](https://godojo.dev)**
+
+## What is Godojo?
+
+Godojo is an open-source, structured Go programming course inspired by [learn.javascript.ru](https://learn.javascript.ru). The course covers everything from language basics to production-ready applications.
+
+- **17 sections, 132 lessons**
+- **Two languages**: Russian and English
+- **Free and open source** (MIT License)
+- **Live at [godojo.dev](https://godojo.dev)**
+
+## Course Structure
+
+| # | Section | Topics |
+|---|---------|--------|
+| 1 | Introduction to Go | 8 |
+| 2 | Language Basics | 31 |
+| 3 | Functions | 14 |
+| 4 | Composite Types | 21 |
+| 5 | OOP in Go | 18 |
+| 6 | Error Handling | 12 |
+| 7 | Concurrency | 25 |
+| 8 | Standard Library | 20 |
+| 9 | Testing | 15 |
+| 10–17 | Advanced Topics | 231 |
 
 ## Quick Start
 
 ```bash
 npm install
-
-# Development
-npm run dev
-
-# Generate book structure
-npm run ru:generate
-npm run en:generate
+npm start        # Sync content + dev server (localhost:4321)
 ```
 
-## Commands
+## Tech Stack
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Dev server |
-| `npm run build` | Production build |
-| `npm run sync` | Sync content |
-| `npm run ru:generate` | Generate structure (RU) |
-| `npm run ru:validate` | Validate content (RU) |
-| `npm run ru:stats` | Statistics (RU) |
-| `npm run en:generate` | Generate structure (EN) |
-| `npm run en:validate` | Validate content (EN) |
-| `npm run en:stats` | Statistics (EN) |
-
-## Course
-
-**17 blocks, 79 modules, 395 topics**
-
-From language basics to production-ready applications.
+- [Astro](https://astro.build) + [Starlight](https://starlight.astro.build) — static site generator
+- Content as Markdown with YAML frontmatter
+- Deployed to [Vercel](https://vercel.com)
 
 ## Contributing
 
 1. Fork the repository
-2. Edit `article.md` in `books/go-language-{ru,en}/content/`
-3. Set `published: true` when article is ready
-4. Create PR
+2. Edit articles in `books/go-language-{ru,en}/content/`
+3. Set `published: true` when ready
+4. Create a PR
+
+## Links
+
+- Website: [godojo.dev](https://godojo.dev)
+- Russian course: [godojo.dev/ru/](https://godojo.dev/ru/)
+- English course: [godojo.dev/en/](https://godojo.dev/en/)
 
 ## License
-
-MIT
-
----
-
-# Godojo
-
-Учебник по Go. Вдохновлён [learn.javascript.ru](https://learn.javascript.ru).
-
-**Сайт:** [godojo.dev](https://godojo.dev)
-
-## Структура
-
-```
-Godojo/
-├── apps/
-│   └── web/                  # Astro + Starlight
-├── books/
-│   ├── go-language-ru/       # Русский курс (395 топиков)
-│   └── go-language-en/       # Английский курс (395 топиков)
-└── package.json
-```
-
-## Быстрый старт
-
-```bash
-npm install
-
-# Разработка
-npm run dev
-
-# Генерация структуры книг
-npm run ru:generate
-npm run en:generate
-```
-
-## Команды
-
-| Команда | Описание |
-|---------|----------|
-| `npm run dev` | Dev-сервер |
-| `npm run build` | Сборка |
-| `npm run sync` | Синхронизация контента |
-| `npm run ru:generate` | Генерация структуры (RU) |
-| `npm run ru:validate` | Валидация контента (RU) |
-| `npm run ru:stats` | Статистика (RU) |
-| `npm run en:generate` | Генерация структуры (EN) |
-| `npm run en:validate` | Валидация контента (EN) |
-| `npm run en:stats` | Статистика (EN) |
-
-## Курс
-
-**17 блоков, 79 модулей, 395 топиков**
-
-От основ языка до production-ready приложений.
-
-## Контрибьютинг
-
-1. Форкни репозиторий
-2. Редактируй `article.md` в `books/go-language-{ru,en}/content/`
-3. Установи `published: true` когда статья готова
-4. Создай PR
-
-## Лицензия
 
 MIT
