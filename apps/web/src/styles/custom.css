@@ -54,9 +54,9 @@ nav.sidebar .top-level > li > details > summary > span {
    LIGHT THEME
    ============================================ */
 :root[data-theme='light'] {
-  --sl-color-accent-low: #e8ecf4;
-  --sl-color-accent: #16213e;
-  --sl-color-accent-high: #0f1729;
+  --sl-color-accent-low: #e9eff8;
+  --sl-color-accent: #436ebd;
+  --sl-color-accent-high: #2f4f8a;
 }
 
 /* Dark theme gradient glow */
