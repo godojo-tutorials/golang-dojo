@@ -64,6 +64,15 @@ export default defineConfig({
         maxHeadingLevel: 3,
       },
       head: [
+        // Google Analytics 4
+        {
+          tag: 'script',
+          attrs: { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-BS6FE1SP8X' },
+        },
+        {
+          tag: 'script',
+          content: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BS6FE1SP8X');",
+        },
         // Vercel Analytics
         {
           tag: 'script',
