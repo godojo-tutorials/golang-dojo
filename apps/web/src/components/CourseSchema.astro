@@ -1,0 +1,43 @@
+---
+/**
+ * JSON-LD Schema for Course
+ * Adds structured data for the course landing pages
+ */
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const isRu = lang === 'ru';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": isRu ? "Полный учебник по Go" : "Complete Go Tutorial",
+  "description": isRu
+    ? "Бесплатный курс по Go — от hello world до микросервисов. 17 разделов, 132 урока."
+    : "Free Go course — from hello world to microservices. 17 sections, 132 lessons.",
+  "url": `https://godojo.dev/${lang}/`,
+  "inLanguage": lang,
+  "isAccessibleForFree": true,
+  "provider": {
+    "@type": "Organization",
+    "name": "Godojo",
+    "url": "https://godojo.dev",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://godojo.dev/og-image.png"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "category": "Free"
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
