@@ -78,15 +78,7 @@ export default defineConfig({
           tag: 'script',
           attrs: { defer: true, src: '/_vercel/insights/script.js' },
         },
-        // Open Graph
-        {
-          tag: 'meta',
-          attrs: { property: 'og:type', content: 'website' },
-        },
-        {
-          tag: 'meta',
-          attrs: { property: 'og:site_name', content: 'Godojo' },
-        },
+        // Open Graph (og:type set dynamically in Head.astro)
         {
           tag: 'meta',
           attrs: { property: 'og:image', content: 'https://godojo.dev/og-image.png' },
@@ -99,11 +91,11 @@ export default defineConfig({
           tag: 'meta',
           attrs: { property: 'og:image:height', content: '630' },
         },
-        // Twitter Card
         {
           tag: 'meta',
-          attrs: { name: 'twitter:card', content: 'summary_large_image' },
+          attrs: { property: 'og:image:alt', content: 'Godojo — Go Tutorial' },
         },
+        // Twitter Card
         {
           tag: 'meta',
           attrs: { name: 'twitter:image', content: 'https://godojo.dev/og-image.png' },
