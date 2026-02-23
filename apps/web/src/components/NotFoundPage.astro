@@ -39,9 +39,11 @@
 </div>
 
 <script is:inline>
-  // Runs synchronously before paint — no flash
+  // Runs synchronously — detect lang from URL path or navigator
   (function() {
-    var lang = navigator.language && navigator.language.startsWith('ru') ? 'ru' : 'en';
+    var path = location.pathname;
+    var lang = path.startsWith('/ru') ? 'ru' : path.startsWith('/en') ? 'en'
+      : (navigator.language && navigator.language.startsWith('ru') ? 'ru' : 'en');
     var root = document.getElementById('not-found');
     if (!root) return;
     root.setAttribute('data-detected-lang', lang);
@@ -52,13 +54,13 @@
   })();
 </script>
 
-<style>
+<style is:global>
   /* Language switching: hide all [data-lang] by default, show matching */
-  .not-found [data-lang] { display: none; }
-  .not-found[data-detected-lang="ru"] [data-lang="ru"] { display: inline; }
-  .not-found[data-detected-lang="en"] [data-lang="en"] { display: inline; }
+  #not-found [data-lang] { display: none; }
+  #not-found[data-detected-lang="ru"] [data-lang="ru"] { display: inline; }
+  #not-found[data-detected-lang="en"] [data-lang="en"] { display: inline; }
   /* Fallback: if JS hasn't run yet, show English */
-  .not-found:not([data-detected-lang]) [data-lang="en"] { display: inline; }
+  #not-found:not([data-detected-lang]) [data-lang="en"] { display: inline; }
 
   .not-found {
     text-align: center;
