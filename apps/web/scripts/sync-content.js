@@ -225,6 +225,12 @@ for (const lang of languages) {
     // Remove first h1 if it exists (Starlight generates h1 from title)
     let finalContent = content.replace(/^\s*#\s+[^\n]+\n*/m, '');
 
+    // Rewrite image paths: /images/ → relative path to src/assets/images/ for Astro optimization
+    finalContent = finalContent.replace(
+      /!\[([^\]]*)\]\(\/images\/([^)]+)\)/g,
+      '![$1](../../../assets/images/$2)'
+    );
+
     // Calculate reading time (words / 200 wpm)
     const wordCount = finalContent.split(/\s+/).filter(w => w.length > 0).length;
     const readingTime = Math.max(1, Math.ceil(wordCount / 200));
