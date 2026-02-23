@@ -1,19 +1,114 @@
 ---
 /**
- * Creative 404 page — Go-themed "nil" error
- * Language detection via data-lang attribute, no flash
+ * Creative 404 page — 3 random Go-themed variants
+ * 1. Terminal with typing animation
+ * 2. Stack trace / panic dump
+ * 3. Gopher mascot SVG
  */
 ---
 
-<div class="not-found" id="not-found">
-  <div class="not-found-code">nil</div>
-  <div class="not-found-comment">
-    <span data-lang="ru">// страница не найдена</span>
-    <span data-lang="en">// page not found</span>
+<div id="not-found">
+  <!-- ==================== VARIANT 1: TERMINAL ==================== -->
+  <div class="variant" id="v-terminal" style="display:none">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">
+          <span data-lang="ru">godojo — zsh</span>
+          <span data-lang="en">godojo — zsh</span>
+        </span>
+      </div>
+      <div class="terminal-body" id="terminal-output"></div>
+    </div>
+    <div class="not-found-actions">
+      <a href="/en/" class="not-found-btn" data-home>go run home.go</a>
+    </div>
   </div>
 
-  <div class="not-found-block">
-    <pre><code><span class="kw">package</span> <span class="pkg">main</span>
+  <!-- ==================== VARIANT 2: STACK TRACE ==================== -->
+  <div class="variant" id="v-stacktrace" style="display:none">
+    <div class="panic-header">panic</div>
+    <div class="panic-message">
+      <span data-lang="ru">runtime error: страница не найдена</span>
+      <span data-lang="en">runtime error: page not found</span>
+    </div>
+
+    <div class="stacktrace">
+      <pre><code><span class="st-goroutine">goroutine 1 [running]:</span>
+<span class="st-func">main.handleRequest</span>(<span class="st-dim">&#123;0xc0000b2000, 0x1a&#125;</span>)
+<span class="st-path">	/godojo/router.go:404</span> <span class="st-offset">+0x1a2</span>
+<span class="st-func">net/http.(*ServeMux).ServeHTTP</span>(<span class="st-dim">0xc000098000, &#123;0x7f2a8c, 0xc0000b4000&#125;, 0xc0000a8100</span>)
+<span class="st-path">	/usr/local/go/src/net/http/server.go:2688</span> <span class="st-offset">+0x143</span>
+<span class="st-func">net/http.serverHandler.ServeHTTP</span>(<span class="st-dim">&#123;0xc00009a000?&#125;</span>)
+<span class="st-path">	/usr/local/go/src/net/http/server.go:3142</span> <span class="st-offset">+0x8e</span>
+<span class="st-func">main.main</span>()
+<span class="st-path">	/godojo/main.go:15</span> <span class="st-offset">+0x85</span>
+
+<span class="st-exit">exit status 2</span></code></pre>
+    </div>
+    <div class="not-found-actions">
+      <a href="/en/" class="not-found-btn" data-home>go run home.go</a>
+    </div>
+  </div>
+
+  <!-- ==================== VARIANT 3: GOPHER ==================== -->
+  <div class="variant" id="v-gopher" style="display:none">
+    <div class="gopher-scene">
+      <svg viewBox="0 0 200 220" width="180" height="198" class="gopher-svg" aria-label="Go Gopher">
+        <!-- Body -->
+        <ellipse cx="100" cy="130" rx="60" ry="70" fill="#67D2E0"/>
+        <!-- Belly -->
+        <ellipse cx="100" cy="145" rx="40" ry="45" fill="#C8E8EC"/>
+        <!-- Left eye white -->
+        <ellipse cx="78" cy="90" rx="22" ry="24" fill="white" stroke="#333" stroke-width="1.5"/>
+        <!-- Right eye white -->
+        <ellipse cx="122" cy="90" rx="22" ry="24" fill="white" stroke="#333" stroke-width="1.5"/>
+        <!-- Left pupil -->
+        <circle cx="83" cy="92" r="10" fill="#222"/>
+        <circle cx="86" cy="88" r="3" fill="white"/>
+        <!-- Right pupil -->
+        <circle cx="117" cy="92" r="10" fill="#222"/>
+        <circle cx="120" cy="88" r="3" fill="white"/>
+        <!-- Nose -->
+        <ellipse cx="100" cy="105" rx="5" ry="3" fill="#C4A882"/>
+        <!-- Teeth -->
+        <rect x="93" y="110" width="6" height="8" rx="1" fill="white" stroke="#ddd" stroke-width="0.5"/>
+        <rect x="101" y="110" width="6" height="8" rx="1" fill="white" stroke="#ddd" stroke-width="0.5"/>
+        <!-- Left arm -->
+        <ellipse cx="42" cy="140" rx="12" ry="20" fill="#67D2E0" transform="rotate(-15, 42, 140)"/>
+        <!-- Right arm (raised with ?) -->
+        <ellipse cx="158" cy="120" rx="12" ry="20" fill="#67D2E0" transform="rotate(25, 158, 120)"/>
+        <!-- Left foot -->
+        <ellipse cx="78" cy="198" rx="16" ry="8" fill="#67D2E0"/>
+        <!-- Right foot -->
+        <ellipse cx="122" cy="198" rx="16" ry="8" fill="#67D2E0"/>
+        <!-- Question mark -->
+        <text x="175" y="95" font-size="32" font-weight="bold" fill="var(--sl-color-accent, #3b82f6)" font-family="Georgia, serif">?</text>
+      </svg>
+    </div>
+    <div class="gopher-text">
+      <div class="not-found-code">nil</div>
+      <div class="gopher-subtitle">
+        <span data-lang="ru">Гофер не нашёл эту страницу</span>
+        <span data-lang="en">Gopher couldn't find this page</span>
+      </div>
+    </div>
+    <div class="not-found-actions">
+      <a href="/en/" class="not-found-btn" data-home>go run home.go</a>
+    </div>
+  </div>
+
+  <!-- ==================== VARIANT 4: NIL CODE BLOCK ==================== -->
+  <div class="variant" id="v-nil" style="display:none">
+    <div class="not-found-code">nil</div>
+    <div class="nil-comment">
+      <span data-lang="ru">// страница не найдена</span>
+      <span data-lang="en">// page not found</span>
+    </div>
+    <div class="nil-block">
+      <pre><code><span class="kw">package</span> <span class="pkg">main</span>
 
 <span class="kw">import</span> <span class="str">"fmt"</span>
 
@@ -24,99 +119,133 @@
         fmt.<span class="fn">Println</span>(<span class="str">"<span data-lang="ru">Попробуйте главную или оглавление</span><span data-lang="en">Try the homepage or table of contents</span>"</span>)
     &#125;
 &#125;</code></pre>
-  </div>
-
-  <div class="not-found-actions">
-    <a href="/en/" class="not-found-btn" data-home>
-      <span data-lang="ru">go run home.go</span>
-      <span data-lang="en">go run home.go</span>
-    </a>
+    </div>
+    <div class="not-found-actions">
+      <a href="/en/" class="not-found-btn" data-home>go run home.go</a>
+    </div>
   </div>
 </div>
 
 <script is:inline>
-  // Runs synchronously — detect lang from URL path or navigator
-  (function() {
-    var path = location.pathname;
-    var lang = path.startsWith('/ru') ? 'ru' : path.startsWith('/en') ? 'en'
-      : (navigator.language && navigator.language.startsWith('ru') ? 'ru' : 'en');
-    var root = document.getElementById('not-found');
-    if (!root) return;
-    root.setAttribute('data-detected-lang', lang);
-    var home = root.querySelector('[data-home]');
-    if (home) home.href = '/' + lang + '/';
-  })();
+(function() {
+  // 1. Detect language
+  var path = location.pathname;
+  var lang = path.startsWith('/ru') ? 'ru' : path.startsWith('/en') ? 'en'
+    : (navigator.language && navigator.language.startsWith('ru') ? 'ru' : 'en');
+  var root = document.getElementById('not-found');
+  if (!root) return;
+  root.setAttribute('data-detected-lang', lang);
+
+  // 2. Update all home links
+  var links = root.querySelectorAll('[data-home]');
+  for (var i = 0; i < links.length; i++) {
+    links[i].href = '/' + lang + '/';
+  }
+
+  // 3. Pick random variant
+  var variants = root.querySelectorAll('.variant');
+  var idx = Math.floor(Math.random() * variants.length);
+  variants[idx].style.display = 'block';
+
+  // 4. Terminal typing animation
+  if (variants[idx].id === 'v-terminal') {
+    var output = document.getElementById('terminal-output');
+    if (!output) return;
+
+    var errorMsg = lang === 'ru'
+      ? '# godojo/router\n./router.go:404:1: undefined: requestedPage — страница не найдена'
+      : '# godojo/router\n./router.go:404:1: undefined: requestedPage';
+
+    var lines = [
+      { text: '$ go build ./...', type: 'cmd', delay: 0 },
+      { text: errorMsg, type: 'error', delay: 1200 },
+      { text: '', type: 'blank', delay: 2000 },
+      { text: lang === 'ru' ? '$ # попробуем вернуться домой...' : '$ # let\'s head back home...', type: 'comment', delay: 2400 },
+    ];
+
+    var charIdx = 0;
+    var lineIdx = 0;
+
+    function typeLine() {
+      if (lineIdx >= lines.length) {
+        // Add blinking cursor
+        var cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        cursor.textContent = '_';
+        output.appendChild(cursor);
+        return;
+      }
+
+      var line = lines[lineIdx];
+      var el = document.createElement('div');
+      el.className = 'term-line ' + line.type;
+      output.appendChild(el);
+
+      if (line.type === 'cmd' || line.type === 'comment') {
+        // Type character by character
+        charIdx = 0;
+        function typeChar() {
+          if (charIdx < line.text.length) {
+            el.textContent = line.text.substring(0, charIdx + 1);
+            charIdx++;
+            setTimeout(typeChar, 25 + Math.random() * 35);
+          } else {
+            lineIdx++;
+            if (lineIdx < lines.length) {
+              setTimeout(typeLine, lines[lineIdx].delay - (lines[lineIdx - 1] ? lines[lineIdx - 1].delay : 0));
+            } else {
+              typeLine();
+            }
+          }
+        }
+        typeChar();
+      } else if (line.type === 'blank') {
+        el.innerHTML = '&nbsp;';
+        lineIdx++;
+        if (lineIdx < lines.length) {
+          setTimeout(typeLine, lines[lineIdx].delay - line.delay);
+        } else {
+          typeLine();
+        }
+      } else {
+        // Error/output: appear instantly
+        el.textContent = line.text;
+        lineIdx++;
+        if (lineIdx < lines.length) {
+          setTimeout(typeLine, lines[lineIdx].delay - line.delay);
+        } else {
+          typeLine();
+        }
+      }
+    }
+
+    setTimeout(typeLine, 400);
+  }
+})();
 </script>
 
 <style is:global>
-  /* Language switching: hide all [data-lang] by default, show matching */
+  /* ============================================
+     LANGUAGE SWITCHING
+     ============================================ */
   #not-found [data-lang] { display: none; }
   #not-found[data-detected-lang="ru"] [data-lang="ru"] { display: inline; }
   #not-found[data-detected-lang="en"] [data-lang="en"] { display: inline; }
-  /* Fallback: if JS hasn't run yet, show English */
   #not-found:not([data-detected-lang]) [data-lang="en"] { display: inline; }
 
-  .not-found {
-    text-align: center;
-    max-width: 520px;
+  /* ============================================
+     SHARED
+     ============================================ */
+  #not-found {
+    max-width: 600px;
     margin: 0 auto;
     padding: 1rem;
   }
 
-  .not-found-code {
-    font-size: 5rem;
-    font-weight: 800;
-    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-    color: var(--sl-color-accent);
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-
-  .not-found-comment {
-    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-    font-size: 1rem;
-    color: #6a9955;
-    margin-bottom: 2rem;
-  }
-
-  .not-found-block {
-    background: var(--sl-color-bg-sidebar, #171B19);
-    border: 1px solid var(--sl-color-gray-6, #262B27);
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-    text-align: left;
-    margin-bottom: 2rem;
-    overflow-x: auto;
-  }
-
-  .not-found-block pre {
-    margin: 0;
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-
-  .not-found-block code {
-    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-    font-size: 0.85rem;
-    line-height: 1.7;
-    color: var(--sl-color-white, #F3F8FA);
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-
-  .not-found-block .kw { color: #c586c0; }
-  .not-found-block .fn { color: #dcdcaa; }
-  .not-found-block .str { color: #ce9178; }
-  .not-found-block .pkg { color: #4ec9b0; }
-  .not-found-block .type { color: #569cd6; }
-
   .not-found-actions {
     display: flex;
-    gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    margin-top: 2rem;
   }
 
   .not-found-btn {
@@ -141,9 +270,204 @@
     transform: translateY(-1px);
   }
 
+  .not-found-code {
+    font-size: 4rem;
+    font-weight: 800;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    color: var(--sl-color-accent, #3b82f6);
+    line-height: 1;
+  }
+
+  /* ============================================
+     VARIANT 1: TERMINAL
+     ============================================ */
+  .terminal {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-gray-6, #262B27);
+    text-align: left;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #2d2d2d;
+    border-bottom: 1px solid var(--sl-color-gray-6, #262B27);
+  }
+
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-dot.red { background: #ff5f57; }
+  .terminal-dot.yellow { background: #febc2e; }
+  .terminal-dot.green { background: #28c840; }
+
+  .terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-4, #707574);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .terminal-body {
+    padding: 1.25rem;
+    background: var(--sl-color-bg, #111111);
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    min-height: 180px;
+    color: var(--sl-color-white, #F3F8FA);
+  }
+
+  .term-line.cmd { color: var(--sl-color-white, #F3F8FA); }
+  .term-line.error { color: #f87171; white-space: pre-wrap; }
+  .term-line.comment { color: #6a9955; }
+
+  .cursor {
+    color: var(--sl-color-white, #F3F8FA);
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* ============================================
+     VARIANT 2: STACK TRACE
+     ============================================ */
+  .panic-header {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #f87171;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .panic-message {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 1rem;
+    color: #fca5a5;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .stacktrace {
+    background: var(--sl-color-bg-sidebar, #171B19);
+    border: 1px solid var(--sl-color-gray-6, #262B27);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    overflow-x: auto;
+  }
+
+  .stacktrace pre {
+    margin: 0;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .stacktrace code {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--sl-color-white, #F3F8FA);
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .st-goroutine { color: #6a9955; }
+  .st-func { color: #dcdcaa; }
+  .st-dim { color: var(--sl-color-gray-4, #707574); }
+  .st-path { color: #569cd6; }
+  .st-offset { color: var(--sl-color-gray-4, #707574); }
+  .st-exit { color: #f87171; font-weight: 600; }
+
+  /* ============================================
+     VARIANT 3: GOPHER
+     ============================================ */
+  .gopher-scene {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .gopher-svg {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  }
+
+  .gopher-text {
+    text-align: center;
+  }
+
+  .gopher-subtitle {
+    font-size: 1rem;
+    color: var(--sl-color-gray-3, #9FA3A0);
+    margin-top: 0.75rem;
+  }
+
+  /* ============================================
+     VARIANT 4: NIL CODE BLOCK
+     ============================================ */
+  #v-nil { text-align: center; }
+
+  .nil-comment {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 1rem;
+    color: #6a9955;
+    margin-bottom: 2rem;
+  }
+
+  .nil-block {
+    background: var(--sl-color-bg-sidebar, #171B19);
+    border: 1px solid var(--sl-color-gray-6, #262B27);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    margin-bottom: 0;
+    overflow-x: auto;
+  }
+
+  .nil-block pre {
+    margin: 0;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .nil-block code {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--sl-color-white, #F3F8FA);
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .nil-block .kw { color: #c586c0; }
+  .nil-block .fn { color: #dcdcaa; }
+  .nil-block .str { color: #ce9178; }
+  .nil-block .pkg { color: #4ec9b0; }
+  .nil-block .type { color: #569cd6; }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
   @media (max-width: 480px) {
-    .not-found-code { font-size: 3.5rem; }
-    .not-found-block code { font-size: 0.75rem; }
-    .not-found-block { padding: 1rem; }
+    .not-found-code { font-size: 3rem; }
+    .panic-header { font-size: 2.5rem; }
+    .terminal-body { font-size: 0.75rem; padding: 1rem; min-height: 140px; }
+    .stacktrace code { font-size: 0.7rem; }
+    .stacktrace { padding: 1rem; }
+    .gopher-svg { width: 140px; height: auto; }
   }
 </style>
