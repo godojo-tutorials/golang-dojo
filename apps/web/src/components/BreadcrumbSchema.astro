@@ -1,0 +1,53 @@
+---
+/**
+ * JSON-LD BreadcrumbList Schema
+ * Generates breadcrumb structured data: Home > Block > Topic
+ */
+import toc from '@/data/toc.json';
+
+interface Props {
+  slug: string;
+  lang: string;
+  title: string;
+}
+
+const { slug, lang, title } = Astro.props;
+const site = 'https://godojo.dev';
+
+const langToc = toc[lang as keyof typeof toc];
+const homeLabel = lang === 'ru' ? 'Учебник Go' : 'Go Tutorial';
+
+// Find the block containing this topic (flat blocks have topics directly, others nest in modules)
+let blockTitle = '';
+for (const block of langToc?.blocks || []) {
+  if (block.topics?.some((t: { slug: string }) => t.slug === slug)) {
+    blockTitle = block.title;
+    break;
+  }
+  if (block.modules?.some((m: { topics: { slug: string }[] }) =>
+    m.topics?.some((t) => t.slug === slug)
+  )) {
+    blockTitle = block.title;
+    break;
+  }
+}
+
+const items = [
+  { name: homeLabel, url: `${site}/${lang}/` },
+  ...(blockTitle ? [{ name: blockTitle }] : []),
+  { name: title },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": item.name,
+    ...('url' in item && item.url ? { "item": item.url } : {}),
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

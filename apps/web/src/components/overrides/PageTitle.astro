@@ -6,6 +6,7 @@
 import type { Props } from '@astrojs/starlight/props';
 import { t, type Lang } from '@/utils/i18n';
 import ArticleSchema from '@/components/ArticleSchema.astro';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.astro';
 
 const { entry, lang } = Astro.props as Props;
 const frontmatter = entry.data;
@@ -59,6 +60,14 @@ const slug = Astro.url.pathname.split('/').filter(Boolean).pop() || '';
     updatedAt={updatedAt}
     url={currentUrl}
     lang={lang}
+  />
+)}
+
+{isArticle && (
+  <BreadcrumbSchema
+    slug={slug}
+    lang={lang}
+    title={title}
   />
 )}
 
