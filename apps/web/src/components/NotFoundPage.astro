@@ -27,13 +27,9 @@
   </div>
 
   <div class="not-found-actions">
-    <a href="/en/" class="not-found-btn primary" data-home>
-      <span data-lang="ru">На главную</span>
-      <span data-lang="en">Home</span>
-    </a>
-    <a href="/en/" class="not-found-btn secondary" data-toc>
-      <span data-lang="ru">Оглавление</span>
-      <span data-lang="en">Table of Contents</span>
+    <a href="/en/" class="not-found-btn" data-home>
+      <span data-lang="ru">go run home.go</span>
+      <span data-lang="en">go run home.go</span>
     </a>
   </div>
 </div>
@@ -48,9 +44,7 @@
     if (!root) return;
     root.setAttribute('data-detected-lang', lang);
     var home = root.querySelector('[data-home]');
-    var toc = root.querySelector('[data-toc]');
     if (home) home.href = '/' + lang + '/';
-    if (toc) toc.href = '/' + lang + '/';
   })();
 </script>
 
@@ -128,32 +122,22 @@
   .not-found-btn {
     display: inline-flex;
     align-items: center;
-    padding: 0.65rem 1.5rem;
+    gap: 0.5rem;
+    padding: 0.7rem 1.75rem;
     border-radius: 6px;
     text-decoration: none;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    color: #4ec9b0;
+    background: var(--sl-color-bg-sidebar, #171B19);
+    border: 1px solid var(--sl-color-gray-6, #262B27);
     transition: all 0.2s ease;
   }
 
-  .not-found-btn.primary {
-    background: var(--sl-color-accent, #3b82f6);
-    color: white;
-  }
-
-  .not-found-btn.primary:hover {
-    filter: brightness(1.15);
-    transform: translateY(-1px);
-  }
-
-  .not-found-btn.secondary {
-    background: transparent;
-    color: var(--sl-color-white, #F3F8FA);
-    border: 1px solid var(--sl-color-gray-6, #262B27);
-  }
-
-  .not-found-btn.secondary:hover {
-    border-color: var(--sl-color-gray-4, #707574);
+  .not-found-btn:hover {
+    border-color: var(--sl-color-accent, #3b82f6);
+    color: var(--sl-color-accent, #3b82f6);
     transform: translateY(-1px);
   }
 
