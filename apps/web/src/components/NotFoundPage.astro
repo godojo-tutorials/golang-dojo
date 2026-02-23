@@ -1,13 +1,16 @@
 ---
 /**
  * Creative 404 page — Go-themed "nil" error
- * Detects browser language for ru/en content
+ * Language detection via data-lang attribute, no flash
  */
 ---
 
-<div class="not-found">
+<div class="not-found" id="not-found">
   <div class="not-found-code">nil</div>
-  <div class="not-found-comment">// page not found</div>
+  <div class="not-found-comment">
+    <span data-lang="ru">// страница не найдена</span>
+    <span data-lang="en">// page not found</span>
+  </div>
 
   <div class="not-found-block">
     <pre><code><span class="kw">package</span> <span class="pkg">main</span>
@@ -17,53 +20,46 @@
 <span class="kw">func</span> <span class="fn">main</span>() &#123;
     page, err := http.<span class="fn">Get</span>(url)
     <span class="kw">if</span> err != <span class="type">nil</span> &#123;
-        fmt.<span class="fn">Println</span>(<span class="str">"<span class="msg-404">404: page not found</span>"</span>)
-        fmt.<span class="fn">Println</span>(<span class="str">"<span class="msg-hint">Try the homepage or table of contents</span>"</span>)
+        fmt.<span class="fn">Println</span>(<span class="str">"<span data-lang="ru">404: страница не найдена</span><span data-lang="en">404: page not found</span>"</span>)
+        fmt.<span class="fn">Println</span>(<span class="str">"<span data-lang="ru">Попробуйте главную или оглавление</span><span data-lang="en">Try the homepage or table of contents</span>"</span>)
     &#125;
 &#125;</code></pre>
   </div>
 
   <div class="not-found-actions">
-    <a href="/" class="not-found-btn primary" data-home>
-      <span class="btn-label-en">Home</span>
-      <span class="btn-label-ru" style="display:none">На главную</span>
+    <a href="/en/" class="not-found-btn primary" data-home>
+      <span data-lang="ru">На главную</span>
+      <span data-lang="en">Home</span>
     </a>
-    <a href="/" class="not-found-btn secondary" data-toc>
-      <span class="btn-label-en">Table of Contents</span>
-      <span class="btn-label-ru" style="display:none">Оглавление</span>
+    <a href="/en/" class="not-found-btn secondary" data-toc>
+      <span data-lang="ru">Оглавление</span>
+      <span data-lang="en">Table of Contents</span>
     </a>
   </div>
 </div>
 
-<script>
-  // Detect language and localize
-  const isRu = navigator.language?.startsWith('ru');
-  const lang = isRu ? 'ru' : 'en';
-
-  // Update links
-  document.querySelector('[data-home]')?.setAttribute('href', `/${lang}/`);
-  document.querySelector('[data-toc]')?.setAttribute('href', `/${lang}/`);
-
-  // Swap button labels
-  document.querySelectorAll('.btn-label-en').forEach(el => {
-    (el as HTMLElement).style.display = isRu ? 'none' : '';
-  });
-  document.querySelectorAll('.btn-label-ru').forEach(el => {
-    (el as HTMLElement).style.display = isRu ? '' : 'none';
-  });
-
-  // Swap messages
-  const msg404 = document.querySelector('.msg-404');
-  const msgHint = document.querySelector('.msg-hint');
-  if (isRu && msg404) msg404.textContent = '404: страница не найдена';
-  if (isRu && msgHint) msgHint.textContent = 'Попробуйте главную или оглавление';
-
-  // Update comment
-  const comment = document.querySelector('.not-found-comment');
-  if (isRu && comment) comment.textContent = '// страница не найдена';
+<script is:inline>
+  // Runs synchronously before paint — no flash
+  (function() {
+    var lang = navigator.language && navigator.language.startsWith('ru') ? 'ru' : 'en';
+    var root = document.getElementById('not-found');
+    if (!root) return;
+    root.setAttribute('data-detected-lang', lang);
+    var home = root.querySelector('[data-home]');
+    var toc = root.querySelector('[data-toc]');
+    if (home) home.href = '/' + lang + '/';
+    if (toc) toc.href = '/' + lang + '/';
+  })();
 </script>
 
 <style>
+  /* Language switching: hide all [data-lang] by default, show matching */
+  .not-found [data-lang] { display: none; }
+  .not-found[data-detected-lang="ru"] [data-lang="ru"] { display: inline; }
+  .not-found[data-detected-lang="en"] [data-lang="en"] { display: inline; }
+  /* Fallback: if JS hasn't run yet, show English */
+  .not-found:not([data-detected-lang]) [data-lang="en"] { display: inline; }
+
   .not-found {
     text-align: center;
     max-width: 520px;
