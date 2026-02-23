@@ -398,6 +398,8 @@
   .gopher-scene {
     text-align: center;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
   }
 
   .gopher-svg {
@@ -458,6 +460,19 @@
   .nil-block .str { color: #ce9178; }
   .nil-block .pkg { color: #4ec9b0; }
   .nil-block .type { color: #569cd6; }
+
+  /* ============================================
+     PUSH FOOTER TO BOTTOM
+     ============================================ */
+  .page:has(#not-found) { min-height: 100vh; }
+  .page:has(#not-found) .main-frame { flex: 1; display: flex; flex-direction: column; }
+  .page:has(#not-found) .lg\:sl-flex { flex: 1; }
+  .page:has(#not-found) .main-pane { flex: 1; display: flex; flex-direction: column; }
+  .page:has(#not-found) main { flex: 1; display: flex; flex-direction: column; }
+  .page:has(#not-found) .content-panel { flex: 1; display: flex; flex-direction: column; }
+  .page:has(#not-found) .sl-container { flex: 1; display: flex; flex-direction: column; }
+  .page:has(#not-found) .sl-markdown-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .page:has(#not-found) .hero { display: none; }
 
   /* ============================================
      RESPONSIVE
