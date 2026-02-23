@@ -21,6 +21,23 @@
       "source": "/",
       "destination": "/en/",
       "permanent": false
+    },
+    {
+      "source": "/:path((?!ru|en|_astro|_vercel).+)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "(?i)^ru.*"
+        }
+      ],
+      "destination": "/ru/:path",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!ru|en|_astro|_vercel).+)",
+      "destination": "/en/:path",
+      "permanent": true
     }
   ],
   "headers": [
