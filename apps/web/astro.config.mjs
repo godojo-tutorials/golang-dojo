@@ -19,7 +19,7 @@ export default defineConfig({
     sitemap(),
     starlight({
       title: 'Godojo',
-      description: 'Полный учебник по Go - от основ до эксперта',
+      description: 'Free Go programming tutorial — 132 lessons from basics to advanced topics',
       defaultLocale: 'ru',
       locales: {
         ru: {

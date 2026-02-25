@@ -22,6 +22,10 @@ const schema = {
   "url": `https://godojo.dev/${lang}/`,
   "inLanguage": lang,
   "isAccessibleForFree": true,
+  "teaches": isRu
+    ? ["Go", "Golang", "горутины", "каналы", "интерфейсы", "тестирование", "паттерны"]
+    : ["Go", "Golang", "goroutines", "channels", "interfaces", "testing", "patterns"],
+  "educationalLevel": isRu ? "От основ до продвинутых тем" : "Basics to Advanced",
   "provider": {
     "@type": "Organization",
     "name": "Godojo",

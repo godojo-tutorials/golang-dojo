@@ -51,4 +51,13 @@ const isArticle = frontmatter.author || frontmatter.updatedAt;
   <meta property="article:tag" content="Programming" />
 )}
 
+{/* WebSite schema: tells Google the preferred site name instead of showing the domain */}
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Godojo",
+  "alternateName": lang === 'ru' ? "Годожо" : "Godojo — Go Tutorial",
+  "url": site
+})} />
+
 <Analytics />

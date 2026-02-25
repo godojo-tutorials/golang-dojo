@@ -123,6 +123,15 @@ nav.sidebar .top-level > li > details > summary > span {
   color: var(--sl-color-gray-5);
 }
 
+.home-intro {
+  max-width: 640px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--sl-color-gray-3);
+  line-height: 1.6;
+}
+
 .home-cta {
   display: inline-block;
   padding: 0.75rem 2rem;
