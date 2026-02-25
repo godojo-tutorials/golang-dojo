@@ -82,6 +82,15 @@ export default defineConfig({
           tag: 'link',
           attrs: { rel: 'manifest', href: '/site.webmanifest' },
         },
+        // Preconnect to GA4 origin (saves ~100-300ms on cold connection)
+        {
+          tag: 'link',
+          attrs: { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
+        },
+        {
+          tag: 'link',
+          attrs: { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+        },
         // Google Analytics 4
         {
           tag: 'script',
