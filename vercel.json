@@ -23,7 +23,7 @@
       "permanent": false
     },
     {
-      "source": "/:path((?!ru|en|_astro|_vercel).+)",
+      "source": "/:path((?!ru|en|_astro|_vercel|sitemap|robots|pagefind|favicon).+)",
       "has": [
         {
           "type": "header",
@@ -35,7 +35,7 @@
       "permanent": true
     },
     {
-      "source": "/:path((?!ru|en|_astro|_vercel).+)",
+      "source": "/:path((?!ru|en|_astro|_vercel|sitemap|robots|pagefind|favicon).+)",
       "destination": "/en/:path",
       "permanent": true
     }
